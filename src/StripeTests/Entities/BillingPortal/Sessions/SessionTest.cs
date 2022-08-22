@@ -1,5 +1,6 @@
 namespace StripeTests.BillingPortal
 {
+    using System.Text.Json;
     using System.Text.Json.Serialization;
     using Stripe;
     using Stripe.BillingPortal;
@@ -16,7 +17,7 @@ namespace StripeTests.BillingPortal
         public void Deserialize()
         {
             var json = GetResourceAsString("api_fixtures.billing_portal.session.json");
-            var session = JsonConvert.DeserializeObject<Session>(json);
+            var session = JsonSerializer.Deserialize<Session>(json);
             Assert.NotNull(session);
             Assert.IsType<Session>(session);
             Assert.NotNull(session.Id);

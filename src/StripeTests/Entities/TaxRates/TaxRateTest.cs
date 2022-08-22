@@ -1,5 +1,6 @@
 namespace StripeTests
 {
+    using System.Text.Json;
     using System.Text.Json.Serialization;
     using Stripe;
     using Xunit;
@@ -15,7 +16,7 @@ namespace StripeTests
         public void Deserialize()
         {
             string json = this.GetFixture("/v1/tax_rates/txr_123");
-            var taxRate = JsonConvert.DeserializeObject<TaxRate>(json);
+            var taxRate = JsonSerializer.Deserialize<TaxRate>(json);
             Assert.NotNull(taxRate);
             Assert.IsType<TaxRate>(taxRate);
             Assert.NotNull(taxRate.Id);

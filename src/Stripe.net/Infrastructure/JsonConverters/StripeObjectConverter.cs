@@ -13,7 +13,8 @@ namespace Stripe.Infrastructure
     /// decide which concrete type to instantiate. If no concrete type is found (or if one is found,
     /// but it's not compatible with the expected interface), then the converter returns `null`.
     /// </summary>
-    public class StripeObjectConverter : JsonConverter<IHasObject>
+    /// <typeparam name="T">The.</typeparam>
+    public class StripeObjectConverter<T> : JsonConverter<T>
     {
         /// <summary>
         /// Determines whether this instance can convert the specified object type.
@@ -34,7 +35,7 @@ namespace Stripe.Infrastructure
         /// <param name="typeToConvert">Type of the object.</param>
         /// <param name="options">The serialization options.</param>
         /// <returns>The object value.</returns>
-        public override IHasObject Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             Utf8JsonReader readerClone = reader;
 
@@ -43,27 +44,18 @@ namespace Stripe.Infrastructure
                 throw new JsonException();
             }
 
-            if (!readerClone.Read())
-            {
-                throw new JsonException();
-            }
-
             if (readerClone.TokenType == JsonTokenType.Null)
             {
-                return null;
+                return default(T);
             }
 
             var objectValue = string.Empty;
 
-            while (readerClone.TokenType != JsonTokenType.EndObject)
+            while (readerClone.Read())
             {
                 if (readerClone.TokenType == JsonTokenType.PropertyName)
                 {
                     var propertyName = readerClone.GetString();
-                    if (!readerClone.Read())
-                    {
-                        throw new JsonException();
-                    }
 
                     if (propertyName == "object" && readerClone.Read() && readerClone.TokenType == JsonTokenType.String)
                     {
@@ -77,10 +69,10 @@ namespace Stripe.Infrastructure
             if (concreteType == null)
             {
                 // Couldn't find a concrete type to instantiate, return null.
-                return null;
+                return default(T);
             }
 
-            return (IHasObject)JsonSerializer.Deserialize(ref reader, concreteType, options);
+            return (T)JsonSerializer.Deserialize(ref reader, concreteType, options);
         }
 
         /// <summary>
@@ -89,7 +81,7 @@ namespace Stripe.Infrastructure
         /// <param name="writer">The <see cref="Utf8JsonWriter"/> to write to.</param>
         /// <param name="value">The value.</param>
         /// <param name="options">The serialization options.</param>
-        public override void Write(Utf8JsonWriter writer, IHasObject value, JsonSerializerOptions options)
+        public override void Write(Utf8JsonWriter writer, T value, JsonSerializerOptions options)
         {
             throw new NotImplementedException();
         }

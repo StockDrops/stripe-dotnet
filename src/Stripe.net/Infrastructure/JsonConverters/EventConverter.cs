@@ -17,17 +17,6 @@ namespace Stripe.Infrastructure
     /// </summary>
     public class EventConverter : JsonConverter<Event>
     {
-        /// <summary>
-        /// Determines whether this instance can convert the specified object type.
-        /// </summary>
-        /// <param name="objectType">Type of the object.</param>
-        /// <returns>
-        ///     <c>true</c> if this instance can convert the specified object type; otherwise, <c>false</c>.
-        /// </returns>
-        public override bool CanConvert(Type objectType)
-        {
-            return objectType == typeof(Event);
-        }
 
         /// <summary>
         /// Reads the JSON representation of the object.
@@ -46,13 +35,8 @@ namespace Stripe.Infrastructure
             var readerClone = reader;
             EventRequest eventRequest = null;
 
-            while (readerClone.TokenType != JsonTokenType.EndObject)
+            while (readerClone.Read())
             {
-                if (!readerClone.Read())
-                {
-                    throw new JsonException();
-                }
-
                 if (readerClone.TokenType == JsonTokenType.PropertyName)
                 {
                     var propertyName = readerClone.GetString();
@@ -93,7 +77,7 @@ namespace Stripe.Infrastructure
                 return value;
             }
 
-            return (Event)JsonSerializer.Deserialize(ref reader, typeof(Event), options);
+            return (Event)JsonSerializer.Deserialize(ref reader, typeof(Event));
         }
 
         /// <summary>

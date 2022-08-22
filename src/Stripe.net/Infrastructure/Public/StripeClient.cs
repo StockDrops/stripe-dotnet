@@ -4,9 +4,9 @@ namespace Stripe
     using System.IO;
     using System.Net;
     using System.Net.Http;
+    using System.Text.Json;
     using System.Threading;
     using System.Threading.Tasks;
-    
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -158,9 +158,9 @@ namespace Stripe
             {
                 obj = StripeEntity.FromJson<T>(response.Content);
             }
-            catch (Newtonsoft.Json.JsonException)
+            catch (System.Text.Json.JsonException ex)
             {
-                throw BuildInvalidResponseException(response);
+                throw new StripeException(ex.Message);
             }
 
             obj.StripeResponse = response;
@@ -170,13 +170,13 @@ namespace Stripe
 
         private static StripeException BuildStripeException(StripeResponse response)
         {
-            JObject jObject = null;
+            JsonDocument jObject = null;
 
             try
             {
-                jObject = JObject.Parse(response.Content);
+                jObject = JsonDocument.Parse(response.Content);
             }
-            catch (Newtonsoft.Json.JsonException)
+            catch (JsonException)
             {
                 return BuildInvalidResponseException(response);
             }
@@ -185,13 +185,13 @@ namespace Stripe
             // and we instantiate the StripeError object with the entire JSON.
             // Otherwise, it's a regular API error and we instantiate the StripeError object
             // with just the nested hash contained in the `error` key.
-            var errorToken = jObject["error"];
-            if (errorToken == null)
+            var errorToken = jObject.RootElement.GetProperty("error");
+            if (errorToken.ValueKind == JsonValueKind.Null)
             {
                 return BuildInvalidResponseException(response);
             }
 
-            var stripeError = errorToken.Type == JTokenType.String
+            var stripeError = errorToken.ValueKind == JsonValueKind.String
                 ? StripeError.FromJson(response.Content)
                 : StripeError.FromJson(errorToken.ToString());
 

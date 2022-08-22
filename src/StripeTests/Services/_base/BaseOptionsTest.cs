@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Linq;
+    using System.Text.Json;
     using System.Text.Json.Serialization;
     using Stripe;
     using Xunit;
@@ -15,8 +16,8 @@ namespace StripeTests
             options.AddExtraParam("foo", "String!");
             options.AddExtraParam("bar", 234L);
 
-            var json = JsonConvert.SerializeObject(options);
-            var deserialized = JsonConvert.DeserializeObject<BaseOptions>(json);
+            var json = JsonSerializer.Serialize(options);
+            var deserialized = JsonSerializer.Deserialize<BaseOptions>(json);
 
             Assert.Equal(options.Expand, deserialized.Expand);
             Assert.True(options.ExtraParams.Count == deserialized.ExtraParams.Count);

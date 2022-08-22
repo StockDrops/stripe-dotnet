@@ -156,15 +156,15 @@ namespace StripeTests
             Assert.NotNull(subscription);
 
             // Access `id`, a string element
-            Assert.Equal(subscription.Id, subscription.RawJObject["id"]);
+            Assert.Equal(subscription.Id, subscription.RawJObject.RootElement.GetProperty("id").GetRawText());
 
             // Access `created`, a number element
-            Assert.Equal(subscription.Created, subscription.RawJObject["created"]);
+            Assert.Equal(subscription.Created, subscription.RawJObject.RootElement.GetProperty("created").GetDateTime());
 
             // Access `items[data][0][id]`, a deeply nested string element
             Assert.Equal(
                 subscription.Items.Data[0].Id,
-                subscription.RawJObject["items"]["data"][0]["id"]);
+                subscription.RawJObject.RootElement.GetProperty("items").GetProperty("data")[0].GetProperty("id").GetRawText());
         }
 
         private class TestEntity : StripeEntity<TestEntity>

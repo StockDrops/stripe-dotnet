@@ -1,5 +1,6 @@
 namespace StripeTests
 {
+    using System.Text.Json;
     using System.Text.Json.Serialization;
     using Stripe;
     using Xunit;
@@ -15,7 +16,7 @@ namespace StripeTests
         public void Deserialize()
         {
             string json = this.GetFixture("/v1/setup_intents/seti_123");
-            var intent = JsonConvert.DeserializeObject<SetupIntent>(json);
+            var intent = JsonSerializer.Deserialize<SetupIntent>(json);
             Assert.NotNull(intent);
             Assert.IsType<SetupIntent>(intent);
             Assert.NotNull(intent.Id);
@@ -38,7 +39,7 @@ namespace StripeTests
             };
 
             string json = this.GetFixture("/v1/setup_intents/seti_123", expansions);
-            var intent = JsonConvert.DeserializeObject<SetupIntent>(json);
+            var intent = JsonSerializer.Deserialize<SetupIntent>(json);
             Assert.NotNull(intent);
             Assert.IsType<SetupIntent>(intent);
             Assert.NotNull(intent.Id);

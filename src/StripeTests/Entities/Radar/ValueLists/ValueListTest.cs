@@ -1,5 +1,6 @@
 namespace StripeTests.Radar
 {
+    using System.Text.Json;
     using System.Text.Json.Serialization;
     using Stripe.Radar;
     using Xunit;
@@ -15,7 +16,7 @@ namespace StripeTests.Radar
         public void Deserialize()
         {
             string json = this.GetFixture("/v1/radar/value_lists/rsl_123");
-            var valueList = JsonConvert.DeserializeObject<ValueList>(json);
+            var valueList = JsonSerializer.Deserialize<ValueList>(json);
             Assert.NotNull(valueList);
             Assert.IsType<ValueList>(valueList);
             Assert.NotNull(valueList.Id);

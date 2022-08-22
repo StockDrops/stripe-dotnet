@@ -1,9 +1,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.4
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32708.82
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E3F91159-E7A8-4F44-9DD9-B7D76E2E7542}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
 		..\.gitattributes = ..\.gitattributes
 		..\.gitignore = ..\.gitignore
 		..\global.json = ..\global.json
@@ -20,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stripe.net", "Stripe.net\St
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StripeTests", "StripeTests\StripeTests.csproj", "{75F3AA23-C708-4408-AFD0-D7FA354E031B}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stripe.net.Core", "Stripe.net.Core\Stripe.net.Core.csproj", "{C22EF4F5-ADBE-4435-888F-0DA85ED2CF61}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,11 +37,18 @@ Global
 		{75F3AA23-C708-4408-AFD0-D7FA354E031B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75F3AA23-C708-4408-AFD0-D7FA354E031B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75F3AA23-C708-4408-AFD0-D7FA354E031B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C22EF4F5-ADBE-4435-888F-0DA85ED2CF61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C22EF4F5-ADBE-4435-888F-0DA85ED2CF61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C22EF4F5-ADBE-4435-888F-0DA85ED2CF61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C22EF4F5-ADBE-4435-888F-0DA85ED2CF61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B6B9F592-4B61-45D0-A9B2-8D1C03C8E81F} = {E3F91159-E7A8-4F44-9DD9-B7D76E2E7542}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1DC8A227-61AF-48A6-959C-2363A4D8C156}
 	EndGlobalSection
 EndGlobal

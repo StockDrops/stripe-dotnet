@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using Stripe.Infrastructure.JsonConverters;
     using System.Text.Json.Serialization;
 
     public class PersonRelationship : StripeEntity<PersonRelationship>
@@ -30,6 +31,7 @@ namespace Stripe
         /// The percent owned by the person of the account's legal entity.
         /// </summary>
         [JsonPropertyName("percent_ownership")]
+        [JsonConverter(typeof(StringDecimalConverter))]
         public decimal? PercentOwnership { get; set; }
 
         /// <summary>

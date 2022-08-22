@@ -1,5 +1,6 @@
 namespace StripeTests
 {
+    using System.Text.Json;
     using System.Text.Json.Serialization;
     using Stripe;
     using Xunit;
@@ -15,7 +16,7 @@ namespace StripeTests
         public void Deserialize()
         {
             var json = GetResourceAsString("api_fixtures.source_mandate_notification.json");
-            var mandate = JsonConvert.DeserializeObject<SourceMandateNotification>(json);
+            var mandate = JsonSerializer.Deserialize<SourceMandateNotification>(json);
             Assert.NotNull(mandate);
             Assert.IsType<SourceMandateNotification>(mandate);
             Assert.NotNull(mandate.Id);

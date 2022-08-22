@@ -12,7 +12,7 @@ namespace Stripe.Infrastructure
     /// Newtonsoft.Json 11.0. Once we bump the minimum version of Newtonsoft.Json to 11.0, we can
     /// start using the provided converter and get rid of this class.
     /// </remarks>
-    public class UnixDateTimeConverter : JsonConverter<DateTimeOffset>
+    public class UnixDateTimeConverter : JsonConverter<DateTime>
     {
         internal static readonly DateTime UnixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
@@ -31,7 +31,7 @@ namespace Stripe.Infrastructure
             return true;
         }
 
-        public override DateTimeOffset Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             bool nullable = IsNullable(typeToConvert);
             if (reader.TokenType == JsonTokenType.Null)
@@ -64,7 +64,7 @@ namespace Stripe.Infrastructure
 
             if (seconds >= 0)
             {
-                return DateTimeOffset.FromUnixTimeSeconds(seconds);
+                return DateTimeOffset.FromUnixTimeSeconds(seconds).UtcDateTime;
             }
             else
             {
@@ -72,9 +72,9 @@ namespace Stripe.Infrastructure
             }
         }
 
-        public override void Write(Utf8JsonWriter writer, DateTimeOffset value, JsonSerializerOptions options)
+        public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
         {
-            long seconds = value.ToUnixTimeSeconds();
+            long seconds = new DateTimeOffset(value).ToUnixTimeSeconds();
 
             if (seconds < 0)
             {

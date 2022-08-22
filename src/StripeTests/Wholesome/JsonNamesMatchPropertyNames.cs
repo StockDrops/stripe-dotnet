@@ -4,8 +4,8 @@ namespace StripeTests
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
-    using System.Text.RegularExpressions;
     using System.Text.Json.Serialization;
+    using System.Text.RegularExpressions;
     using Stripe;
     using Stripe.Infrastructure;
     using Xunit;
@@ -50,13 +50,13 @@ namespace StripeTests
                     var propType = property.PropertyType;
 
                     // Skip properties that don't have a `JsonPropertyName` attribute
-                    var jsonPropertyAttribute = property.GetCustomAttribute<JsonPropertyAttribute>();
-                    if (jsonPropertyAttribute == null)
+                    var jsonPropertyNameAttribute = property.GetCustomAttribute<JsonPropertyNameAttribute>();
+                    if (jsonPropertyNameAttribute == null)
                     {
                         continue;
                     }
 
-                    var pascalCasedJsonName = ToPascalCase(jsonPropertyAttribute.PropertyName);
+                    var pascalCasedJsonName = ToPascalCase(jsonPropertyNameAttribute.Name);
 
                     // Skip properties when the property name matches the JSON name
                     if (property.Name == pascalCasedJsonName)

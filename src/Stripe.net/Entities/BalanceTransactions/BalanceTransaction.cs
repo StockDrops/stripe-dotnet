@@ -5,6 +5,7 @@ namespace Stripe
     using System.Collections.Generic;
     using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
+    using Stripe.Infrastructure.JsonConverters;
 
     /// <summary>
     /// Balance transactions represent funds moving through your Stripe account. They're created
@@ -74,6 +75,7 @@ namespace Stripe
         /// <c>1.234</c>.
         /// </summary>
         [JsonPropertyName("exchange_rate")]
+        [JsonConverter(typeof(StringDecimalConverter))]
         public decimal? ExchangeRate { get; set; }
 
         /// <summary>

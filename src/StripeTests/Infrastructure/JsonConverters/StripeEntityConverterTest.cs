@@ -1,7 +1,7 @@
 namespace StripeTests
 {
+    using System.Text.Json;
     using System.Text.Json.Serialization;
-    
     using Stripe;
     using Xunit;
 
@@ -11,7 +11,7 @@ namespace StripeTests
         public void DeserializeNull()
         {
             var json = "null";
-            var obj = JsonConvert.DeserializeObject<TestObject>(json);
+            var obj = JsonSerializer.Deserialize<TestObject>(json);
             Assert.Null(obj);
         }
 
@@ -22,11 +22,11 @@ namespace StripeTests
                             ""supported_field"": 1, 
                             ""unsupported_field"": 2
                          }";
-            var obj = JsonConvert.DeserializeObject<TestObject>(json);
+            var obj = JsonSerializer.Deserialize<TestObject>(json);
             Assert.Equal(1, obj.SupportedField);
             Assert.NotNull(obj.RawJObject);
-            Assert.Equal(2, obj.RawJObject["unsupported_field"]);
-            Assert.Equal(obj.RawJObject.ToString(), JObject.Parse(json).ToString());
+            Assert.Equal(2, obj.RawJObject.RootElement.GetProperty("unsupported_field").GetInt32());
+            Assert.Equal(obj.RawJObject.ToString(), JsonDocument.Parse(json).ToString());
         }
 
         [Fact]
@@ -37,18 +37,18 @@ namespace StripeTests
                                 ""child_unsupported_field"": 2,
                               }";
             var json = $@"{{ ""child"": {childJson} }}";
-            var obj = JsonConvert.DeserializeObject<TestObject>(json);
+            var obj = JsonSerializer.Deserialize<TestObject>(json);
 
             Assert.NotNull(obj);
             Assert.Null(obj.SupportedField);
             Assert.NotNull(obj.RawJObject);
-            Assert.Equal(obj.RawJObject.ToString(), JObject.Parse(json).ToString());
+            Assert.Equal(obj.RawJObject.ToString(), JsonDocument.Parse(json).ToString());
 
             Assert.NotNull(obj.Child);
             Assert.Equal(1, obj.Child.ChildSupportedField);
             Assert.NotNull(obj.Child.RawJObject);
-            Assert.Equal(2, obj.Child.RawJObject["child_unsupported_field"]);
-            Assert.Equal(obj.Child.RawJObject.ToString(), JObject.Parse(childJson).ToString());
+            Assert.Equal(2, obj.Child.RawJObject.RootElement.GetProperty("child_unsupported_field").GetInt32());
+            Assert.Equal(obj.Child.RawJObject.ToString(), JsonDocument.Parse(childJson).ToString());
         }
 
         private class TestObject : StripeEntity<TestObject>

@@ -32,7 +32,7 @@ namespace StripeTests
                     var propType = property.PropertyType;
 
                     // Skip properties that don't have a `JsonPropertyName` attribute
-                    var attribute = property.GetCustomAttribute<JsonPropertyAttribute>();
+                    var attribute = property.GetCustomAttribute<JsonPropertyNameAttribute>();
                     if (attribute == null)
                     {
                         continue;

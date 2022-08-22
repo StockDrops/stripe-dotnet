@@ -2,6 +2,7 @@
 namespace Stripe.Issuing
 {
     using System.Text.Json.Serialization;
+    using Stripe.Infrastructure.JsonConverters;
 
     public class TransactionPurchaseDetailsReceipt : StripeEntity<TransactionPurchaseDetailsReceipt>
     {
@@ -15,6 +16,7 @@ namespace Stripe.Issuing
         /// The quantity of the item.
         /// </summary>
         [JsonPropertyName("quantity")]
+        [JsonConverter(typeof(StringDecimalConverter))]
         public decimal? Quantity { get; set; }
 
         /// <summary>

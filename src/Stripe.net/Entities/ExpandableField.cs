@@ -2,7 +2,7 @@ namespace Stripe
 {
     using System;
     using System.Text.Json.Serialization;
-    using Stripe.Net.Infrastructure.JsonConverters;
+    using Stripe.Infrastructure.JsonConverters;
 
     /// <summary>Represents a generic expandable field.</summary>
     /// <typeparam name="T">Type of the field when expanded.</typeparam>

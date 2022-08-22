@@ -10,7 +10,7 @@ namespace StripeTests
 
     /// <summary>
     /// This wholesome test ensures that all properties in Stripe entities and options classes are
-    /// annotated with either <see cref="JsonPropertyAttribute"/> or
+    /// annotated with either <see cref="JsonPropertyNameAttribute"/> or
     /// <see cref="JsonIgnoreAttribute"/>.
     /// </summary>
     public class PropertiesHaveJsonAttributes : WholesomeTest
@@ -36,7 +36,7 @@ namespace StripeTests
 
                     foreach (var attribute in property.GetCustomAttributes())
                     {
-                        if (attribute.GetType() == typeof(JsonPropertyAttribute)
+                        if (attribute.GetType() == typeof(JsonPropertyNameAttribute)
                             || attribute.GetType() == typeof(JsonIgnoreAttribute)
                             || attribute.GetType() == typeof(JsonExtensionDataAttribute))
                         {

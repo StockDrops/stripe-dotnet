@@ -1,5 +1,6 @@
 namespace StripeTests.Checkout
 {
+    using System.Text.Json;
     using System.Text.Json.Serialization;
     using Stripe;
     using Stripe.Checkout;
@@ -16,7 +17,7 @@ namespace StripeTests.Checkout
         public void Deserialize()
         {
             string json = this.GetFixture("/v1/checkout/sessions/cs_123");
-            var session = JsonConvert.DeserializeObject<Session>(json);
+            var session = JsonSerializer.Deserialize<Session>(json);
             Assert.NotNull(session);
             Assert.IsType<Session>(session);
             Assert.NotNull(session.Id);
@@ -36,7 +37,7 @@ namespace StripeTests.Checkout
             };
 
             string json = this.GetFixture("/v1/checkout/sessions/cs_123", expansions);
-            var session = JsonConvert.DeserializeObject<Session>(json);
+            var session = JsonSerializer.Deserialize<Session>(json);
             Assert.NotNull(session);
             Assert.IsType<Session>(session);
             Assert.NotNull(session.Id);

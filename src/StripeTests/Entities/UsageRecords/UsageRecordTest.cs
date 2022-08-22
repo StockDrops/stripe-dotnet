@@ -1,5 +1,6 @@
 namespace StripeTests
 {
+    using System.Text.Json;
     using System.Text.Json.Serialization;
     using Stripe;
     using Xunit;
@@ -15,7 +16,7 @@ namespace StripeTests
         public void Deserialize()
         {
             var json = GetResourceAsString("api_fixtures.usage_record.json");
-            var usageRecord = JsonConvert.DeserializeObject<UsageRecord>(json);
+            var usageRecord = JsonSerializer.Deserialize<UsageRecord>(json);
 
             Assert.NotNull(usageRecord);
             Assert.NotNull(usageRecord.Id);

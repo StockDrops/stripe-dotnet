@@ -1,5 +1,6 @@
 namespace StripeTests
 {
+    using System.Text.Json;
     using System.Text.Json.Serialization;
     using Stripe;
     using Xunit;
@@ -15,7 +16,7 @@ namespace StripeTests
         public void Deserialize()
         {
             string json = this.GetFixture("/v1/files/file_123");
-            var file = JsonConvert.DeserializeObject<File>(json);
+            var file = JsonSerializer.Deserialize<File>(json);
             Assert.NotNull(file);
             Assert.IsType<File>(file);
             Assert.NotNull(file.Id);

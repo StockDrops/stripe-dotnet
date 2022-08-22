@@ -5,6 +5,7 @@ namespace Stripe
     using System.Collections.Generic;
     using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
+    using Stripe.Infrastructure.JsonConverters;
 
     /// <summary>
     /// Subscriptions allow you to charge a customer on a recurring basis.
@@ -63,6 +64,7 @@ namespace Stripe
         /// to the application owner's Stripe account.
         /// </summary>
         [JsonPropertyName("application_fee_percent")]
+        [JsonConverter(typeof(StringDecimalConverter))]
         public decimal? ApplicationFeePercent { get; set; }
 
         [JsonPropertyName("automatic_tax")]

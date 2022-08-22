@@ -28,7 +28,12 @@ namespace Stripe.Infrastructure
             string value,
             JsonSerializerOptions settings = null)
         {
-            return (T)DeserializeObject(value, typeof(T), settings);
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
+            return JsonSerializer.Deserialize<T>(value, settings ?? DefaultSerializerSettings);
         }
 
         /// <summary>

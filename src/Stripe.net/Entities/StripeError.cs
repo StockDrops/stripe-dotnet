@@ -81,7 +81,7 @@ namespace Stripe
         /// The source object for errors returned on a request involving a source.
         /// </summary>
         [JsonPropertyName("source")]
-        [JsonConverter(typeof(StripeObjectConverter))]
+        [JsonConverter(typeof(StripeObjectConverter<IPaymentSource>))]
         public IPaymentSource Source { get; set; }
 
         /// <summary>

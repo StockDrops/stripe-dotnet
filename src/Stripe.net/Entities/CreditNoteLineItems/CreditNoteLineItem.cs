@@ -3,6 +3,7 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using System.Text.Json.Serialization;
+    using Stripe.Infrastructure.JsonConverters;
 
     public class CreditNoteLineItem : StripeEntity<CreditNoteLineItem>, IHasId, IHasObject
     {
@@ -101,6 +102,7 @@ namespace Stripe
         /// Same as <c>unit_amount</c>, but contains a decimal value with at most 12 decimal places.
         /// </summary>
         [JsonPropertyName("unit_amount_decimal")]
+        [JsonConverter(typeof(StringDecimalConverter))]
         public decimal? UnitAmountDecimal { get; set; }
 
         /// <summary>
@@ -108,6 +110,7 @@ namespace Stripe
         /// excluding all tax and discounts.
         /// </summary>
         [JsonPropertyName("unit_amount_excluding_tax")]
+        [JsonConverter(typeof(StringDecimalConverter))]
         public decimal? UnitAmountExcludingTax { get; set; }
     }
 }

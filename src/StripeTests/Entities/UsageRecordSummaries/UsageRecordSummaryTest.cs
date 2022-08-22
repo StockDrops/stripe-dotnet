@@ -1,5 +1,6 @@
 namespace StripeTests
 {
+    using System.Text.Json;
     using System.Text.Json.Serialization;
     using Stripe;
     using Xunit;
@@ -15,7 +16,7 @@ namespace StripeTests
         public void Deserialize()
         {
             string json = this.GetFixture("/v1/subscription_items/si_123/usage_record_summaries");
-            var summaries = JsonConvert.DeserializeObject<StripeList<UsageRecordSummary>>(json);
+            var summaries = JsonSerializer.Deserialize<StripeList<UsageRecordSummary>>(json);
             Assert.NotNull(summaries);
 
             var summary = summaries.Data[0];

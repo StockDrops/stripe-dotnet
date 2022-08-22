@@ -203,7 +203,7 @@ namespace Stripe.Infrastructure.FormEncoding
                 }
 
                 // Skip properties not annotated with `[JsonPropertyName]`
-                var attribute = property.GetCustomAttribute<JsonPropertyAttribute>();
+                var attribute = property.GetCustomAttribute<JsonPropertyNameAttribute>();
                 if (attribute == null)
                 {
                     continue;
@@ -218,7 +218,7 @@ namespace Stripe.Infrastructure.FormEncoding
                     continue;
                 }
 
-                string key = attribute.PropertyName;
+                string key = attribute.Name;
                 string newPrefix = NewPrefix(key, keyPrefix);
 
                 flatParams.AddRange(FlattenParamsValue(value, newPrefix));

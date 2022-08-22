@@ -1,5 +1,6 @@
 namespace StripeTests
 {
+    using System.Text.Json;
     using System.Text.Json.Serialization;
     using Stripe;
     using Xunit;
@@ -15,7 +16,7 @@ namespace StripeTests
         public void Deserialize()
         {
             string json = this.GetFixture("/v1/accounts/acct_123/external_accounts/ba_123");
-            var externalAccount = JsonConvert.DeserializeObject<IExternalAccount>(
+            var externalAccount = JsonSerializer.Deserialize<IExternalAccount>(
                 json,
                 StripeConfiguration.SerializerSettings);
             Assert.NotNull(externalAccount);
@@ -32,7 +33,7 @@ namespace StripeTests
             };
 
             string json = this.GetFixture("/v1/accounts/acct_123/external_accounts/ba_123", expansions);
-            var externalAccount = JsonConvert.DeserializeObject<IExternalAccount>(
+            var externalAccount = JsonSerializer.Deserialize<IExternalAccount>(
                 json,
                 StripeConfiguration.SerializerSettings);
             Assert.NotNull(externalAccount);

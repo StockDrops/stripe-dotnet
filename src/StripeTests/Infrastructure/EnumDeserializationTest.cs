@@ -1,5 +1,6 @@
 namespace StripeTests
 {
+    using System.Text.Json;
     using System.Text.Json.Serialization;
     using StripeTests.Infrastructure.TestData;
     using Xunit;
@@ -10,7 +11,7 @@ namespace StripeTests
         public void EnumDecodeValueWithEnumMember()
         {
             var json = "{\"enum\": \"test_one\"}";
-            TestOptions obj = JsonConvert.DeserializeObject<TestOptions>(json);
+            TestOptions obj = JsonSerializer.Deserialize<TestOptions>(json);
 
             Assert.NotNull(obj);
             Assert.Equal(TestOptions.TestEnum.TestOne, obj.Enum);
@@ -20,7 +21,7 @@ namespace StripeTests
         public void EnumDecodeValueWithoutEnumMember()
         {
             var json = "{\"enum\": \"TestTwo\"}";
-            TestOptions obj = JsonConvert.DeserializeObject<TestOptions>(json);
+            TestOptions obj = JsonSerializer.Deserialize<TestOptions>(json);
 
             Assert.NotNull(obj);
             Assert.Equal(TestOptions.TestEnum.TestTwo, obj.Enum);
@@ -31,8 +32,8 @@ namespace StripeTests
         {
             var json = "{\"enum\": \"unknown_value\"}";
 
-            var exception = Assert.Throws<Newtonsoft.Json.JsonSerializationException>(() =>
-                JsonConvert.DeserializeObject<TestOptions>(json));
+            var exception = Assert.Throws<JsonException>(() =>
+                JsonSerializer.Deserialize<TestOptions>(json));
 
             Assert.Contains("Error converting value \"unknown_value\"", exception.Message);
         }

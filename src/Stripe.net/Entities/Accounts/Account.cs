@@ -6,6 +6,7 @@ namespace Stripe
     using System.Text.Json;
     using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
+    using Stripe.Infrastructure.JsonConverters;
 
     /// <summary>
     /// This is an object representing a Stripe account. You can retrieve it to see properties
@@ -105,6 +106,7 @@ namespace Stripe
         /// External accounts (bank accounts and debit cards) currently attached to this account.
         /// </summary>
         [JsonPropertyName("external_accounts")]
+        [JsonConverter(typeof(StripeListInterfaceConverter<IExternalAccount>))]
         public StripeList<IExternalAccount> ExternalAccounts { get; set; }
 
         [JsonPropertyName("future_requirements")]

@@ -1,5 +1,8 @@
 namespace Stripe
 {
+    using System.Text.Json.Serialization;
+    using Stripe.Infrastructure;
+
     /// <summary>
     /// Resources that implement this interface can appear as sources in balance transactions.
     /// <para>Possible concrete classes:</para>
@@ -39,6 +42,7 @@ namespace Stripe
     /// </item>
     /// </list>
     /// </summary>
+    [JsonConverter(typeof(StripeObjectConverter<IBalanceTransactionSource>))]
     public interface IBalanceTransactionSource : IStripeEntity, IHasId, IHasObject
     {
     }

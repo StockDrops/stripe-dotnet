@@ -5,8 +5,7 @@ namespace Stripe
     using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
-    [JsonObject]
-    public class StripeList<T> : StripeEntity<StripeList<T>>, IHasObject, IEnumerable<T>
+    public class StripeList<T> : StripeEntity<StripeList<T>>, IHasObject, IEnumerable<T>, IBaseStripeList
     {
         /// <summary>
         /// A string describing the object type returned.
@@ -17,7 +16,7 @@ namespace Stripe
         /// <summary>
         /// A list containing the actual response elements, paginated by any request parameters.
         /// </summary>
-        [JsonPropertyName("data", ItemConverterType = typeof(StripeObjectConverter))]
+        [JsonPropertyName("data")]
         public List<T> Data { get; set; }
 
         /// <summary>

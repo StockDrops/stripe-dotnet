@@ -1,5 +1,6 @@
 namespace StripeTests.Identity
 {
+    using System.Text.Json;
     using System.Text.Json.Serialization;
     using Stripe.Identity;
     using Xunit;
@@ -15,7 +16,7 @@ namespace StripeTests.Identity
         public void Deserialize()
         {
             string json = this.GetFixture("/v1/identity/verification_reports/vr_123");
-            var verificationReport = JsonConvert.DeserializeObject<VerificationReport>(json);
+            var verificationReport = JsonSerializer.Deserialize<VerificationReport>(json);
             Assert.NotNull(verificationReport);
             Assert.IsType<VerificationReport>(verificationReport);
             Assert.NotNull(verificationReport.Id);

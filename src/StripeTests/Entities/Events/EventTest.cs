@@ -1,5 +1,6 @@
 namespace StripeTests
 {
+    using System.Text.Json;
     using System.Text.Json.Serialization;
     using Stripe;
     using Xunit;
@@ -15,7 +16,7 @@ namespace StripeTests
         public void Deserialize()
         {
             var json = GetResourceAsString("api_fixtures.events.event_plan.json");
-            var evt = JsonConvert.DeserializeObject<Event>(json);
+            var evt = JsonSerializer.Deserialize<Event>(json);
             Assert.NotNull(evt);
             Assert.IsType<Event>(evt);
             Assert.NotNull(evt.Id);
@@ -36,7 +37,7 @@ namespace StripeTests
         public void DeserializePreviousAttributes()
         {
             var json = GetResourceAsString("api_fixtures.events.customer_updated.json");
-            var evt = JsonConvert.DeserializeObject<Event>(json);
+            var evt = JsonSerializer.Deserialize<Event>(json);
             Assert.NotNull(evt);
             Assert.IsType<Event>(evt);
             Assert.NotNull(evt.Id);
@@ -53,7 +54,7 @@ namespace StripeTests
         public void DeserializeRequestString()
         {
             var json = GetResourceAsString("api_fixtures.events.event_pre_2017-05-25.json");
-            var evt = JsonConvert.DeserializeObject<Event>(json);
+            var evt = JsonSerializer.Deserialize<Event>(json);
             Assert.NotNull(evt);
             Assert.IsType<Event>(evt);
             Assert.NotNull(evt.Id);
@@ -66,7 +67,7 @@ namespace StripeTests
         public void DeserializeUnknownObject()
         {
             var json = GetResourceAsString("api_fixtures.events.event_unknown_object.json");
-            var evt = JsonConvert.DeserializeObject<Event>(json);
+            var evt = JsonSerializer.Deserialize<Event>(json);
             Assert.NotNull(evt);
             Assert.IsType<Event>(evt);
             Assert.NotNull(evt.Id);

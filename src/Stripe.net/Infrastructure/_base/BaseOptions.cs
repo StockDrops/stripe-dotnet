@@ -7,12 +7,11 @@ namespace Stripe
     /// Base class for Stripe options classes, i.e. classes representing parameters for Stripe
     /// API requests.
     /// </summary>
-    [JsonObject(MemberSerialization.OptIn)]
     public class BaseOptions : INestedOptions
     {
         /// <summary>Specifies which fields in the response should be expanded.</summary>
         [JsonPropertyName("expand")]
-[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public List<string> Expand { get; set; }
 
         /// <summary>Dictionary containing extra request parameters.</summary>

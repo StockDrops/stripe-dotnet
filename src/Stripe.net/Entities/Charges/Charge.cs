@@ -585,7 +585,7 @@ namespace Stripe
         /// this charge, refer to <c>payment_method</c> or <c>payment_method_details</c> instead.
         /// </summary>
         [JsonPropertyName("source")]
-        [JsonConverter(typeof(StripeObjectConverter))]
+        [JsonConverter(typeof(StripeObjectConverter<IPaymentSource>))]
         public IPaymentSource Source { get; set; }
 
         #region Expandable SourceTransfer

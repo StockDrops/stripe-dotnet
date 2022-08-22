@@ -4,11 +4,11 @@ namespace StripeTests
     using System.Net;
     using System.Net.Http;
     using System.Net.Http.Headers;
+    using System.Text.Json;
     using System.Threading;
     using System.Threading.Tasks;
     using Moq;
     using Moq.Protected;
-    
     using Stripe;
     using Xunit;
 
@@ -135,13 +135,13 @@ namespace StripeTests
         private bool VerifyHeaders(HttpRequestHeaders headers)
         {
             var userAgent = headers.UserAgent.ToString();
-            var appInfo = JObject.Parse(headers.GetValues("X-Stripe-Client-User-Agent").First())["application"];
+            var appInfo = JsonDocument.Parse(headers.GetValues("X-Stripe-Client-User-Agent").First()).RootElement.GetProperty("application");
 
             return userAgent.Contains("MyAwesomeApp/1.2.34 (https://myawesomeapp.info)") &&
-                appInfo.Value<string>("name") == "MyAwesomeApp" &&
-                appInfo.Value<string>("partner_id") == "pp_123" &&
-                appInfo.Value<string>("version") == "1.2.34" &&
-                appInfo.Value<string>("url") == "https://myawesomeapp.info";
+                appInfo.GetProperty("name").GetString() == "MyAwesomeApp" &&
+                appInfo.GetProperty("partner_id").GetString() == "pp_123" &&
+                appInfo.GetProperty("version").GetString() == "1.2.34" &&
+                appInfo.GetProperty("url").GetString() == "https://myawesomeapp.info";
         }
     }
 }

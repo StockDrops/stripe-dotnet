@@ -5,6 +5,7 @@ namespace Stripe
     using System.Linq;
     using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
+    using Stripe.Infrastructure.JsonConverters;
 
     public class InvoiceLineItem : StripeEntity<InvoiceLineItem>, IHasId, IHasMetadata, IHasObject
     {
@@ -87,7 +88,7 @@ namespace Stripe
             set => this.InternalDiscounts = SetExpandableArrayObjects(value);
         }
 
-        [JsonPropertyName("discounts", ItemConverterType = typeof(ExpandableFieldConverter<Discount>))]
+        [JsonPropertyName("discounts")]
         internal List<ExpandableField<Discount>> InternalDiscounts { get; set; }
         #endregion
 
@@ -186,6 +187,7 @@ namespace Stripe
         /// discounts.
         /// </summary>
         [JsonPropertyName("unit_amount_excluding_tax")]
+        [JsonConverter(typeof(StringDecimalConverter))]
         public decimal? UnitAmountExcludingTax { get; set; }
     }
 }

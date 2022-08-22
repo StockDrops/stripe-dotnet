@@ -3,6 +3,7 @@ namespace Stripe
 {
     using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
+    using Stripe.Infrastructure.JsonConverters;
 
     public class SubscriptionTransferData : StripeEntity<SubscriptionTransferData>
     {
@@ -13,6 +14,7 @@ namespace Stripe
         /// destination.
         /// </summary>
         [JsonPropertyName("amount_percent")]
+        [JsonConverter(typeof(StringDecimalConverter))]
         public decimal? AmountPercent { get; set; }
 
         #region Expandable Destination

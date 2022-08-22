@@ -2,6 +2,7 @@
 namespace Stripe
 {
     using System.Text.Json.Serialization;
+    using Stripe.Infrastructure.JsonConverters;
 
     public class PlanTier : StripeEntity<PlanTier>
     {
@@ -15,6 +16,7 @@ namespace Stripe
         /// Same as <c>flat_amount</c>, but contains a decimal value with at most 12 decimal places.
         /// </summary>
         [JsonPropertyName("flat_amount_decimal")]
+        [JsonConverter(typeof(StringDecimalConverter))]
         public decimal? FlatAmountDecimal { get; set; }
 
         /// <summary>
@@ -27,6 +29,7 @@ namespace Stripe
         /// Same as <c>unit_amount</c>, but contains a decimal value with at most 12 decimal places.
         /// </summary>
         [JsonPropertyName("unit_amount_decimal")]
+        [JsonConverter(typeof(StringDecimalConverter))]
         public decimal? UnitAmountDecimal { get; set; }
 
         /// <summary>

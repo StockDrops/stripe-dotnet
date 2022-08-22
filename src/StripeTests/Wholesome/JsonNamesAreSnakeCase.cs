@@ -4,8 +4,8 @@ namespace StripeTests
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
-    using System.Text.RegularExpressions;
     using System.Text.Json.Serialization;
+    using System.Text.RegularExpressions;
     using Stripe;
     using Xunit;
 
@@ -34,13 +34,13 @@ namespace StripeTests
                     var propType = property.PropertyType;
 
                     // Skip properties that don't have a `JsonPropertyName` attribute
-                    var attribute = property.GetCustomAttribute<JsonPropertyAttribute>();
+                    var attribute = property.GetCustomAttribute<JsonPropertyNameAttribute>();
                     if (attribute == null)
                     {
                         continue;
                     }
 
-                    var match = Regex.Match(attribute.PropertyName, "^[a-z0-9][a-z0-9_]*$");
+                    var match = Regex.Match(attribute.Name, "^[a-z0-9][a-z0-9_]*$");
 
                     if (!match.Success)
                     {

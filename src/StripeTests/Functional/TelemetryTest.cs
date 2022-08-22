@@ -6,11 +6,11 @@ namespace StripeTests
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Text;
+    using System.Text.Json.Nodes;
     using System.Threading;
     using System.Threading.Tasks;
     using Moq;
     using Moq.Protected;
-    
     using Stripe;
     using Xunit;
 
@@ -151,7 +151,7 @@ namespace StripeTests
 
             var payload = headers.GetValues("X-Stripe-Client-Telemetry").First();
 
-            var deserialized = JToken.Parse(payload);
+            var deserialized = JsonNode.Parse(payload);
             var requestId = (string)deserialized["last_request_metrics"]["request_id"];
             var duration = (long)deserialized["last_request_metrics"]["request_duration_ms"];
 

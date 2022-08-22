@@ -5,6 +5,7 @@ namespace Stripe
     using System.Collections.Generic;
     using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
+    using Stripe.Infrastructure.JsonConverters;
 
     /// <summary>
     /// A coupon contains information about a percent-off or amount-off discount you might want
@@ -119,6 +120,7 @@ namespace Stripe
         /// invoice %s50 instead.
         /// </summary>
         [JsonPropertyName("percent_off")]
+        [JsonConverter(typeof(StringDecimalConverter))]
         public decimal? PercentOff { get; set; }
 
         /// <summary>

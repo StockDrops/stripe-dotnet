@@ -39,8 +39,8 @@ namespace StripeTests
                     }
 
                     // Skip properties that don't have a `JsonPropertyName` attribute
-                    var jsonPropertyAttribute = property.GetCustomAttribute<JsonPropertyAttribute>();
-                    if (jsonPropertyAttribute == null)
+                    var jsonPropertyNameAttribute = property.GetCustomAttribute<JsonPropertyNameAttribute>();
+                    if (jsonPropertyNameAttribute == null)
                     {
                         continue;
                     }
@@ -62,7 +62,7 @@ namespace StripeTests
                     }
                     else if (propType.GetTypeInfo().IsInterface)
                     {
-                        expectedConverterType = typeof(StripeObjectConverter);
+                        expectedConverterType = typeof(StripeObjectConverter<>);
                     }
 
                     var expectedConverterName = GetConverterName(

@@ -1,5 +1,6 @@
 namespace StripeTests
 {
+    using System.Text.Json;
     using System.Text.Json.Serialization;
     using Stripe;
     using Xunit;
@@ -15,7 +16,7 @@ namespace StripeTests
         public void Deserialize()
         {
             string json = this.GetFixture("/v1/skus/sku_123");
-            var sku = JsonConvert.DeserializeObject<Sku>(json);
+            var sku = JsonSerializer.Deserialize<Sku>(json);
             Assert.NotNull(sku);
             Assert.IsType<Sku>(sku);
             Assert.NotNull(sku.Id);
@@ -31,7 +32,7 @@ namespace StripeTests
             };
 
             string json = this.GetFixture("/v1/skus/sku_123", expansions);
-            var sku = JsonConvert.DeserializeObject<Sku>(json);
+            var sku = JsonSerializer.Deserialize<Sku>(json);
             Assert.NotNull(sku);
             Assert.IsType<Sku>(sku);
             Assert.NotNull(sku.Id);

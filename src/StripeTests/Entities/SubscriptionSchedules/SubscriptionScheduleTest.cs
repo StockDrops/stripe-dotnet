@@ -1,5 +1,6 @@
 namespace StripeTests
 {
+    using System.Text.Json;
     using System.Text.Json.Serialization;
     using Stripe;
     using Xunit;
@@ -15,7 +16,7 @@ namespace StripeTests
         public void Deserialize()
         {
             string json = this.GetFixture("/v1/subscription_schedules/sub_sched_123");
-            var schedule = JsonConvert.DeserializeObject<SubscriptionSchedule>(json);
+            var schedule = JsonSerializer.Deserialize<SubscriptionSchedule>(json);
             Assert.NotNull(schedule);
             Assert.IsType<SubscriptionSchedule>(schedule);
             Assert.NotNull(schedule.Id);
@@ -35,7 +36,7 @@ namespace StripeTests
             };
 
             string json = this.GetFixture("/v1/subscription_schedules/sub_sched_123", expansions);
-            var schedule = JsonConvert.DeserializeObject<SubscriptionSchedule>(json);
+            var schedule = JsonSerializer.Deserialize<SubscriptionSchedule>(json);
             Assert.NotNull(schedule);
             Assert.IsType<SubscriptionSchedule>(schedule);
             Assert.NotNull(schedule.Id);

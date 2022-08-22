@@ -28,7 +28,7 @@ namespace Stripe.Terminal
         /// Whether this object is deleted or not.
         /// </summary>
         [JsonPropertyName("deleted")]
-[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public bool? Deleted { get; set; }
 
         /// <summary>

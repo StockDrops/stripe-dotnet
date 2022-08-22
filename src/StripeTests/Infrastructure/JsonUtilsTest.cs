@@ -1,5 +1,6 @@
 namespace StripeTests
 {
+    using System.Text.Json;
     using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
     using Xunit;
@@ -9,21 +10,18 @@ namespace StripeTests
         [Fact]
         public void DeserializeObjectIgnoresDefaultSettings()
         {
-            var origDefaultSettings = JsonConvert.DefaultSettings;
+            var origDefaultSettings = new JsonSerializerOptions();
 
             try
             {
-                JsonConvert.DefaultSettings = () => new JsonSerializerSettings
-                {
-                    MissingMemberHandling = MissingMemberHandling.Error,
-                };
+                origDefaultSettings.DefaultIgnoreCondition = JsonIgnoreCondition.Never;
 
                 var s = "{\"int\":234,\"string\":\"Hello!\",\"foo\":\"bar\"}";
 
                 // Deserialization throws an exception because of the extra `foo` property that is
                 // missing in the TestObject class.
-                Assert.Throws<JsonSerializationException>(() =>
-                    JsonConvert.DeserializeObject<TestObject>(s));
+                Assert.Throws<JsonException>(() =>
+                    JsonSerializer.Deserialize<TestObject>(s, origDefaultSettings));
 
                 // Deserialization succeeds because we're not using DefaultSettings, so
                 // MissingMemberHandling is set to its default value Ignore instead of Error.
@@ -34,29 +32,25 @@ namespace StripeTests
             }
             finally
             {
-                JsonConvert.DefaultSettings = origDefaultSettings;
             }
         }
 
         [Fact]
         public void SerializeObjectIgnoresDefaultSettings()
         {
-            var origDefaultSettings = JsonConvert.DefaultSettings;
+            var origDefaultSettings = new JsonSerializerOptions();
 
             try
             {
-                JsonConvert.DefaultSettings = () => new JsonSerializerSettings
-                {
-                    Formatting = Formatting.Indented,
-                    PreserveReferencesHandling = PreserveReferencesHandling.All,
-                };
+                origDefaultSettings.ReferenceHandler = ReferenceHandler.Preserve;
+                origDefaultSettings.WriteIndented = true;
 
                 var o = new TestObject { Int = 234, String = "Hello!" };
 
                 // Serialized string is formatted with newlines and indentation because of
                 // Formatting.Indented, and includes `$id` keys because of
                 // PreserveReferencesHandling.All.
-                var jsonDefault = JsonConvert.SerializeObject(o);
+                var jsonDefault = JsonSerializer.Serialize(o, origDefaultSettings);
                 jsonDefault = jsonDefault.Replace("\r\n", "\n");
                 Assert.Equal(
                     "{\n  \"$id\": \"1\",\n  \"int\": 234,\n  \"string\": \"Hello!\"\n}",
@@ -70,11 +64,9 @@ namespace StripeTests
             }
             finally
             {
-                JsonConvert.DefaultSettings = origDefaultSettings;
             }
         }
 
-        [JsonObject]
         private class TestObject
         {
             [JsonPropertyName("int")]

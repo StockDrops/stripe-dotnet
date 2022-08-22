@@ -1,5 +1,6 @@
 namespace StripeTests
 {
+    using System.Text.Json;
     using System.Text.Json.Serialization;
     using Stripe;
     using Xunit;
@@ -15,7 +16,7 @@ namespace StripeTests
         public void Deserialize()
         {
             var json = GetResourceAsString("api_fixtures.discount.json");
-            var discount = JsonConvert.DeserializeObject<Discount>(json);
+            var discount = JsonSerializer.Deserialize<Discount>(json);
 
             Assert.NotNull(discount);
             Assert.Equal("discount", discount.Object);

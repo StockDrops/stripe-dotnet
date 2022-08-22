@@ -38,7 +38,7 @@ namespace Stripe
 
             var payload = new ClientTelemetryPayload { LastRequestMetrics = requestMetrics };
 
-            headers.Add("X-Stripe-Client-Telemetry", JsonUtils.SerializeObject(payload, Formatting.None));
+            headers.Add("X-Stripe-Client-Telemetry", JsonUtils.SerializeObject(payload));
         }
 
         /// <summary>

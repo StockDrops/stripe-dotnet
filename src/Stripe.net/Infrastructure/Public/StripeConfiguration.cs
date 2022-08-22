@@ -7,7 +7,7 @@ namespace Stripe
     using System.Text.Json;
     using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
-    using Stripe.Net.Infrastructure.JsonConverters;
+    using Stripe.Infrastructure.JsonConverters;
 
     /// <summary>
     /// Global configuration class for Stripe.net settings.
@@ -96,7 +96,7 @@ namespace Stripe
         /// Gets or sets the settings used for deserializing JSON objects returned by Stripe's API.
         /// It is highly recommended you do not change these settings, as doing so can produce
         /// unexpected results. If you do change these settings, make sure that
-        /// <see cref="Stripe.Infrastructure.StripeObjectConverter"/> is among the converters,
+        /// <see cref="StripeObjectConverter&lt;T&gt;"/> is among the converters,
         /// otherwise Stripe.net will no longer be able to deserialize polymorphic resources
         /// represented by interfaces (e.g. <see cref="IPaymentSource"/>).
         /// </summary>
@@ -204,7 +204,11 @@ namespace Stripe
         public static JsonSerializerOptions DefaultSerializerSettings()
         {
             var options = new JsonSerializerOptions();
-            options.Converters.Add(new StripeObjectConverter());
+            options.Converters.Add(new StripeObjectConverterFactory());
+            options.Converters.Add(new StripeListInterfacteConverterFactory());
+            options.Converters.Add(new StringDecimalConverter());
+            options.Converters.Add(new EventConverter());
+            // options.Converters.Add(new StripeEntityConverterFactory());
             options.Converters.Add(new ExpandableFieldConverterFactory());
 
             // no DateParseHandling equivalent.

@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System;
+    using System.Text.Json;
     using System.Text.Json.Serialization;
     using Stripe;
     using StripeTests.Infrastructure.TestData;
@@ -18,7 +19,7 @@ namespace StripeTests
                 Date = roundedDate,
             };
 
-            var reloaded = JsonConvert.DeserializeObject<TestObjectDateTime>(JsonConvert.SerializeObject(obj));
+            var reloaded = JsonSerializer.Deserialize<TestObjectDateTime>(JsonSerializer.Serialize(obj));
             Assert.Equal(reloaded.Date, obj.Date);
         }
 
@@ -30,7 +31,7 @@ namespace StripeTests
                 Date = null,
             };
 
-            var reloaded = JsonConvert.DeserializeObject<TestObjectDateTime>(JsonConvert.SerializeObject(obj));
+            var reloaded = JsonSerializer.Deserialize<TestObjectDateTime>(JsonSerializer.Serialize(obj));
             Assert.Null(reloaded.Date);
         }
 
@@ -38,11 +39,16 @@ namespace StripeTests
         public void Serialize()
         {
             var json = GetResourceAsString("api_fixtures.events.customer_updated.json");
-            var evt = JsonConvert.DeserializeObject<Event>(json);
-            var serialized = JsonConvert.SerializeObject(evt, Formatting.Indented);
-            var reserialized = JsonConvert.SerializeObject(
-                JsonConvert.DeserializeObject<Event>(serialized),
-                Formatting.Indented);
+            var evt = JsonSerializer.Deserialize<Event>(json);
+            var serialized = JsonSerializer.Serialize(evt, new JsonSerializerOptions
+            {
+                WriteIndented = true,
+            });
+            var reserialized = JsonSerializer.Serialize(
+                JsonSerializer.Deserialize<Event>(serialized), new JsonSerializerOptions
+                {
+                    WriteIndented = true,
+                });
             Assert.Equal(serialized, reserialized);
         }
     }

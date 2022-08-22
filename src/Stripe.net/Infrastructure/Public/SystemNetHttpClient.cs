@@ -8,9 +8,9 @@ namespace Stripe
     using System.Net;
     using System.Net.Http;
     using System.Net.Http.Headers;
+    using System.Text.Json.Serialization;
     using System.Threading;
     using System.Threading.Tasks;
-    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -279,7 +279,7 @@ namespace Stripe
 
             try
             {
-                values.Add("newtonsoft_json_version", RuntimeInformation.GetNewtonsoftJsonVersion());
+                values.Add("newtonsoft_json_version", RuntimeInformation.GetSystemTextJsonVersion());
             }
             catch (Exception)
             {
@@ -291,7 +291,7 @@ namespace Stripe
                 values.Add("application", this.appInfo);
             }
 
-            return JsonUtils.SerializeObject(values, Formatting.None);
+            return JsonUtils.SerializeObject(values);
         }
 
         private string BuildUserAgentString()

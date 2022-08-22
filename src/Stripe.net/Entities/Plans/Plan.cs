@@ -5,6 +5,7 @@ namespace Stripe
     using System.Collections.Generic;
     using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
+    using Stripe.Infrastructure.JsonConverters;
 
     /// <summary>
     /// You can now model subscriptions more flexibly using the <a
@@ -70,6 +71,7 @@ namespace Stripe
         /// decimal places. Only set if <c>billing_scheme=per_unit</c>.
         /// </summary>
         [JsonPropertyName("amount_decimal")]
+        [JsonConverter(typeof(StringDecimalConverter))]
         public decimal? AmountDecimal { get; set; }
 
         /// <summary>

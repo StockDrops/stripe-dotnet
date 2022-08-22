@@ -97,7 +97,7 @@ namespace Stripe
             set => this.InternalAccountTaxIds = SetExpandableArrayObjects(value);
         }
 
-        [JsonPropertyName("account_tax_ids", ItemConverterType = typeof(ExpandableFieldConverter<TaxId>))]
+        [JsonPropertyName("account_tax_ids")]
         internal List<ExpandableField<TaxId>> InternalAccountTaxIds { get; set; }
         #endregion
 
@@ -485,7 +485,7 @@ namespace Stripe
             set => this.InternalDiscounts = SetExpandableArrayObjects(value);
         }
 
-        [JsonPropertyName("discounts", ItemConverterType = typeof(ExpandableFieldConverter<Discount>))]
+        [JsonPropertyName("discounts")]
         internal List<ExpandableField<Discount>> InternalDiscounts { get; set; }
         #endregion
 

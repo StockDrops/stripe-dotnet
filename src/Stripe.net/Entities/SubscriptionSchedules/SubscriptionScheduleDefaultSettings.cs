@@ -3,6 +3,7 @@ namespace Stripe
 {
     using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
+    using Stripe.Infrastructure.JsonConverters;
 
     public class SubscriptionScheduleDefaultSettings : StripeEntity<SubscriptionScheduleDefaultSettings>
     {
@@ -12,6 +13,7 @@ namespace Stripe
         /// to the application owner's Stripe account during this phase of the schedule.
         /// </summary>
         [JsonPropertyName("application_fee_percent")]
+        [JsonConverter(typeof(StringDecimalConverter))]
         public decimal? ApplicationFeePercent { get; set; }
 
         [JsonPropertyName("automatic_tax")]

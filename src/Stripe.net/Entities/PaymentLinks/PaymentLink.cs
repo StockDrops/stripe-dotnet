@@ -4,6 +4,7 @@ namespace Stripe
     using System.Collections.Generic;
     using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
+    using Stripe.Infrastructure.JsonConverters;
 
     /// <summary>
     /// A payment link is a shareable URL that will take your customers to a hosted payment
@@ -60,6 +61,7 @@ namespace Stripe
         /// transferred to the application owner's Stripe account.
         /// </summary>
         [JsonPropertyName("application_fee_percent")]
+        [JsonConverter(typeof(StringDecimalConverter))]
         public decimal? ApplicationFeePercent { get; set; }
 
         [JsonPropertyName("automatic_tax")]

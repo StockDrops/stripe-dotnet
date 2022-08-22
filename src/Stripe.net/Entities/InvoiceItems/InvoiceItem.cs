@@ -6,6 +6,7 @@ namespace Stripe
     using System.Linq;
     using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
+    using Stripe.Infrastructure.JsonConverters;
 
     /// <summary>
     /// Sometimes you want to add a charge or credit to a customer, but actually charge or
@@ -131,7 +132,7 @@ namespace Stripe
             set => this.InternalDiscounts = SetExpandableArrayObjects(value);
         }
 
-        [JsonPropertyName("discounts", ItemConverterType = typeof(ExpandableFieldConverter<Discount>))]
+        [JsonPropertyName("discounts")]
         internal List<ExpandableField<Discount>> InternalDiscounts { get; set; }
         #endregion
 
@@ -296,6 +297,7 @@ namespace Stripe
         /// Same as <c>unit_amount</c>, but contains a decimal value with at most 12 decimal places.
         /// </summary>
         [JsonPropertyName("unit_amount_decimal")]
+        [JsonConverter(typeof(StringDecimalConverter))]
         public decimal? UnitAmountDecimal { get; set; }
     }
 }

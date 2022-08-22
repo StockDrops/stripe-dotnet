@@ -11,7 +11,7 @@ namespace Stripe
         /// the value of the object key.
         /// </summary>
         [JsonPropertyName("object")]
-        [JsonConverter(typeof(StripeObjectConverter))]
+        [JsonConverter(typeof(StripeObjectConverter<IHasObject>))]
         public IHasObject Object { get; set; }
 
         /// <summary>

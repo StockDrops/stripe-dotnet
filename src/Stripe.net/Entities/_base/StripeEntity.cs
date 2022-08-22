@@ -9,7 +9,6 @@ namespace Stripe
     using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
-    [JsonConverter(typeof(StripeEntityConverter))]
     public abstract class StripeEntity : IStripeEntity
     {
         /// <summary>

@@ -1,5 +1,6 @@
 namespace StripeTests
 {
+    using System.Text.Json;
     using System.Text.Json.Serialization;
     using Stripe;
     using Xunit;
@@ -15,7 +16,7 @@ namespace StripeTests
         public void DeserializeForAccount()
         {
             string json = this.GetFixture("/v1/accounts/acct_123/external_accounts/ba_123");
-            var bankAccount = JsonConvert.DeserializeObject<BankAccount>(json);
+            var bankAccount = JsonSerializer.Deserialize<BankAccount>(json);
             Assert.NotNull(bankAccount);
             Assert.IsType<BankAccount>(bankAccount);
             Assert.NotNull(bankAccount.Id);
@@ -26,7 +27,7 @@ namespace StripeTests
         public void DeserializeForCustomer()
         {
             string json = this.GetFixture("/v1/customers/cus_123/bank_accounts/ba_123");
-            var bankAccount = JsonConvert.DeserializeObject<BankAccount>(json);
+            var bankAccount = JsonSerializer.Deserialize<BankAccount>(json);
             Assert.NotNull(bankAccount);
             Assert.IsType<BankAccount>(bankAccount);
             Assert.NotNull(bankAccount.Id);
@@ -42,7 +43,7 @@ namespace StripeTests
             };
 
             string json = this.GetFixture("/v1/customers/cus_123/bank_accounts/ba_123", expansions);
-            var bankAccount = JsonConvert.DeserializeObject<BankAccount>(json);
+            var bankAccount = JsonSerializer.Deserialize<BankAccount>(json);
             Assert.NotNull(bankAccount);
             Assert.IsType<BankAccount>(bankAccount);
             Assert.NotNull(bankAccount.Id);

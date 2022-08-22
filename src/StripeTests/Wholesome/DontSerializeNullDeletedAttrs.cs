@@ -18,7 +18,7 @@ namespace StripeTests
     {
         private const string AssertionMessage =
             "Found at least one invalid Deleted property. Make sure that the property " +
-            "has a JsonPropertyAttribute and that NullValueHandling is set to Ignore.";
+            "has a JsonPropertyNameAttribute and that NullValueHandling is set to Ignore.";
 
         [Fact]
         public void Check()
@@ -37,15 +37,15 @@ namespace StripeTests
                         continue;
                     }
 
-                    // Check that property has a JsonPropertyAttribute
-                    var attribute = property.GetCustomAttribute<JsonPropertyAttribute>();
+                    // Check that property has a JsonPropertyNameAttribute
+                    var attribute = property.GetCustomAttribute<JsonIgnoreAttribute>();
                     if (attribute == null)
                     {
                         continue;
                     }
 
                     // Check that NullValueHanding is set to Ignore
-                    if (attribute.NullValueHandling == NullValueHandling.Ignore)
+                    if (attribute.Condition == JsonIgnoreCondition.WhenWritingNull)
                     {
                         continue;
                     }

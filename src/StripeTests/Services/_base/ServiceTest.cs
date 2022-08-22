@@ -5,9 +5,9 @@ namespace StripeTests
     using System.IO;
     using System.Net;
     using System.Net.Http;
+    using System.Text.Json.Serialization;
     using System.Threading;
     using System.Threading.Tasks;
-    using System.Text.Json.Serialization;
     using Stripe;
     using Xunit;
 

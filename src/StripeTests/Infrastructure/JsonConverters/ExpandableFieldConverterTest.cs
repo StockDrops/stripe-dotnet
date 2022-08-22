@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.IO;
+    using System.Text.Json;
     using System.Text.Json.Serialization;
     using Stripe;
     using Stripe.Infrastructure;
@@ -12,7 +13,7 @@ namespace StripeTests
         public void DeserializeNotExpanded()
         {
             var json = "{\n  \"nested\": \"id_not_expanded\"\n}";
-            var obj = JsonConvert.DeserializeObject<TestTopLevelObject>(json);
+            var obj = JsonSerializer.Deserialize<TestTopLevelObject>(json);
 
             Assert.Equal("id_not_expanded", obj.NestedId);
             Assert.Null(obj.Nested);
@@ -22,7 +23,7 @@ namespace StripeTests
         public void DeserializeExpanded()
         {
             var json = "{\n  \"nested\": {\n    \"id\": \"id_expanded\",\n    \"bar\": 42\n  }\n}";
-            var obj = JsonConvert.DeserializeObject<TestTopLevelObject>(json);
+            var obj = JsonSerializer.Deserialize<TestTopLevelObject>(json);
 
             Assert.Equal("id_expanded", obj.NestedId);
             Assert.NotNull(obj.Nested);
@@ -34,7 +35,7 @@ namespace StripeTests
         public void DeserializeNull()
         {
             var json = "{\n  \"nested\": null\n}";
-            var obj = JsonConvert.DeserializeObject<TestTopLevelObject>(json);
+            var obj = JsonSerializer.Deserialize<TestTopLevelObject>(json);
 
             Assert.Null(obj.NestedId);
             Assert.Null(obj.Nested);

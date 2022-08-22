@@ -35,19 +35,19 @@ namespace StripeTests
                     var propType = property.PropertyType;
 
                     // Skip properties that don't have a `JsonPropertyName` attribute
-                    var attribute = property.GetCustomAttribute<JsonPropertyAttribute>();
+                    var attribute = property.GetCustomAttribute<JsonPropertyNameAttribute>();
                     if (attribute == null)
                     {
                         continue;
                     }
 
-                    if (jsonPropertyNames.Contains(attribute.PropertyName))
+                    if (jsonPropertyNames.Contains(attribute.Name))
                     {
                         results.Add($"{stripeClass.Name}.{property.Name}");
                     }
                     else
                     {
-                        jsonPropertyNames.Add(attribute.PropertyName);
+                        jsonPropertyNames.Add(attribute.Name);
                     }
                 }
             }

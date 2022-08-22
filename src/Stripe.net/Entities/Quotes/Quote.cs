@@ -6,6 +6,7 @@ namespace Stripe
     using System.Linq;
     using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
+    using Stripe.Infrastructure.JsonConverters;
 
     /// <summary>
     /// A Quote is a way to model prices that you'd like to provide to a customer. Once
@@ -84,6 +85,7 @@ namespace Stripe
         /// recurring prices on the quote.
         /// </summary>
         [JsonPropertyName("application_fee_percent")]
+        [JsonConverter(typeof(StringDecimalConverter))]
         public decimal? ApplicationFeePercent { get; set; }
 
         [JsonPropertyName("automatic_tax")]
@@ -177,7 +179,7 @@ namespace Stripe
             set => this.InternalDefaultTaxRates = SetExpandableArrayObjects(value);
         }
 
-        [JsonPropertyName("default_tax_rates", ItemConverterType = typeof(ExpandableFieldConverter<TaxRate>))]
+        [JsonPropertyName("default_tax_rates")]
         internal List<ExpandableField<TaxRate>> InternalDefaultTaxRates { get; set; }
         #endregion
 
@@ -213,7 +215,7 @@ namespace Stripe
             set => this.InternalDiscounts = SetExpandableArrayObjects(value);
         }
 
-        [JsonPropertyName("discounts", ItemConverterType = typeof(ExpandableFieldConverter<Discount>))]
+        [JsonPropertyName("discounts")]
         internal List<ExpandableField<Discount>> InternalDiscounts { get; set; }
         #endregion
 

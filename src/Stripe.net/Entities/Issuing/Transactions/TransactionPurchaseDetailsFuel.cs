@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Issuing
 {
+    using Stripe.Infrastructure.JsonConverters;
     using System.Text.Json.Serialization;
 
     public class TransactionPurchaseDetailsFuel : StripeEntity<TransactionPurchaseDetailsFuel>
@@ -30,6 +31,7 @@ namespace Stripe.Issuing
         /// decimal places.
         /// </summary>
         [JsonPropertyName("volume_decimal")]
+        [JsonConverter(typeof(StringDecimalConverter))]
         public decimal? VolumeDecimal { get; set; }
     }
 }
