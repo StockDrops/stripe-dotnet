@@ -17,13 +17,16 @@ namespace StripeTests
             options.AddExtraParam("bar", 234L);
 
             var json = JsonSerializer.Serialize(options);
-            var deserialized = JsonSerializer.Deserialize<BaseOptions>(json);
+            var deserialized = JsonSerializer.Deserialize<BaseOptions>(json, StripeConfiguration.SerializerSettings);
 
             Assert.Equal(options.Expand, deserialized.Expand);
             Assert.True(options.ExtraParams.Count == deserialized.ExtraParams.Count);
             Assert.All(
                 deserialized.ExtraParams,
-                kvp => Assert.Equal(options.ExtraParams[kvp.Key], deserialized.ExtraParams[kvp.Key]));
+                kvp => Assert.Equal(options.ExtraParams[kvp.Key].ToString(), ((JsonElement)deserialized.ExtraParams[kvp.Key]).ToString()));
+
+            Assert.True(((JsonElement)deserialized.ExtraParams["foo"]).ValueKind == JsonValueKind.String);
+            Assert.True(((JsonElement)deserialized.ExtraParams["bar"]).ValueKind == JsonValueKind.Number);
         }
     }
 }
