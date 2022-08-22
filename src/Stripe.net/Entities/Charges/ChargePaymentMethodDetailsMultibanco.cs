@@ -1,20 +1,20 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ChargePaymentMethodDetailsMultibanco : StripeEntity<ChargePaymentMethodDetailsMultibanco>
     {
         /// <summary>
         /// Entity number associated with this Multibanco payment.
         /// </summary>
-        [JsonProperty("entity")]
+        [JsonPropertyName("entity")]
         public string Entity { get; set; }
 
         /// <summary>
         /// Reference number associated with this Multibanco payment.
         /// </summary>
-        [JsonProperty("reference")]
+        [JsonPropertyName("reference")]
         public string Reference { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 namespace Stripe.Treasury
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class FinancialAccountUpdateOptions : BaseOptions, IHasMetadata
     {
@@ -11,7 +11,7 @@ namespace Stripe.Treasury
         /// enum and associated <c>status_details</c>. Stripe or the platform may control features
         /// via the requested field.
         /// </summary>
-        [JsonProperty("features")]
+        [JsonPropertyName("features")]
         public FinancialAccountFeaturesOptions Features { get; set; }
 
         /// <summary>
@@ -20,13 +20,13 @@ namespace Stripe.Treasury
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The set of functionalities that the platform can restrict on the FinancialAccount.
         /// </summary>
-        [JsonProperty("platform_restrictions")]
+        [JsonPropertyName("platform_restrictions")]
         public FinancialAccountPlatformRestrictionsOptions PlatformRestrictions { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PaymentLinkPaymentIntentData : StripeEntity<PaymentLinkPaymentIntentData>
     {
@@ -9,7 +9,7 @@ namespace Stripe
         /// Indicates when the funds will be captured from the customer's account.
         /// One of: <c>automatic</c>, or <c>manual</c>.
         /// </summary>
-        [JsonProperty("capture_method")]
+        [JsonPropertyName("capture_method")]
         public string CaptureMethod { get; set; }
 
         /// <summary>
@@ -17,7 +17,7 @@ namespace Stripe
         /// during checkout.
         /// One of: <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
-        [JsonProperty("setup_future_usage")]
+        [JsonPropertyName("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
     }
 }

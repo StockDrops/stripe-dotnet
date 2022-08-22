@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class QuoteTransferDataOptions : INestedOptions
     {
@@ -10,7 +10,7 @@ namespace Stripe
         /// is set, the full amount is transferred. There cannot be any line items with recurring
         /// prices when using this field.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long? Amount { get; set; }
 
         /// <summary>
@@ -20,13 +20,13 @@ namespace Stripe
         /// destination. There must be at least 1 line item with a recurring price to use this
         /// field.
         /// </summary>
-        [JsonProperty("amount_percent")]
+        [JsonPropertyName("amount_percent")]
         public decimal? AmountPercent { get; set; }
 
         /// <summary>
         /// ID of an existing, connected Stripe account.
         /// </summary>
-        [JsonProperty("destination")]
+        [JsonPropertyName("destination")]
         public string Destination { get; set; }
     }
 }

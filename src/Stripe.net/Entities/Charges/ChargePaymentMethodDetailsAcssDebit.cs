@@ -1,45 +1,45 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ChargePaymentMethodDetailsAcssDebit : StripeEntity<ChargePaymentMethodDetailsAcssDebit>
     {
         /// <summary>
         /// Name of the bank associated with the bank account.
         /// </summary>
-        [JsonProperty("bank_name")]
+        [JsonPropertyName("bank_name")]
         public string BankName { get; set; }
 
         /// <summary>
         /// Uniquely identifies this particular bank account. You can use this attribute to check
         /// whether two bank accounts are the same.
         /// </summary>
-        [JsonProperty("fingerprint")]
+        [JsonPropertyName("fingerprint")]
         public string Fingerprint { get; set; }
 
         /// <summary>
         /// Institution number of the bank account.
         /// </summary>
-        [JsonProperty("institution_number")]
+        [JsonPropertyName("institution_number")]
         public string InstitutionNumber { get; set; }
 
         /// <summary>
         /// Last four digits of the bank account number.
         /// </summary>
-        [JsonProperty("last4")]
+        [JsonPropertyName("last4")]
         public string Last4 { get; set; }
 
         /// <summary>
         /// ID of the mandate used to make this payment.
         /// </summary>
-        [JsonProperty("mandate")]
+        [JsonPropertyName("mandate")]
         public string Mandate { get; set; }
 
         /// <summary>
         /// Transit number of the bank account.
         /// </summary>
-        [JsonProperty("transit_number")]
+        [JsonPropertyName("transit_number")]
         public string TransitNumber { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PaymentMethodCardWalletMasterpass : StripeEntity<PaymentMethodCardWalletMasterpass>
     {
@@ -10,21 +10,21 @@ namespace Stripe
         /// (if supported) at the time of authorization or settlement. They cannot be set or
         /// mutated.
         /// </summary>
-        [JsonProperty("billing_address")]
+        [JsonPropertyName("billing_address")]
         public Address BillingAddress { get; set; }
 
         /// <summary>
         /// Owner's verified email. Values are verified or provided by the wallet directly (if
         /// supported) at the time of authorization or settlement. They cannot be set or mutated.
         /// </summary>
-        [JsonProperty("email")]
+        [JsonPropertyName("email")]
         public string Email { get; set; }
 
         /// <summary>
         /// Owner's verified full name. Values are verified or provided by the wallet directly (if
         /// supported) at the time of authorization or settlement. They cannot be set or mutated.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace Stripe
         /// directly (if supported) at the time of authorization or settlement. They cannot be set
         /// or mutated.
         /// </summary>
-        [JsonProperty("shipping_address")]
+        [JsonPropertyName("shipping_address")]
         public Address ShippingAddress { get; set; }
     }
 }

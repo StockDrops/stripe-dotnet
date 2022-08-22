@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe.TestHelpers.Treasury
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class InboundTransferFailOptions : BaseOptions
     {
         /// <summary>
         /// Details about a failed InboundTransfer.
         /// </summary>
-        [JsonProperty("failure_details")]
+        [JsonPropertyName("failure_details")]
         public InboundTransferFailureDetailsOptions FailureDetails { get; set; }
     }
 }

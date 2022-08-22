@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Issuing
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class DisputeTreasury : StripeEntity<DisputeTreasury>
     {
@@ -10,7 +10,7 @@ namespace Stripe.Issuing
         /// href="https://stripe.com/docs/api/treasury/debit_reversals">DebitReversal</a>
         /// representing this Issuing dispute.
         /// </summary>
-        [JsonProperty("debit_reversal")]
+        [JsonPropertyName("debit_reversal")]
         public string DebitReversal { get; set; }
 
         /// <summary>
@@ -18,7 +18,7 @@ namespace Stripe.Issuing
         /// href="https://stripe.com/docs/api/treasury/received_debits">ReceivedDebit</a> that is
         /// being disputed.
         /// </summary>
-        [JsonProperty("received_debit")]
+        [JsonPropertyName("received_debit")]
         public string ReceivedDebit { get; set; }
     }
 }

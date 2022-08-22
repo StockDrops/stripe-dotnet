@@ -2,7 +2,7 @@
 namespace Stripe.Checkout
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SessionShippingAddressCollectionOptions : INestedOptions
     {
@@ -11,7 +11,7 @@ namespace Stripe.Checkout
         /// provide as options for shipping locations. Unsupported country codes: <c>AS, CX, CC, CU,
         /// HM, IR, KP, MH, FM, NF, MP, PW, SD, SY, UM, VI</c>.
         /// </summary>
-        [JsonProperty("allowed_countries")]
+        [JsonPropertyName("allowed_countries")]
         public List<string> AllowedCountries { get; set; }
     }
 }

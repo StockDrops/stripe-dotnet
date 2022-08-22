@@ -1,20 +1,20 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Checkout
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SessionDiscountOptions : INestedOptions
     {
         /// <summary>
         /// The ID of the coupon to apply to this Session.
         /// </summary>
-        [JsonProperty("coupon")]
+        [JsonPropertyName("coupon")]
         public string Coupon { get; set; }
 
         /// <summary>
         /// The ID of a promotion code to apply to this Session.
         /// </summary>
-        [JsonProperty("promotion_code")]
+        [JsonPropertyName("promotion_code")]
         public string PromotionCode { get; set; }
     }
 }

@@ -3,7 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -16,32 +16,32 @@ namespace Stripe
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Whether this link is already expired.
         /// </summary>
-        [JsonProperty("expired")]
+        [JsonPropertyName("expired")]
         public bool Expired { get; set; }
 
         /// <summary>
         /// Time at which the link expires.
         /// </summary>
-        [JsonProperty("expires_at")]
+        [JsonPropertyName("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ExpiresAt { get; set; }
 
@@ -71,7 +71,7 @@ namespace Stripe
             set => this.InternalFile = SetExpandableFieldObject(value, this.InternalFile);
         }
 
-        [JsonProperty("file")]
+        [JsonPropertyName("file")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
         internal ExpandableField<File> InternalFile { get; set; }
         #endregion
@@ -80,7 +80,7 @@ namespace Stripe
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -88,13 +88,13 @@ namespace Stripe
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The publicly accessible URL to download the file.
         /// </summary>
-        [JsonProperty("url")]
+        [JsonPropertyName("url")]
         public string Url { get; set; }
     }
 }

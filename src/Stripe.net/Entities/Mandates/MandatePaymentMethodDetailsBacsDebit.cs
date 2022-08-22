@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class MandatePaymentMethodDetailsBacsDebit : StripeEntity<MandatePaymentMethodDetailsBacsDebit>
     {
@@ -10,19 +10,19 @@ namespace Stripe
         /// <c>revoked</c>, <c>refused</c>, or <c>accepted</c>.
         /// One of: <c>accepted</c>, <c>pending</c>, <c>refused</c>, or <c>revoked</c>.
         /// </summary>
-        [JsonProperty("network_status")]
+        [JsonPropertyName("network_status")]
         public string NetworkStatus { get; set; }
 
         /// <summary>
         /// The unique reference identifying the mandate on the Bacs network.
         /// </summary>
-        [JsonProperty("reference")]
+        [JsonPropertyName("reference")]
         public string Reference { get; set; }
 
         /// <summary>
         /// The URL that will contain the mandate that the customer has signed.
         /// </summary>
-        [JsonProperty("url")]
+        [JsonPropertyName("url")]
         public string Url { get; set; }
     }
 }

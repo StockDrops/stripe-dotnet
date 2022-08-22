@@ -3,7 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -45,13 +45,13 @@ namespace Stripe
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         #region Expandable Application
@@ -80,7 +80,7 @@ namespace Stripe
             set => this.InternalApplication = SetExpandableFieldObject(value, this.InternalApplication);
         }
 
-        [JsonProperty("application")]
+        [JsonPropertyName("application")]
         [JsonConverter(typeof(ExpandableFieldConverter<Application>))]
         internal ExpandableField<Application> InternalApplication { get; set; }
         #endregion
@@ -94,7 +94,7 @@ namespace Stripe
         /// PaymentMethod for a Customer, and defaults to false when attaching a PaymentMethod to a
         /// Customer.
         /// </summary>
-        [JsonProperty("attach_to_self")]
+        [JsonPropertyName("attach_to_self")]
         public bool AttachToSelf { get; set; }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace Stripe
         /// <c>requested_by_customer</c>, or <c>duplicate</c>.
         /// One of: <c>abandoned</c>, <c>duplicate</c>, or <c>requested_by_customer</c>.
         /// </summary>
-        [JsonProperty("cancellation_reason")]
+        [JsonPropertyName("cancellation_reason")]
         public string CancellationReason { get; set; }
 
         /// <summary>
@@ -113,13 +113,13 @@ namespace Stripe
         /// not be stored, logged, or exposed to anyone other than the customer. Make sure that you
         /// have TLS enabled on any page that includes the client secret.
         /// </summary>
-        [JsonProperty("client_secret")]
+        [JsonPropertyName("client_secret")]
         public string ClientSecret { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -157,7 +157,7 @@ namespace Stripe
             set => this.InternalCustomer = SetExpandableFieldObject(value, this.InternalCustomer);
         }
 
-        [JsonProperty("customer")]
+        [JsonPropertyName("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
@@ -165,7 +165,7 @@ namespace Stripe
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
@@ -177,13 +177,13 @@ namespace Stripe
         /// destination to send funds to. You can include both if you intend to use the payment
         /// method for both purposes.
         /// </summary>
-        [JsonProperty("flow_directions")]
+        [JsonPropertyName("flow_directions")]
         public List<string> FlowDirections { get; set; }
 
         /// <summary>
         /// The error encountered in the previous SetupIntent confirmation.
         /// </summary>
-        [JsonProperty("last_setup_error")]
+        [JsonPropertyName("last_setup_error")]
         public StripeError LastSetupError { get; set; }
 
         #region Expandable LatestAttempt
@@ -212,7 +212,7 @@ namespace Stripe
             set => this.InternalLatestAttempt = SetExpandableFieldObject(value, this.InternalLatestAttempt);
         }
 
-        [JsonProperty("latest_attempt")]
+        [JsonPropertyName("latest_attempt")]
         [JsonConverter(typeof(ExpandableFieldConverter<SetupAttempt>))]
         internal ExpandableField<SetupAttempt> InternalLatestAttempt { get; set; }
         #endregion
@@ -221,7 +221,7 @@ namespace Stripe
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         #region Expandable Mandate
@@ -250,7 +250,7 @@ namespace Stripe
             set => this.InternalMandate = SetExpandableFieldObject(value, this.InternalMandate);
         }
 
-        [JsonProperty("mandate")]
+        [JsonPropertyName("mandate")]
         [JsonConverter(typeof(ExpandableFieldConverter<Mandate>))]
         internal ExpandableField<Mandate> InternalMandate { get; set; }
         #endregion
@@ -260,14 +260,14 @@ namespace Stripe
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// If present, this property tells you what actions you need to take in order for your
         /// customer to continue payment setup.
         /// </summary>
-        [JsonProperty("next_action")]
+        [JsonPropertyName("next_action")]
         public SetupIntentNextAction NextAction { get; set; }
 
         #region Expandable OnBehalfOf
@@ -296,7 +296,7 @@ namespace Stripe
             set => this.InternalOnBehalfOf = SetExpandableFieldObject(value, this.InternalOnBehalfOf);
         }
 
-        [JsonProperty("on_behalf_of")]
+        [JsonPropertyName("on_behalf_of")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
         internal ExpandableField<Account> InternalOnBehalfOf { get; set; }
         #endregion
@@ -327,7 +327,7 @@ namespace Stripe
             set => this.InternalPaymentMethod = SetExpandableFieldObject(value, this.InternalPaymentMethod);
         }
 
-        [JsonProperty("payment_method")]
+        [JsonPropertyName("payment_method")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
         internal ExpandableField<PaymentMethod> InternalPaymentMethod { get; set; }
         #endregion
@@ -335,13 +335,13 @@ namespace Stripe
         /// <summary>
         /// Payment-method-specific configuration for this SetupIntent.
         /// </summary>
-        [JsonProperty("payment_method_options")]
+        [JsonPropertyName("payment_method_options")]
         public SetupIntentPaymentMethodOptions PaymentMethodOptions { get; set; }
 
         /// <summary>
         /// The list of payment method types (e.g. card) that this SetupIntent is allowed to set up.
         /// </summary>
-        [JsonProperty("payment_method_types")]
+        [JsonPropertyName("payment_method_types")]
         public List<string> PaymentMethodTypes { get; set; }
 
         #region Expandable SingleUseMandate
@@ -370,7 +370,7 @@ namespace Stripe
             set => this.InternalSingleUseMandate = SetExpandableFieldObject(value, this.InternalSingleUseMandate);
         }
 
-        [JsonProperty("single_use_mandate")]
+        [JsonPropertyName("single_use_mandate")]
         [JsonConverter(typeof(ExpandableFieldConverter<Mandate>))]
         internal ExpandableField<Mandate> InternalSingleUseMandate { get; set; }
         #endregion
@@ -382,7 +382,7 @@ namespace Stripe
         /// One of: <c>canceled</c>, <c>processing</c>, <c>requires_action</c>,
         /// <c>requires_confirmation</c>, <c>requires_payment_method</c>, or <c>succeeded</c>.
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
         /// <summary>
@@ -392,7 +392,7 @@ namespace Stripe
         /// is in your checkout flow. Use <c>off_session</c> if your customer may or may not be in
         /// your checkout flow. If not provided, this value defaults to <c>off_session</c>.
         /// </summary>
-        [JsonProperty("usage")]
+        [JsonPropertyName("usage")]
         public string Usage { get; set; }
     }
 }

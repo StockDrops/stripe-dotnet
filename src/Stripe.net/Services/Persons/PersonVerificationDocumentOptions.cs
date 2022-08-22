@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PersonVerificationDocumentOptions : INestedOptions
     {
@@ -11,7 +11,7 @@ namespace Stripe
         /// needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format,
         /// and less than 10 MB in size.
         /// </summary>
-        [JsonProperty("back")]
+        [JsonPropertyName("back")]
         public string Back { get; set; }
 
         /// <summary>
@@ -20,7 +20,7 @@ namespace Stripe
         /// needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format,
         /// and less than 10 MB in size.
         /// </summary>
-        [JsonProperty("front")]
+        [JsonPropertyName("front")]
         public string Front { get; set; }
     }
 }

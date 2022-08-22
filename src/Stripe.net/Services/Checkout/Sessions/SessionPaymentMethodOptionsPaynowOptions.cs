@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Checkout
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SessionPaymentMethodOptionsPaynowOptions : INestedOptions
     {
@@ -21,13 +21,13 @@ namespace Stripe.Checkout
         /// optimize your payment flow and comply with regional legislation and network rules, such
         /// as <a href="https://stripe.com/docs/strong-customer-authentication">SCA</a>.
         /// </summary>
-        [JsonProperty("setup_future_usage")]
+        [JsonPropertyName("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
         /// Confirm that the payer has accepted the P24 terms and conditions.
         /// </summary>
-        [JsonProperty("tos_shown_and_accepted")]
+        [JsonPropertyName("tos_shown_and_accepted")]
         public bool? TosShownAndAccepted { get; set; }
     }
 }

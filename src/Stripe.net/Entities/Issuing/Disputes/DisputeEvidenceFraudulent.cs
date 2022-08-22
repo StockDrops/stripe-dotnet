@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Issuing
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class DisputeEvidenceFraudulent : StripeEntity<DisputeEvidenceFraudulent>
@@ -34,7 +34,7 @@ namespace Stripe.Issuing
             set => this.InternalAdditionalDocumentation = SetExpandableFieldObject(value, this.InternalAdditionalDocumentation);
         }
 
-        [JsonProperty("additional_documentation")]
+        [JsonPropertyName("additional_documentation")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
         internal ExpandableField<File> InternalAdditionalDocumentation { get; set; }
         #endregion
@@ -42,7 +42,7 @@ namespace Stripe.Issuing
         /// <summary>
         /// Explanation of why the cardholder is disputing this transaction.
         /// </summary>
-        [JsonProperty("explanation")]
+        [JsonPropertyName("explanation")]
         public string Explanation { get; set; }
     }
 }

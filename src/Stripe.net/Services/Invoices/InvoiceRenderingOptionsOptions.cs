@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class InvoiceRenderingOptionsOptions : INestedOptions
     {
@@ -12,7 +12,7 @@ namespace Stripe
         /// <c>exclude_tax</c> will exclude all tax (inclusive and exclusive alike) from invoice PDF
         /// amounts.
         /// </summary>
-        [JsonProperty("amount_tax_display")]
+        [JsonPropertyName("amount_tax_display")]
         public string AmountTaxDisplay { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PaymentIntentConfirmOptions : BaseOptions
     {
@@ -10,10 +10,10 @@ namespace Stripe
         /// Controls when the funds will be captured from the customer's account.
         /// One of: <c>automatic</c>, or <c>manual</c>.
         /// </summary>
-        [JsonProperty("capture_method")]
+        [JsonPropertyName("capture_method")]
         public string CaptureMethod { get; set; }
 
-        [JsonProperty("client_secret")]
+        [JsonPropertyName("client_secret")]
         public string ClientSecret { get; set; }
 
         /// <summary>
@@ -23,19 +23,19 @@ namespace Stripe
         /// href="https://stripe.com/docs/payments/save-card-without-authentication">saving cards
         /// without authentication</a>.
         /// </summary>
-        [JsonProperty("error_on_requires_action")]
+        [JsonPropertyName("error_on_requires_action")]
         public bool? ErrorOnRequiresAction { get; set; }
 
         /// <summary>
         /// ID of the mandate to be used for this payment.
         /// </summary>
-        [JsonProperty("mandate")]
+        [JsonPropertyName("mandate")]
         public string Mandate { get; set; }
 
-        [JsonProperty("mandate_data")]
+        [JsonPropertyName("mandate_data")]
         public PaymentIntentMandateDataOptions MandateData { get; set; }
 
-        [JsonProperty("off_session")]
+        [JsonPropertyName("off_session")]
         public bool? OffSession { get; set; }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/payments/payment-methods/transitioning#compatibility">compatible
         /// Source</a> object) to attach to this PaymentIntent.
         /// </summary>
-        [JsonProperty("payment_method")]
+        [JsonPropertyName("payment_method")]
         public string PaymentMethod { get; set; }
 
         /// <summary>
@@ -52,20 +52,20 @@ namespace Stripe
         /// href="https://stripe.com/docs/api/payment_intents/object#payment_intent_object-payment_method">payment_method</a>
         /// property on the PaymentIntent.
         /// </summary>
-        [JsonProperty("payment_method_data")]
+        [JsonPropertyName("payment_method_data")]
         public PaymentIntentPaymentMethodDataOptions PaymentMethodData { get; set; }
 
         /// <summary>
         /// Payment-method-specific configuration for this PaymentIntent.
         /// </summary>
-        [JsonProperty("payment_method_options")]
+        [JsonPropertyName("payment_method_options")]
         public PaymentIntentPaymentMethodOptionsOptions PaymentMethodOptions { get; set; }
 
         /// <summary>
         /// The list of payment method types (e.g. card) that this PaymentIntent is allowed to use.
         /// If this is not provided, defaults to ["card"].
         /// </summary>
-        [JsonProperty("payment_method_types")]
+        [JsonPropertyName("payment_method_types")]
         public List<string> PaymentMethodTypes { get; set; }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/radar/radar-session">Radar Session</a> for more
         /// information.
         /// </summary>
-        [JsonProperty("radar_options")]
+        [JsonPropertyName("radar_options")]
         public PaymentIntentRadarOptionsOptions RadarOptions { get; set; }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Stripe
         /// regardless of your <a href="https://dashboard.stripe.com/account/emails">email
         /// settings</a>.
         /// </summary>
-        [JsonProperty("receipt_email")]
+        [JsonPropertyName("receipt_email")]
         public string ReceiptEmail { get; set; }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace Stripe
         /// application, you can alternatively supply an application URI scheme. This parameter is
         /// only used for cards and other redirect-based payment methods.
         /// </summary>
-        [JsonProperty("return_url")]
+        [JsonPropertyName("return_url")]
         public string ReturnUrl { get; set; }
 
         /// <summary>
@@ -114,20 +114,20 @@ namespace Stripe
         /// publishable key, you may only update the value from <c>on_session</c> to
         /// <c>off_session</c>.
         /// </summary>
-        [JsonProperty("setup_future_usage")]
+        [JsonPropertyName("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
         /// Shipping information for this PaymentIntent.
         /// </summary>
-        [JsonProperty("shipping")]
+        [JsonPropertyName("shipping")]
         public ChargeShippingOptions Shipping { get; set; }
 
         /// <summary>
         /// Set to <c>true</c> only when using manual confirmation and the iOS or Android SDKs to
         /// handle additional authentication steps.
         /// </summary>
-        [JsonProperty("use_stripe_sdk")]
+        [JsonPropertyName("use_stripe_sdk")]
         public bool? UseStripeSdk { get; set; }
     }
 }

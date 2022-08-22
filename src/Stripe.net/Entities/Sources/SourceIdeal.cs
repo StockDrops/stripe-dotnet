@@ -1,20 +1,20 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SourceIdeal : StripeEntity<SourceIdeal>
     {
-        [JsonProperty("bank")]
+        [JsonPropertyName("bank")]
         public string Bank { get; set; }
 
-        [JsonProperty("bic")]
+        [JsonPropertyName("bic")]
         public string Bic { get; set; }
 
-        [JsonProperty("iban_last4")]
+        [JsonPropertyName("iban_last4")]
         public string IbanLast4 { get; set; }
 
-        [JsonProperty("statement_descriptor")]
+        [JsonPropertyName("statement_descriptor")]
         public string StatementDescriptor { get; set; }
     }
 }

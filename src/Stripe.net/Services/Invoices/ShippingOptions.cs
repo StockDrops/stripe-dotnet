@@ -1,26 +1,26 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ShippingOptions : INestedOptions
     {
         /// <summary>
         /// Customer shipping address.
         /// </summary>
-        [JsonProperty("address")]
+        [JsonPropertyName("address")]
         public AddressOptions Address { get; set; }
 
         /// <summary>
         /// Customer name.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
         /// Customer phone (including extension).
         /// </summary>
-        [JsonProperty("phone")]
+        [JsonPropertyName("phone")]
         public string Phone { get; set; }
     }
 }

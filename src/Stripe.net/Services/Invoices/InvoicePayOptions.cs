@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class InvoicePayOptions : BaseOptions
     {
@@ -16,7 +16,7 @@ namespace Stripe
         /// if the amount wired is less than the amount due by a small amount, you might want to
         /// forgive the difference. Defaults to <c>false</c>.
         /// </summary>
-        [JsonProperty("forgive")]
+        [JsonPropertyName("forgive")]
         public bool? Forgive { get; set; }
 
         /// <summary>
@@ -24,35 +24,35 @@ namespace Stripe
         /// used to pay the invoice, including the payment_method param or the invoice's
         /// default_payment_method or default_source, if set.
         /// </summary>
-        [JsonProperty("mandate")]
+        [JsonPropertyName("mandate")]
         public string Mandate { get; set; }
 
         /// <summary>
         /// Indicates if a customer is on or off-session while an invoice payment is attempted.
         /// Defaults to <c>true</c> (off-session).
         /// </summary>
-        [JsonProperty("off_session")]
+        [JsonPropertyName("off_session")]
         public bool? OffSession { get; set; }
 
         /// <summary>
         /// Boolean representing whether an invoice is paid outside of Stripe. This will result in
         /// no charge being made. Defaults to <c>false</c>.
         /// </summary>
-        [JsonProperty("paid_out_of_band")]
+        [JsonPropertyName("paid_out_of_band")]
         public bool? PaidOutOfBand { get; set; }
 
         /// <summary>
         /// A PaymentMethod to be charged. The PaymentMethod must be the ID of a PaymentMethod
         /// belonging to the customer associated with the invoice being paid.
         /// </summary>
-        [JsonProperty("payment_method")]
+        [JsonPropertyName("payment_method")]
         public string PaymentMethod { get; set; }
 
         /// <summary>
         /// A payment source to be charged. The source must be the ID of a source belonging to the
         /// customer associated with the invoice being paid.
         /// </summary>
-        [JsonProperty("source")]
+        [JsonPropertyName("source")]
         public string Source { get; set; }
     }
 }

@@ -7,7 +7,7 @@ namespace StripeTests
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe;
     using Xunit;
 
@@ -168,7 +168,7 @@ namespace StripeTests
 
         private class TestEntity : StripeEntity, IHasId
         {
-            [JsonProperty("id")]
+            [JsonPropertyName("id")]
             public string Id { get; set; }
         }
 

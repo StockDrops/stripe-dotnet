@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ChargeTransferDataOptions : INestedOptions
     {
@@ -9,13 +9,13 @@ namespace Stripe
         /// The amount transferred to the destination account, if specified. By default, the entire
         /// charge amount is transferred to the destination account.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long? Amount { get; set; }
 
         /// <summary>
         /// ID of an existing, connected Stripe account.
         /// </summary>
-        [JsonProperty("destination")]
+        [JsonPropertyName("destination")]
         public string Destination { get; set; }
     }
 }

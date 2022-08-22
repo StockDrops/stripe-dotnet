@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Checkout
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SessionSubscriptionDataTransferDataOptions : INestedOptions
     {
@@ -11,13 +11,13 @@ namespace Stripe.Checkout
         /// to the destination account. By default, the entire amount is transferred to the
         /// destination.
         /// </summary>
-        [JsonProperty("amount_percent")]
+        [JsonPropertyName("amount_percent")]
         public decimal? AmountPercent { get; set; }
 
         /// <summary>
         /// ID of an existing, connected Stripe account.
         /// </summary>
-        [JsonProperty("destination")]
+        [JsonPropertyName("destination")]
         public string Destination { get; set; }
     }
 }

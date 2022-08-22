@@ -2,7 +2,7 @@
 namespace Stripe.Checkout
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SessionLineItemPriceDataProductDataOptions : INestedOptions, IHasMetadata
     {
@@ -11,14 +11,14 @@ namespace Stripe.Checkout
         /// optionally store a long form explanation of the product being sold for your own
         /// rendering purposes.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
         /// A list of up to 8 URLs of images for this product, meant to be displayable to the
         /// customer.
         /// </summary>
-        [JsonProperty("images")]
+        [JsonPropertyName("images")]
         public List<string> Images { get; set; }
 
         /// <summary>
@@ -27,19 +27,19 @@ namespace Stripe.Checkout
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The product's name, meant to be displayable to the customer.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
         /// A <a href="https://stripe.com/docs/tax/tax-categories">tax code</a> ID.
         /// </summary>
-        [JsonProperty("tax_code")]
+        [JsonPropertyName("tax_code")]
         public string TaxCode { get; set; }
     }
 }

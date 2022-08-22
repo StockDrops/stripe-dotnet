@@ -2,14 +2,14 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ProductUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// Whether the product is available for purchase.
         /// </summary>
-        [JsonProperty("active")]
+        [JsonPropertyName("active")]
         public bool? Active { get; set; }
 
         /// <summary>
@@ -18,28 +18,28 @@ namespace Stripe
         /// specified will replace the existing attributes list on this product. Any attributes not
         /// present after the update will be deleted from the SKUs for this product.
         /// </summary>
-        [JsonProperty("attributes")]
+        [JsonPropertyName("attributes")]
         public List<string> Attributes { get; set; }
 
         /// <summary>
         /// A short one-line description of the product, meant to be displayable to the customer.
         /// May only be set if <c>type=good</c>.
         /// </summary>
-        [JsonProperty("caption")]
+        [JsonPropertyName("caption")]
         public string Caption { get; set; }
 
         /// <summary>
         /// An array of Connect application names or identifiers that should not be able to order
         /// the SKUs for this product. May only be set if <c>type=good</c>.
         /// </summary>
-        [JsonProperty("deactivate_on")]
+        [JsonPropertyName("deactivate_on")]
         public List<string> DeactivateOn { get; set; }
 
         /// <summary>
         /// The ID of the <a href="https://stripe.com/docs/api/prices">Price</a> object that is the
         /// default price for this product.
         /// </summary>
-        [JsonProperty("default_price")]
+        [JsonPropertyName("default_price")]
         public string DefaultPrice { get; set; }
 
         /// <summary>
@@ -47,14 +47,14 @@ namespace Stripe
         /// optionally store a long form explanation of the product being sold for your own
         /// rendering purposes.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
         /// A list of up to 8 URLs of images for this product, meant to be displayable to the
         /// customer.
         /// </summary>
-        [JsonProperty("images")]
+        [JsonPropertyName("images")]
         public List<string> Images { get; set; }
 
         /// <summary>
@@ -63,25 +63,25 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The product's name, meant to be displayable to the customer.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
         /// The dimensions of this product for shipping purposes.
         /// </summary>
-        [JsonProperty("package_dimensions")]
+        [JsonPropertyName("package_dimensions")]
         public ProductPackageDimensionsOptions PackageDimensions { get; set; }
 
         /// <summary>
         /// Whether this product is shipped (i.e., physical goods).
         /// </summary>
-        [JsonProperty("shippable")]
+        [JsonPropertyName("shippable")]
         public bool? Shippable { get; set; }
 
         /// <summary>
@@ -94,13 +94,13 @@ namespace Stripe
         /// statement in capital letters. Non-ASCII characters are automatically stripped. It must
         /// contain at least one letter. May only be set if <c>type=service</c>.
         /// </summary>
-        [JsonProperty("statement_descriptor")]
+        [JsonPropertyName("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 
         /// <summary>
         /// A <a href="https://stripe.com/docs/tax/tax-categories">tax code</a> ID.
         /// </summary>
-        [JsonProperty("tax_code")]
+        [JsonPropertyName("tax_code")]
         public string TaxCode { get; set; }
 
         /// <summary>
@@ -108,13 +108,13 @@ namespace Stripe
         /// invoices. When set, this will be included in associated invoice line item descriptions.
         /// May only be set if <c>type=service</c>.
         /// </summary>
-        [JsonProperty("unit_label")]
+        [JsonPropertyName("unit_label")]
         public string UnitLabel { get; set; }
 
         /// <summary>
         /// A URL of a publicly-accessible webpage for this product.
         /// </summary>
-        [JsonProperty("url")]
+        [JsonPropertyName("url")]
         public string Url { get; set; }
     }
 }

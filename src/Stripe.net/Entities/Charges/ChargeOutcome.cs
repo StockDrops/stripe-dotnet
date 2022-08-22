@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class ChargeOutcome : StripeEntity<ChargeOutcome>
@@ -13,7 +13,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/declines#blocked-payments">blocked by Stripe</a> after
         /// bank authorization, and may temporarily appear as "pending" on a cardholder's statement.
         /// </summary>
-        [JsonProperty("network_status")]
+        [JsonPropertyName("network_status")]
         public string NetworkStatus { get; set; }
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace Stripe
         /// rules have the value <c>rule</c>. See <a
         /// href="https://stripe.com/docs/declines">understanding declines</a> for more details.
         /// </summary>
-        [JsonProperty("reason")]
+        [JsonPropertyName("reason")]
         public string Reason { get; set; }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace Stripe
         /// the value <c>not_assessed</c>. In the event of an error in the evaluation, this field
         /// will have the value <c>unknown</c>. This field is only available with Radar.
         /// </summary>
-        [JsonProperty("risk_level")]
+        [JsonPropertyName("risk_level")]
         public string RiskLevel { get; set; }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Stripe
         /// public assignment of risk scores, or in the event of an error during evaluation, this
         /// field will not be present. This field is only available with Radar for Fraud Teams.
         /// </summary>
-        [JsonProperty("risk_score")]
+        [JsonPropertyName("risk_score")]
         public long RiskScore { get; set; }
 
         #region Expandable Rule
@@ -72,7 +72,7 @@ namespace Stripe
             set => this.InternalRule = SetExpandableFieldObject(value, this.InternalRule);
         }
 
-        [JsonProperty("rule")]
+        [JsonPropertyName("rule")]
         [JsonConverter(typeof(ExpandableFieldConverter<Radar.Rule>))]
         internal ExpandableField<Radar.Rule> InternalRule { get; set; }
         #endregion
@@ -81,7 +81,7 @@ namespace Stripe
         /// A human-readable description of the outcome type and reason, designed for you (the
         /// recipient of the payment), not your customer.
         /// </summary>
-        [JsonProperty("seller_message")]
+        [JsonPropertyName("seller_message")]
         public string SellerMessage { get; set; }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/declines">understanding declines</a> and <a
         /// href="https://stripe.com/docs/radar/reviews">Radar reviews</a> for details.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
     }
 }

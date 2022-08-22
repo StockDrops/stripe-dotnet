@@ -2,14 +2,14 @@
 namespace Stripe.Treasury
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class OutboundTransferCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// Amount (in cents) to be transferred.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long? Amount { get; set; }
 
         /// <summary>
@@ -17,31 +17,31 @@ namespace Stripe.Treasury
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
         /// The PaymentMethod to use as the payment instrument for the OutboundTransfer.
         /// </summary>
-        [JsonProperty("destination_payment_method")]
+        [JsonPropertyName("destination_payment_method")]
         public string DestinationPaymentMethod { get; set; }
 
         /// <summary>
         /// Hash describing payment method configuration details.
         /// </summary>
-        [JsonProperty("destination_payment_method_options")]
+        [JsonPropertyName("destination_payment_method_options")]
         public OutboundTransferDestinationPaymentMethodOptionsOptions DestinationPaymentMethodOptions { get; set; }
 
         /// <summary>
         /// The FinancialAccount to pull funds from.
         /// </summary>
-        [JsonProperty("financial_account")]
+        [JsonPropertyName("financial_account")]
         public string FinancialAccount { get; set; }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Stripe.Treasury
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Stripe.Treasury
         /// characters for <c>ach</c> transfers or 140 characters for <c>wire</c> transfers. The
         /// default value is <c>transfer</c>.
         /// </summary>
-        [JsonProperty("statement_descriptor")]
+        [JsonPropertyName("statement_descriptor")]
         public string StatementDescriptor { get; set; }
     }
 }

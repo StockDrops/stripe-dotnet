@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class AccountSettingsSepaDebitPayments : StripeEntity<AccountSettingsSepaDebitPayments>
     {
         /// <summary>
         /// SEPA creditor identifier that identifies the company making the payment.
         /// </summary>
-        [JsonProperty("creditor_id")]
+        [JsonPropertyName("creditor_id")]
         public string CreditorId { get; set; }
     }
 }

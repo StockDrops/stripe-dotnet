@@ -1,10 +1,10 @@
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class BankAccountListOptions : ListOptions
     {
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         internal string Object => "bank_account";
     }
 }

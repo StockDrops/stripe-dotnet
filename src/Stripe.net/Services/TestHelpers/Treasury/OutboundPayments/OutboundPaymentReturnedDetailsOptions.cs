@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.TestHelpers.Treasury
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class OutboundPaymentReturnedDetailsOptions : INestedOptions
     {
@@ -12,7 +12,7 @@ namespace Stripe.TestHelpers.Treasury
         /// <c>invalid_account_number</c>, <c>invalid_currency</c>, <c>no_account</c>, or
         /// <c>other</c>.
         /// </summary>
-        [JsonProperty("code")]
+        [JsonPropertyName("code")]
         public string Code { get; set; }
     }
 }

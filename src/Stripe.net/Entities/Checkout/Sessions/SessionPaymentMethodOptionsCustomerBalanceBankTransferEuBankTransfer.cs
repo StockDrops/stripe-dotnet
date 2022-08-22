@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Checkout
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SessionPaymentMethodOptionsCustomerBalanceBankTransferEuBankTransfer : StripeEntity<SessionPaymentMethodOptionsCustomerBalanceBankTransferEuBankTransfer>
     {
@@ -10,7 +10,7 @@ namespace Stripe.Checkout
         /// <c>DE</c>, <c>ES</c>, <c>FR</c>, <c>IE</c>, or <c>NL</c>.
         /// One of: <c>DE</c>, <c>ES</c>, <c>FR</c>, <c>IE</c>, or <c>NL</c>.
         /// </summary>
-        [JsonProperty("country")]
+        [JsonPropertyName("country")]
         public string Country { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class InvoicePaymentSettingsPaymentMethodOptionsBancontact : StripeEntity<InvoicePaymentSettingsPaymentMethodOptionsBancontact>
     {
@@ -10,7 +10,7 @@ namespace Stripe
         /// to.
         /// One of: <c>de</c>, <c>en</c>, <c>fr</c>, or <c>nl</c>.
         /// </summary>
-        [JsonProperty("preferred_language")]
+        [JsonPropertyName("preferred_language")]
         public string PreferredLanguage { get; set; }
     }
 }

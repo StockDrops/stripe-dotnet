@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class PaymentIntentNextActionBoletoDisplayDetails : StripeEntity<PaymentIntentNextActionBoletoDisplayDetails>
@@ -10,7 +10,7 @@ namespace Stripe
         /// <summary>
         /// The timestamp after which the boleto expires.
         /// </summary>
-        [JsonProperty("expires_at")]
+        [JsonPropertyName("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ExpiresAt { get; set; }
 
@@ -18,19 +18,19 @@ namespace Stripe
         /// The URL to the hosted boleto voucher page, which allows customers to view the boleto
         /// voucher.
         /// </summary>
-        [JsonProperty("hosted_voucher_url")]
+        [JsonPropertyName("hosted_voucher_url")]
         public string HostedVoucherUrl { get; set; }
 
         /// <summary>
         /// The boleto number.
         /// </summary>
-        [JsonProperty("number")]
+        [JsonPropertyName("number")]
         public string Number { get; set; }
 
         /// <summary>
         /// The URL to the downloadable boleto voucher PDF.
         /// </summary>
-        [JsonProperty("pdf")]
+        [JsonPropertyName("pdf")]
         public string Pdf { get; set; }
     }
 }

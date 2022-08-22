@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Checkout
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SessionPaymentMethodOptionsPaynow : StripeEntity<SessionPaymentMethodOptionsPaynow>
     {
@@ -21,7 +21,7 @@ namespace Stripe.Checkout
         /// optimize your payment flow and comply with regional legislation and network rules, such
         /// as <a href="https://stripe.com/docs/strong-customer-authentication">SCA</a>.
         /// </summary>
-        [JsonProperty("setup_future_usage")]
+        [JsonPropertyName("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
     }
 }

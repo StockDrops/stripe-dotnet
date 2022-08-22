@@ -1,26 +1,26 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ChargeLevel3LineItemOptions : INestedOptions
     {
-        [JsonProperty("discount_amount")]
+        [JsonPropertyName("discount_amount")]
         public long? DiscountAmount { get; set; }
 
-        [JsonProperty("product_code")]
+        [JsonPropertyName("product_code")]
         public string ProductCode { get; set; }
 
-        [JsonProperty("product_description")]
+        [JsonPropertyName("product_description")]
         public string ProductDescription { get; set; }
 
-        [JsonProperty("quantity")]
+        [JsonPropertyName("quantity")]
         public long? Quantity { get; set; }
 
-        [JsonProperty("tax_amount")]
+        [JsonPropertyName("tax_amount")]
         public long? TaxAmount { get; set; }
 
-        [JsonProperty("unit_cost")]
+        [JsonPropertyName("unit_cost")]
         public long? UnitCost { get; set; }
     }
 }

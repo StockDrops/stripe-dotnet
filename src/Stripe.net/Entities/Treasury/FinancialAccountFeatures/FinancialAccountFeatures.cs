@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Treasury
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// Encodes whether a FinancialAccount has access to a particular Feature, with a
@@ -13,49 +13,49 @@ namespace Stripe.Treasury
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
         /// Toggle settings for enabling/disabling a feature.
         /// </summary>
-        [JsonProperty("card_issuing")]
+        [JsonPropertyName("card_issuing")]
         public FinancialAccountFeaturesCardIssuing CardIssuing { get; set; }
 
         /// <summary>
         /// Toggle settings for enabling/disabling a feature.
         /// </summary>
-        [JsonProperty("deposit_insurance")]
+        [JsonPropertyName("deposit_insurance")]
         public FinancialAccountFeaturesDepositInsurance DepositInsurance { get; set; }
 
         /// <summary>
         /// Settings related to Financial Addresses features on a Financial Account.
         /// </summary>
-        [JsonProperty("financial_addresses")]
+        [JsonPropertyName("financial_addresses")]
         public FinancialAccountFeaturesFinancialAddresses FinancialAddresses { get; set; }
 
         /// <summary>
         /// InboundTransfers contains inbound transfers features for a FinancialAccount.
         /// </summary>
-        [JsonProperty("inbound_transfers")]
+        [JsonPropertyName("inbound_transfers")]
         public FinancialAccountFeaturesInboundTransfers InboundTransfers { get; set; }
 
         /// <summary>
         /// Toggle settings for enabling/disabling a feature.
         /// </summary>
-        [JsonProperty("intra_stripe_flows")]
+        [JsonPropertyName("intra_stripe_flows")]
         public FinancialAccountFeaturesIntraStripeFlows IntraStripeFlows { get; set; }
 
         /// <summary>
         /// Settings related to Outbound Payments features on a Financial Account.
         /// </summary>
-        [JsonProperty("outbound_payments")]
+        [JsonPropertyName("outbound_payments")]
         public FinancialAccountFeaturesOutboundPayments OutboundPayments { get; set; }
 
         /// <summary>
         /// OutboundTransfers contains outbound transfers features for a FinancialAccount.
         /// </summary>
-        [JsonProperty("outbound_transfers")]
+        [JsonPropertyName("outbound_transfers")]
         public FinancialAccountFeaturesOutboundTransfers OutboundTransfers { get; set; }
     }
 }

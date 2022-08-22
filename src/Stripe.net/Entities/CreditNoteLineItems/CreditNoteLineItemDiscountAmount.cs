@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class CreditNoteLineItemDiscountAmount : StripeEntity<CreditNoteLineItemDiscountAmount>
@@ -9,7 +9,7 @@ namespace Stripe
         /// <summary>
         /// The amount, in %s, of the discount.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long Amount { get; set; }
 
         #region Expandable Discount
@@ -38,7 +38,7 @@ namespace Stripe
             set => this.InternalDiscount = SetExpandableFieldObject(value, this.InternalDiscount);
         }
 
-        [JsonProperty("discount")]
+        [JsonPropertyName("discount")]
         [JsonConverter(typeof(ExpandableFieldConverter<Discount>))]
         internal ExpandableField<Discount> InternalDiscount { get; set; }
         #endregion

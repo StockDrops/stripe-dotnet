@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PaymentLinkAfterCompletionRedirectOptions : INestedOptions
     {
@@ -11,7 +11,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/api/checkout/sessions/object#checkout_session_object-id">checkout
         /// session</a> included.
         /// </summary>
-        [JsonProperty("url")]
+        [JsonPropertyName("url")]
         public string Url { get; set; }
     }
 }

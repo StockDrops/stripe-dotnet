@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Issuing
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class CardWalletsApplePay : StripeEntity<CardWalletsApplePay>
     {
         /// <summary>
         /// Apple Pay Eligibility.
         /// </summary>
-        [JsonProperty("eligible")]
+        [JsonPropertyName("eligible")]
         public bool Eligible { get; set; }
 
         /// <summary>
@@ -16,7 +16,7 @@ namespace Stripe.Issuing
         /// One of: <c>missing_agreement</c>, <c>missing_cardholder_contact</c>, or
         /// <c>unsupported_region</c>.
         /// </summary>
-        [JsonProperty("ineligible_reason")]
+        [JsonPropertyName("ineligible_reason")]
         public string IneligibleReason { get; set; }
     }
 }

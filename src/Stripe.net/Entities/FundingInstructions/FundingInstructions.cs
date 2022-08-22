@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// Each customer has a <a
@@ -17,10 +17,10 @@ namespace Stripe
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
-        [JsonProperty("bank_transfer")]
+        [JsonPropertyName("bank_transfer")]
         public FundingInstructionsBankTransfer BankTransfer { get; set; }
 
         /// <summary>
@@ -28,20 +28,20 @@ namespace Stripe
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
         /// The <c>funding_type</c> of the returned instructions.
         /// </summary>
-        [JsonProperty("funding_type")]
+        [JsonPropertyName("funding_type")]
         public string FundingType { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
     }
 }

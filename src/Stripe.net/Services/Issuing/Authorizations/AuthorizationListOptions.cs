@@ -1,17 +1,17 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Issuing
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class AuthorizationListOptions : ListOptionsWithCreated
     {
-        [JsonProperty("card")]
+        [JsonPropertyName("card")]
         public string Card { get; set; }
 
-        [JsonProperty("cardholder")]
+        [JsonPropertyName("cardholder")]
         public string Cardholder { get; set; }
 
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
     }
 }

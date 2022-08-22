@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Identity
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class VerificationSessionOptionsOptions : INestedOptions
     {
@@ -10,7 +10,7 @@ namespace Stripe.Identity
         /// href="https://stripe.com/docs/identity/verification-checks?type=document">document
         /// check</a>.
         /// </summary>
-        [JsonProperty("document")]
+        [JsonPropertyName("document")]
         public VerificationSessionOptionsDocumentOptions Document { get; set; }
     }
 }

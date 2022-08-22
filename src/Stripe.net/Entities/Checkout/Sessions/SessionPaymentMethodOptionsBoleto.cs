@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Checkout
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SessionPaymentMethodOptionsBoleto : StripeEntity<SessionPaymentMethodOptionsBoleto>
     {
@@ -10,7 +10,7 @@ namespace Stripe.Checkout
         /// a Boleto voucher on Monday and you set expires_after_days to 2, the Boleto voucher will
         /// expire on Wednesday at 23:59 America/Sao_Paulo time.
         /// </summary>
-        [JsonProperty("expires_after_days")]
+        [JsonPropertyName("expires_after_days")]
         public long ExpiresAfterDays { get; set; }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace Stripe.Checkout
         /// as <a href="https://stripe.com/docs/strong-customer-authentication">SCA</a>.
         /// One of: <c>none</c>, <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
-        [JsonProperty("setup_future_usage")]
+        [JsonPropertyName("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
     }
 }

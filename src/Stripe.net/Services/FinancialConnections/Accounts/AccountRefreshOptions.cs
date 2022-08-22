@@ -2,7 +2,7 @@
 namespace Stripe.FinancialConnections
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class AccountRefreshOptions : BaseOptions
     {
@@ -10,7 +10,7 @@ namespace Stripe.FinancialConnections
         /// The list of account features that you would like to refresh. Either: <c>balance</c> or
         /// <c>ownership</c>.
         /// </summary>
-        [JsonProperty("features")]
+        [JsonPropertyName("features")]
         public List<string> Features { get; set; }
     }
 }

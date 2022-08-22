@@ -1,19 +1,19 @@
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PackageDimensions : StripeEntity<PackageDimensions>
     {
-        [JsonProperty("height")]
+        [JsonPropertyName("height")]
         public decimal? Height { get; set; }
 
-        [JsonProperty("length")]
+        [JsonPropertyName("length")]
         public decimal? Length { get; set; }
 
-        [JsonProperty("weight")]
+        [JsonPropertyName("weight")]
         public decimal? Weight { get; set; }
 
-        [JsonProperty("width")]
+        [JsonPropertyName("width")]
         public decimal? Width { get; set; }
     }
 }

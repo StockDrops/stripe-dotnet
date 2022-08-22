@@ -3,7 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -21,55 +21,55 @@ namespace Stripe
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
-        [JsonProperty("acss_debit")]
+        [JsonPropertyName("acss_debit")]
         public PaymentMethodAcssDebit AcssDebit { get; set; }
 
-        [JsonProperty("affirm")]
+        [JsonPropertyName("affirm")]
         public PaymentMethodAffirm Affirm { get; set; }
 
-        [JsonProperty("afterpay_clearpay")]
+        [JsonPropertyName("afterpay_clearpay")]
         public PaymentMethodAfterpayClearpay AfterpayClearpay { get; set; }
 
-        [JsonProperty("alipay")]
+        [JsonPropertyName("alipay")]
         public PaymentMethodAlipay Alipay { get; set; }
 
-        [JsonProperty("au_becs_debit")]
+        [JsonPropertyName("au_becs_debit")]
         public PaymentMethodAuBecsDebit AuBecsDebit { get; set; }
 
-        [JsonProperty("bacs_debit")]
+        [JsonPropertyName("bacs_debit")]
         public PaymentMethodBacsDebit BacsDebit { get; set; }
 
-        [JsonProperty("bancontact")]
+        [JsonPropertyName("bancontact")]
         public PaymentMethodBancontact Bancontact { get; set; }
 
-        [JsonProperty("billing_details")]
+        [JsonPropertyName("billing_details")]
         public PaymentMethodBillingDetails BillingDetails { get; set; }
 
-        [JsonProperty("blik")]
+        [JsonPropertyName("blik")]
         public PaymentMethodBlik Blik { get; set; }
 
-        [JsonProperty("boleto")]
+        [JsonPropertyName("boleto")]
         public PaymentMethodBoleto Boleto { get; set; }
 
-        [JsonProperty("card")]
+        [JsonPropertyName("card")]
         public PaymentMethodCard Card { get; set; }
 
-        [JsonProperty("card_present")]
+        [JsonPropertyName("card_present")]
         public PaymentMethodCardPresent CardPresent { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -101,46 +101,46 @@ namespace Stripe
             set => this.InternalCustomer = SetExpandableFieldObject(value, this.InternalCustomer);
         }
 
-        [JsonProperty("customer")]
+        [JsonPropertyName("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
-        [JsonProperty("customer_balance")]
+        [JsonPropertyName("customer_balance")]
         public PaymentMethodCustomerBalance CustomerBalance { get; set; }
 
-        [JsonProperty("eps")]
+        [JsonPropertyName("eps")]
         public PaymentMethodEps Eps { get; set; }
 
-        [JsonProperty("fpx")]
+        [JsonPropertyName("fpx")]
         public PaymentMethodFpx Fpx { get; set; }
 
-        [JsonProperty("giropay")]
+        [JsonPropertyName("giropay")]
         public PaymentMethodGiropay Giropay { get; set; }
 
-        [JsonProperty("grabpay")]
+        [JsonPropertyName("grabpay")]
         public PaymentMethodGrabpay Grabpay { get; set; }
 
-        [JsonProperty("ideal")]
+        [JsonPropertyName("ideal")]
         public PaymentMethodIdeal Ideal { get; set; }
 
-        [JsonProperty("interac_present")]
+        [JsonPropertyName("interac_present")]
         public PaymentMethodInteracPresent InteracPresent { get; set; }
 
-        [JsonProperty("klarna")]
+        [JsonPropertyName("klarna")]
         public PaymentMethodKlarna Klarna { get; set; }
 
-        [JsonProperty("konbini")]
+        [JsonPropertyName("konbini")]
         public PaymentMethodKonbini Konbini { get; set; }
 
-        [JsonProperty("link")]
+        [JsonPropertyName("link")]
         public PaymentMethodLink Link { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -148,19 +148,19 @@ namespace Stripe
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
-        [JsonProperty("oxxo")]
+        [JsonPropertyName("oxxo")]
         public PaymentMethodOxxo Oxxo { get; set; }
 
-        [JsonProperty("p24")]
+        [JsonPropertyName("p24")]
         public PaymentMethodP24 P24 { get; set; }
 
-        [JsonProperty("paynow")]
+        [JsonPropertyName("paynow")]
         public PaymentMethodPaynow Paynow { get; set; }
 
-        [JsonProperty("promptpay")]
+        [JsonPropertyName("promptpay")]
         public PaymentMethodPromptpay Promptpay { get; set; }
 
         /// <summary>
@@ -168,13 +168,13 @@ namespace Stripe
         /// href="https://stripe.com/docs/radar/radar-session">Radar Session</a> for more
         /// information.
         /// </summary>
-        [JsonProperty("radar_options")]
+        [JsonPropertyName("radar_options")]
         public PaymentMethodRadarOptions RadarOptions { get; set; }
 
-        [JsonProperty("sepa_debit")]
+        [JsonPropertyName("sepa_debit")]
         public PaymentMethodSepaDebit SepaDebit { get; set; }
 
-        [JsonProperty("sofort")]
+        [JsonPropertyName("sofort")]
         public PaymentMethodSofort Sofort { get; set; }
 
         /// <summary>
@@ -188,13 +188,13 @@ namespace Stripe
         /// <c>konbini</c>, <c>link</c>, <c>oxxo</c>, <c>p24</c>, <c>paynow</c>, <c>promptpay</c>,
         /// <c>sepa_debit</c>, <c>sofort</c>, <c>us_bank_account</c>, or <c>wechat_pay</c>.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
-        [JsonProperty("us_bank_account")]
+        [JsonPropertyName("us_bank_account")]
         public PaymentMethodUsBankAccount UsBankAccount { get; set; }
 
-        [JsonProperty("wechat_pay")]
+        [JsonPropertyName("wechat_pay")]
         public PaymentMethodWechatPay WechatPay { get; set; }
     }
 }

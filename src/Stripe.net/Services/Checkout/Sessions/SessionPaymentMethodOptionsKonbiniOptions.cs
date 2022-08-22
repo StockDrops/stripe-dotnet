@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Checkout
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SessionPaymentMethodOptionsKonbiniOptions : INestedOptions
     {
@@ -11,7 +11,7 @@ namespace Stripe.Checkout
         /// <c>expires_after_days</c> set to 2 on Monday JST, the instructions will expire on
         /// Wednesday 23:59:59 JST. Defaults to 3 days.
         /// </summary>
-        [JsonProperty("expires_after_days")]
+        [JsonPropertyName("expires_after_days")]
         public long? ExpiresAfterDays { get; set; }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace Stripe.Checkout
         /// optimize your payment flow and comply with regional legislation and network rules, such
         /// as <a href="https://stripe.com/docs/strong-customer-authentication">SCA</a>.
         /// </summary>
-        [JsonProperty("setup_future_usage")]
+        [JsonPropertyName("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
     }
 }

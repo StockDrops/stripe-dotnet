@@ -2,7 +2,7 @@
 namespace Stripe.Issuing
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class AuthorizationTreasury : StripeEntity<AuthorizationTreasury>
     {
@@ -11,7 +11,7 @@ namespace Stripe.Issuing
         /// href="https://stripe.com/docs/api/treasury/received_credits">ReceivedCredits</a>
         /// associated with this authorization.
         /// </summary>
-        [JsonProperty("received_credits")]
+        [JsonPropertyName("received_credits")]
         public List<string> ReceivedCredits { get; set; }
 
         /// <summary>
@@ -19,14 +19,14 @@ namespace Stripe.Issuing
         /// href="https://stripe.com/docs/api/treasury/received_debits">ReceivedDebits</a>
         /// associated with this authorization.
         /// </summary>
-        [JsonProperty("received_debits")]
+        [JsonPropertyName("received_debits")]
         public List<string> ReceivedDebits { get; set; }
 
         /// <summary>
         /// The Treasury <a href="https://stripe.com/docs/api/treasury/transactions">Transaction</a>
         /// associated with this authorization.
         /// </summary>
-        [JsonProperty("transaction")]
+        [JsonPropertyName("transaction")]
         public string Transaction { get; set; }
     }
 }

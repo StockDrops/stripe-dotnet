@@ -3,7 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -18,19 +18,19 @@ namespace Stripe
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
         /// Amount, in %s.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long Amount { get; set; }
 
         #region Expandable BalanceTransaction
@@ -59,7 +59,7 @@ namespace Stripe
             set => this.InternalBalanceTransaction = SetExpandableFieldObject(value, this.InternalBalanceTransaction);
         }
 
-        [JsonProperty("balance_transaction")]
+        [JsonPropertyName("balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
         internal ExpandableField<BalanceTransaction> InternalBalanceTransaction { get; set; }
         #endregion
@@ -90,7 +90,7 @@ namespace Stripe
             set => this.InternalCharge = SetExpandableFieldObject(value, this.InternalCharge);
         }
 
-        [JsonProperty("charge")]
+        [JsonPropertyName("charge")]
         [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
         internal ExpandableField<Charge> InternalCharge { get; set; }
         #endregion
@@ -98,7 +98,7 @@ namespace Stripe
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -107,14 +107,14 @@ namespace Stripe
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// (Available on non-card refunds only).
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         #region Expandable FailureBalanceTransaction
@@ -145,7 +145,7 @@ namespace Stripe
             set => this.InternalFailureBalanceTransaction = SetExpandableFieldObject(value, this.InternalFailureBalanceTransaction);
         }
 
-        [JsonProperty("failure_balance_transaction")]
+        [JsonPropertyName("failure_balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
         internal ExpandableField<BalanceTransaction> InternalFailureBalanceTransaction { get; set; }
         #endregion
@@ -154,13 +154,13 @@ namespace Stripe
         /// If the refund failed, the reason for refund failure if known. Possible values are
         /// <c>lost_or_stolen_card</c>, <c>expired_or_canceled_card</c>, or <c>unknown</c>.
         /// </summary>
-        [JsonProperty("failure_reason")]
+        [JsonPropertyName("failure_reason")]
         public string FailureReason { get; set; }
 
         /// <summary>
         /// Email to which refund instructions, if required, are sent to.
         /// </summary>
-        [JsonProperty("instructions_email")]
+        [JsonPropertyName("instructions_email")]
         public string InstructionsEmail { get; set; }
 
         /// <summary>
@@ -168,10 +168,10 @@ namespace Stripe
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
-        [JsonProperty("next_action")]
+        [JsonPropertyName("next_action")]
         public RefundNextAction NextAction { get; set; }
 
         #region Expandable PaymentIntent
@@ -200,7 +200,7 @@ namespace Stripe
             set => this.InternalPaymentIntent = SetExpandableFieldObject(value, this.InternalPaymentIntent);
         }
 
-        [JsonProperty("payment_intent")]
+        [JsonPropertyName("payment_intent")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentIntent>))]
         internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
         #endregion
@@ -212,13 +212,13 @@ namespace Stripe
         /// One of: <c>duplicate</c>, <c>expired_uncaptured_charge</c>, <c>fraudulent</c>, or
         /// <c>requested_by_customer</c>.
         /// </summary>
-        [JsonProperty("reason")]
+        [JsonPropertyName("reason")]
         public string Reason { get; set; }
 
         /// <summary>
         /// This is the transaction number that appears on email receipts sent for this refund.
         /// </summary>
-        [JsonProperty("receipt_number")]
+        [JsonPropertyName("receipt_number")]
         public string ReceiptNumber { get; set; }
 
         #region Expandable SourceTransferReversal
@@ -249,7 +249,7 @@ namespace Stripe
             set => this.InternalSourceTransferReversal = SetExpandableFieldObject(value, this.InternalSourceTransferReversal);
         }
 
-        [JsonProperty("source_transfer_reversal")]
+        [JsonPropertyName("source_transfer_reversal")]
         [JsonConverter(typeof(ExpandableFieldConverter<TransferReversal>))]
         internal ExpandableField<TransferReversal> InternalSourceTransferReversal { get; set; }
         #endregion
@@ -262,7 +262,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/refunds#failed-refunds">refunds</a> documentation for more
         /// details.
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
         #region Expandable TransferReversal
@@ -293,7 +293,7 @@ namespace Stripe
             set => this.InternalTransferReversal = SetExpandableFieldObject(value, this.InternalTransferReversal);
         }
 
-        [JsonProperty("transfer_reversal")]
+        [JsonPropertyName("transfer_reversal")]
         [JsonConverter(typeof(ExpandableFieldConverter<TransferReversal>))]
         internal ExpandableField<TransferReversal> InternalTransferReversal { get; set; }
         #endregion

@@ -3,7 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class QuoteUpdateOptions : BaseOptions, IHasMetadata
@@ -13,7 +13,7 @@ namespace Stripe
         /// payment and transferred to the application owner's Stripe account. There cannot be any
         /// line items with recurring prices when using this field.
         /// </summary>
-        [JsonProperty("application_fee_amount")]
+        [JsonPropertyName("application_fee_amount")]
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
@@ -22,14 +22,14 @@ namespace Stripe
         /// to the application owner's Stripe account. There must be at least 1 line item with a
         /// recurring price to use this field.
         /// </summary>
-        [JsonProperty("application_fee_percent")]
+        [JsonPropertyName("application_fee_percent")]
         public decimal? ApplicationFeePercent { get; set; }
 
         /// <summary>
         /// Settings for automatic tax lookup for this quote and resulting invoices and
         /// subscriptions.
         /// </summary>
-        [JsonProperty("automatic_tax")]
+        [JsonPropertyName("automatic_tax")]
         public QuoteAutomaticTaxOptions AutomaticTax { get; set; }
 
         /// <summary>
@@ -40,65 +40,65 @@ namespace Stripe
         /// instructions. Defaults to <c>charge_automatically</c>.
         /// One of: <c>charge_automatically</c>, or <c>send_invoice</c>.
         /// </summary>
-        [JsonProperty("collection_method")]
+        [JsonPropertyName("collection_method")]
         public string CollectionMethod { get; set; }
 
         /// <summary>
         /// The customer for which this quote belongs to. A customer is required before finalizing
         /// the quote. Once specified, it cannot be changed.
         /// </summary>
-        [JsonProperty("customer")]
+        [JsonPropertyName("customer")]
         public string Customer { get; set; }
 
         /// <summary>
         /// The tax rates that will apply to any line item that does not have <c>tax_rates</c> set.
         /// </summary>
-        [JsonProperty("default_tax_rates")]
+        [JsonPropertyName("default_tax_rates")]
         public List<string> DefaultTaxRates { get; set; }
 
         /// <summary>
         /// A description that will be displayed on the quote PDF.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
         /// The discounts applied to the quote. You can only set up to one discount.
         /// </summary>
-        [JsonProperty("discounts")]
+        [JsonPropertyName("discounts")]
         public List<QuoteDiscountOptions> Discounts { get; set; }
 
         /// <summary>
         /// A future timestamp on which the quote will be canceled if in <c>open</c> or <c>draft</c>
         /// status. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("expires_at")]
+        [JsonPropertyName("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ExpiresAt { get; set; }
 
         /// <summary>
         /// A footer that will be displayed on the quote PDF.
         /// </summary>
-        [JsonProperty("footer")]
+        [JsonPropertyName("footer")]
         public string Footer { get; set; }
 
         /// <summary>
         /// A header that will be displayed on the quote PDF.
         /// </summary>
-        [JsonProperty("header")]
+        [JsonPropertyName("header")]
         public string Header { get; set; }
 
         /// <summary>
         /// All invoices will be billed using the specified settings.
         /// </summary>
-        [JsonProperty("invoice_settings")]
+        [JsonPropertyName("invoice_settings")]
         public QuoteInvoiceSettingsOptions InvoiceSettings { get; set; }
 
         /// <summary>
         /// A list of line items the customer is being quoted for. Each line item includes
         /// information about the product, the quantity, and the resulting cost.
         /// </summary>
-        [JsonProperty("line_items")]
+        [JsonPropertyName("line_items")]
         public List<QuoteLineItemOptions> LineItems { get; set; }
 
         /// <summary>
@@ -107,13 +107,13 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The account on behalf of which to charge.
         /// </summary>
-        [JsonProperty("on_behalf_of")]
+        [JsonPropertyName("on_behalf_of")]
         public string OnBehalfOf { get; set; }
 
         /// <summary>
@@ -123,13 +123,13 @@ namespace Stripe
         /// if <c>subscription_data[effective_date]</c> is present and in the future, otherwise a
         /// subscription is created.
         /// </summary>
-        [JsonProperty("subscription_data")]
+        [JsonPropertyName("subscription_data")]
         public QuoteSubscriptionDataOptions SubscriptionData { get; set; }
 
         /// <summary>
         /// The data with which to automatically create a Transfer for each of the invoices.
         /// </summary>
-        [JsonProperty("transfer_data")]
+        [JsonPropertyName("transfer_data")]
         public QuoteTransferDataOptions TransferData { get; set; }
     }
 }

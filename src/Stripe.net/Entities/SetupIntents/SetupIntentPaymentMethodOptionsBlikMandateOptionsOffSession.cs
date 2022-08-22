@@ -1,33 +1,33 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SetupIntentPaymentMethodOptionsBlikMandateOptionsOffSession : StripeEntity<SetupIntentPaymentMethodOptionsBlikMandateOptionsOffSession>
     {
         /// <summary>
         /// Amount of each recurring payment.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long? Amount { get; set; }
 
         /// <summary>
         /// Currency of each recurring payment.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
         /// Frequency interval of each recurring payment.
         /// One of: <c>day</c>, <c>month</c>, <c>week</c>, or <c>year</c>.
         /// </summary>
-        [JsonProperty("interval")]
+        [JsonPropertyName("interval")]
         public string Interval { get; set; }
 
         /// <summary>
         /// Frequency indicator of each recurring payment.
         /// </summary>
-        [JsonProperty("interval_count")]
+        [JsonPropertyName("interval_count")]
         public long? IntervalCount { get; set; }
     }
 }

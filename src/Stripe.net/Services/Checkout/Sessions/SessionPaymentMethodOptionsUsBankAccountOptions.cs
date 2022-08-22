@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Checkout
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SessionPaymentMethodOptionsUsBankAccountOptions : INestedOptions
     {
         /// <summary>
         /// Additional fields for Financial Connections Session creation.
         /// </summary>
-        [JsonProperty("financial_connections")]
+        [JsonPropertyName("financial_connections")]
         public SessionPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions FinancialConnections { get; set; }
 
         /// <summary>
@@ -28,14 +28,14 @@ namespace Stripe.Checkout
         /// as <a href="https://stripe.com/docs/strong-customer-authentication">SCA</a>.
         /// One of: <c>none</c>, <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
-        [JsonProperty("setup_future_usage")]
+        [JsonPropertyName("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
         /// Verification method for the intent.
         /// One of: <c>automatic</c>, or <c>instant</c>.
         /// </summary>
-        [JsonProperty("verification_method")]
+        [JsonPropertyName("verification_method")]
         public string VerificationMethod { get; set; }
     }
 }

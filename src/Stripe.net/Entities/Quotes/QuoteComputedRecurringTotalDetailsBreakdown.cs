@@ -2,20 +2,20 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class QuoteComputedRecurringTotalDetailsBreakdown : StripeEntity<QuoteComputedRecurringTotalDetailsBreakdown>
     {
         /// <summary>
         /// The aggregated discounts.
         /// </summary>
-        [JsonProperty("discounts")]
+        [JsonPropertyName("discounts")]
         public List<QuoteComputedRecurringTotalDetailsBreakdownDiscount> Discounts { get; set; }
 
         /// <summary>
         /// The aggregated tax amounts by rate.
         /// </summary>
-        [JsonProperty("taxes")]
+        [JsonPropertyName("taxes")]
         public List<QuoteComputedRecurringTotalDetailsBreakdownTax> Taxes { get; set; }
     }
 }

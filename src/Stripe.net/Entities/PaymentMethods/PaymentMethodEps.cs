@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PaymentMethodEps : StripeEntity<PaymentMethodEps>
     {
@@ -32,7 +32,7 @@ namespace Stripe
         /// <c>sparda_bank_wien</c>, <c>volksbank_gruppe</c>, <c>volkskreditbank_ag</c>, or
         /// <c>vr_bank_braunau</c>.
         /// </summary>
-        [JsonProperty("bank")]
+        [JsonPropertyName("bank")]
         public string Bank { get; set; }
     }
 }

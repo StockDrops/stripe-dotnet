@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ProductDefaultPriceDataCurrencyOptionsOptions : INestedOptions
     {
@@ -10,7 +10,7 @@ namespace Stripe
         /// When set, provides configuration for the amount to be adjusted by the customer during
         /// Checkout Sessions and Payment Links.
         /// </summary>
-        [JsonProperty("custom_unit_amount")]
+        [JsonPropertyName("custom_unit_amount")]
         public ProductDefaultPriceDataCurrencyOptionsCustomUnitAmountOptions CustomUnitAmount { get; set; }
 
         /// <summary>
@@ -19,21 +19,21 @@ namespace Stripe
         /// <c>inclusive</c> or <c>exclusive</c>, it cannot be changed.
         /// One of: <c>exclusive</c>, <c>inclusive</c>, or <c>unspecified</c>.
         /// </summary>
-        [JsonProperty("tax_behavior")]
+        [JsonPropertyName("tax_behavior")]
         public string TaxBehavior { get; set; }
 
         /// <summary>
         /// Each element represents a pricing tier. This parameter requires <c>billing_scheme</c> to
         /// be set to <c>tiered</c>. See also the documentation for <c>billing_scheme</c>.
         /// </summary>
-        [JsonProperty("tiers")]
+        [JsonPropertyName("tiers")]
         public List<ProductDefaultPriceDataCurrencyOptionsTierOptions> Tiers { get; set; }
 
         /// <summary>
         /// A positive integer in cents (or local equivalent) (or 0 for a free price) representing
         /// how much to charge.
         /// </summary>
-        [JsonProperty("unit_amount")]
+        [JsonPropertyName("unit_amount")]
         public long? UnitAmount { get; set; }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace Stripe
         /// with at most 12 decimal places. Only one of <c>unit_amount</c> and
         /// <c>unit_amount_decimal</c> can be set.
         /// </summary>
-        [JsonProperty("unit_amount_decimal")]
+        [JsonPropertyName("unit_amount_decimal")]
         public decimal? UnitAmountDecimal { get; set; }
     }
 }

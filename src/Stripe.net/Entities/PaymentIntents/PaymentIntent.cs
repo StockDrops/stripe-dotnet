@@ -3,7 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -25,13 +25,13 @@ namespace Stripe
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
@@ -44,22 +44,22 @@ namespace Stripe
         /// in charge currency</a>. The amount value supports up to eight digits (e.g., a value of
         /// 99999999 for a USD charge of $999,999.99).
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long Amount { get; set; }
 
         /// <summary>
         /// Amount that can be captured from this PaymentIntent.
         /// </summary>
-        [JsonProperty("amount_capturable")]
+        [JsonPropertyName("amount_capturable")]
         public long AmountCapturable { get; set; }
 
-        [JsonProperty("amount_details")]
+        [JsonPropertyName("amount_details")]
         public PaymentIntentAmountDetails AmountDetails { get; set; }
 
         /// <summary>
         /// Amount that was collected by this PaymentIntent.
         /// </summary>
-        [JsonProperty("amount_received")]
+        [JsonPropertyName("amount_received")]
         public long AmountReceived { get; set; }
 
         #region Expandable Application
@@ -88,7 +88,7 @@ namespace Stripe
             set => this.InternalApplication = SetExpandableFieldObject(value, this.InternalApplication);
         }
 
-        [JsonProperty("application")]
+        [JsonPropertyName("application")]
         [JsonConverter(typeof(ExpandableFieldConverter<Application>))]
         internal ExpandableField<Application> InternalApplication { get; set; }
         #endregion
@@ -101,21 +101,21 @@ namespace Stripe
         /// href="https://stripe.com/docs/payments/connected-accounts">use case for connected
         /// accounts</a>.
         /// </summary>
-        [JsonProperty("application_fee_amount")]
+        [JsonPropertyName("application_fee_amount")]
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
         /// Settings to configure compatible payment methods from the <a
         /// href="https://dashboard.stripe.com/settings/payment_methods">Stripe Dashboard</a>.
         /// </summary>
-        [JsonProperty("automatic_payment_methods")]
+        [JsonPropertyName("automatic_payment_methods")]
         public PaymentIntentAutomaticPaymentMethods AutomaticPaymentMethods { get; set; }
 
         /// <summary>
         /// Populated when <c>status</c> is <c>canceled</c>, this is the time at which the
         /// PaymentIntent was canceled. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("canceled_at")]
+        [JsonPropertyName("canceled_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? CanceledAt { get; set; }
 
@@ -126,20 +126,20 @@ namespace Stripe
         /// One of: <c>abandoned</c>, <c>automatic</c>, <c>duplicate</c>, <c>failed_invoice</c>,
         /// <c>fraudulent</c>, <c>requested_by_customer</c>, or <c>void_invoice</c>.
         /// </summary>
-        [JsonProperty("cancellation_reason")]
+        [JsonPropertyName("cancellation_reason")]
         public string CancellationReason { get; set; }
 
         /// <summary>
         /// Controls when the funds will be captured from the customer's account.
         /// One of: <c>automatic</c>, or <c>manual</c>.
         /// </summary>
-        [JsonProperty("capture_method")]
+        [JsonPropertyName("capture_method")]
         public string CaptureMethod { get; set; }
 
         /// <summary>
         /// Charges that were created by this PaymentIntent, if any.
         /// </summary>
-        [JsonProperty("charges")]
+        [JsonPropertyName("charges")]
         public StripeList<Charge> Charges { get; set; }
 
         /// <summary>
@@ -154,16 +154,16 @@ namespace Stripe
         /// href="https://stripe.com/docs/payments/accept-a-payment?ui=elements">accept a
         /// payment</a> and learn about how <c>client_secret</c> should be handled.
         /// </summary>
-        [JsonProperty("client_secret")]
+        [JsonPropertyName("client_secret")]
         public string ClientSecret { get; set; }
 
-        [JsonProperty("confirmation_method")]
+        [JsonPropertyName("confirmation_method")]
         public string ConfirmationMethod { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -172,7 +172,7 @@ namespace Stripe
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         #region Expandable Customer
@@ -215,7 +215,7 @@ namespace Stripe
             set => this.InternalCustomer = SetExpandableFieldObject(value, this.InternalCustomer);
         }
 
-        [JsonProperty("customer")]
+        [JsonPropertyName("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
@@ -223,7 +223,7 @@ namespace Stripe
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         #region Expandable Invoice
@@ -252,7 +252,7 @@ namespace Stripe
             set => this.InternalInvoice = SetExpandableFieldObject(value, this.InternalInvoice);
         }
 
-        [JsonProperty("invoice")]
+        [JsonPropertyName("invoice")]
         [JsonConverter(typeof(ExpandableFieldConverter<Invoice>))]
         internal ExpandableField<Invoice> InternalInvoice { get; set; }
         #endregion
@@ -261,14 +261,14 @@ namespace Stripe
         /// The payment error encountered in the previous PaymentIntent confirmation. It will be
         /// cleared if the PaymentIntent is later updated for any reason.
         /// </summary>
-        [JsonProperty("last_payment_error")]
+        [JsonPropertyName("last_payment_error")]
         public StripeError LastPaymentError { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -277,14 +277,14 @@ namespace Stripe
         /// object in a structured format. For more information, see the <a
         /// href="https://stripe.com/docs/payments/payment-intents/creating-payment-intents#storing-information-in-metadata">documentation</a>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// If present, this property tells you what actions you need to take in order for your
         /// customer to fulfill a payment using the provided source.
         /// </summary>
-        [JsonProperty("next_action")]
+        [JsonPropertyName("next_action")]
         public PaymentIntentNextAction NextAction { get; set; }
 
         #region Expandable OnBehalfOf
@@ -317,7 +317,7 @@ namespace Stripe
             set => this.InternalOnBehalfOf = SetExpandableFieldObject(value, this.InternalOnBehalfOf);
         }
 
-        [JsonProperty("on_behalf_of")]
+        [JsonPropertyName("on_behalf_of")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
         internal ExpandableField<Account> InternalOnBehalfOf { get; set; }
         #endregion
@@ -348,7 +348,7 @@ namespace Stripe
             set => this.InternalPaymentMethod = SetExpandableFieldObject(value, this.InternalPaymentMethod);
         }
 
-        [JsonProperty("payment_method")]
+        [JsonPropertyName("payment_method")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
         internal ExpandableField<PaymentMethod> InternalPaymentMethod { get; set; }
         #endregion
@@ -356,19 +356,19 @@ namespace Stripe
         /// <summary>
         /// Payment-method-specific configuration for this PaymentIntent.
         /// </summary>
-        [JsonProperty("payment_method_options")]
+        [JsonPropertyName("payment_method_options")]
         public PaymentIntentPaymentMethodOptions PaymentMethodOptions { get; set; }
 
         /// <summary>
         /// The list of payment method types (e.g. card) that this PaymentIntent is allowed to use.
         /// </summary>
-        [JsonProperty("payment_method_types")]
+        [JsonPropertyName("payment_method_types")]
         public List<string> PaymentMethodTypes { get; set; }
 
         /// <summary>
         /// If present, this property tells you about the processing state of the payment.
         /// </summary>
-        [JsonProperty("processing")]
+        [JsonPropertyName("processing")]
         public PaymentIntentProcessing Processing { get; set; }
 
         /// <summary>
@@ -377,7 +377,7 @@ namespace Stripe
         /// regardless of your <a href="https://dashboard.stripe.com/account/emails">email
         /// settings</a>.
         /// </summary>
-        [JsonProperty("receipt_email")]
+        [JsonPropertyName("receipt_email")]
         public string ReceiptEmail { get; set; }
 
         #region Expandable Review
@@ -406,7 +406,7 @@ namespace Stripe
             set => this.InternalReview = SetExpandableFieldObject(value, this.InternalReview);
         }
 
-        [JsonProperty("review")]
+        [JsonPropertyName("review")]
         [JsonConverter(typeof(ExpandableFieldConverter<Review>))]
         internal ExpandableField<Review> InternalReview { get; set; }
         #endregion
@@ -428,13 +428,13 @@ namespace Stripe
         /// as <a href="https://stripe.com/docs/strong-customer-authentication">SCA</a>.
         /// One of: <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
-        [JsonProperty("setup_future_usage")]
+        [JsonPropertyName("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
         /// Shipping information for this PaymentIntent.
         /// </summary>
-        [JsonProperty("shipping")]
+        [JsonPropertyName("shipping")]
         public Shipping Shipping { get; set; }
 
         #region Expandable Source
@@ -465,7 +465,7 @@ namespace Stripe
             set => this.InternalSource = SetExpandableFieldObject(value, this.InternalSource);
         }
 
-        [JsonProperty("source")]
+        [JsonPropertyName("source")]
         [JsonConverter(typeof(ExpandableFieldConverter<IPaymentSource>))]
         internal ExpandableField<IPaymentSource> InternalSource { get; set; }
         #endregion
@@ -474,7 +474,7 @@ namespace Stripe
         /// For non-card charges, you can use this value as the complete description that appears on
         /// your customers’ statements. Must contain at least one letter, maximum 22 characters.
         /// </summary>
-        [JsonProperty("statement_descriptor")]
+        [JsonPropertyName("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 
         /// <summary>
@@ -483,7 +483,7 @@ namespace Stripe
         /// on the account to form the complete statement descriptor. Maximum 22 characters for the
         /// concatenated descriptor.
         /// </summary>
-        [JsonProperty("statement_descriptor_suffix")]
+        [JsonPropertyName("statement_descriptor_suffix")]
         public string StatementDescriptorSuffix { get; set; }
 
         /// <summary>
@@ -496,7 +496,7 @@ namespace Stripe
         /// <c>requires_capture</c>, <c>requires_confirmation</c>, <c>requires_payment_method</c>,
         /// or <c>succeeded</c>.
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
         /// <summary>
@@ -504,7 +504,7 @@ namespace Stripe
         /// See the PaymentIntents <a href="https://stripe.com/docs/payments/connected-accounts">use
         /// case for connected accounts</a> for details.
         /// </summary>
-        [JsonProperty("transfer_data")]
+        [JsonPropertyName("transfer_data")]
         public PaymentIntentTransferData TransferData { get; set; }
 
         /// <summary>
@@ -512,7 +512,7 @@ namespace Stripe
         /// PaymentIntents <a href="https://stripe.com/docs/payments/connected-accounts">use case
         /// for connected accounts</a> for details.
         /// </summary>
-        [JsonProperty("transfer_group")]
+        [JsonPropertyName("transfer_group")]
         public string TransferGroup { get; set; }
     }
 }

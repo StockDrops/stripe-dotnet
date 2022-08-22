@@ -2,7 +2,7 @@
 namespace Stripe.Reporting
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -21,19 +21,19 @@ namespace Stripe.Reporting
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -41,31 +41,31 @@ namespace Stripe.Reporting
         /// If something should go wrong during the run, a message about the failure (populated when
         /// <c>status=failed</c>).
         /// </summary>
-        [JsonProperty("error")]
+        [JsonPropertyName("error")]
         public string Error { get; set; }
 
         /// <summary>
         /// <c>true</c> if the report is run on live mode data and <c>false</c> if it is run on test
         /// mode data.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
-        [JsonProperty("parameters")]
+        [JsonPropertyName("parameters")]
         public ReportRunParameters Parameters { get; set; }
 
         /// <summary>
         /// The ID of the <a href="https://stripe.com/docs/reports/report-types">report type</a> to
         /// run, such as <c>"balance.summary.1"</c>.
         /// </summary>
-        [JsonProperty("report_type")]
+        [JsonPropertyName("report_type")]
         public string ReportType { get; set; }
 
         /// <summary>
         /// The file object representing the result of the report run (populated when
         /// <c>status=succeeded</c>).
         /// </summary>
-        [JsonProperty("result")]
+        [JsonPropertyName("result")]
         public File Result { get; set; }
 
         /// <summary>
@@ -74,14 +74,14 @@ namespace Stripe.Reporting
         /// <c>result</c> field will be populated. Rarely, we may encounter an error, at which point
         /// this will be set to <c>failed</c> and the <c>error</c> field will be populated.
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
         /// <summary>
         /// Timestamp at which this run successfully finished (populated when
         /// <c>status=succeeded</c>). Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("succeeded_at")]
+        [JsonPropertyName("succeeded_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? SucceededAt { get; set; }
     }

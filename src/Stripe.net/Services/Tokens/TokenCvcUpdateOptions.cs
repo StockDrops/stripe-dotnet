@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class TokenCvcUpdateOptions : INestedOptions
     {
         /// <summary>
         /// The CVC value, in string form.
         /// </summary>
-        [JsonProperty("cvc")]
+        [JsonPropertyName("cvc")]
         public string Cvc { get; set; }
     }
 }

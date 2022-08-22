@@ -5,7 +5,7 @@ namespace StripeTests
     using System.Linq;
     using System.Reflection;
     using System.Text;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe;
     using Stripe.Infrastructure;
     using Xunit;
@@ -38,7 +38,7 @@ namespace StripeTests
                         propType = Nullable.GetUnderlyingType(propType);
                     }
 
-                    // Skip properties that don't have a `JsonProperty` attribute
+                    // Skip properties that don't have a `JsonPropertyName` attribute
                     var jsonPropertyAttribute = property.GetCustomAttribute<JsonPropertyAttribute>();
                     if (jsonPropertyAttribute == null)
                     {

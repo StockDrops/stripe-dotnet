@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ShippingRateDeliveryEstimateOptions : INestedOptions
     {
@@ -9,13 +9,13 @@ namespace Stripe
         /// The upper bound of the estimated range. If empty, represents no upper bound i.e.,
         /// infinite.
         /// </summary>
-        [JsonProperty("maximum")]
+        [JsonPropertyName("maximum")]
         public ShippingRateDeliveryEstimateMaximumOptions Maximum { get; set; }
 
         /// <summary>
         /// The lower bound of the estimated range. If empty, represents no lower bound.
         /// </summary>
-        [JsonProperty("minimum")]
+        [JsonPropertyName("minimum")]
         public ShippingRateDeliveryEstimateMinimumOptions Minimum { get; set; }
     }
 }

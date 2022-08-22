@@ -1,20 +1,20 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PaymentMethodLink : StripeEntity<PaymentMethodLink>
     {
         /// <summary>
         /// Account owner's email address.
         /// </summary>
-        [JsonProperty("email")]
+        [JsonPropertyName("email")]
         public string Email { get; set; }
 
         /// <summary>
         /// Token used for persistent Link logins.
         /// </summary>
-        [JsonProperty("persistent_token")]
+        [JsonPropertyName("persistent_token")]
         public string PersistentToken { get; set; }
     }
 }

@@ -1,23 +1,23 @@
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class TaxRatePercentageRangeOptions : INestedOptions
     {
-        [JsonProperty("gt")]
+        [JsonPropertyName("gt")]
         [AllowNameMismatch]
         public decimal? GreaterThan { get; set; }
 
-        [JsonProperty("gte")]
+        [JsonPropertyName("gte")]
         [AllowNameMismatch]
         public decimal? GreaterThanOrEqual { get; set; }
 
-        [JsonProperty("lt")]
+        [JsonPropertyName("lt")]
         [AllowNameMismatch]
         public decimal? LessThan { get; set; }
 
-        [JsonProperty("lte")]
+        [JsonPropertyName("lte")]
         [AllowNameMismatch]
         public decimal? LessThanOrEqual { get; set; }
     }

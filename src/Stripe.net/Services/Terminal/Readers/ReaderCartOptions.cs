@@ -2,7 +2,7 @@
 namespace Stripe.Terminal
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ReaderCartOptions : INestedOptions
     {
@@ -11,25 +11,25 @@ namespace Stripe.Terminal
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
         /// Array of line items that were purchased.
         /// </summary>
-        [JsonProperty("line_items")]
+        [JsonPropertyName("line_items")]
         public List<ReaderCartLineItemOptions> LineItems { get; set; }
 
         /// <summary>
         /// The amount of tax in cents.
         /// </summary>
-        [JsonProperty("tax")]
+        [JsonPropertyName("tax")]
         public long? Tax { get; set; }
 
         /// <summary>
         /// Total balance of cart due in cents.
         /// </summary>
-        [JsonProperty("total")]
+        [JsonPropertyName("total")]
         public long? Total { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Issuing
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class AuthorizationMerchantData : StripeEntity<AuthorizationMerchantData>
     {
@@ -10,49 +10,49 @@ namespace Stripe.Issuing
         /// href="https://stripe.com/docs/issuing/merchant-categories">merchant categories guide</a>
         /// for a list of possible values.
         /// </summary>
-        [JsonProperty("category")]
+        [JsonPropertyName("category")]
         public string Category { get; set; }
 
         /// <summary>
         /// The merchant category code for the seller’s business.
         /// </summary>
-        [JsonProperty("category_code")]
+        [JsonPropertyName("category_code")]
         public string CategoryCode { get; set; }
 
         /// <summary>
         /// City where the seller is located.
         /// </summary>
-        [JsonProperty("city")]
+        [JsonPropertyName("city")]
         public string City { get; set; }
 
         /// <summary>
         /// Country where the seller is located.
         /// </summary>
-        [JsonProperty("country")]
+        [JsonPropertyName("country")]
         public string Country { get; set; }
 
         /// <summary>
         /// Name of the seller.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
         /// Identifier assigned to the seller by the card brand.
         /// </summary>
-        [JsonProperty("network_id")]
+        [JsonPropertyName("network_id")]
         public string NetworkId { get; set; }
 
         /// <summary>
         /// Postal code where the seller is located.
         /// </summary>
-        [JsonProperty("postal_code")]
+        [JsonPropertyName("postal_code")]
         public string PostalCode { get; set; }
 
         /// <summary>
         /// State where the seller is located.
         /// </summary>
-        [JsonProperty("state")]
+        [JsonPropertyName("state")]
         public string State { get; set; }
     }
 }

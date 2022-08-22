@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Checkout
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SessionConsentCollectionOptions : INestedOptions
     {
@@ -12,7 +12,7 @@ namespace Stripe.Checkout
         /// Only available to US merchants.
         /// One of: <c>auto</c>, or <c>none</c>.
         /// </summary>
-        [JsonProperty("promotions")]
+        [JsonPropertyName("promotions")]
         public string Promotions { get; set; }
     }
 }

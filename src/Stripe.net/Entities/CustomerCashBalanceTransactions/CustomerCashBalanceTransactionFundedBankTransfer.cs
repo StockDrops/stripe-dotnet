@@ -1,17 +1,17 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class CustomerCashBalanceTransactionFundedBankTransfer : StripeEntity<CustomerCashBalanceTransactionFundedBankTransfer>
     {
-        [JsonProperty("eu_bank_transfer")]
+        [JsonPropertyName("eu_bank_transfer")]
         public CustomerCashBalanceTransactionFundedBankTransferEuBankTransfer EuBankTransfer { get; set; }
 
         /// <summary>
         /// The user-supplied reference field on the bank transfer.
         /// </summary>
-        [JsonProperty("reference")]
+        [JsonPropertyName("reference")]
         public string Reference { get; set; }
 
         /// <summary>
@@ -21,7 +21,7 @@ namespace Stripe
         /// One of: <c>eu_bank_transfer</c>, <c>gb_bank_transfer</c>, <c>jp_bank_transfer</c>, or
         /// <c>mx_bank_transfer</c>.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
     }
 }

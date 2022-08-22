@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class TokenPersonDocumentsPassportOptions : INestedOptions
     {
@@ -11,7 +11,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/api#create_file">file upload</a> with a <c>purpose</c>
         /// value of <c>account_requirement</c>.
         /// </summary>
-        [JsonProperty("files")]
+        [JsonPropertyName("files")]
         public List<string> Files { get; set; }
     }
 }

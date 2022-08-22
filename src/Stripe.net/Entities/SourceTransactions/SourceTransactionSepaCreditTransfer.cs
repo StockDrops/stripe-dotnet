@@ -1,16 +1,16 @@
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SourceTransactionSepaCreditTransfer : StripeEntity<SourceTransactionSepaCreditTransfer>
     {
-        [JsonProperty("reference")]
+        [JsonPropertyName("reference")]
         public string Reference { get; set; }
 
-        [JsonProperty("sender_iban")]
+        [JsonPropertyName("sender_iban")]
         public string SenderIban { get; set; }
 
-        [JsonProperty("sender_name")]
+        [JsonPropertyName("sender_name")]
         public string SenderName { get; set; }
     }
 }

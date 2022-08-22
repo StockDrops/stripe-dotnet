@@ -3,7 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -20,13 +20,13 @@ namespace Stripe
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
@@ -38,21 +38,21 @@ namespace Stripe
         /// in charge currency</a>. The amount value supports up to eight digits (e.g., a value of
         /// 99999999 for a USD charge of $999,999.99).
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long Amount { get; set; }
 
         /// <summary>
         /// Amount in %s captured (can be less than the amount attribute on the charge if a partial
         /// capture was made).
         /// </summary>
-        [JsonProperty("amount_captured")]
+        [JsonPropertyName("amount_captured")]
         public long AmountCaptured { get; set; }
 
         /// <summary>
         /// Amount in %s refunded (can be less than the amount attribute on the charge if a partial
         /// refund was issued).
         /// </summary>
-        [JsonProperty("amount_refunded")]
+        [JsonPropertyName("amount_refunded")]
         public long AmountRefunded { get; set; }
 
         #region Expandable Application
@@ -81,7 +81,7 @@ namespace Stripe
             set => this.InternalApplication = SetExpandableFieldObject(value, this.InternalApplication);
         }
 
-        [JsonProperty("application")]
+        [JsonPropertyName("application")]
         [JsonConverter(typeof(ExpandableFieldConverter<Application>))]
         internal ExpandableField<Application> InternalApplication { get; set; }
         #endregion
@@ -116,7 +116,7 @@ namespace Stripe
             set => this.InternalApplicationFee = SetExpandableFieldObject(value, this.InternalApplicationFee);
         }
 
-        [JsonProperty("application_fee")]
+        [JsonPropertyName("application_fee")]
         [JsonConverter(typeof(ExpandableFieldConverter<ApplicationFee>))]
         internal ExpandableField<ApplicationFee> InternalApplicationFee { get; set; }
         #endregion
@@ -126,13 +126,13 @@ namespace Stripe
         /// href="https://stripe.com/docs/connect/direct-charges#collecting-fees">See the Connect
         /// documentation</a> for details.
         /// </summary>
-        [JsonProperty("application_fee_amount")]
+        [JsonPropertyName("application_fee_amount")]
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
         /// Authorization code on the charge.
         /// </summary>
-        [JsonProperty("authorization_code")]
+        [JsonPropertyName("authorization_code")]
         public string AuthorizationCode { get; set; }
 
         #region Expandable BalanceTransaction
@@ -163,12 +163,12 @@ namespace Stripe
             set => this.InternalBalanceTransaction = SetExpandableFieldObject(value, this.InternalBalanceTransaction);
         }
 
-        [JsonProperty("balance_transaction")]
+        [JsonPropertyName("balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
         internal ExpandableField<BalanceTransaction> InternalBalanceTransaction { get; set; }
         #endregion
 
-        [JsonProperty("billing_details")]
+        [JsonPropertyName("billing_details")]
         public ChargeBillingDetails BillingDetails { get; set; }
 
         /// <summary>
@@ -176,20 +176,20 @@ namespace Stripe
         /// your customers' credit card and bank statements. Allows you to see what the statement
         /// descriptor looks like after the static and dynamic portions are combined.
         /// </summary>
-        [JsonProperty("calculated_statement_descriptor")]
+        [JsonPropertyName("calculated_statement_descriptor")]
         public string CalculatedStatementDescriptor { get; set; }
 
         /// <summary>
         /// If the charge was created without capturing, this Boolean represents whether it is still
         /// uncaptured or has since been captured.
         /// </summary>
-        [JsonProperty("captured")]
+        [JsonPropertyName("captured")]
         public bool Captured { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -198,7 +198,7 @@ namespace Stripe
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         #region Expandable Customer
@@ -227,7 +227,7 @@ namespace Stripe
             set => this.InternalCustomer = SetExpandableFieldObject(value, this.InternalCustomer);
         }
 
-        [JsonProperty("customer")]
+        [JsonPropertyName("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
@@ -235,7 +235,7 @@ namespace Stripe
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         #region Expandable Destination
@@ -266,7 +266,7 @@ namespace Stripe
             set => this.InternalDestination = SetExpandableFieldObject(value, this.InternalDestination);
         }
 
-        [JsonProperty("destination")]
+        [JsonPropertyName("destination")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
         internal ExpandableField<Account> InternalDestination { get; set; }
         #endregion
@@ -297,7 +297,7 @@ namespace Stripe
             set => this.InternalDispute = SetExpandableFieldObject(value, this.InternalDispute);
         }
 
-        [JsonProperty("dispute")]
+        [JsonPropertyName("dispute")]
         [JsonConverter(typeof(ExpandableFieldConverter<Dispute>))]
         internal ExpandableField<Dispute> InternalDispute { get; set; }
         #endregion
@@ -305,7 +305,7 @@ namespace Stripe
         /// <summary>
         /// Whether the charge has been disputed.
         /// </summary>
-        [JsonProperty("disputed")]
+        [JsonPropertyName("disputed")]
         public bool Disputed { get; set; }
 
         #region Expandable FailureBalanceTransaction
@@ -336,7 +336,7 @@ namespace Stripe
             set => this.InternalFailureBalanceTransaction = SetExpandableFieldObject(value, this.InternalFailureBalanceTransaction);
         }
 
-        [JsonProperty("failure_balance_transaction")]
+        [JsonPropertyName("failure_balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
         internal ExpandableField<BalanceTransaction> InternalFailureBalanceTransaction { get; set; }
         #endregion
@@ -345,19 +345,19 @@ namespace Stripe
         /// Error code explaining reason for charge failure if available (see <a
         /// href="https://stripe.com/docs/api#errors">the errors section</a> for a list of codes).
         /// </summary>
-        [JsonProperty("failure_code")]
+        [JsonPropertyName("failure_code")]
         public string FailureCode { get; set; }
 
         /// <summary>
         /// Message to user further explaining reason for charge failure if available.
         /// </summary>
-        [JsonProperty("failure_message")]
+        [JsonPropertyName("failure_message")]
         public string FailureMessage { get; set; }
 
         /// <summary>
         /// Information on fraud assessments for the charge.
         /// </summary>
-        [JsonProperty("fraud_details")]
+        [JsonPropertyName("fraud_details")]
         public ChargeFraudDetails FraudDetails { get; set; }
 
         #region Expandable Invoice
@@ -386,19 +386,19 @@ namespace Stripe
             set => this.InternalInvoice = SetExpandableFieldObject(value, this.InternalInvoice);
         }
 
-        [JsonProperty("invoice")]
+        [JsonPropertyName("invoice")]
         [JsonConverter(typeof(ExpandableFieldConverter<Invoice>))]
         internal ExpandableField<Invoice> InternalInvoice { get; set; }
         #endregion
 
-        [JsonProperty("level3")]
+        [JsonPropertyName("level3")]
         public ChargeLevel3 Level3 { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -406,7 +406,7 @@ namespace Stripe
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         #region Expandable OnBehalfOf
@@ -439,7 +439,7 @@ namespace Stripe
             set => this.InternalOnBehalfOf = SetExpandableFieldObject(value, this.InternalOnBehalfOf);
         }
 
-        [JsonProperty("on_behalf_of")]
+        [JsonPropertyName("on_behalf_of")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
         internal ExpandableField<Account> InternalOnBehalfOf { get; set; }
         #endregion
@@ -448,13 +448,13 @@ namespace Stripe
         /// Details about whether the payment was accepted, and why. See <a
         /// href="https://stripe.com/docs/declines">understanding declines</a> for details.
         /// </summary>
-        [JsonProperty("outcome")]
+        [JsonPropertyName("outcome")]
         public ChargeOutcome Outcome { get; set; }
 
         /// <summary>
         /// <c>true</c> if the charge succeeded, or was successfully authorized for later capture.
         /// </summary>
-        [JsonProperty("paid")]
+        [JsonPropertyName("paid")]
         public bool Paid { get; set; }
 
         #region Expandable PaymentIntent
@@ -483,7 +483,7 @@ namespace Stripe
             set => this.InternalPaymentIntent = SetExpandableFieldObject(value, this.InternalPaymentIntent);
         }
 
-        [JsonProperty("payment_intent")]
+        [JsonPropertyName("payment_intent")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentIntent>))]
         internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
         #endregion
@@ -491,13 +491,13 @@ namespace Stripe
         /// <summary>
         /// ID of the payment method used in this charge.
         /// </summary>
-        [JsonProperty("payment_method")]
+        [JsonPropertyName("payment_method")]
         public string PaymentMethod { get; set; }
 
         /// <summary>
         /// Details about the payment method at the time of the transaction.
         /// </summary>
-        [JsonProperty("payment_method_details")]
+        [JsonPropertyName("payment_method_details")]
         public ChargePaymentMethodDetails PaymentMethodDetails { get; set; }
 
         /// <summary>
@@ -505,20 +505,20 @@ namespace Stripe
         /// href="https://stripe.com/docs/radar/radar-session">Radar Session</a> for more
         /// information.
         /// </summary>
-        [JsonProperty("radar_options")]
+        [JsonPropertyName("radar_options")]
         public ChargeRadarOptions RadarOptions { get; set; }
 
         /// <summary>
         /// This is the email address that the receipt for this charge was sent to.
         /// </summary>
-        [JsonProperty("receipt_email")]
+        [JsonPropertyName("receipt_email")]
         public string ReceiptEmail { get; set; }
 
         /// <summary>
         /// This is the transaction number that appears on email receipts sent for this charge. This
         /// attribute will be <c>null</c> until a receipt has been sent.
         /// </summary>
-        [JsonProperty("receipt_number")]
+        [JsonPropertyName("receipt_number")]
         public string ReceiptNumber { get; set; }
 
         /// <summary>
@@ -526,20 +526,20 @@ namespace Stripe
         /// the latest state of the charge, including any refunds. If the charge is for an Invoice,
         /// the receipt will be stylized as an Invoice receipt.
         /// </summary>
-        [JsonProperty("receipt_url")]
+        [JsonPropertyName("receipt_url")]
         public string ReceiptUrl { get; set; }
 
         /// <summary>
         /// Whether the charge has been fully refunded. If the charge is only partially refunded,
         /// this attribute will still be false.
         /// </summary>
-        [JsonProperty("refunded")]
+        [JsonPropertyName("refunded")]
         public bool Refunded { get; set; }
 
         /// <summary>
         /// A list of refunds that have been applied to the charge.
         /// </summary>
-        [JsonProperty("refunds")]
+        [JsonPropertyName("refunds")]
         public StripeList<Refund> Refunds { get; set; }
 
         #region Expandable Review
@@ -568,7 +568,7 @@ namespace Stripe
             set => this.InternalReview = SetExpandableFieldObject(value, this.InternalReview);
         }
 
-        [JsonProperty("review")]
+        [JsonPropertyName("review")]
         [JsonConverter(typeof(ExpandableFieldConverter<Review>))]
         internal ExpandableField<Review> InternalReview { get; set; }
         #endregion
@@ -576,7 +576,7 @@ namespace Stripe
         /// <summary>
         /// Shipping information for the charge.
         /// </summary>
-        [JsonProperty("shipping")]
+        [JsonPropertyName("shipping")]
         public Shipping Shipping { get; set; }
 
         /// <summary>
@@ -584,7 +584,7 @@ namespace Stripe
         /// or BankAccount object used for the charge. For details about the payment method used for
         /// this charge, refer to <c>payment_method</c> or <c>payment_method_details</c> instead.
         /// </summary>
-        [JsonProperty("source")]
+        [JsonPropertyName("source")]
         [JsonConverter(typeof(StripeObjectConverter))]
         public IPaymentSource Source { get; set; }
 
@@ -618,7 +618,7 @@ namespace Stripe
             set => this.InternalSourceTransfer = SetExpandableFieldObject(value, this.InternalSourceTransfer);
         }
 
-        [JsonProperty("source_transfer")]
+        [JsonPropertyName("source_transfer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Transfer>))]
         internal ExpandableField<Transfer> InternalSourceTransfer { get; set; }
         #endregion
@@ -628,7 +628,7 @@ namespace Stripe
         /// this value as the complete description of a charge on your customers’ statements. Must
         /// contain at least one letter, maximum 22 characters.
         /// </summary>
-        [JsonProperty("statement_descriptor")]
+        [JsonPropertyName("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 
         /// <summary>
@@ -637,14 +637,14 @@ namespace Stripe
         /// on the account to form the complete statement descriptor. Maximum 22 characters for the
         /// concatenated descriptor.
         /// </summary>
-        [JsonProperty("statement_descriptor_suffix")]
+        [JsonPropertyName("statement_descriptor_suffix")]
         public string StatementDescriptorSuffix { get; set; }
 
         /// <summary>
         /// The status of the payment is either <c>succeeded</c>, <c>pending</c>, or <c>failed</c>.
         /// One of: <c>failed</c>, <c>pending</c>, or <c>succeeded</c>.
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
         #region Expandable Transfer
@@ -675,7 +675,7 @@ namespace Stripe
             set => this.InternalTransfer = SetExpandableFieldObject(value, this.InternalTransfer);
         }
 
-        [JsonProperty("transfer")]
+        [JsonPropertyName("transfer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Transfer>))]
         internal ExpandableField<Transfer> InternalTransfer { get; set; }
         #endregion
@@ -685,7 +685,7 @@ namespace Stripe
         /// destination charge. <a href="https://stripe.com/docs/connect/destination-charges">See
         /// the Connect documentation</a> for details.
         /// </summary>
-        [JsonProperty("transfer_data")]
+        [JsonPropertyName("transfer_data")]
         public ChargeTransferData TransferData { get; set; }
 
         /// <summary>
@@ -693,7 +693,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/connect/charges-transfers#transfer-options">Connect
         /// documentation</a> for details.
         /// </summary>
-        [JsonProperty("transfer_group")]
+        [JsonPropertyName("transfer_group")]
         public string TransferGroup { get; set; }
     }
 }

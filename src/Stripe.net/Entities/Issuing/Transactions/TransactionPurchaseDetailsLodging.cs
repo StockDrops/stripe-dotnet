@@ -2,7 +2,7 @@
 namespace Stripe.Issuing
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class TransactionPurchaseDetailsLodging : StripeEntity<TransactionPurchaseDetailsLodging>
@@ -10,14 +10,14 @@ namespace Stripe.Issuing
         /// <summary>
         /// The time of checking into the lodging.
         /// </summary>
-        [JsonProperty("check_in_at")]
+        [JsonPropertyName("check_in_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? CheckInAt { get; set; }
 
         /// <summary>
         /// The number of nights stayed at the lodging.
         /// </summary>
-        [JsonProperty("nights")]
+        [JsonPropertyName("nights")]
         public long? Nights { get; set; }
     }
 }

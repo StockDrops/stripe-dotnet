@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class SetupAttemptPaymentMethodDetailsCardPresent : StripeEntity<SetupAttemptPaymentMethodDetailsCardPresent>
@@ -32,7 +32,7 @@ namespace Stripe
             set => this.InternalGeneratedCard = SetExpandableFieldObject(value, this.InternalGeneratedCard);
         }
 
-        [JsonProperty("generated_card")]
+        [JsonPropertyName("generated_card")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
         internal ExpandableField<PaymentMethod> InternalGeneratedCard { get; set; }
         #endregion

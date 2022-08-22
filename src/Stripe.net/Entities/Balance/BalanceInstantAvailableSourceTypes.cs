@@ -1,26 +1,26 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class BalanceInstantAvailableSourceTypes : StripeEntity<BalanceInstantAvailableSourceTypes>
     {
         /// <summary>
         /// Amount for bank account.
         /// </summary>
-        [JsonProperty("bank_account")]
+        [JsonPropertyName("bank_account")]
         public long BankAccount { get; set; }
 
         /// <summary>
         /// Amount for card.
         /// </summary>
-        [JsonProperty("card")]
+        [JsonPropertyName("card")]
         public long Card { get; set; }
 
         /// <summary>
         /// Amount for FPX.
         /// </summary>
-        [JsonProperty("fpx")]
+        [JsonPropertyName("fpx")]
         public long Fpx { get; set; }
     }
 }

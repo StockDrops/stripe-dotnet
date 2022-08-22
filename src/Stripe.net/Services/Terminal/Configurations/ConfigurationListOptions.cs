@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Terminal
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ConfigurationListOptions : ListOptions
     {
-        [JsonProperty("is_account_default")]
+        [JsonPropertyName("is_account_default")]
         public bool? IsAccountDefault { get; set; }
     }
 }

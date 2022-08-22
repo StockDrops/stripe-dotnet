@@ -1,22 +1,22 @@
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SubscriptionSchedulePhasePlanPriceDataOptions : INestedOptions
     {
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
-        [JsonProperty("product")]
+        [JsonPropertyName("product")]
         public string Product { get; set; }
 
-        [JsonProperty("recurring")]
+        [JsonPropertyName("recurring")]
         public SubscriptionSchedulePhasePlanPriceDataRecurringOptions Recurring { get; set; }
 
-        [JsonProperty("unit_amount")]
+        [JsonPropertyName("unit_amount")]
         public long? UnitAmount { get; set; }
 
-        [JsonProperty("unit_amount_decimal")]
+        [JsonPropertyName("unit_amount_decimal")]
         public decimal? UnitAmountDecimal { get; set; }
     }
 }

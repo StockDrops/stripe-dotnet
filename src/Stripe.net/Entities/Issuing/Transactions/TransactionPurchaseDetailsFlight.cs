@@ -3,7 +3,7 @@ namespace Stripe.Issuing
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class TransactionPurchaseDetailsFlight : StripeEntity<TransactionPurchaseDetailsFlight>
@@ -11,32 +11,32 @@ namespace Stripe.Issuing
         /// <summary>
         /// The time that the flight departed.
         /// </summary>
-        [JsonProperty("departure_at")]
+        [JsonPropertyName("departure_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? DepartureAt { get; set; }
 
         /// <summary>
         /// The name of the passenger.
         /// </summary>
-        [JsonProperty("passenger_name")]
+        [JsonPropertyName("passenger_name")]
         public string PassengerName { get; set; }
 
         /// <summary>
         /// Whether the ticket is refundable.
         /// </summary>
-        [JsonProperty("refundable")]
+        [JsonPropertyName("refundable")]
         public bool? Refundable { get; set; }
 
         /// <summary>
         /// The legs of the trip.
         /// </summary>
-        [JsonProperty("segments")]
+        [JsonPropertyName("segments")]
         public List<TransactionPurchaseDetailsFlightSegment> Segments { get; set; }
 
         /// <summary>
         /// The travel agency that issued the ticket.
         /// </summary>
-        [JsonProperty("travel_agency")]
+        [JsonPropertyName("travel_agency")]
         public string TravelAgency { get; set; }
     }
 }

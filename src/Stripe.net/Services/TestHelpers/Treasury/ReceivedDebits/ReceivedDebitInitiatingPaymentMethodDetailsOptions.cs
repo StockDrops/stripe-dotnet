@@ -1,20 +1,20 @@
 // File generated from our OpenAPI spec
 namespace Stripe.TestHelpers.Treasury
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ReceivedDebitInitiatingPaymentMethodDetailsOptions : INestedOptions
     {
         /// <summary>
         /// The source type.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>
         /// Optional fields for <c>us_bank_account</c>.
         /// </summary>
-        [JsonProperty("us_bank_account")]
+        [JsonPropertyName("us_bank_account")]
         public ReceivedDebitInitiatingPaymentMethodDetailsUsBankAccountOptions UsBankAccount { get; set; }
     }
 }

@@ -1,34 +1,34 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Issuing
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class CardShippingOptions : INestedOptions
     {
         /// <summary>
         /// The address that the card is shipped to.
         /// </summary>
-        [JsonProperty("address")]
+        [JsonPropertyName("address")]
         public AddressOptions Address { get; set; }
 
         /// <summary>
         /// The name printed on the shipping label when shipping the card.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
         /// Shipment service.
         /// One of: <c>express</c>, <c>priority</c>, or <c>standard</c>.
         /// </summary>
-        [JsonProperty("service")]
+        [JsonPropertyName("service")]
         public string Service { get; set; }
 
         /// <summary>
         /// Packaging options.
         /// One of: <c>bulk</c>, or <c>individual</c>.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
     }
 }

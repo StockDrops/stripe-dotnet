@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class PaymentIntentNextActionOxxoDisplayDetails : StripeEntity<PaymentIntentNextActionOxxoDisplayDetails>
@@ -10,7 +10,7 @@ namespace Stripe
         /// <summary>
         /// The timestamp after which the OXXO voucher expires.
         /// </summary>
-        [JsonProperty("expires_after")]
+        [JsonPropertyName("expires_after")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ExpiresAfter { get; set; }
 
@@ -18,13 +18,13 @@ namespace Stripe
         /// The URL for the hosted OXXO voucher page, which allows customers to view and print an
         /// OXXO voucher.
         /// </summary>
-        [JsonProperty("hosted_voucher_url")]
+        [JsonPropertyName("hosted_voucher_url")]
         public string HostedVoucherUrl { get; set; }
 
         /// <summary>
         /// OXXO reference number.
         /// </summary>
-        [JsonProperty("number")]
+        [JsonPropertyName("number")]
         public string Number { get; set; }
     }
 }

@@ -1,20 +1,20 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PaymentIntentPaymentMethodOptionsKlarna : StripeEntity<PaymentIntentPaymentMethodOptionsKlarna>
     {
         /// <summary>
         /// Controls when the funds will be captured from the customer's account.
         /// </summary>
-        [JsonProperty("capture_method")]
+        [JsonPropertyName("capture_method")]
         public string CaptureMethod { get; set; }
 
         /// <summary>
         /// Preferred locale of the Klarna checkout page that the customer is redirected to.
         /// </summary>
-        [JsonProperty("preferred_locale")]
+        [JsonPropertyName("preferred_locale")]
         public string PreferredLocale { get; set; }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace Stripe
         /// optimize your payment flow and comply with regional legislation and network rules, such
         /// as <a href="https://stripe.com/docs/strong-customer-authentication">SCA</a>.
         /// </summary>
-        [JsonProperty("setup_future_usage")]
+        [JsonPropertyName("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
     }
 }

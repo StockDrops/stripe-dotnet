@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// A customer's <c>Cash balance</c> represents real funds. Customers can add funds to their
@@ -14,7 +14,7 @@ namespace Stripe
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
@@ -22,23 +22,23 @@ namespace Stripe
         /// with any cash balances, even if the balance is 0. Amounts are represented in the <a
         /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
-        [JsonProperty("available")]
+        [JsonPropertyName("available")]
         public Dictionary<string, long> Available { get; set; }
 
         /// <summary>
         /// The ID of the customer whose cash balance this object represents.
         /// </summary>
-        [JsonProperty("customer")]
+        [JsonPropertyName("customer")]
         public string Customer { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
-        [JsonProperty("settings")]
+        [JsonPropertyName("settings")]
         public CashBalanceSettings Settings { get; set; }
     }
 }

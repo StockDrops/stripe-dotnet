@@ -1,29 +1,29 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SourceSepaDebit : StripeEntity<SourceSepaDebit>
     {
-        [JsonProperty("bank_code")]
+        [JsonPropertyName("bank_code")]
         public string BankCode { get; set; }
 
-        [JsonProperty("branch_code")]
+        [JsonPropertyName("branch_code")]
         public string BranchCode { get; set; }
 
-        [JsonProperty("country")]
+        [JsonPropertyName("country")]
         public string Country { get; set; }
 
-        [JsonProperty("fingerprint")]
+        [JsonPropertyName("fingerprint")]
         public string Fingerprint { get; set; }
 
-        [JsonProperty("last4")]
+        [JsonPropertyName("last4")]
         public string Last4 { get; set; }
 
-        [JsonProperty("mandate_reference")]
+        [JsonPropertyName("mandate_reference")]
         public string MandateReference { get; set; }
 
-        [JsonProperty("mandate_url")]
+        [JsonPropertyName("mandate_url")]
         public string MandateUrl { get; set; }
     }
 }

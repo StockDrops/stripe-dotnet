@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class CustomerBalanceTransactionCreateOptions : BaseOptions, IHasMetadata
     {
@@ -10,7 +10,7 @@ namespace Stripe
         /// The integer amount in <strong>cents (or local equivalent)</strong> to apply to the
         /// customer's credit balance.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long? Amount { get; set; }
 
         /// <summary>
@@ -21,13 +21,13 @@ namespace Stripe
         /// is set, this value must match it. If the customer's <c>currency</c> is not set, it will
         /// be updated to this value.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
     }
 }

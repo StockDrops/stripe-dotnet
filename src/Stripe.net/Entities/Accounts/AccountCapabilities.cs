@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class AccountCapabilities : StripeEntity<AccountCapabilities>
     {
@@ -10,7 +10,7 @@ namespace Stripe
         /// whether the account can directly process Canadian pre-authorized debits charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
-        [JsonProperty("acss_debit_payments")]
+        [JsonPropertyName("acss_debit_payments")]
         public string AcssDebitPayments { get; set; }
 
         /// <summary>
@@ -18,7 +18,7 @@ namespace Stripe
         /// process Affirm charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
-        [JsonProperty("affirm_payments")]
+        [JsonPropertyName("affirm_payments")]
         public string AffirmPayments { get; set; }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace Stripe
         /// can directly process Afterpay Clearpay charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
-        [JsonProperty("afterpay_clearpay_payments")]
+        [JsonPropertyName("afterpay_clearpay_payments")]
         public string AfterpayClearpayPayments { get; set; }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace Stripe
         /// the account can directly process BECS Direct Debit (AU) charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
-        [JsonProperty("au_becs_debit_payments")]
+        [JsonPropertyName("au_becs_debit_payments")]
         public string AuBecsDebitPayments { get; set; }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Stripe
         /// account can directly process Bacs Direct Debits charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
-        [JsonProperty("bacs_debit_payments")]
+        [JsonPropertyName("bacs_debit_payments")]
         public string BacsDebitPayments { get; set; }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Stripe
         /// can directly process Bancontact charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
-        [JsonProperty("bancontact_payments")]
+        [JsonPropertyName("bancontact_payments")]
         public string BancontactPayments { get; set; }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Stripe
         /// account can directly process customer_balance charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
-        [JsonProperty("bank_transfer_payments")]
+        [JsonPropertyName("bank_transfer_payments")]
         public string BankTransferPayments { get; set; }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Stripe
         /// directly process blik charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
-        [JsonProperty("blik_payments")]
+        [JsonPropertyName("blik_payments")]
         public string BlikPayments { get; set; }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Stripe
         /// directly process boleto charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
-        [JsonProperty("boleto_payments")]
+        [JsonPropertyName("boleto_payments")]
         public string BoletoPayments { get; set; }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Stripe
         /// to distribute funds on cards.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
-        [JsonProperty("card_issuing")]
+        [JsonPropertyName("card_issuing")]
         public string CardIssuing { get; set; }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Stripe
         /// directly process credit and debit card charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
-        [JsonProperty("card_payments")]
+        [JsonPropertyName("card_payments")]
         public string CardPayments { get; set; }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace Stripe
         /// account can directly process Cartes Bancaires card charges in EUR currency.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
-        [JsonProperty("cartes_bancaires_payments")]
+        [JsonPropertyName("cartes_bancaires_payments")]
         public string CartesBancairesPayments { get; set; }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace Stripe
         /// directly process EPS charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
-        [JsonProperty("eps_payments")]
+        [JsonPropertyName("eps_payments")]
         public string EpsPayments { get; set; }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace Stripe
         /// directly process FPX charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
-        [JsonProperty("fpx_payments")]
+        [JsonPropertyName("fpx_payments")]
         public string FpxPayments { get; set; }
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace Stripe
         /// directly process giropay charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
-        [JsonProperty("giropay_payments")]
+        [JsonPropertyName("giropay_payments")]
         public string GiropayPayments { get; set; }
 
         /// <summary>
@@ -130,7 +130,7 @@ namespace Stripe
         /// directly process GrabPay charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
-        [JsonProperty("grabpay_payments")]
+        [JsonPropertyName("grabpay_payments")]
         public string GrabpayPayments { get; set; }
 
         /// <summary>
@@ -138,7 +138,7 @@ namespace Stripe
         /// directly process iDEAL charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
-        [JsonProperty("ideal_payments")]
+        [JsonPropertyName("ideal_payments")]
         public string IdealPayments { get; set; }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace Stripe
         /// only) can directly process JCB credit card charges in JPY currency.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
-        [JsonProperty("jcb_payments")]
+        [JsonPropertyName("jcb_payments")]
         public string JcbPayments { get; set; }
 
         /// <summary>
@@ -154,7 +154,7 @@ namespace Stripe
         /// directly process Klarna charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
-        [JsonProperty("klarna_payments")]
+        [JsonPropertyName("klarna_payments")]
         public string KlarnaPayments { get; set; }
 
         /// <summary>
@@ -162,14 +162,14 @@ namespace Stripe
         /// directly process konbini charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
-        [JsonProperty("konbini_payments")]
+        [JsonPropertyName("konbini_payments")]
         public string KonbiniPayments { get; set; }
 
         /// <summary>
         /// The status of the legacy payments capability of the account.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
-        [JsonProperty("legacy_payments")]
+        [JsonPropertyName("legacy_payments")]
         public string LegacyPayments { get; set; }
 
         /// <summary>
@@ -177,7 +177,7 @@ namespace Stripe
         /// directly process Link charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
-        [JsonProperty("link_payments")]
+        [JsonPropertyName("link_payments")]
         public string LinkPayments { get; set; }
 
         /// <summary>
@@ -185,7 +185,7 @@ namespace Stripe
         /// directly process OXXO charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
-        [JsonProperty("oxxo_payments")]
+        [JsonPropertyName("oxxo_payments")]
         public string OxxoPayments { get; set; }
 
         /// <summary>
@@ -193,7 +193,7 @@ namespace Stripe
         /// directly process P24 charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
-        [JsonProperty("p24_payments")]
+        [JsonPropertyName("p24_payments")]
         public string P24Payments { get; set; }
 
         /// <summary>
@@ -201,7 +201,7 @@ namespace Stripe
         /// directly process paynow charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
-        [JsonProperty("paynow_payments")]
+        [JsonPropertyName("paynow_payments")]
         public string PaynowPayments { get; set; }
 
         /// <summary>
@@ -209,7 +209,7 @@ namespace Stripe
         /// can directly process promptpay charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
-        [JsonProperty("promptpay_payments")]
+        [JsonPropertyName("promptpay_payments")]
         public string PromptpayPayments { get; set; }
 
         /// <summary>
@@ -217,7 +217,7 @@ namespace Stripe
         /// account can directly process SEPA Direct Debits charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
-        [JsonProperty("sepa_debit_payments")]
+        [JsonPropertyName("sepa_debit_payments")]
         public string SepaDebitPayments { get; set; }
 
         /// <summary>
@@ -225,21 +225,21 @@ namespace Stripe
         /// directly process Sofort charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
-        [JsonProperty("sofort_payments")]
+        [JsonPropertyName("sofort_payments")]
         public string SofortPayments { get; set; }
 
         /// <summary>
         /// The status of the tax reporting 1099-K (US) capability of the account.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
-        [JsonProperty("tax_reporting_us_1099_k")]
+        [JsonPropertyName("tax_reporting_us_1099_k")]
         public string TaxReportingUs1099K { get; set; }
 
         /// <summary>
         /// The status of the tax reporting 1099-MISC (US) capability of the account.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
-        [JsonProperty("tax_reporting_us_1099_misc")]
+        [JsonPropertyName("tax_reporting_us_1099_misc")]
         public string TaxReportingUs1099Misc { get; set; }
 
         /// <summary>
@@ -247,14 +247,14 @@ namespace Stripe
         /// transfer funds to the account.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
-        [JsonProperty("transfers")]
+        [JsonPropertyName("transfers")]
         public string Transfers { get; set; }
 
         /// <summary>
         /// The status of the banking capability, or whether the account can have bank accounts.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
-        [JsonProperty("treasury")]
+        [JsonPropertyName("treasury")]
         public string Treasury { get; set; }
 
         /// <summary>
@@ -262,7 +262,7 @@ namespace Stripe
         /// account can directly process US bank account charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
-        [JsonProperty("us_bank_account_ach_payments")]
+        [JsonPropertyName("us_bank_account_ach_payments")]
         public string UsBankAccountAchPayments { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class MandatePaymentMethodDetailsBlik : StripeEntity<MandatePaymentMethodDetailsBlik>
@@ -10,18 +10,18 @@ namespace Stripe
         /// <summary>
         /// Date at which the mandate expires.
         /// </summary>
-        [JsonProperty("expires_after")]
+        [JsonPropertyName("expires_after")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ExpiresAfter { get; set; }
 
-        [JsonProperty("off_session")]
+        [JsonPropertyName("off_session")]
         public MandatePaymentMethodDetailsBlikOffSession OffSession { get; set; }
 
         /// <summary>
         /// Type of the mandate.
         /// One of: <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
     }
 }

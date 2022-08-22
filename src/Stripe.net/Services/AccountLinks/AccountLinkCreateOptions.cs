@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class AccountLinkCreateOptions : BaseOptions
     {
         /// <summary>
         /// The identifier of the account to create an account link for.
         /// </summary>
-        [JsonProperty("account")]
+        [JsonPropertyName("account")]
         public string Account { get; set; }
 
         /// <summary>
@@ -16,7 +16,7 @@ namespace Stripe
         /// <c>currently_due</c> or <c>eventually_due</c>. Default is <c>currently_due</c>.
         /// One of: <c>currently_due</c>, or <c>eventually_due</c>.
         /// </summary>
-        [JsonProperty("collect")]
+        [JsonPropertyName("collect")]
         public string Collect { get; set; }
 
         /// <summary>
@@ -27,13 +27,13 @@ namespace Stripe
         /// Connect Onboarding. If a new account link cannot be generated or the redirect fails you
         /// should display a useful error to the user.
         /// </summary>
-        [JsonProperty("refresh_url")]
+        [JsonPropertyName("refresh_url")]
         public string RefreshUrl { get; set; }
 
         /// <summary>
         /// The URL that the user will be redirected to upon leaving or completing the linked flow.
         /// </summary>
-        [JsonProperty("return_url")]
+        [JsonPropertyName("return_url")]
         public string ReturnUrl { get; set; }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Stripe
         /// One of: <c>account_onboarding</c>, <c>account_update</c>, <c>custom_account_update</c>,
         /// or <c>custom_account_verification</c>.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
     }
 }

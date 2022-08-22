@@ -3,7 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -20,25 +20,25 @@ namespace Stripe
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
-        [JsonProperty("ach_credit_transfer")]
+        [JsonPropertyName("ach_credit_transfer")]
         public SourceAchCreditTransfer AchCreditTransfer { get; set; }
 
-        [JsonProperty("ach_debit")]
+        [JsonPropertyName("ach_debit")]
         public SourceAchDebit AchDebit { get; set; }
 
-        [JsonProperty("acss_debit")]
+        [JsonPropertyName("acss_debit")]
         public SourceAcssDebit AcssDebit { get; set; }
 
-        [JsonProperty("alipay")]
+        [JsonPropertyName("alipay")]
         public SourceAlipay Alipay { get; set; }
 
         /// <summary>
@@ -47,34 +47,34 @@ namespace Stripe
         /// with the source. This is the amount for which the source will be chargeable once ready.
         /// Required for <c>single_use</c> sources.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long? Amount { get; set; }
 
-        [JsonProperty("au_becs_debit")]
+        [JsonPropertyName("au_becs_debit")]
         public SourceAuBecsDebit AuBecsDebit { get; set; }
 
-        [JsonProperty("bancontact")]
+        [JsonPropertyName("bancontact")]
         public SourceBancontact Bancontact { get; set; }
 
-        [JsonProperty("card")]
+        [JsonPropertyName("card")]
         public SourceCard Card { get; set; }
 
-        [JsonProperty("card_present")]
+        [JsonPropertyName("card_present")]
         public SourceCardPresent CardPresent { get; set; }
 
         /// <summary>
         /// The client secret of the source. Used for client-side retrieval using a publishable key.
         /// </summary>
-        [JsonProperty("client_secret")]
+        [JsonPropertyName("client_secret")]
         public string ClientSecret { get; set; }
 
-        [JsonProperty("code_verification")]
+        [JsonPropertyName("code_verification")]
         public SourceCodeVerification CodeVerification { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -83,40 +83,40 @@ namespace Stripe
         /// associated with the source. This is the currency for which the source will be chargeable
         /// once ready. Required for <c>single_use</c> sources.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
         /// The ID of the customer to which this source is attached. This will not be present when
         /// the source has not been attached to a customer.
         /// </summary>
-        [JsonProperty("customer")]
+        [JsonPropertyName("customer")]
         public string Customer { get; set; }
 
-        [JsonProperty("eps")]
+        [JsonPropertyName("eps")]
         public SourceEps Eps { get; set; }
 
         /// <summary>
         /// The authentication <c>flow</c> of the source. <c>flow</c> is one of <c>redirect</c>,
         /// <c>receiver</c>, <c>code_verification</c>, <c>none</c>.
         /// </summary>
-        [JsonProperty("flow")]
+        [JsonPropertyName("flow")]
         public string Flow { get; set; }
 
-        [JsonProperty("giropay")]
+        [JsonPropertyName("giropay")]
         public SourceGiropay Giropay { get; set; }
 
-        [JsonProperty("ideal")]
+        [JsonPropertyName("ideal")]
         public SourceIdeal Ideal { get; set; }
 
-        [JsonProperty("klarna")]
+        [JsonPropertyName("klarna")]
         public SourceKlarna Klarna { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -124,45 +124,45 @@ namespace Stripe
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
-        [JsonProperty("multibanco")]
+        [JsonPropertyName("multibanco")]
         public SourceMultibanco Multibanco { get; set; }
 
         /// <summary>
         /// Information about the owner of the payment instrument that may be used or required by
         /// particular source types.
         /// </summary>
-        [JsonProperty("owner")]
+        [JsonPropertyName("owner")]
         public SourceOwner Owner { get; set; }
 
-        [JsonProperty("p24")]
+        [JsonPropertyName("p24")]
         public SourceP24 P24 { get; set; }
 
-        [JsonProperty("receiver")]
+        [JsonPropertyName("receiver")]
         public SourceReceiver Receiver { get; set; }
 
-        [JsonProperty("redirect")]
+        [JsonPropertyName("redirect")]
         public SourceRedirect Redirect { get; set; }
 
-        [JsonProperty("sepa_credit_transfer")]
+        [JsonPropertyName("sepa_credit_transfer")]
         public SourceSepaCreditTransfer SepaCreditTransfer { get; set; }
 
-        [JsonProperty("sepa_debit")]
+        [JsonPropertyName("sepa_debit")]
         public SourceSepaDebit SepaDebit { get; set; }
 
-        [JsonProperty("sofort")]
+        [JsonPropertyName("sofort")]
         public SourceSofort Sofort { get; set; }
 
-        [JsonProperty("source_order")]
+        [JsonPropertyName("source_order")]
         public SourceSourceOrder SourceOrder { get; set; }
 
         /// <summary>
         /// Extra information about a source. This will appear on your customer's statement every
         /// time you charge the source.
         /// </summary>
-        [JsonProperty("statement_descriptor")]
+        [JsonPropertyName("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 
         /// <summary>
@@ -170,10 +170,10 @@ namespace Stripe
         /// <c>failed</c>, or <c>pending</c>. Only <c>chargeable</c> sources can be used to create a
         /// charge.
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
-        [JsonProperty("three_d_secure")]
+        [JsonPropertyName("three_d_secure")]
         public SourceThreeDSecure ThreeDSecure { get; set; }
 
         /// <summary>
@@ -190,7 +190,7 @@ namespace Stripe
         /// <c>sepa_credit_transfer</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>three_d_secure</c>, or
         /// <c>wechat</c>.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>
@@ -199,10 +199,10 @@ namespace Stripe
         /// leave the option at creation. If an incompatible value is passed, an error will be
         /// returned.
         /// </summary>
-        [JsonProperty("usage")]
+        [JsonPropertyName("usage")]
         public string Usage { get; set; }
 
-        [JsonProperty("wechat")]
+        [JsonPropertyName("wechat")]
         public SourceWechat Wechat { get; set; }
     }
 }

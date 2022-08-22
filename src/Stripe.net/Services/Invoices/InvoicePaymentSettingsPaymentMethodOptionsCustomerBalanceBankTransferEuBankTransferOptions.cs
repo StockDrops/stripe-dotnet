@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class InvoicePaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferEuBankTransferOptions : INestedOptions
     {
@@ -9,7 +9,7 @@ namespace Stripe
         /// The desired country code of the bank account information. Permitted values include:
         /// <c>DE</c>, <c>ES</c>, <c>FR</c>, <c>IE</c>, or <c>NL</c>.
         /// </summary>
-        [JsonProperty("country")]
+        [JsonPropertyName("country")]
         public string Country { get; set; }
     }
 }

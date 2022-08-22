@@ -2,14 +2,14 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class TopupCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// A positive integer representing how much to transfer.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long? Amount { get; set; }
 
         /// <summary>
@@ -17,13 +17,13 @@ namespace Stripe
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -41,20 +41,20 @@ namespace Stripe
         /// specified currency. In test mode, this can be a test bank token (see <a
         /// href="https://stripe.com/docs/connect/testing#testing-top-ups">Testing Top-ups</a>).
         /// </summary>
-        [JsonProperty("source")]
+        [JsonPropertyName("source")]
         public string Source { get; set; }
 
         /// <summary>
         /// Extra information about a top-up for the source's bank statement. Limited to 15 ASCII
         /// characters.
         /// </summary>
-        [JsonProperty("statement_descriptor")]
+        [JsonPropertyName("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 
         /// <summary>
         /// A string that identifies this top-up as part of a group.
         /// </summary>
-        [JsonProperty("transfer_group")]
+        [JsonPropertyName("transfer_group")]
         public string TransferGroup { get; set; }
     }
 }

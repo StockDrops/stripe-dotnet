@@ -2,7 +2,7 @@
 namespace Stripe.FinancialConnections
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class AccountBalanceCredit : StripeEntity<AccountBalanceCredit>
     {
@@ -16,7 +16,7 @@ namespace Stripe.FinancialConnections
         /// Each value is a integer amount. A positive amount indicates money owed to the account
         /// holder. A negative amount indicates money owed by the account holder.
         /// </summary>
-        [JsonProperty("used")]
+        [JsonPropertyName("used")]
         public Dictionary<string, long> Used { get; set; }
     }
 }

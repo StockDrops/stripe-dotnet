@@ -3,7 +3,7 @@ namespace Stripe.Issuing
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -19,13 +19,13 @@ namespace Stripe.Issuing
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
@@ -34,36 +34,36 @@ namespace Stripe.Issuing
         /// Usually the amount of the <c>transaction</c>, but can differ (usually because of
         /// currency fluctuation).
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long Amount { get; set; }
 
         /// <summary>
         /// List of balance transactions associated with the dispute.
         /// </summary>
-        [JsonProperty("balance_transactions")]
+        [JsonPropertyName("balance_transactions")]
         public List<BalanceTransaction> BalanceTransactions { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The currency the <c>transaction</c> was made in.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
-        [JsonProperty("evidence")]
+        [JsonPropertyName("evidence")]
         public DisputeEvidence Evidence { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace Stripe.Issuing
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Stripe.Issuing
         /// One of: <c>expired</c>, <c>lost</c>, <c>submitted</c>, <c>unsubmitted</c>, or
         /// <c>won</c>.
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
         #region Expandable Transaction
@@ -108,7 +108,7 @@ namespace Stripe.Issuing
             set => this.InternalTransaction = SetExpandableFieldObject(value, this.InternalTransaction);
         }
 
-        [JsonProperty("transaction")]
+        [JsonPropertyName("transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<Transaction>))]
         internal ExpandableField<Transaction> InternalTransaction { get; set; }
         #endregion
@@ -117,7 +117,7 @@ namespace Stripe.Issuing
         /// <a href="https://stripe.com/docs/api/treasury">Treasury</a> details related to this
         /// dispute if it was created on a [FinancialAccount](/docs/api/treasury/financial_accounts.
         /// </summary>
-        [JsonProperty("treasury")]
+        [JsonPropertyName("treasury")]
         public DisputeTreasury Treasury { get; set; }
     }
 }

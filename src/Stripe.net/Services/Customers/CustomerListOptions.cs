@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class CustomerListOptions : ListOptionsWithCreated
     {
-        [JsonProperty("email")]
+        [JsonPropertyName("email")]
         public string Email { get; set; }
 
-        [JsonProperty("test_clock")]
+        [JsonPropertyName("test_clock")]
         public string TestClock { get; set; }
     }
 }

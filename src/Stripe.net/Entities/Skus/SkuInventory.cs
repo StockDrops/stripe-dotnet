@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SkuInventory : StripeEntity<SkuInventory>
     {
@@ -9,14 +9,14 @@ namespace Stripe
         /// The count of inventory available. Will be present if and only if <c>type</c> is
         /// <c>finite</c>.
         /// </summary>
-        [JsonProperty("quantity")]
+        [JsonPropertyName("quantity")]
         public long? Quantity { get; set; }
 
         /// <summary>
         /// Inventory type. Possible values are <c>finite</c>, <c>bucket</c> (not quantified), and
         /// <c>infinite</c>.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace Stripe
         /// <c>limited</c>, and <c>out_of_stock</c>. Will be present if and only if <c>type</c> is
         /// <c>bucket</c>.
         /// </summary>
-        [JsonProperty("value")]
+        [JsonPropertyName("value")]
         public string Value { get; set; }
     }
 }

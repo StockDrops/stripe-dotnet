@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ChargePaymentMethodDetailsKlarna : StripeEntity<ChargePaymentMethodDetailsKlarna>
     {
@@ -9,7 +9,7 @@ namespace Stripe
         /// The Klarna payment method used for this transaction. Can be one of <c>pay_later</c>,
         /// <c>pay_now</c>, <c>pay_with_financing</c>, or <c>pay_in_installments</c>.
         /// </summary>
-        [JsonProperty("payment_method_category")]
+        [JsonPropertyName("payment_method_category")]
         public string PaymentMethodCategory { get; set; }
 
         /// <summary>
@@ -21,7 +21,7 @@ namespace Stripe
         /// <c>en-SE</c>, <c>en-US</c>, <c>es-US</c>, <c>fr-FR</c>, <c>en-FR</c>, <c>en-AU</c>,
         /// <c>en-NZ</c>, <c>en-CA</c>, or <c>fr-CA</c>.
         /// </summary>
-        [JsonProperty("preferred_locale")]
+        [JsonPropertyName("preferred_locale")]
         public string PreferredLocale { get; set; }
     }
 }

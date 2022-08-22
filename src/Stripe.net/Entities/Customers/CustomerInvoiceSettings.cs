@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class CustomerInvoiceSettings : StripeEntity<CustomerInvoiceSettings>
@@ -10,7 +10,7 @@ namespace Stripe
         /// <summary>
         /// Default custom fields to be displayed on invoices for this customer.
         /// </summary>
-        [JsonProperty("custom_fields")]
+        [JsonPropertyName("custom_fields")]
         public List<CustomerInvoiceSettingsCustomField> CustomFields { get; set; }
 
         #region Expandable DefaultPaymentMethod
@@ -41,7 +41,7 @@ namespace Stripe
             set => this.InternalDefaultPaymentMethod = SetExpandableFieldObject(value, this.InternalDefaultPaymentMethod);
         }
 
-        [JsonProperty("default_payment_method")]
+        [JsonPropertyName("default_payment_method")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
         internal ExpandableField<PaymentMethod> InternalDefaultPaymentMethod { get; set; }
         #endregion
@@ -49,13 +49,13 @@ namespace Stripe
         /// <summary>
         /// Default footer to be displayed on invoices for this customer.
         /// </summary>
-        [JsonProperty("footer")]
+        [JsonPropertyName("footer")]
         public string Footer { get; set; }
 
         /// <summary>
         /// Default options for invoice PDF rendering for this customer.
         /// </summary>
-        [JsonProperty("rendering_options")]
+        [JsonPropertyName("rendering_options")]
         public CustomerInvoiceSettingsRenderingOptions RenderingOptions { get; set; }
     }
 }

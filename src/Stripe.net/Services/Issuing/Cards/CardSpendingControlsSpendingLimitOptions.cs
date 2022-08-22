@@ -2,14 +2,14 @@
 namespace Stripe.Issuing
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class CardSpendingControlsSpendingLimitOptions : INestedOptions
     {
         /// <summary>
         /// Maximum amount allowed to spend per interval.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long? Amount { get; set; }
 
         /// <summary>
@@ -17,7 +17,7 @@ namespace Stripe.Issuing
         /// href="https://stripe.com/docs/api#issuing_authorization_object-merchant_data-category">categories</a>
         /// this limit applies to. Omitting this field will apply the limit to all categories.
         /// </summary>
-        [JsonProperty("categories")]
+        [JsonPropertyName("categories")]
         public List<string> Categories { get; set; }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace Stripe.Issuing
         /// One of: <c>all_time</c>, <c>daily</c>, <c>monthly</c>, <c>per_authorization</c>,
         /// <c>weekly</c>, or <c>yearly</c>.
         /// </summary>
-        [JsonProperty("interval")]
+        [JsonPropertyName("interval")]
         public string Interval { get; set; }
     }
 }

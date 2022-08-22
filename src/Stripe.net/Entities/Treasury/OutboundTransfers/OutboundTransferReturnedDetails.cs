@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Treasury
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class OutboundTransferReturnedDetails : StripeEntity<OutboundTransferReturnedDetails>
@@ -13,7 +13,7 @@ namespace Stripe.Treasury
         /// <c>invalid_account_number</c>, <c>invalid_currency</c>, <c>no_account</c>, or
         /// <c>other</c>.
         /// </summary>
-        [JsonProperty("code")]
+        [JsonPropertyName("code")]
         public string Code { get; set; }
 
         #region Expandable Transaction
@@ -42,7 +42,7 @@ namespace Stripe.Treasury
             set => this.InternalTransaction = SetExpandableFieldObject(value, this.InternalTransaction);
         }
 
-        [JsonProperty("transaction")]
+        [JsonPropertyName("transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<Transaction>))]
         internal ExpandableField<Transaction> InternalTransaction { get; set; }
         #endregion

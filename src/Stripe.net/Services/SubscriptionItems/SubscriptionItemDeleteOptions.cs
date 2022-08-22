@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class SubscriptionItemDeleteOptions : BaseOptions
@@ -11,7 +11,7 @@ namespace Stripe
         /// Delete all usage for the given subscription item. Allowed only when the current plan's
         /// <c>usage_type</c> is <c>metered</c>.
         /// </summary>
-        [JsonProperty("clear_usage")]
+        [JsonPropertyName("clear_usage")]
         public bool? ClearUsage { get; set; }
 
         /// <summary>
@@ -22,7 +22,7 @@ namespace Stripe
         /// changes.
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
         /// </summary>
-        [JsonProperty("proration_behavior")]
+        [JsonPropertyName("proration_behavior")]
         public string ProrationBehavior { get; set; }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/api#retrieve_customer_invoice">upcoming invoice</a>
         /// endpoint.
         /// </summary>
-        [JsonProperty("proration_date")]
+        [JsonPropertyName("proration_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ProrationDate { get; set; }
     }

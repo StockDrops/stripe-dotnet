@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class InvoiceLineItemCustomerDetailsTaxIdOptions : INestedOptions
     {
@@ -26,13 +26,13 @@ namespace Stripe
         /// <c>ru_kpp</c>, <c>sa_vat</c>, <c>sg_gst</c>, <c>sg_uen</c>, <c>si_tin</c>,
         /// <c>th_vat</c>, <c>tw_vat</c>, <c>ua_vat</c>, <c>us_ein</c>, or <c>za_vat</c>.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>
         /// Value of the tax ID.
         /// </summary>
-        [JsonProperty("value")]
+        [JsonPropertyName("value")]
         public string Value { get; set; }
     }
 }

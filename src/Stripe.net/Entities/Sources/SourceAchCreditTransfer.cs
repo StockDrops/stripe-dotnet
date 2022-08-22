@@ -1,32 +1,32 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SourceAchCreditTransfer : StripeEntity<SourceAchCreditTransfer>
     {
-        [JsonProperty("account_number")]
+        [JsonPropertyName("account_number")]
         public string AccountNumber { get; set; }
 
-        [JsonProperty("bank_name")]
+        [JsonPropertyName("bank_name")]
         public string BankName { get; set; }
 
-        [JsonProperty("fingerprint")]
+        [JsonPropertyName("fingerprint")]
         public string Fingerprint { get; set; }
 
-        [JsonProperty("refund_account_holder_name")]
+        [JsonPropertyName("refund_account_holder_name")]
         public string RefundAccountHolderName { get; set; }
 
-        [JsonProperty("refund_account_holder_type")]
+        [JsonPropertyName("refund_account_holder_type")]
         public string RefundAccountHolderType { get; set; }
 
-        [JsonProperty("refund_routing_number")]
+        [JsonPropertyName("refund_routing_number")]
         public string RefundRoutingNumber { get; set; }
 
-        [JsonProperty("routing_number")]
+        [JsonPropertyName("routing_number")]
         public string RoutingNumber { get; set; }
 
-        [JsonProperty("swift_code")]
+        [JsonPropertyName("swift_code")]
         public string SwiftCode { get; set; }
     }
 }

@@ -2,62 +2,62 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class UpcomingInvoiceListLineItemsOptions : ListOptions
     {
-        [JsonProperty("coupon")]
+        [JsonPropertyName("coupon")]
         public string Coupon { get; set; }
 
-        [JsonProperty("customer")]
+        [JsonPropertyName("customer")]
         public string Customer { get; set; }
 
-        [JsonProperty("invoice_items")]
+        [JsonPropertyName("invoice_items")]
         public List<InvoiceUpcomingInvoiceItemOptions> InvoiceItems { get; set; }
 
-        [JsonProperty("schedule")]
+        [JsonPropertyName("schedule")]
         public string Schedule { get; set; }
 
-        [JsonProperty("subscription_billing_cycle_anchor")]
+        [JsonPropertyName("subscription_billing_cycle_anchor")]
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<DateTime?, SubscriptionBillingCycleAnchor> SubscriptionBillingCycleAnchor { get; set; }
 
-        [JsonProperty("subscription_cancel_at")]
+        [JsonPropertyName("subscription_cancel_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? SubscriptionCancelAt { get; set; }
 
-        [JsonProperty("subscription_cancel_at_period_end")]
+        [JsonPropertyName("subscription_cancel_at_period_end")]
         public bool? SubscriptionCancelAtPeriodEnd { get; set; }
 
-        [JsonProperty("subscription_cancel_now")]
+        [JsonPropertyName("subscription_cancel_now")]
         public bool? SubscriptionCancelNow { get; set; }
 
-        [JsonProperty("subscription_default_tax_rates")]
+        [JsonPropertyName("subscription_default_tax_rates")]
         public List<string> SubscriptionDefaultTaxRates { get; set; }
 
-        [JsonProperty("subscription")]
+        [JsonPropertyName("subscription")]
         public string Subscription { get; set; }
 
-        [JsonProperty("subscription_items")]
+        [JsonPropertyName("subscription_items")]
         public List<InvoiceSubscriptionItemOptions> SubscriptionItems { get; set; }
 
         [Obsolete("Use SubscriptionProrationBehavior instead.")]
-        [JsonProperty("subscription_prorate")]
+        [JsonPropertyName("subscription_prorate")]
         public bool? SubscriptionProrate { get; set; }
 
-        [JsonProperty("subscription_proration_behavior")]
+        [JsonPropertyName("subscription_proration_behavior")]
         public string SubscriptionProrationBehavior { get; set; }
 
-        [JsonProperty("subscription_proration_date")]
+        [JsonPropertyName("subscription_proration_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? SubscriptionProrationDate { get; set; }
 
-        [JsonProperty("subscription_trial_end")]
+        [JsonPropertyName("subscription_trial_end")]
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<DateTime?, SubscriptionTrialEnd> SubscriptionTrialEnd { get; set; }
 
-        [JsonProperty("subscription_trial_from_plan")]
+        [JsonPropertyName("subscription_trial_from_plan")]
         public bool? SubscriptionTrialFromPlan { get; set; }
     }
 }

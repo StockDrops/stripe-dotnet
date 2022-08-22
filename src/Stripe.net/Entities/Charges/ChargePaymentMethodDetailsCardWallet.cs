@@ -1,29 +1,29 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ChargePaymentMethodDetailsCardWallet : StripeEntity<ChargePaymentMethodDetailsCardWallet>
     {
-        [JsonProperty("amex_express_checkout")]
+        [JsonPropertyName("amex_express_checkout")]
         public ChargePaymentMethodDetailsCardWalletAmexExpressCheckout AmexExpressCheckout { get; set; }
 
-        [JsonProperty("apple_pay")]
+        [JsonPropertyName("apple_pay")]
         public ChargePaymentMethodDetailsCardWalletApplePay ApplePay { get; set; }
 
         /// <summary>
         /// (For tokenized numbers only.) The last four digits of the device account number.
         /// </summary>
-        [JsonProperty("dynamic_last4")]
+        [JsonPropertyName("dynamic_last4")]
         public string DynamicLast4 { get; set; }
 
-        [JsonProperty("google_pay")]
+        [JsonPropertyName("google_pay")]
         public ChargePaymentMethodDetailsCardWalletGooglePay GooglePay { get; set; }
 
-        [JsonProperty("masterpass")]
+        [JsonPropertyName("masterpass")]
         public ChargePaymentMethodDetailsCardWalletMasterpass Masterpass { get; set; }
 
-        [JsonProperty("samsung_pay")]
+        [JsonPropertyName("samsung_pay")]
         public ChargePaymentMethodDetailsCardWalletSamsungPay SamsungPay { get; set; }
 
         /// <summary>
@@ -34,10 +34,10 @@ namespace Stripe
         /// One of: <c>amex_express_checkout</c>, <c>apple_pay</c>, <c>google_pay</c>,
         /// <c>masterpass</c>, <c>samsung_pay</c>, or <c>visa_checkout</c>.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
-        [JsonProperty("visa_checkout")]
+        [JsonPropertyName("visa_checkout")]
         public ChargePaymentMethodDetailsCardWalletVisaCheckout VisaCheckout { get; set; }
     }
 }

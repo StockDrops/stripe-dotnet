@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class AccountSettingsBranding : StripeEntity<AccountSettingsBranding>
@@ -34,7 +34,7 @@ namespace Stripe
             set => this.InternalIcon = SetExpandableFieldObject(value, this.InternalIcon);
         }
 
-        [JsonProperty("icon")]
+        [JsonPropertyName("icon")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
         internal ExpandableField<File> InternalIcon { get; set; }
         #endregion
@@ -69,7 +69,7 @@ namespace Stripe
             set => this.InternalLogo = SetExpandableFieldObject(value, this.InternalLogo);
         }
 
-        [JsonProperty("logo")]
+        [JsonPropertyName("logo")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
         internal ExpandableField<File> InternalLogo { get; set; }
         #endregion
@@ -77,13 +77,13 @@ namespace Stripe
         /// <summary>
         /// A CSS hex color value representing the primary branding color for this account.
         /// </summary>
-        [JsonProperty("primary_color")]
+        [JsonPropertyName("primary_color")]
         public string PrimaryColor { get; set; }
 
         /// <summary>
         /// A CSS hex color value representing the secondary branding color for this account.
         /// </summary>
-        [JsonProperty("secondary_color")]
+        [JsonPropertyName("secondary_color")]
         public string SecondaryColor { get; set; }
     }
 }

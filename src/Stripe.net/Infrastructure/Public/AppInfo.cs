@@ -1,7 +1,7 @@
 namespace Stripe
 {
     using System.Text;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// Contains information about the "app" which this integration belongs to. This should be
@@ -10,21 +10,21 @@ namespace Stripe
     public class AppInfo
     {
         /// <summary>Gets or sets the name of your application (e.g. <c>"MyAwesomeApp"</c>).</summary>
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets your Stripe Partner ID (e.g. <c>"pp_partner_1234"</c>), if you have one.
         /// </summary>
-        [JsonProperty("partner_id")]
+        [JsonPropertyName("partner_id")]
         public string PartnerId { get; set; }
 
         /// <summary>Gets or sets the version of your application (e.g. <c>"1.2.34"</c>).</summary>
-        [JsonProperty("version")]
+        [JsonPropertyName("version")]
         public string Version { get; set; }
 
         /// <summary>Gets or sets the website for your application (e.g. <c>"https://myawesomeapp.info"</c>).</summary>
-        [JsonProperty("url")]
+        [JsonPropertyName("url")]
         public string Url { get; set; }
 
         /// <summary>

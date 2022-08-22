@@ -1,23 +1,23 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Treasury
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class OutboundTransferDestinationPaymentMethodDetailsBillingDetails : StripeEntity<OutboundTransferDestinationPaymentMethodDetailsBillingDetails>
     {
-        [JsonProperty("address")]
+        [JsonPropertyName("address")]
         public Address Address { get; set; }
 
         /// <summary>
         /// Email address.
         /// </summary>
-        [JsonProperty("email")]
+        [JsonPropertyName("email")]
         public string Email { get; set; }
 
         /// <summary>
         /// Full name.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
     }
 }

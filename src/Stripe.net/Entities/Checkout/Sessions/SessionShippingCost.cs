@@ -2,7 +2,7 @@
 namespace Stripe.Checkout
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class SessionShippingCost : StripeEntity<SessionShippingCost>
@@ -10,19 +10,19 @@ namespace Stripe.Checkout
         /// <summary>
         /// Total shipping cost before any discounts or taxes are applied.
         /// </summary>
-        [JsonProperty("amount_subtotal")]
+        [JsonPropertyName("amount_subtotal")]
         public long AmountSubtotal { get; set; }
 
         /// <summary>
         /// Total tax amount applied due to shipping costs. If no tax was applied, defaults to 0.
         /// </summary>
-        [JsonProperty("amount_tax")]
+        [JsonPropertyName("amount_tax")]
         public long AmountTax { get; set; }
 
         /// <summary>
         /// Total shipping cost after discounts and taxes are applied.
         /// </summary>
-        [JsonProperty("amount_total")]
+        [JsonPropertyName("amount_total")]
         public long AmountTotal { get; set; }
 
         #region Expandable ShippingRate
@@ -51,7 +51,7 @@ namespace Stripe.Checkout
             set => this.InternalShippingRate = SetExpandableFieldObject(value, this.InternalShippingRate);
         }
 
-        [JsonProperty("shipping_rate")]
+        [JsonPropertyName("shipping_rate")]
         [JsonConverter(typeof(ExpandableFieldConverter<ShippingRate>))]
         internal ExpandableField<ShippingRate> InternalShippingRate { get; set; }
         #endregion
@@ -59,7 +59,7 @@ namespace Stripe.Checkout
         /// <summary>
         /// The taxes applied to the shipping rate.
         /// </summary>
-        [JsonProperty("taxes")]
+        [JsonPropertyName("taxes")]
         public List<SessionShippingCostTax> Taxes { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class AccountDocumentsOptions : INestedOptions
     {
@@ -12,46 +12,46 @@ namespace Stripe
         /// account’s primary active bank account that displays the last 4 digits of the account
         /// number, either a statement or a voided check.
         /// </summary>
-        [JsonProperty("bank_account_ownership_verification")]
+        [JsonPropertyName("bank_account_ownership_verification")]
         public AccountDocumentsBankAccountOwnershipVerificationOptions BankAccountOwnershipVerification { get; set; }
 
         /// <summary>
         /// One or more documents that demonstrate proof of a company's license to operate.
         /// </summary>
-        [JsonProperty("company_license")]
+        [JsonPropertyName("company_license")]
         public AccountDocumentsCompanyLicenseOptions CompanyLicense { get; set; }
 
         /// <summary>
         /// One or more documents showing the company's Memorandum of Association.
         /// </summary>
-        [JsonProperty("company_memorandum_of_association")]
+        [JsonPropertyName("company_memorandum_of_association")]
         public AccountDocumentsCompanyMemorandumOfAssociationOptions CompanyMemorandumOfAssociation { get; set; }
 
         /// <summary>
         /// (Certain countries only) One or more documents showing the ministerial decree legalizing
         /// the company's establishment.
         /// </summary>
-        [JsonProperty("company_ministerial_decree")]
+        [JsonPropertyName("company_ministerial_decree")]
         public AccountDocumentsCompanyMinisterialDecreeOptions CompanyMinisterialDecree { get; set; }
 
         /// <summary>
         /// One or more documents that demonstrate proof of a company's registration with the
         /// appropriate local authorities.
         /// </summary>
-        [JsonProperty("company_registration_verification")]
+        [JsonPropertyName("company_registration_verification")]
         public AccountDocumentsCompanyRegistrationVerificationOptions CompanyRegistrationVerification { get; set; }
 
         /// <summary>
         /// One or more documents that demonstrate proof of a company's tax ID.
         /// </summary>
-        [JsonProperty("company_tax_id_verification")]
+        [JsonPropertyName("company_tax_id_verification")]
         public AccountDocumentsCompanyTaxIdVerificationOptions CompanyTaxIdVerification { get; set; }
 
         /// <summary>
         /// One or more documents showing the company’s proof of registration with the national
         /// business registry.
         /// </summary>
-        [JsonProperty("proof_of_registration")]
+        [JsonPropertyName("proof_of_registration")]
         public AccountDocumentsProofOfRegistrationOptions ProofOfRegistration { get; set; }
     }
 }

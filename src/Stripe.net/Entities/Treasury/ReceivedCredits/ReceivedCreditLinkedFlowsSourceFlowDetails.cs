@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Treasury
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ReceivedCreditLinkedFlowsSourceFlowDetails : StripeEntity<ReceivedCreditLinkedFlowsSourceFlowDetails>
     {
@@ -11,7 +11,7 @@ namespace Stripe.Treasury
         /// their network and source flow. Reversing a ReceivedCredit leads to the creation of a new
         /// object known as a CreditReversal.
         /// </summary>
-        [JsonProperty("credit_reversal")]
+        [JsonPropertyName("credit_reversal")]
         public CreditReversal CreditReversal { get; set; }
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace Stripe.Treasury
         /// <c>/v1/test_helpers/treasury/outbound_payments</c> endpoints. These methods can only be
         /// called on test mode objects.
         /// </summary>
-        [JsonProperty("outbound_payment")]
+        [JsonPropertyName("outbound_payment")]
         public OutboundPayment OutboundPayment { get; set; }
 
         /// <summary>
@@ -37,14 +37,14 @@ namespace Stripe.Treasury
         ///
         /// Related guide: <a href="https://stripe.com/docs/payouts">Receiving Payouts</a>.
         /// </summary>
-        [JsonProperty("payout")]
+        [JsonPropertyName("payout")]
         public Payout Payout { get; set; }
 
         /// <summary>
         /// The type of the source flow that originated the ReceivedCredit.
         /// One of: <c>credit_reversal</c>, <c>other</c>, <c>outbound_payment</c>, or <c>payout</c>.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
     }
 }

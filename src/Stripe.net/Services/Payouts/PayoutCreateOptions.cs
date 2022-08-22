@@ -2,14 +2,14 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PayoutCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// A positive integer in cents representing how much to payout.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long? Amount { get; set; }
 
         /// <summary>
@@ -17,20 +17,20 @@ namespace Stripe
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
         /// The ID of a bank account or a card to send the payout to. If no destination is supplied,
         /// the default external account for the specified currency will be used.
         /// </summary>
-        [JsonProperty("destination")]
+        [JsonPropertyName("destination")]
         public string Destination { get; set; }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Stripe
         /// marketplaces for more information</a>.).
         /// One of: <c>instant</c>, or <c>standard</c>.
         /// </summary>
-        [JsonProperty("method")]
+        [JsonPropertyName("method")]
         public string Method { get; set; }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Stripe
         /// of <c>bank_account</c>, <c>card</c>, or <c>fpx</c>.
         /// One of: <c>bank_account</c>, <c>card</c>, or <c>fpx</c>.
         /// </summary>
-        [JsonProperty("source_type")]
+        [JsonPropertyName("source_type")]
         public string SourceType { get; set; }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace Stripe
         /// will return an error. Note: Most banks will truncate this information and/or display it
         /// inconsistently. Some may not display it at all.
         /// </summary>
-        [JsonProperty("statement_descriptor")]
+        [JsonPropertyName("statement_descriptor")]
         public string StatementDescriptor { get; set; }
     }
 }

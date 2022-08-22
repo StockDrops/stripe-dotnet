@@ -3,7 +3,7 @@ namespace Stripe.Identity
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -27,13 +27,13 @@ namespace Stripe.Identity
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
@@ -46,13 +46,13 @@ namespace Stripe.Identity
         /// href="https://stripe.com/docs/identity/verification-sessions#client-secret">passing the
         /// client secret to the frontend</a> to learn more.
         /// </summary>
-        [JsonProperty("client_secret")]
+        [JsonPropertyName("client_secret")]
         public string ClientSecret { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -60,7 +60,7 @@ namespace Stripe.Identity
         /// If present, this property tells you the last error encountered when processing the
         /// verification.
         /// </summary>
-        [JsonProperty("last_error")]
+        [JsonPropertyName("last_error")]
         public VerificationSessionLastError LastError { get; set; }
 
         #region Expandable LastVerificationReport
@@ -93,7 +93,7 @@ namespace Stripe.Identity
             set => this.InternalLastVerificationReport = SetExpandableFieldObject(value, this.InternalLastVerificationReport);
         }
 
-        [JsonProperty("last_verification_report")]
+        [JsonPropertyName("last_verification_report")]
         [JsonConverter(typeof(ExpandableFieldConverter<VerificationReport>))]
         internal ExpandableField<VerificationReport> InternalLastVerificationReport { get; set; }
         #endregion
@@ -102,7 +102,7 @@ namespace Stripe.Identity
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -110,17 +110,17 @@ namespace Stripe.Identity
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
-        [JsonProperty("options")]
+        [JsonPropertyName("options")]
         public VerificationSessionOptions Options { get; set; }
 
         /// <summary>
         /// Redaction status of this VerificationSession. If the VerificationSession is not
         /// redacted, this field will be null.
         /// </summary>
-        [JsonProperty("redaction")]
+        [JsonPropertyName("redaction")]
         public VerificationSessionRedaction Redaction { get; set; }
 
         /// <summary>
@@ -129,7 +129,7 @@ namespace Stripe.Identity
         /// of sessions</a>.
         /// One of: <c>canceled</c>, <c>processing</c>, <c>requires_input</c>, or <c>verified</c>.
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace Stripe.Identity
         /// check</a> to be performed.
         /// One of: <c>document</c>, or <c>id_number</c>.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>
@@ -148,13 +148,13 @@ namespace Stripe.Identity
         /// href="https://stripe.com/docs/identity/verify-identity-documents?platform=web&amp;type=redirect">verifying
         /// identity documents</a> to learn how to redirect users to Stripe.
         /// </summary>
-        [JsonProperty("url")]
+        [JsonPropertyName("url")]
         public string Url { get; set; }
 
         /// <summary>
         /// The user’s verified data.
         /// </summary>
-        [JsonProperty("verified_outputs")]
+        [JsonPropertyName("verified_outputs")]
         public VerificationSessionVerifiedOutputs VerifiedOutputs { get; set; }
     }
 }

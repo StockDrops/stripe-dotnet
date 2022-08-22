@@ -2,7 +2,7 @@
 namespace Stripe.Terminal
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -17,31 +17,32 @@ namespace Stripe.Terminal
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
         /// The most recent action performed by the reader.
         /// </summary>
-        [JsonProperty("action")]
+        [JsonPropertyName("action")]
         public ReaderAction Action { get; set; }
 
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
-        [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("deleted")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public bool? Deleted { get; set; }
 
         /// <summary>
         /// The current software version of the reader.
         /// </summary>
-        [JsonProperty("device_sw_version")]
+        [JsonPropertyName("device_sw_version")]
         public string DeviceSwVersion { get; set; }
 
         /// <summary>
@@ -50,26 +51,26 @@ namespace Stripe.Terminal
         /// One of: <c>bbpos_chipper2x</c>, <c>bbpos_wisepad3</c>, <c>bbpos_wisepos_e</c>,
         /// <c>simulated_wisepos_e</c>, <c>stripe_m2</c>, or <c>verifone_P400</c>.
         /// </summary>
-        [JsonProperty("device_type")]
+        [JsonPropertyName("device_type")]
         public string DeviceType { get; set; }
 
         /// <summary>
         /// The local IP address of the reader.
         /// </summary>
-        [JsonProperty("ip_address")]
+        [JsonPropertyName("ip_address")]
         public string IpAddress { get; set; }
 
         /// <summary>
         /// Custom label given to the reader for easier identification.
         /// </summary>
-        [JsonProperty("label")]
+        [JsonPropertyName("label")]
         public string Label { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         #region Expandable Location
@@ -98,7 +99,7 @@ namespace Stripe.Terminal
             set => this.InternalLocation = SetExpandableFieldObject(value, this.InternalLocation);
         }
 
-        [JsonProperty("location")]
+        [JsonPropertyName("location")]
         [JsonConverter(typeof(ExpandableFieldConverter<Location>))]
         internal ExpandableField<Location> InternalLocation { get; set; }
         #endregion
@@ -108,19 +109,19 @@ namespace Stripe.Terminal
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Serial number of the reader.
         /// </summary>
-        [JsonProperty("serial_number")]
+        [JsonPropertyName("serial_number")]
         public string SerialNumber { get; set; }
 
         /// <summary>
         /// The networking status of the reader.
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
     }
 }

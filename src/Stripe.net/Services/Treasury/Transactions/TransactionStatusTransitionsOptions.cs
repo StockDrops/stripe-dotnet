@@ -2,7 +2,7 @@
 namespace Stripe.Treasury
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class TransactionStatusTransitionsOptions : INestedOptions
@@ -10,7 +10,7 @@ namespace Stripe.Treasury
         /// <summary>
         /// Returns Transactions with <c>posted_at</c> within the specified range.
         /// </summary>
-        [JsonProperty("posted_at")]
+        [JsonPropertyName("posted_at")]
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<DateTime?, DateRangeOptions> PostedAt { get; set; }
     }

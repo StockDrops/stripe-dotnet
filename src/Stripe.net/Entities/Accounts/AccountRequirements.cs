@@ -3,7 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class AccountRequirements : StripeEntity<AccountRequirements>
@@ -12,7 +12,7 @@ namespace Stripe
         /// Fields that are due and can be satisfied by providing the corresponding alternative
         /// fields instead.
         /// </summary>
-        [JsonProperty("alternatives")]
+        [JsonPropertyName("alternatives")]
         public List<AccountRequirementsAlternative> Alternatives { get; set; }
 
         /// <summary>
@@ -20,7 +20,7 @@ namespace Stripe
         /// enabled. These fields may disable the account sooner if the next threshold is reached
         /// before they are collected.
         /// </summary>
-        [JsonProperty("current_deadline")]
+        [JsonPropertyName("current_deadline")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? CurrentDeadline { get; set; }
 
@@ -29,7 +29,7 @@ namespace Stripe
         /// <c>current_deadline</c>, these fields appear in <c>past_due</c> as well, and the account
         /// is disabled.
         /// </summary>
-        [JsonProperty("currently_due")]
+        [JsonPropertyName("currently_due")]
         public List<string> CurrentlyDue { get; set; }
 
         /// <summary>
@@ -39,14 +39,14 @@ namespace Stripe
         /// <c>rejected.terms_of_service</c>, <c>rejected.other</c>, <c>under_review</c>, or
         /// <c>other</c>.
         /// </summary>
-        [JsonProperty("disabled_reason")]
+        [JsonPropertyName("disabled_reason")]
         public string DisabledReason { get; set; }
 
         /// <summary>
         /// Fields that are <c>currently_due</c> and need to be collected again because validation
         /// or verification failed.
         /// </summary>
-        [JsonProperty("errors")]
+        [JsonPropertyName("errors")]
         public List<AccountRequirementsError> Errors { get; set; }
 
         /// <summary>
@@ -54,14 +54,14 @@ namespace Stripe
         /// become required, they appear in <c>currently_due</c> as well, and
         /// <c>current_deadline</c> becomes set.
         /// </summary>
-        [JsonProperty("eventually_due")]
+        [JsonPropertyName("eventually_due")]
         public List<string> EventuallyDue { get; set; }
 
         /// <summary>
         /// Fields that weren't collected by <c>current_deadline</c>. These fields need to be
         /// collected to enable the account.
         /// </summary>
-        [JsonProperty("past_due")]
+        [JsonPropertyName("past_due")]
         public List<string> PastDue { get; set; }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Stripe
         /// be an empty array unless an asynchronous verification is pending. If verification fails,
         /// these fields move to <c>eventually_due</c>, <c>currently_due</c>, or <c>past_due</c>.
         /// </summary>
-        [JsonProperty("pending_verification")]
+        [JsonPropertyName("pending_verification")]
         public List<string> PendingVerification { get; set; }
     }
 }

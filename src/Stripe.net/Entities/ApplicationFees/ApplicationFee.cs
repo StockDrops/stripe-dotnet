@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class ApplicationFee : StripeEntity<ApplicationFee>, IHasId, IHasObject, IBalanceTransactionSource
@@ -10,13 +10,13 @@ namespace Stripe
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         #region Expandable Account
@@ -45,7 +45,7 @@ namespace Stripe
             set => this.InternalAccount = SetExpandableFieldObject(value, this.InternalAccount);
         }
 
-        [JsonProperty("account")]
+        [JsonPropertyName("account")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
         internal ExpandableField<Account> InternalAccount { get; set; }
         #endregion
@@ -53,14 +53,14 @@ namespace Stripe
         /// <summary>
         /// Amount earned, in %s.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long Amount { get; set; }
 
         /// <summary>
         /// Amount in %s refunded (can be less than the amount attribute on the fee if a partial
         /// refund was issued).
         /// </summary>
-        [JsonProperty("amount_refunded")]
+        [JsonPropertyName("amount_refunded")]
         public long AmountRefunded { get; set; }
 
         #region Expandable Application
@@ -89,7 +89,7 @@ namespace Stripe
             set => this.InternalApplication = SetExpandableFieldObject(value, this.InternalApplication);
         }
 
-        [JsonProperty("application")]
+        [JsonPropertyName("application")]
         [JsonConverter(typeof(ExpandableFieldConverter<Application>))]
         internal ExpandableField<Application> InternalApplication { get; set; }
         #endregion
@@ -122,7 +122,7 @@ namespace Stripe
             set => this.InternalBalanceTransaction = SetExpandableFieldObject(value, this.InternalBalanceTransaction);
         }
 
-        [JsonProperty("balance_transaction")]
+        [JsonPropertyName("balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
         internal ExpandableField<BalanceTransaction> InternalBalanceTransaction { get; set; }
         #endregion
@@ -153,7 +153,7 @@ namespace Stripe
             set => this.InternalCharge = SetExpandableFieldObject(value, this.InternalCharge);
         }
 
-        [JsonProperty("charge")]
+        [JsonPropertyName("charge")]
         [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
         internal ExpandableField<Charge> InternalCharge { get; set; }
         #endregion
@@ -161,7 +161,7 @@ namespace Stripe
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -170,14 +170,14 @@ namespace Stripe
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         #region Expandable OriginatingTransaction
@@ -208,7 +208,7 @@ namespace Stripe
             set => this.InternalOriginatingTransaction = SetExpandableFieldObject(value, this.InternalOriginatingTransaction);
         }
 
-        [JsonProperty("originating_transaction")]
+        [JsonPropertyName("originating_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
         internal ExpandableField<Charge> InternalOriginatingTransaction { get; set; }
         #endregion
@@ -217,13 +217,13 @@ namespace Stripe
         /// Whether the fee has been fully refunded. If the fee is only partially refunded, this
         /// attribute will still be false.
         /// </summary>
-        [JsonProperty("refunded")]
+        [JsonPropertyName("refunded")]
         public bool Refunded { get; set; }
 
         /// <summary>
         /// A list of refunds that have been applied to the fee.
         /// </summary>
-        [JsonProperty("refunds")]
+        [JsonPropertyName("refunds")]
         public StripeList<ApplicationFeeRefund> Refunds { get; set; }
     }
 }

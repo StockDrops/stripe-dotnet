@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.BillingPortal
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SessionCreateOptions : BaseOptions
     {
@@ -11,13 +11,13 @@ namespace Stripe.BillingPortal
         /// use for this session, describing its functionality and features. If not specified, the
         /// session uses the default configuration.
         /// </summary>
-        [JsonProperty("configuration")]
+        [JsonPropertyName("configuration")]
         public string Configuration { get; set; }
 
         /// <summary>
         /// The ID of an existing customer.
         /// </summary>
-        [JsonProperty("customer")]
+        [JsonPropertyName("customer")]
         public string Customer { get; set; }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace Stripe.BillingPortal
         /// <c>pt-BR</c>, <c>ro</c>, <c>ru</c>, <c>sk</c>, <c>sl</c>, <c>sv</c>, <c>th</c>,
         /// <c>tr</c>, <c>vi</c>, <c>zh</c>, <c>zh-HK</c>, or <c>zh-TW</c>.
         /// </summary>
-        [JsonProperty("locale")]
+        [JsonPropertyName("locale")]
         public string Locale { get; set; }
 
         /// <summary>
@@ -44,14 +44,14 @@ namespace Stripe.BillingPortal
         /// API</a> to modify the <c>on_behalf_of</c> account's branding settings, which the portal
         /// displays.
         /// </summary>
-        [JsonProperty("on_behalf_of")]
+        [JsonPropertyName("on_behalf_of")]
         public string OnBehalfOf { get; set; }
 
         /// <summary>
         /// The default URL to redirect customers to when they click on the portal's link to return
         /// to your website.
         /// </summary>
-        [JsonProperty("return_url")]
+        [JsonPropertyName("return_url")]
         public string ReturnUrl { get; set; }
     }
 }

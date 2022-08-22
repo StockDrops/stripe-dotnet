@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PaymentIntentPaymentMethodOptionsCardInstallmentsOptions : INestedOptions
     {
@@ -10,14 +10,14 @@ namespace Stripe
         /// response to contain a list of available installment plans. Setting to false will prevent
         /// any selected plan from applying to a charge.
         /// </summary>
-        [JsonProperty("enabled")]
+        [JsonPropertyName("enabled")]
         public bool? Enabled { get; set; }
 
         /// <summary>
         /// The selected installment plan to use for this payment attempt. This parameter can only
         /// be provided during confirmation.
         /// </summary>
-        [JsonProperty("plan")]
+        [JsonPropertyName("plan")]
         public PaymentIntentPaymentMethodOptionsCardInstallmentsPlanOptions Plan { get; set; }
     }
 }

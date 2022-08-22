@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class TaxRateUpdateOptions : BaseOptions, IHasMetadata
     {
@@ -11,34 +11,34 @@ namespace Stripe
         /// rates cannot be used with new applications or Checkout Sessions, but will still work for
         /// subscriptions and invoices that already have it set.
         /// </summary>
-        [JsonProperty("active")]
+        [JsonPropertyName("active")]
         public bool? Active { get; set; }
 
         /// <summary>
         /// Two-letter country code (<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO
         /// 3166-1 alpha-2</a>).
         /// </summary>
-        [JsonProperty("country")]
+        [JsonPropertyName("country")]
         public string Country { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the tax rate for your internal use only. It will not be
         /// visible to your customers.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
         /// The display name of the tax rate, which will be shown to users.
         /// </summary>
-        [JsonProperty("display_name")]
+        [JsonPropertyName("display_name")]
         public string DisplayName { get; set; }
 
         /// <summary>
         /// The jurisdiction for the tax rate. You can use this label field for tax reporting
         /// purposes. It also appears on your customer’s invoice.
         /// </summary>
-        [JsonProperty("jurisdiction")]
+        [JsonPropertyName("jurisdiction")]
         public string Jurisdiction { get; set; }
 
         /// <summary>
@@ -47,14 +47,14 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// <a href="https://en.wikipedia.org/wiki/ISO_3166-2:US">ISO 3166-2 subdivision code</a>,
         /// without country prefix. For example, "NY" for New York, United States.
         /// </summary>
-        [JsonProperty("state")]
+        [JsonPropertyName("state")]
         public string State { get; set; }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace Stripe
         /// One of: <c>gst</c>, <c>hst</c>, <c>jct</c>, <c>pst</c>, <c>qst</c>, <c>rst</c>,
         /// <c>sales_tax</c>, or <c>vat</c>.
         /// </summary>
-        [JsonProperty("tax_type")]
+        [JsonPropertyName("tax_type")]
         public string TaxType { get; set; }
     }
 }

@@ -2,24 +2,24 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SourceUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// Amount associated with the source.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long? Amount { get; set; }
 
-        [JsonProperty("card")]
+        [JsonPropertyName("card")]
         public SourceCardOptions Card { get; set; }
 
         /// <summary>
         /// Information about a mandate possibility attached to a source object (generally for bank
         /// debits) as well as its acceptance status.
         /// </summary>
-        [JsonProperty("mandate")]
+        [JsonPropertyName("mandate")]
         public SourceMandateOptions Mandate { get; set; }
 
         /// <summary>
@@ -28,21 +28,21 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Information about the owner of the payment instrument that may be used or required by
         /// particular source types.
         /// </summary>
-        [JsonProperty("owner")]
+        [JsonPropertyName("owner")]
         public SourceOwnerOptions Owner { get; set; }
 
         /// <summary>
         /// Information about the items and shipping associated with the source. Required for
         /// transactional credit (for example Klarna) sources before you can charge it.
         /// </summary>
-        [JsonProperty("source_order")]
+        [JsonPropertyName("source_order")]
         public SourceSourceOrderOptions SourceOrder { get; set; }
     }
 }

@@ -1,13 +1,13 @@
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SourceListOptions : ListOptions
     {
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         internal string Object => "source";
 
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
     }
 }

@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Treasury
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class FinancialAccountOutboundTransfersUsDomesticWireOptions : INestedOptions
     {
         /// <summary>
         /// Whether the FinancialAccount should have the Feature.
         /// </summary>
-        [JsonProperty("requested")]
+        [JsonPropertyName("requested")]
         public bool? Requested { get; set; }
     }
 }

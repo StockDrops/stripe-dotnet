@@ -2,7 +2,7 @@
 namespace Stripe.Issuing
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class DisputeEvidenceMerchandiseNotAsDescribed : StripeEntity<DisputeEvidenceMerchandiseNotAsDescribed>
@@ -35,7 +35,7 @@ namespace Stripe.Issuing
             set => this.InternalAdditionalDocumentation = SetExpandableFieldObject(value, this.InternalAdditionalDocumentation);
         }
 
-        [JsonProperty("additional_documentation")]
+        [JsonPropertyName("additional_documentation")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
         internal ExpandableField<File> InternalAdditionalDocumentation { get; set; }
         #endregion
@@ -43,33 +43,33 @@ namespace Stripe.Issuing
         /// <summary>
         /// Explanation of why the cardholder is disputing this transaction.
         /// </summary>
-        [JsonProperty("explanation")]
+        [JsonPropertyName("explanation")]
         public string Explanation { get; set; }
 
         /// <summary>
         /// Date when the product was received.
         /// </summary>
-        [JsonProperty("received_at")]
+        [JsonPropertyName("received_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ReceivedAt { get; set; }
 
         /// <summary>
         /// Description of the cardholder's attempt to return the product.
         /// </summary>
-        [JsonProperty("return_description")]
+        [JsonPropertyName("return_description")]
         public string ReturnDescription { get; set; }
 
         /// <summary>
         /// Result of cardholder's attempt to return the product.
         /// One of: <c>merchant_rejected</c>, or <c>successful</c>.
         /// </summary>
-        [JsonProperty("return_status")]
+        [JsonPropertyName("return_status")]
         public string ReturnStatus { get; set; }
 
         /// <summary>
         /// Date when the product was returned or attempted to be returned.
         /// </summary>
-        [JsonProperty("returned_at")]
+        [JsonPropertyName("returned_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ReturnedAt { get; set; }
     }

@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Radar
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ValueListListOptions : ListOptionsWithCreated
     {
-        [JsonProperty("alias")]
+        [JsonPropertyName("alias")]
         public string Alias { get; set; }
 
-        [JsonProperty("contains")]
+        [JsonPropertyName("contains")]
         public string Contains { get; set; }
     }
 }

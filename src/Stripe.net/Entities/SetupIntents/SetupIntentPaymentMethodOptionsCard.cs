@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SetupIntentPaymentMethodOptionsCard : StripeEntity<SetupIntentPaymentMethodOptionsCard>
     {
         /// <summary>
         /// Configuration options for setting up an eMandate for cards issued in India.
         /// </summary>
-        [JsonProperty("mandate_options")]
+        [JsonPropertyName("mandate_options")]
         public SetupIntentPaymentMethodOptionsCardMandateOptions MandateOptions { get; set; }
 
         /// <summary>
@@ -18,7 +18,7 @@ namespace Stripe
         /// <c>interac</c>, <c>jcb</c>, <c>mastercard</c>, <c>unionpay</c>, <c>unknown</c>, or
         /// <c>visa</c>.
         /// </summary>
-        [JsonProperty("network")]
+        [JsonPropertyName("network")]
         public string Network { get; set; }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace Stripe
         /// SCA Engine.
         /// One of: <c>any</c>, <c>automatic</c>, or <c>challenge_only</c>.
         /// </summary>
-        [JsonProperty("request_three_d_secure")]
+        [JsonPropertyName("request_three_d_secure")]
         public string RequestThreeDSecure { get; set; }
     }
 }

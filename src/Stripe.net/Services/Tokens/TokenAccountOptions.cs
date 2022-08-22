@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class TokenAccountOptions : INestedOptions
     {
@@ -10,19 +10,19 @@ namespace Stripe
         /// One of: <c>company</c>, <c>government_entity</c>, <c>individual</c>, or
         /// <c>non_profit</c>.
         /// </summary>
-        [JsonProperty("business_type")]
+        [JsonPropertyName("business_type")]
         public string BusinessType { get; set; }
 
         /// <summary>
         /// Information about the company or business.
         /// </summary>
-        [JsonProperty("company")]
+        [JsonPropertyName("company")]
         public TokenAccountCompanyOptions Company { get; set; }
 
         /// <summary>
         /// Information about the person represented by the account.
         /// </summary>
-        [JsonProperty("individual")]
+        [JsonPropertyName("individual")]
         public TokenAccountIndividualOptions Individual { get; set; }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace Stripe
         /// Stripe Connected Account Agreement</a>. When creating an account token to create a new
         /// Connect account, this value must be <c>true</c>.
         /// </summary>
-        [JsonProperty("tos_shown_and_accepted")]
+        [JsonPropertyName("tos_shown_and_accepted")]
         public bool? TosShownAndAccepted { get; set; }
     }
 }

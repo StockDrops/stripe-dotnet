@@ -1,17 +1,17 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Treasury
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ReceivedCreditListOptions : ListOptions
     {
-        [JsonProperty("financial_account")]
+        [JsonPropertyName("financial_account")]
         public string FinancialAccount { get; set; }
 
-        [JsonProperty("linked_flows")]
+        [JsonPropertyName("linked_flows")]
         public ReceivedCreditLinkedFlowsOptions LinkedFlows { get; set; }
 
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
     }
 }

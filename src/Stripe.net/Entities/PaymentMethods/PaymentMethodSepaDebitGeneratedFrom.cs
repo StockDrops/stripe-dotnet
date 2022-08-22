@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class PaymentMethodSepaDebitGeneratedFrom : StripeEntity<PaymentMethodSepaDebitGeneratedFrom>
@@ -32,7 +32,7 @@ namespace Stripe
             set => this.InternalCharge = SetExpandableFieldObject(value, this.InternalCharge);
         }
 
-        [JsonProperty("charge")]
+        [JsonPropertyName("charge")]
         [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
         internal ExpandableField<Charge> InternalCharge { get; set; }
         #endregion
@@ -63,7 +63,7 @@ namespace Stripe
             set => this.InternalSetupAttempt = SetExpandableFieldObject(value, this.InternalSetupAttempt);
         }
 
-        [JsonProperty("setup_attempt")]
+        [JsonPropertyName("setup_attempt")]
         [JsonConverter(typeof(ExpandableFieldConverter<SetupAttempt>))]
         internal ExpandableField<SetupAttempt> InternalSetupAttempt { get; set; }
         #endregion

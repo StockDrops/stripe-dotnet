@@ -5,13 +5,13 @@ namespace StripeTests
     using System.Linq;
     using System.Reflection;
     using System.Text.RegularExpressions;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe;
     using Stripe.Infrastructure;
     using Xunit;
 
     /// <summary>
-    /// This wholesome test ensures that `JsonProperty` attributes in entity and options classes
+    /// This wholesome test ensures that `JsonPropertyName` attributes in entity and options classes
     /// have names that match their property's name. E.g. if the property's name is `FooBar`, then
     /// the JSON name should be `foo_bar`.
     /// </summary>
@@ -23,7 +23,7 @@ namespace StripeTests
     public class JsonNamesMatchPropertyNames : WholesomeTest
     {
         private const string AssertionMessage =
-            "Found at least one JsonProperty name mismatched with its property name.";
+            "Found at least one JsonPropertyName name mismatched with its property name.";
 
         // Map of words that have a non-standard snake_case -> PascalCase transformation. This is
         // mostly useful for two-letter acronyms, which should stay capitalized per Microsoft's
@@ -49,7 +49,7 @@ namespace StripeTests
                 {
                     var propType = property.PropertyType;
 
-                    // Skip properties that don't have a `JsonProperty` attribute
+                    // Skip properties that don't have a `JsonPropertyName` attribute
                     var jsonPropertyAttribute = property.GetCustomAttribute<JsonPropertyAttribute>();
                     if (jsonPropertyAttribute == null)
                     {

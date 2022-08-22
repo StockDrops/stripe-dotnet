@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe.BillingPortal
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ConfigurationFeaturesInvoiceHistory : StripeEntity<ConfigurationFeaturesInvoiceHistory>
     {
         /// <summary>
         /// Whether the feature is enabled.
         /// </summary>
-        [JsonProperty("enabled")]
+        [JsonPropertyName("enabled")]
         public bool Enabled { get; set; }
     }
 }

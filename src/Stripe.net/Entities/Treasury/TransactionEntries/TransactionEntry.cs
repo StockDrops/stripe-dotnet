@@ -2,7 +2,7 @@
 namespace Stripe.Treasury
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -14,25 +14,25 @@ namespace Stripe.Treasury
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
         /// Change to a FinancialAccount's balance.
         /// </summary>
-        [JsonProperty("balance_impact")]
+        [JsonPropertyName("balance_impact")]
         public TransactionEntryBalanceImpact BalanceImpact { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -41,32 +41,32 @@ namespace Stripe.Treasury
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
         /// When the TransactionEntry will impact the FinancialAccount's balance.
         /// </summary>
-        [JsonProperty("effective_at")]
+        [JsonPropertyName("effective_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime EffectiveAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The FinancialAccount associated with this object.
         /// </summary>
-        [JsonProperty("financial_account")]
+        [JsonPropertyName("financial_account")]
         public string FinancialAccount { get; set; }
 
         /// <summary>
         /// Token of the flow associated with the TransactionEntry.
         /// </summary>
-        [JsonProperty("flow")]
+        [JsonPropertyName("flow")]
         public string Flow { get; set; }
 
         /// <summary>
         /// Details of the flow associated with the TransactionEntry.
         /// </summary>
-        [JsonProperty("flow_details")]
+        [JsonPropertyName("flow_details")]
         public TransactionEntryFlowDetails FlowDetails { get; set; }
 
         /// <summary>
@@ -75,14 +75,14 @@ namespace Stripe.Treasury
         /// <c>issuing_authorization</c>, <c>other</c>, <c>outbound_payment</c>,
         /// <c>outbound_transfer</c>, <c>received_credit</c>, or <c>received_debit</c>.
         /// </summary>
-        [JsonProperty("flow_type")]
+        [JsonPropertyName("flow_type")]
         public string FlowType { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         #region Expandable Transaction
@@ -111,7 +111,7 @@ namespace Stripe.Treasury
             set => this.InternalTransaction = SetExpandableFieldObject(value, this.InternalTransaction);
         }
 
-        [JsonProperty("transaction")]
+        [JsonPropertyName("transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<Transaction>))]
         internal ExpandableField<Transaction> InternalTransaction { get; set; }
         #endregion
@@ -128,7 +128,7 @@ namespace Stripe.Treasury
         /// <c>outbound_transfer_posting</c>, <c>outbound_transfer_return</c>,
         /// <c>received_credit</c>, or <c>received_debit</c>.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
     }
 }

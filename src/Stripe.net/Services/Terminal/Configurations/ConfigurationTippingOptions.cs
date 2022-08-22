@@ -1,92 +1,92 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Terminal
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ConfigurationTippingOptions : INestedOptions
     {
         /// <summary>
         /// Tipping configuration for AUD.
         /// </summary>
-        [JsonProperty("aud")]
+        [JsonPropertyName("aud")]
         public ConfigurationTippingAudOptions Aud { get; set; }
 
         /// <summary>
         /// Tipping configuration for CAD.
         /// </summary>
-        [JsonProperty("cad")]
+        [JsonPropertyName("cad")]
         public ConfigurationTippingCadOptions Cad { get; set; }
 
         /// <summary>
         /// Tipping configuration for CHF.
         /// </summary>
-        [JsonProperty("chf")]
+        [JsonPropertyName("chf")]
         public ConfigurationTippingChfOptions Chf { get; set; }
 
         /// <summary>
         /// Tipping configuration for CZK.
         /// </summary>
-        [JsonProperty("czk")]
+        [JsonPropertyName("czk")]
         public ConfigurationTippingCzkOptions Czk { get; set; }
 
         /// <summary>
         /// Tipping configuration for DKK.
         /// </summary>
-        [JsonProperty("dkk")]
+        [JsonPropertyName("dkk")]
         public ConfigurationTippingDkkOptions Dkk { get; set; }
 
         /// <summary>
         /// Tipping configuration for EUR.
         /// </summary>
-        [JsonProperty("eur")]
+        [JsonPropertyName("eur")]
         public ConfigurationTippingEurOptions Eur { get; set; }
 
         /// <summary>
         /// Tipping configuration for GBP.
         /// </summary>
-        [JsonProperty("gbp")]
+        [JsonPropertyName("gbp")]
         public ConfigurationTippingGbpOptions Gbp { get; set; }
 
         /// <summary>
         /// Tipping configuration for HKD.
         /// </summary>
-        [JsonProperty("hkd")]
+        [JsonPropertyName("hkd")]
         public ConfigurationTippingHkdOptions Hkd { get; set; }
 
         /// <summary>
         /// Tipping configuration for MYR.
         /// </summary>
-        [JsonProperty("myr")]
+        [JsonPropertyName("myr")]
         public ConfigurationTippingMyrOptions Myr { get; set; }
 
         /// <summary>
         /// Tipping configuration for NOK.
         /// </summary>
-        [JsonProperty("nok")]
+        [JsonPropertyName("nok")]
         public ConfigurationTippingNokOptions Nok { get; set; }
 
         /// <summary>
         /// Tipping configuration for NZD.
         /// </summary>
-        [JsonProperty("nzd")]
+        [JsonPropertyName("nzd")]
         public ConfigurationTippingNzdOptions Nzd { get; set; }
 
         /// <summary>
         /// Tipping configuration for SEK.
         /// </summary>
-        [JsonProperty("sek")]
+        [JsonPropertyName("sek")]
         public ConfigurationTippingSekOptions Sek { get; set; }
 
         /// <summary>
         /// Tipping configuration for SGD.
         /// </summary>
-        [JsonProperty("sgd")]
+        [JsonPropertyName("sgd")]
         public ConfigurationTippingSgdOptions Sgd { get; set; }
 
         /// <summary>
         /// Tipping configuration for USD.
         /// </summary>
-        [JsonProperty("usd")]
+        [JsonPropertyName("usd")]
         public ConfigurationTippingUsdOptions Usd { get; set; }
     }
 }

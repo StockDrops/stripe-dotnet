@@ -2,20 +2,20 @@
 namespace Stripe.FinancialConnections
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SessionCreateOptions : BaseOptions
     {
         /// <summary>
         /// The account holder to link accounts for.
         /// </summary>
-        [JsonProperty("account_holder")]
+        [JsonPropertyName("account_holder")]
         public SessionAccountHolderOptions AccountHolder { get; set; }
 
         /// <summary>
         /// Filters to restrict the kinds of accounts to collect.
         /// </summary>
-        [JsonProperty("filters")]
+        [JsonPropertyName("filters")]
         public SessionFiltersOptions Filters { get; set; }
 
         /// <summary>
@@ -24,14 +24,14 @@ namespace Stripe.FinancialConnections
         /// Possible values are <c>balances</c>, <c>transactions</c>, <c>ownership</c>, and
         /// <c>payment_method</c>.
         /// </summary>
-        [JsonProperty("permissions")]
+        [JsonPropertyName("permissions")]
         public List<string> Permissions { get; set; }
 
         /// <summary>
         /// For webview integrations only. Upon completing OAuth login in the native browser, the
         /// user will be redirected to this URL to return to your app.
         /// </summary>
-        [JsonProperty("return_url")]
+        [JsonPropertyName("return_url")]
         public string ReturnUrl { get; set; }
     }
 }

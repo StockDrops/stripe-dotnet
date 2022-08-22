@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ChargePaymentMethodDetailsPaynow : StripeEntity<ChargePaymentMethodDetailsPaynow>
     {
         /// <summary>
         /// Reference number associated with this PayNow payment.
         /// </summary>
-        [JsonProperty("reference")]
+        [JsonPropertyName("reference")]
         public string Reference { get; set; }
     }
 }

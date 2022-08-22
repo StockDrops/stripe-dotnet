@@ -1,6 +1,6 @@
 namespace StripeTests
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
     using Xunit;
 
@@ -77,10 +77,10 @@ namespace StripeTests
         [JsonObject]
         private class TestObject
         {
-            [JsonProperty("int")]
+            [JsonPropertyName("int")]
             public int Int { get; set; }
 
-            [JsonProperty("string")]
+            [JsonPropertyName("string")]
             public string String { get; set; }
         }
     }

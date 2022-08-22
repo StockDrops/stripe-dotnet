@@ -3,7 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -31,19 +31,19 @@ namespace Stripe
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
         /// Whether the plan can be used for new purchases.
         /// </summary>
-        [JsonProperty("active")]
+        [JsonPropertyName("active")]
         public bool Active { get; set; }
 
         /// <summary>
@@ -55,21 +55,21 @@ namespace Stripe
         /// Defaults to <c>sum</c>.
         /// One of: <c>last_during_period</c>, <c>last_ever</c>, <c>max</c>, or <c>sum</c>.
         /// </summary>
-        [JsonProperty("aggregate_usage")]
+        [JsonPropertyName("aggregate_usage")]
         public string AggregateUsage { get; set; }
 
         /// <summary>
         /// The unit amount in %s to be charged, represented as a whole integer if possible. Only
         /// set if <c>billing_scheme=per_unit</c>.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long? Amount { get; set; }
 
         /// <summary>
         /// The unit amount in %s to be charged, represented as a decimal string with at most 12
         /// decimal places. Only set if <c>billing_scheme=per_unit</c>.
         /// </summary>
-        [JsonProperty("amount_decimal")]
+        [JsonPropertyName("amount_decimal")]
         public decimal? AmountDecimal { get; set; }
 
         /// <summary>
@@ -81,13 +81,13 @@ namespace Stripe
         /// <c>tiers</c> and <c>tiers_mode</c> attributes.
         /// One of: <c>per_unit</c>, or <c>tiered</c>.
         /// </summary>
-        [JsonProperty("billing_scheme")]
+        [JsonPropertyName("billing_scheme")]
         public string BillingScheme { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -96,13 +96,14 @@ namespace Stripe
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
-        [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("deleted")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public bool? Deleted { get; set; }
 
         /// <summary>
@@ -110,7 +111,7 @@ namespace Stripe
         /// <c>month</c> or <c>year</c>.
         /// One of: <c>day</c>, <c>month</c>, <c>week</c>, or <c>year</c>.
         /// </summary>
-        [JsonProperty("interval")]
+        [JsonPropertyName("interval")]
         public string Interval { get; set; }
 
         /// <summary>
@@ -118,14 +119,14 @@ namespace Stripe
         /// subscription billings. For example, <c>interval=month</c> and <c>interval_count=3</c>
         /// bills every 3 months.
         /// </summary>
-        [JsonProperty("interval_count")]
+        [JsonPropertyName("interval_count")]
         public long IntervalCount { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -133,13 +134,13 @@ namespace Stripe
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// A brief description of the plan, hidden from customers.
         /// </summary>
-        [JsonProperty("nickname")]
+        [JsonPropertyName("nickname")]
         public string Nickname { get; set; }
 
         #region Expandable Product
@@ -168,7 +169,7 @@ namespace Stripe
             set => this.InternalProduct = SetExpandableFieldObject(value, this.InternalProduct);
         }
 
-        [JsonProperty("product")]
+        [JsonPropertyName("product")]
         [JsonConverter(typeof(ExpandableFieldConverter<Product>))]
         internal ExpandableField<Product> InternalProduct { get; set; }
         #endregion
@@ -177,7 +178,7 @@ namespace Stripe
         /// Each element represents a pricing tier. This parameter requires <c>billing_scheme</c> to
         /// be set to <c>tiered</c>. See also the documentation for <c>billing_scheme</c>.
         /// </summary>
-        [JsonProperty("tiers")]
+        [JsonPropertyName("tiers")]
         public List<PlanTier> Tiers { get; set; }
 
         /// <summary>
@@ -186,21 +187,21 @@ namespace Stripe
         /// unit price. In <c>graduated</c> tiering, pricing can change as the quantity grows.
         /// One of: <c>graduated</c>, or <c>volume</c>.
         /// </summary>
-        [JsonProperty("tiers_mode")]
+        [JsonPropertyName("tiers_mode")]
         public string TiersMode { get; set; }
 
         /// <summary>
         /// Apply a transformation to the reported usage or set quantity before computing the amount
         /// billed. Cannot be combined with <c>tiers</c>.
         /// </summary>
-        [JsonProperty("transform_usage")]
+        [JsonPropertyName("transform_usage")]
         public PlanTransformUsage TransformUsage { get; set; }
 
         /// <summary>
         /// Default number of trial days when subscribing a customer to this plan using <a
         /// href="https://stripe.com/docs/api#create_subscription-trial_from_plan"><c>trial_from_plan=true</c></a>.
         /// </summary>
-        [JsonProperty("trial_period_days")]
+        [JsonPropertyName("trial_period_days")]
         public long? TrialPeriodDays { get; set; }
 
         /// <summary>
@@ -210,7 +211,7 @@ namespace Stripe
         /// total usage based on usage records. Defaults to <c>licensed</c>.
         /// One of: <c>licensed</c>, or <c>metered</c>.
         /// </summary>
-        [JsonProperty("usage_type")]
+        [JsonPropertyName("usage_type")]
         public string UsageType { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class CustomerCashBalanceTransactionRefundedFromPayment : StripeEntity<CustomerCashBalanceTransactionRefundedFromPayment>
@@ -34,7 +34,7 @@ namespace Stripe
             set => this.InternalRefund = SetExpandableFieldObject(value, this.InternalRefund);
         }
 
-        [JsonProperty("refund")]
+        [JsonPropertyName("refund")]
         [JsonConverter(typeof(ExpandableFieldConverter<Refund>))]
         internal ExpandableField<Refund> InternalRefund { get; set; }
         #endregion

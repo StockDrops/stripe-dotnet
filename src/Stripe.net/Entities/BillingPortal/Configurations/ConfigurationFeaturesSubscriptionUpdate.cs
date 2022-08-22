@@ -2,7 +2,7 @@
 namespace Stripe.BillingPortal
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ConfigurationFeaturesSubscriptionUpdate : StripeEntity<ConfigurationFeaturesSubscriptionUpdate>
     {
@@ -10,19 +10,19 @@ namespace Stripe.BillingPortal
         /// The types of subscription updates that are supported for items listed in the
         /// <c>products</c> attribute. When empty, subscriptions are not updateable.
         /// </summary>
-        [JsonProperty("default_allowed_updates")]
+        [JsonPropertyName("default_allowed_updates")]
         public List<string> DefaultAllowedUpdates { get; set; }
 
         /// <summary>
         /// Whether the feature is enabled.
         /// </summary>
-        [JsonProperty("enabled")]
+        [JsonPropertyName("enabled")]
         public bool Enabled { get; set; }
 
         /// <summary>
         /// The list of products that support subscription updates.
         /// </summary>
-        [JsonProperty("products")]
+        [JsonPropertyName("products")]
         public List<ConfigurationFeaturesSubscriptionUpdateProduct> Products { get; set; }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace Stripe.BillingPortal
         /// are <c>none</c>, <c>create_prorations</c>, and <c>always_invoice</c>.
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
         /// </summary>
-        [JsonProperty("proration_behavior")]
+        [JsonPropertyName("proration_behavior")]
         public string ProrationBehavior { get; set; }
     }
 }

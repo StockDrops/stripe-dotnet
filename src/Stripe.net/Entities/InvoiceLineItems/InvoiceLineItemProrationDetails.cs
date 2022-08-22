@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class InvoiceLineItemProrationDetails : StripeEntity<InvoiceLineItemProrationDetails>
     {
@@ -9,7 +9,7 @@ namespace Stripe
         /// For a credit proration <c>line_item</c>, the original debit line_items to which the
         /// credit proration applies.
         /// </summary>
-        [JsonProperty("credited_items")]
+        [JsonPropertyName("credited_items")]
         public InvoiceLineItemProrationDetailsCreditedItems CreditedItems { get; set; }
     }
 }

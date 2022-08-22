@@ -3,7 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -24,26 +24,26 @@ namespace Stripe
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
         /// Amount in %s to be transferred.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long Amount { get; set; }
 
         /// <summary>
         /// Amount in %s reversed (can be less than the amount attribute on the transfer if a
         /// partial reversal was issued).
         /// </summary>
-        [JsonProperty("amount_reversed")]
+        [JsonPropertyName("amount_reversed")]
         public long AmountReversed { get; set; }
 
         #region Expandable BalanceTransaction
@@ -72,7 +72,7 @@ namespace Stripe
             set => this.InternalBalanceTransaction = SetExpandableFieldObject(value, this.InternalBalanceTransaction);
         }
 
-        [JsonProperty("balance_transaction")]
+        [JsonPropertyName("balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
         internal ExpandableField<BalanceTransaction> InternalBalanceTransaction { get; set; }
         #endregion
@@ -80,7 +80,7 @@ namespace Stripe
         /// <summary>
         /// Time that this record of the transfer was first created.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -89,13 +89,13 @@ namespace Stripe
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         #region Expandable Destination
@@ -124,7 +124,7 @@ namespace Stripe
             set => this.InternalDestination = SetExpandableFieldObject(value, this.InternalDestination);
         }
 
-        [JsonProperty("destination")]
+        [JsonPropertyName("destination")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
         internal ExpandableField<Account> InternalDestination { get; set; }
         #endregion
@@ -157,7 +157,7 @@ namespace Stripe
             set => this.InternalDestinationPayment = SetExpandableFieldObject(value, this.InternalDestinationPayment);
         }
 
-        [JsonProperty("destination_payment")]
+        [JsonPropertyName("destination_payment")]
         [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
         internal ExpandableField<Charge> InternalDestinationPayment { get; set; }
         #endregion
@@ -166,7 +166,7 @@ namespace Stripe
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -174,20 +174,20 @@ namespace Stripe
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// A list of reversals that have been applied to the transfer.
         /// </summary>
-        [JsonProperty("reversals")]
+        [JsonPropertyName("reversals")]
         public StripeList<TransferReversal> Reversals { get; set; }
 
         /// <summary>
         /// Whether the transfer has been fully reversed. If the transfer is only partially
         /// reversed, this attribute will still be false.
         /// </summary>
-        [JsonProperty("reversed")]
+        [JsonPropertyName("reversed")]
         public bool Reversed { get; set; }
 
         #region Expandable SourceTransaction
@@ -218,7 +218,7 @@ namespace Stripe
             set => this.InternalSourceTransaction = SetExpandableFieldObject(value, this.InternalSourceTransaction);
         }
 
-        [JsonProperty("source_transaction")]
+        [JsonPropertyName("source_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
         internal ExpandableField<Charge> InternalSourceTransaction { get; set; }
         #endregion
@@ -227,7 +227,7 @@ namespace Stripe
         /// The source balance this transfer came from. One of <c>card</c>, <c>fpx</c>, or
         /// <c>bank_account</c>.
         /// </summary>
-        [JsonProperty("source_type")]
+        [JsonPropertyName("source_type")]
         public string SourceType { get; set; }
 
         /// <summary>
@@ -235,7 +235,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/connect/charges-transfers#transfer-options">Connect
         /// documentation</a> for details.
         /// </summary>
-        [JsonProperty("transfer_group")]
+        [JsonPropertyName("transfer_group")]
         public string TransferGroup { get; set; }
     }
 }

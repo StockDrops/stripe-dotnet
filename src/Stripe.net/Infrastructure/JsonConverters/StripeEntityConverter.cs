@@ -3,8 +3,8 @@
     using System;
     using System.IO;
     using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
+    using System.Text.Json.Serialization;
+    
 
     /// <summary>
     /// This converter is used to deserialize objects inheriting from StripeEntity.

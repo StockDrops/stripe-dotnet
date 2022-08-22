@@ -2,7 +2,7 @@
 namespace Stripe.Treasury
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class FinancialAccountCreateOptions : BaseOptions, IHasMetadata
     {
@@ -10,7 +10,7 @@ namespace Stripe.Treasury
         /// Encodes whether a FinancialAccount has access to a particular feature. Stripe or the
         /// platform can control features via the requested field.
         /// </summary>
-        [JsonProperty("features")]
+        [JsonPropertyName("features")]
         public FinancialAccountFeaturesOptions Features { get; set; }
 
         /// <summary>
@@ -19,19 +19,19 @@ namespace Stripe.Treasury
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The set of functionalities that the platform can restrict on the FinancialAccount.
         /// </summary>
-        [JsonProperty("platform_restrictions")]
+        [JsonPropertyName("platform_restrictions")]
         public FinancialAccountPlatformRestrictionsOptions PlatformRestrictions { get; set; }
 
         /// <summary>
         /// The currencies the FinancialAccount can hold a balance in.
         /// </summary>
-        [JsonProperty("supported_currencies")]
+        [JsonPropertyName("supported_currencies")]
         public List<string> SupportedCurrencies { get; set; }
     }
 }

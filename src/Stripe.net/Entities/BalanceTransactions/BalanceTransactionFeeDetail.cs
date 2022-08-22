@@ -1,20 +1,20 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class BalanceTransactionFeeDetail : StripeEntity<BalanceTransactionFeeDetail>
     {
         /// <summary>
         /// Amount of the fee, in cents.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long Amount { get; set; }
 
         /// <summary>
         /// ID of the Connect application that earned the fee.
         /// </summary>
-        [JsonProperty("application")]
+        [JsonPropertyName("application")]
         public string Application { get; set; }
 
         /// <summary>
@@ -22,19 +22,19 @@ namespace Stripe
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
         /// Type of the fee, one of: <c>application_fee</c>, <c>stripe_fee</c> or <c>tax</c>.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
     }
 }

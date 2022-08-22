@@ -5,7 +5,7 @@ namespace Stripe
     using System.Collections.Generic;
     using System.Linq;
     using System.Net.Http;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -72,16 +72,16 @@ namespace Stripe
 
         private class ClientTelemetryPayload
         {
-            [JsonProperty("last_request_metrics")]
+            [JsonPropertyName("last_request_metrics")]
             public RequestMetrics LastRequestMetrics { get; set; }
         }
 
         private class RequestMetrics
         {
-            [JsonProperty("request_id")]
+            [JsonPropertyName("request_id")]
             public string RequestId { get; set; }
 
-            [JsonProperty("request_duration_ms")]
+            [JsonPropertyName("request_duration_ms")]
             public long RequestDurationMs { get; set; }
         }
     }

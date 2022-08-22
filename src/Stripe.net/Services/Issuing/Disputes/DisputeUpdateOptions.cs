@@ -2,14 +2,14 @@
 namespace Stripe.Issuing
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class DisputeUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// Evidence provided for the dispute.
         /// </summary>
-        [JsonProperty("evidence")]
+        [JsonPropertyName("evidence")]
         public DisputeEvidenceOptions Evidence { get; set; }
 
         /// <summary>
@@ -18,7 +18,7 @@ namespace Stripe.Issuing
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
     }
 }

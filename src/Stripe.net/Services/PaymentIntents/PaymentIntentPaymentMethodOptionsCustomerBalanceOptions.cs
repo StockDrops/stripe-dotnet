@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PaymentIntentPaymentMethodOptionsCustomerBalanceOptions : INestedOptions
     {
@@ -9,14 +9,14 @@ namespace Stripe
         /// Configuration for the bank transfer funding type, if the <c>funding_type</c> is set to
         /// <c>bank_transfer</c>.
         /// </summary>
-        [JsonProperty("bank_transfer")]
+        [JsonPropertyName("bank_transfer")]
         public PaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferOptions BankTransfer { get; set; }
 
         /// <summary>
         /// The funding method type to be used when there are not enough funds in the customer
         /// balance. Permitted values include: <c>bank_transfer</c>.
         /// </summary>
-        [JsonProperty("funding_type")]
+        [JsonPropertyName("funding_type")]
         public string FundingType { get; set; }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Stripe
         /// publishable key, you may only update the value from <c>on_session</c> to
         /// <c>off_session</c>.
         /// </summary>
-        [JsonProperty("setup_future_usage")]
+        [JsonPropertyName("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
     }
 }

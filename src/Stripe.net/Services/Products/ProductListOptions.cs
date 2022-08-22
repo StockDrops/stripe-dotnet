@@ -2,23 +2,23 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ProductListOptions : ListOptionsWithCreated
     {
-        [JsonProperty("active")]
+        [JsonPropertyName("active")]
         public bool? Active { get; set; }
 
-        [JsonProperty("ids")]
+        [JsonPropertyName("ids")]
         public List<string> Ids { get; set; }
 
-        [JsonProperty("shippable")]
+        [JsonPropertyName("shippable")]
         public bool? Shippable { get; set; }
 
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
-        [JsonProperty("url")]
+        [JsonPropertyName("url")]
         public string Url { get; set; }
     }
 }

@@ -1,20 +1,20 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PaymentIntentPaymentMethodOptionsUsBankAccountOptions : INestedOptions
     {
         /// <summary>
         /// Additional fields for Financial Connections Session creation.
         /// </summary>
-        [JsonProperty("financial_connections")]
+        [JsonPropertyName("financial_connections")]
         public PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions FinancialConnections { get; set; }
 
         /// <summary>
         /// Additional fields for network related functions.
         /// </summary>
-        [JsonProperty("networks")]
+        [JsonPropertyName("networks")]
         public PaymentIntentPaymentMethodOptionsUsBankAccountNetworksOptions Networks { get; set; }
 
         /// <summary>
@@ -37,14 +37,14 @@ namespace Stripe
         /// publishable key, you may only update the value from <c>on_session</c> to
         /// <c>off_session</c>.
         /// </summary>
-        [JsonProperty("setup_future_usage")]
+        [JsonPropertyName("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
         /// Verification method for the intent.
         /// One of: <c>automatic</c>, <c>instant</c>, or <c>microdeposits</c>.
         /// </summary>
-        [JsonProperty("verification_method")]
+        [JsonPropertyName("verification_method")]
         public string VerificationMethod { get; set; }
     }
 }

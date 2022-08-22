@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SubscriptionScheduleDefaultSettingsOptions : INestedOptions
     {
@@ -13,13 +13,13 @@ namespace Stripe
         /// information, see the application fees <a
         /// href="https://stripe.com/docs/connect/subscriptions#collecting-fees-on-subscriptions">documentation</a>.
         /// </summary>
-        [JsonProperty("application_fee_percent")]
+        [JsonPropertyName("application_fee_percent")]
         public decimal? ApplicationFeePercent { get; set; }
 
         /// <summary>
         /// Default settings for automatic tax computation.
         /// </summary>
-        [JsonProperty("automatic_tax")]
+        [JsonPropertyName("automatic_tax")]
         public SubscriptionScheduleDefaultSettingsAutomaticTaxOptions AutomaticTax { get; set; }
 
         /// <summary>
@@ -30,14 +30,14 @@ namespace Stripe
         /// href="https://stripe.com/docs/billing/subscriptions/billing-cycle">documentation</a>.
         /// One of: <c>automatic</c>, or <c>phase_start</c>.
         /// </summary>
-        [JsonProperty("billing_cycle_anchor")]
+        [JsonPropertyName("billing_cycle_anchor")]
         public string BillingCycleAnchor { get; set; }
 
         /// <summary>
         /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
         /// new billing period. Pass an empty string to remove previously-defined thresholds.
         /// </summary>
-        [JsonProperty("billing_thresholds")]
+        [JsonPropertyName("billing_thresholds")]
         public SubscriptionScheduleDefaultSettingsBillingThresholdsOptions BillingThresholds { get; set; }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Stripe
         /// <c>charge_automatically</c> on creation.
         /// One of: <c>charge_automatically</c>, or <c>send_invoice</c>.
         /// </summary>
-        [JsonProperty("collection_method")]
+        [JsonPropertyName("collection_method")]
         public string CollectionMethod { get; set; }
 
         /// <summary>
@@ -56,20 +56,20 @@ namespace Stripe
         /// customer associated with the subscription schedule. If not set, invoices will use the
         /// default payment method in the customer's invoice settings.
         /// </summary>
-        [JsonProperty("default_payment_method")]
+        [JsonPropertyName("default_payment_method")]
         public string DefaultPaymentMethod { get; set; }
 
         /// <summary>
         /// All invoices will be billed using the specified settings.
         /// </summary>
-        [JsonProperty("invoice_settings")]
+        [JsonPropertyName("invoice_settings")]
         public SubscriptionScheduleDefaultSettingsInvoiceSettingsOptions InvoiceSettings { get; set; }
 
         /// <summary>
         /// The data with which to automatically create a Transfer for each of the associated
         /// subscription's invoices.
         /// </summary>
-        [JsonProperty("transfer_data")]
+        [JsonPropertyName("transfer_data")]
         public SubscriptionScheduleDefaultSettingsTransferDataOptions TransferData { get; set; }
     }
 }

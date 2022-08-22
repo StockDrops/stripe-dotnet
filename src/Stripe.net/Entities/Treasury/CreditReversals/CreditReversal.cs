@@ -2,7 +2,7 @@
 namespace Stripe.Treasury
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -16,19 +16,19 @@ namespace Stripe.Treasury
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
         /// Amount (in cents) transferred.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long Amount { get; set; }
 
         /// <summary>
@@ -36,13 +36,13 @@ namespace Stripe.Treasury
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
         /// The FinancialAccount to reverse funds from.
         /// </summary>
-        [JsonProperty("financial_account")]
+        [JsonPropertyName("financial_account")]
         public string FinancialAccount { get; set; }
 
         /// <summary>
@@ -50,14 +50,14 @@ namespace Stripe.Treasury
         /// transaction receipt</a> URL that is provided when money movement is considered regulated
         /// under Stripe's money transmission licenses.
         /// </summary>
-        [JsonProperty("hosted_regulatory_receipt_url")]
+        [JsonPropertyName("hosted_regulatory_receipt_url")]
         public string HostedRegulatoryReceiptUrl { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -65,30 +65,30 @@ namespace Stripe.Treasury
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The rails used to reverse the funds.
         /// One of: <c>ach</c>, or <c>stripe</c>.
         /// </summary>
-        [JsonProperty("network")]
+        [JsonPropertyName("network")]
         public string Network { get; set; }
 
         /// <summary>
         /// The ReceivedCredit being reversed.
         /// </summary>
-        [JsonProperty("received_credit")]
+        [JsonPropertyName("received_credit")]
         public string ReceivedCredit { get; set; }
 
         /// <summary>
         /// Status of the CreditReversal.
         /// One of: <c>canceled</c>, <c>posted</c>, or <c>processing</c>.
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
-        [JsonProperty("status_transitions")]
+        [JsonPropertyName("status_transitions")]
         public CreditReversalStatusTransitions StatusTransitions { get; set; }
 
         #region Expandable Transaction
@@ -117,7 +117,7 @@ namespace Stripe.Treasury
             set => this.InternalTransaction = SetExpandableFieldObject(value, this.InternalTransaction);
         }
 
-        [JsonProperty("transaction")]
+        [JsonPropertyName("transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<Transaction>))]
         internal ExpandableField<Transaction> InternalTransaction { get; set; }
         #endregion

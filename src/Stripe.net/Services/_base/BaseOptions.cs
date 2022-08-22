@@ -1,7 +1,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// Base class for Stripe options classes, i.e. classes representing parameters for Stripe
@@ -11,7 +11,8 @@ namespace Stripe
     public class BaseOptions : INestedOptions
     {
         /// <summary>Specifies which fields in the response should be expanded.</summary>
-        [JsonProperty("expand", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("expand")]
+[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public List<string> Expand { get; set; }
 
         /// <summary>Dictionary containing extra request parameters.</summary>

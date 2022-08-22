@@ -1,26 +1,26 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class FundingInstructionsBankTransferFinancialAddressSpei : StripeEntity<FundingInstructionsBankTransferFinancialAddressSpei>
     {
         /// <summary>
         /// The three-digit bank code.
         /// </summary>
-        [JsonProperty("bank_code")]
+        [JsonPropertyName("bank_code")]
         public string BankCode { get; set; }
 
         /// <summary>
         /// The short banking institution name.
         /// </summary>
-        [JsonProperty("bank_name")]
+        [JsonPropertyName("bank_name")]
         public string BankName { get; set; }
 
         /// <summary>
         /// The CLABE number.
         /// </summary>
-        [JsonProperty("clabe")]
+        [JsonPropertyName("clabe")]
         public string Clabe { get; set; }
     }
 }

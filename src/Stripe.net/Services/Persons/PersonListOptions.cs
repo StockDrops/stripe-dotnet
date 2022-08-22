@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PersonListOptions : ListOptions
     {
-        [JsonProperty("relationship")]
+        [JsonPropertyName("relationship")]
         public PersonRelationshipListOptions Relationship { get; set; }
     }
 }

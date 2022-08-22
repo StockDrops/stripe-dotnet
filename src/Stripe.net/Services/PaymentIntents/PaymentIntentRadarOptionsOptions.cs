@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PaymentIntentRadarOptionsOptions : INestedOptions
     {
@@ -10,7 +10,7 @@ namespace Stripe
         /// of the browser metadata and device details that help Radar make more accurate
         /// predictions on your payments.
         /// </summary>
-        [JsonProperty("session")]
+        [JsonPropertyName("session")]
         public string Session { get; set; }
     }
 }

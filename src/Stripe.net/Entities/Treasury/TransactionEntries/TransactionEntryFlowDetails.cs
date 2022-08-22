@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Treasury
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class TransactionEntryFlowDetails : StripeEntity<TransactionEntryFlowDetails>
     {
@@ -11,7 +11,7 @@ namespace Stripe.Treasury
         /// their network and source flow. Reversing a ReceivedCredit leads to the creation of a new
         /// object known as a CreditReversal.
         /// </summary>
-        [JsonProperty("credit_reversal")]
+        [JsonPropertyName("credit_reversal")]
         public CreditReversal CreditReversal { get; set; }
 
         /// <summary>
@@ -20,7 +20,7 @@ namespace Stripe.Treasury
         /// network and source flow. Reversing a ReceivedDebit leads to the creation of a new object
         /// known as a DebitReversal.
         /// </summary>
-        [JsonProperty("debit_reversal")]
+        [JsonPropertyName("debit_reversal")]
         public DebitReversal DebitReversal { get; set; }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace Stripe.Treasury
         /// href="https://stripe.com/docs/api#financial_accounts">FinancialAccount</a> via a
         /// PaymentMethod that is owned by you. The funds will be transferred via an ACH debit.
         /// </summary>
-        [JsonProperty("inbound_transfer")]
+        [JsonPropertyName("inbound_transfer")]
         public InboundTransfer InboundTransfer { get; set; }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Stripe.Treasury
         /// Related guide: <a href="https://stripe.com/docs/issuing/purchases/authorizations">Issued
         /// Card Authorizations</a>.
         /// </summary>
-        [JsonProperty("issuing_authorization")]
+        [JsonPropertyName("issuing_authorization")]
         public Issuing.Authorization IssuingAuthorization { get; set; }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace Stripe.Treasury
         /// <c>/v1/test_helpers/treasury/outbound_payments</c> endpoints. These methods can only be
         /// called on test mode objects.
         /// </summary>
-        [JsonProperty("outbound_payment")]
+        [JsonPropertyName("outbound_payment")]
         public OutboundPayment OutboundPayment { get; set; }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Stripe.Treasury
         /// <c>/v1/test_helpers/treasury/outbound_transfers</c> endpoints. These methods can only be
         /// called on test mode objects.
         /// </summary>
-        [JsonProperty("outbound_transfer")]
+        [JsonPropertyName("outbound_transfer")]
         public OutboundTransfer OutboundTransfer { get; set; }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace Stripe.Treasury
         /// href="https://stripe.com/docs/api#financial_accounts">FinancialAccount</a> (for example,
         /// via ACH or wire). These money movements are not initiated from the FinancialAccount.
         /// </summary>
-        [JsonProperty("received_credit")]
+        [JsonPropertyName("received_credit")]
         public ReceivedCredit ReceivedCredit { get; set; }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace Stripe.Treasury
         /// href="https://stripe.com/docs/api#financial_accounts">FinancialAccount</a>. These are
         /// not initiated from the FinancialAccount.
         /// </summary>
-        [JsonProperty("received_debit")]
+        [JsonPropertyName("received_debit")]
         public ReceivedDebit ReceivedDebit { get; set; }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Stripe.Treasury
         /// <c>issuing_authorization</c>, <c>other</c>, <c>outbound_payment</c>,
         /// <c>outbound_transfer</c>, <c>received_credit</c>, or <c>received_debit</c>.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class InvoiceLineItemAutomaticTaxOptions : INestedOptions
     {
@@ -11,7 +11,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/api/tax_rates">tax rates</a>, negative amounts, or
         /// <c>tax_behavior=unspecified</c>) cannot be added to automatic tax invoices.
         /// </summary>
-        [JsonProperty("enabled")]
+        [JsonPropertyName("enabled")]
         public bool? Enabled { get; set; }
     }
 }

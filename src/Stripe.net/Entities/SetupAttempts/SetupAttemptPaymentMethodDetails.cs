@@ -1,44 +1,44 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SetupAttemptPaymentMethodDetails : StripeEntity<SetupAttemptPaymentMethodDetails>
     {
-        [JsonProperty("acss_debit")]
+        [JsonPropertyName("acss_debit")]
         public SetupAttemptPaymentMethodDetailsAcssDebit AcssDebit { get; set; }
 
-        [JsonProperty("au_becs_debit")]
+        [JsonPropertyName("au_becs_debit")]
         public SetupAttemptPaymentMethodDetailsAuBecsDebit AuBecsDebit { get; set; }
 
-        [JsonProperty("bacs_debit")]
+        [JsonPropertyName("bacs_debit")]
         public SetupAttemptPaymentMethodDetailsBacsDebit BacsDebit { get; set; }
 
-        [JsonProperty("bancontact")]
+        [JsonPropertyName("bancontact")]
         public SetupAttemptPaymentMethodDetailsBancontact Bancontact { get; set; }
 
-        [JsonProperty("blik")]
+        [JsonPropertyName("blik")]
         public SetupAttemptPaymentMethodDetailsBlik Blik { get; set; }
 
-        [JsonProperty("boleto")]
+        [JsonPropertyName("boleto")]
         public SetupAttemptPaymentMethodDetailsBoleto Boleto { get; set; }
 
-        [JsonProperty("card")]
+        [JsonPropertyName("card")]
         public SetupAttemptPaymentMethodDetailsCard Card { get; set; }
 
-        [JsonProperty("card_present")]
+        [JsonPropertyName("card_present")]
         public SetupAttemptPaymentMethodDetailsCardPresent CardPresent { get; set; }
 
-        [JsonProperty("ideal")]
+        [JsonPropertyName("ideal")]
         public SetupAttemptPaymentMethodDetailsIdeal Ideal { get; set; }
 
-        [JsonProperty("link")]
+        [JsonPropertyName("link")]
         public SetupAttemptPaymentMethodDetailsLink Link { get; set; }
 
-        [JsonProperty("sepa_debit")]
+        [JsonPropertyName("sepa_debit")]
         public SetupAttemptPaymentMethodDetailsSepaDebit SepaDebit { get; set; }
 
-        [JsonProperty("sofort")]
+        [JsonPropertyName("sofort")]
         public SetupAttemptPaymentMethodDetailsSofort Sofort { get; set; }
 
         /// <summary>
@@ -46,10 +46,10 @@ namespace Stripe
         /// additional hash is included on <c>payment_method_details</c> with a name matching this
         /// value. It contains confirmation-specific information for the payment method.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
-        [JsonProperty("us_bank_account")]
+        [JsonPropertyName("us_bank_account")]
         public SetupAttemptPaymentMethodDetailsUsBankAccount UsBankAccount { get; set; }
     }
 }

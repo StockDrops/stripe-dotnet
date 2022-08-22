@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class UsageRecordSummaryPeriod : StripeEntity<UsageRecordSummaryPeriod>
@@ -11,14 +11,14 @@ namespace Stripe
         /// The end date of this usage period. All usage up to and including this point in time is
         /// included.
         /// </summary>
-        [JsonProperty("end")]
+        [JsonPropertyName("end")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? End { get; set; }
 
         /// <summary>
         /// The start date of this usage period. All usage after this point in time is included.
         /// </summary>
-        [JsonProperty("start")]
+        [JsonPropertyName("start")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? Start { get; set; }
     }

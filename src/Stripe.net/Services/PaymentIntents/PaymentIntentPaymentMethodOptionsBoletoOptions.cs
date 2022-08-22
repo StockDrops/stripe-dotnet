@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PaymentIntentPaymentMethodOptionsBoletoOptions : INestedOptions
     {
@@ -10,7 +10,7 @@ namespace Stripe
         /// a Boleto voucher on Monday and you set expires_after_days to 2, the Boleto invoice will
         /// expire on Wednesday at 23:59 America/Sao_Paulo time.
         /// </summary>
-        [JsonProperty("expires_after_days")]
+        [JsonPropertyName("expires_after_days")]
         public long? ExpiresAfterDays { get; set; }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace Stripe
         /// publishable key, you may only update the value from <c>on_session</c> to
         /// <c>off_session</c>.
         /// </summary>
-        [JsonProperty("setup_future_usage")]
+        [JsonPropertyName("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
     }
 }

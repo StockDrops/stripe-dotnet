@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Issuing
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class AuthorizationVerificationData : StripeEntity<AuthorizationVerificationData>
     {
@@ -10,7 +10,7 @@ namespace Stripe.Issuing
         /// <c>billing.address.line1</c>.
         /// One of: <c>match</c>, <c>mismatch</c>, or <c>not_provided</c>.
         /// </summary>
-        [JsonProperty("address_line1_check")]
+        [JsonPropertyName("address_line1_check")]
         public string AddressLine1Check { get; set; }
 
         /// <summary>
@@ -18,21 +18,21 @@ namespace Stripe.Issuing
         /// <c>billing.address.postal_code</c>.
         /// One of: <c>match</c>, <c>mismatch</c>, or <c>not_provided</c>.
         /// </summary>
-        [JsonProperty("address_postal_code_check")]
+        [JsonPropertyName("address_postal_code_check")]
         public string AddressPostalCodeCheck { get; set; }
 
         /// <summary>
         /// Whether the cardholder provided a CVC and if it matched Stripe’s record.
         /// One of: <c>match</c>, <c>mismatch</c>, or <c>not_provided</c>.
         /// </summary>
-        [JsonProperty("cvc_check")]
+        [JsonPropertyName("cvc_check")]
         public string CvcCheck { get; set; }
 
         /// <summary>
         /// Whether the cardholder provided an expiry date and if it matched Stripe’s record.
         /// One of: <c>match</c>, <c>mismatch</c>, or <c>not_provided</c>.
         /// </summary>
-        [JsonProperty("expiry_check")]
+        [JsonPropertyName("expiry_check")]
         public string ExpiryCheck { get; set; }
     }
 }

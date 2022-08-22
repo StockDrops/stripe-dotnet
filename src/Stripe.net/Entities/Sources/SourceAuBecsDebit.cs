@@ -1,17 +1,17 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SourceAuBecsDebit : StripeEntity<SourceAuBecsDebit>
     {
-        [JsonProperty("bsb_number")]
+        [JsonPropertyName("bsb_number")]
         public string BsbNumber { get; set; }
 
-        [JsonProperty("fingerprint")]
+        [JsonPropertyName("fingerprint")]
         public string Fingerprint { get; set; }
 
-        [JsonProperty("last4")]
+        [JsonPropertyName("last4")]
         public string Last4 { get; set; }
     }
 }

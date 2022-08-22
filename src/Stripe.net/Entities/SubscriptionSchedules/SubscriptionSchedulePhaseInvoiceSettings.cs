@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SubscriptionSchedulePhaseInvoiceSettings : StripeEntity<SubscriptionSchedulePhaseInvoiceSettings>
     {
@@ -10,7 +10,7 @@ namespace Stripe
         /// schedule. This value will be <c>null</c> for subscription schedules where
         /// <c>billing=charge_automatically</c>.
         /// </summary>
-        [JsonProperty("days_until_due")]
+        [JsonPropertyName("days_until_due")]
         public long? DaysUntilDue { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class ChargeCreateOptions : BaseOptions, IHasMetadata
@@ -16,7 +16,7 @@ namespace Stripe
         /// in charge currency</a>. The amount value supports up to eight digits (e.g., a value of
         /// 99999999 for a USD charge of $999,999.99).
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long? Amount { get; set; }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace Stripe
         /// information, see the application fees <a
         /// href="https://stripe.com/docs/connect/direct-charges#collecting-fees">documentation</a>.
         /// </summary>
-        [JsonProperty("application_fee_amount")]
+        [JsonPropertyName("application_fee_amount")]
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/charges/placing-a-hold">authorizing charges and settling
         /// later</a> documentation.
         /// </summary>
-        [JsonProperty("capture")]
+        [JsonPropertyName("capture")]
         public bool? Capture { get; set; }
 
         /// <summary>
@@ -45,13 +45,13 @@ namespace Stripe
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
         /// The ID of an existing customer that will be charged in this request.
         /// </summary>
-        [JsonProperty("customer")]
+        [JsonPropertyName("customer")]
         public string Customer { get; set; }
 
         /// <summary>
@@ -60,16 +60,16 @@ namespace Stripe
         /// email receipts to your customers, your receipt emails will include the
         /// <c>description</c> of the charge(s) that they are describing.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
-        [JsonProperty("destination")]
+        [JsonPropertyName("destination")]
         public ChargeDestinationOptions Destination { get; set; }
 
-        [JsonProperty("exchange_rate")]
+        [JsonPropertyName("exchange_rate")]
         public decimal? ExchangeRate { get; set; }
 
-        [JsonProperty("level3")]
+        [JsonPropertyName("level3")]
         public ChargeLevel3Options Level3 { get; set; }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/connect/charges-transfers#on-behalf-of">Creating Separate
         /// Charges and Transfers</a>.
         /// </summary>
-        [JsonProperty("on_behalf_of")]
+        [JsonPropertyName("on_behalf_of")]
         public string OnBehalfOf { get; set; }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/radar/radar-session">Radar Session</a> for more
         /// information.
         /// </summary>
-        [JsonProperty("radar_options")]
+        [JsonPropertyName("radar_options")]
         public ChargeRadarOptionsOptions RadarOptions { get; set; }
 
         /// <summary>
@@ -108,16 +108,16 @@ namespace Stripe
         /// specified for a charge in live mode, a receipt will be sent regardless of your <a
         /// href="https://dashboard.stripe.com/account/emails">email settings</a>.
         /// </summary>
-        [JsonProperty("receipt_email")]
+        [JsonPropertyName("receipt_email")]
         public string ReceiptEmail { get; set; }
 
         /// <summary>
         /// Shipping information for the charge. Helps prevent fraud on charges for physical goods.
         /// </summary>
-        [JsonProperty("shipping")]
+        [JsonPropertyName("shipping")]
         public ChargeShippingOptions Shipping { get; set; }
 
-        [JsonProperty("source")]
+        [JsonPropertyName("source")]
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<string, CardCreateNestedOptions> Source { get; set; }
 
@@ -126,7 +126,7 @@ namespace Stripe
         /// this value as the complete description of a charge on your customers’ statements. Must
         /// contain at least one letter, maximum 22 characters.
         /// </summary>
-        [JsonProperty("statement_descriptor")]
+        [JsonPropertyName("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 
         /// <summary>
@@ -135,7 +135,7 @@ namespace Stripe
         /// on the account to form the complete statement descriptor. Maximum 22 characters for the
         /// concatenated descriptor.
         /// </summary>
-        [JsonProperty("statement_descriptor_suffix")]
+        [JsonPropertyName("statement_descriptor_suffix")]
         public string StatementDescriptorSuffix { get; set; }
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace Stripe
         /// destination charge. <a href="https://stripe.com/docs/connect/destination-charges">See
         /// the Connect documentation</a> for details.
         /// </summary>
-        [JsonProperty("transfer_data")]
+        [JsonPropertyName("transfer_data")]
         public ChargeTransferDataOptions TransferData { get; set; }
 
         /// <summary>
@@ -151,7 +151,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/connect/charges-transfers#transfer-options">Grouping
         /// transactions</a>.
         /// </summary>
-        [JsonProperty("transfer_group")]
+        [JsonPropertyName("transfer_group")]
         public string TransferGroup { get; set; }
     }
 }

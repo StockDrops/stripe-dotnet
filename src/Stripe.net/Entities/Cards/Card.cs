@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -18,13 +18,13 @@ namespace Stripe
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         #region Expandable Account
@@ -55,7 +55,7 @@ namespace Stripe
             set => this.InternalAccount = SetExpandableFieldObject(value, this.InternalAccount);
         }
 
-        [JsonProperty("account")]
+        [JsonPropertyName("account")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
         internal ExpandableField<Account> InternalAccount { get; set; }
         #endregion
@@ -63,72 +63,72 @@ namespace Stripe
         /// <summary>
         /// City/District/Suburb/Town/Village.
         /// </summary>
-        [JsonProperty("address_city")]
+        [JsonPropertyName("address_city")]
         public string AddressCity { get; set; }
 
         /// <summary>
         /// Billing address country, if provided when creating card.
         /// </summary>
-        [JsonProperty("address_country")]
+        [JsonPropertyName("address_country")]
         public string AddressCountry { get; set; }
 
         /// <summary>
         /// Address line 1 (Street address/PO Box/Company name).
         /// </summary>
-        [JsonProperty("address_line1")]
+        [JsonPropertyName("address_line1")]
         public string AddressLine1 { get; set; }
 
         /// <summary>
         /// If <c>address_line1</c> was provided, results of the check: <c>pass</c>, <c>fail</c>,
         /// <c>unavailable</c>, or <c>unchecked</c>.
         /// </summary>
-        [JsonProperty("address_line1_check")]
+        [JsonPropertyName("address_line1_check")]
         public string AddressLine1Check { get; set; }
 
         /// <summary>
         /// Address line 2 (Apartment/Suite/Unit/Building).
         /// </summary>
-        [JsonProperty("address_line2")]
+        [JsonPropertyName("address_line2")]
         public string AddressLine2 { get; set; }
 
         /// <summary>
         /// State/County/Province/Region.
         /// </summary>
-        [JsonProperty("address_state")]
+        [JsonPropertyName("address_state")]
         public string AddressState { get; set; }
 
         /// <summary>
         /// ZIP or postal code.
         /// </summary>
-        [JsonProperty("address_zip")]
+        [JsonPropertyName("address_zip")]
         public string AddressZip { get; set; }
 
         /// <summary>
         /// If <c>address_zip</c> was provided, results of the check: <c>pass</c>, <c>fail</c>,
         /// <c>unavailable</c>, or <c>unchecked</c>.
         /// </summary>
-        [JsonProperty("address_zip_check")]
+        [JsonPropertyName("address_zip_check")]
         public string AddressZipCheck { get; set; }
 
         /// <summary>
         /// A set of available payout methods for this card. Only values from this set should be
         /// passed as the <c>method</c> when creating a payout.
         /// </summary>
-        [JsonProperty("available_payout_methods")]
+        [JsonPropertyName("available_payout_methods")]
         public List<string> AvailablePayoutMethods { get; set; }
 
         /// <summary>
         /// Card brand. Can be <c>American Express</c>, <c>Diners Club</c>, <c>Discover</c>,
         /// <c>JCB</c>, <c>MasterCard</c>, <c>UnionPay</c>, <c>Visa</c>, or <c>Unknown</c>.
         /// </summary>
-        [JsonProperty("brand")]
+        [JsonPropertyName("brand")]
         public string Brand { get; set; }
 
         /// <summary>
         /// Two-letter ISO code representing the country of the card. You could use this attribute
         /// to get a sense of the international breakdown of cards you've collected.
         /// </summary>
-        [JsonProperty("country")]
+        [JsonPropertyName("country")]
         public string Country { get; set; }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace Stripe
         /// applicable on accounts (not customers or recipients). The card can be used as a transfer
         /// destination for funds in this currency.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         #region Expandable Customer
@@ -167,7 +167,7 @@ namespace Stripe
             set => this.InternalCustomer = SetExpandableFieldObject(value, this.InternalCustomer);
         }
 
-        [JsonProperty("customer")]
+        [JsonPropertyName("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
@@ -180,44 +180,45 @@ namespace Stripe
         /// href="https://support.stripe.com/questions/check-if-a-card-is-valid-without-a-charge">Check
         /// if a card is valid without a charge</a>.
         /// </summary>
-        [JsonProperty("cvc_check")]
+        [JsonPropertyName("cvc_check")]
         public string CvcCheck { get; set; }
 
         /// <summary>
         /// Whether this card is the default external account for its currency.
         /// </summary>
-        [JsonProperty("default_for_currency")]
+        [JsonPropertyName("default_for_currency")]
         public bool? DefaultForCurrency { get; set; }
 
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
-        [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("deleted")]
+[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public bool? Deleted { get; set; }
 
         /// <summary>
         /// A high-level description of the type of cards issued in this range. (For internal use
         /// only and not typically available in standard API requests.).
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
         /// (For tokenized numbers only.) The last four digits of the device account number.
         /// </summary>
-        [JsonProperty("dynamic_last4")]
+        [JsonPropertyName("dynamic_last4")]
         public string DynamicLast4 { get; set; }
 
         /// <summary>
         /// Two-digit number representing the card's expiration month.
         /// </summary>
-        [JsonProperty("exp_month")]
+        [JsonPropertyName("exp_month")]
         public long ExpMonth { get; set; }
 
         /// <summary>
         /// Four-digit number representing the card's expiration year.
         /// </summary>
-        [JsonProperty("exp_year")]
+        [JsonPropertyName("exp_year")]
         public long ExpYear { get; set; }
 
         /// <summary>
@@ -229,34 +230,34 @@ namespace Stripe
         /// <em>Starting May 1, 2021, card fingerprint in India for Connect will change to allow two
         /// fingerprints for the same card --- one for India and one for the rest of the world.</em>.
         /// </summary>
-        [JsonProperty("fingerprint")]
+        [JsonPropertyName("fingerprint")]
         public string Fingerprint { get; set; }
 
         /// <summary>
         /// Card funding type. Can be <c>credit</c>, <c>debit</c>, <c>prepaid</c>, or
         /// <c>unknown</c>.
         /// </summary>
-        [JsonProperty("funding")]
+        [JsonPropertyName("funding")]
         public string Funding { get; set; }
 
         /// <summary>
         /// Issuer identification number of the card. (For internal use only and not typically
         /// available in standard API requests.).
         /// </summary>
-        [JsonProperty("iin")]
+        [JsonPropertyName("iin")]
         public string Iin { get; set; }
 
         /// <summary>
         /// The name of the card's issuing bank. (For internal use only and not typically available
         /// in standard API requests.).
         /// </summary>
-        [JsonProperty("issuer")]
+        [JsonPropertyName("issuer")]
         public string Issuer { get; set; }
 
         /// <summary>
         /// The last four digits of the card.
         /// </summary>
-        [JsonProperty("last4")]
+        [JsonPropertyName("last4")]
         public string Last4 { get; set; }
 
         /// <summary>
@@ -264,13 +265,13 @@ namespace Stripe
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Cardholder name.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
@@ -278,7 +279,7 @@ namespace Stripe
         /// fails, the status is set to <c>errored</c> and transfers are stopped until account
         /// details are updated.
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
         /// <summary>
@@ -286,7 +287,7 @@ namespace Stripe
         /// <c>android_pay</c> (includes Google Pay), <c>apple_pay</c>, <c>masterpass</c>,
         /// <c>visa_checkout</c>, or null.
         /// </summary>
-        [JsonProperty("tokenization_method")]
+        [JsonPropertyName("tokenization_method")]
         public string TokenizationMethod { get; set; }
     }
 }

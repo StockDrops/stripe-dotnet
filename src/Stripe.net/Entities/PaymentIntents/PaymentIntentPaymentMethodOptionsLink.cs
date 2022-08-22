@@ -1,20 +1,20 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PaymentIntentPaymentMethodOptionsLink : StripeEntity<PaymentIntentPaymentMethodOptionsLink>
     {
         /// <summary>
         /// Controls when the funds will be captured from the customer's account.
         /// </summary>
-        [JsonProperty("capture_method")]
+        [JsonPropertyName("capture_method")]
         public string CaptureMethod { get; set; }
 
         /// <summary>
         /// Token used for persistent Link logins.
         /// </summary>
-        [JsonProperty("persistent_token")]
+        [JsonPropertyName("persistent_token")]
         public string PersistentToken { get; set; }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace Stripe
         /// as <a href="https://stripe.com/docs/strong-customer-authentication">SCA</a>.
         /// One of: <c>none</c>, or <c>off_session</c>.
         /// </summary>
-        [JsonProperty("setup_future_usage")]
+        [JsonPropertyName("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
     }
 }

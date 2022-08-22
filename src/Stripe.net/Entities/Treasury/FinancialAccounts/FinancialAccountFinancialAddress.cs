@@ -2,26 +2,26 @@
 namespace Stripe.Treasury
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class FinancialAccountFinancialAddress : StripeEntity<FinancialAccountFinancialAddress>
     {
         /// <summary>
         /// ABA Records contain U.S. bank account details per the ABA format.
         /// </summary>
-        [JsonProperty("aba")]
+        [JsonPropertyName("aba")]
         public FinancialAccountFinancialAddressAba Aba { get; set; }
 
         /// <summary>
         /// The list of networks that the address supports.
         /// </summary>
-        [JsonProperty("supported_networks")]
+        [JsonPropertyName("supported_networks")]
         public List<string> SupportedNetworks { get; set; }
 
         /// <summary>
         /// The type of financial address.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Treasury
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class OutboundTransferDestinationPaymentMethodOptionsUsBankAccountOptions : INestedOptions
     {
@@ -9,7 +9,7 @@ namespace Stripe.Treasury
         /// Designate the OutboundTransfer as using a US bank account network configuration.
         /// One of: <c>ach</c>, or <c>us_domestic_wire</c>.
         /// </summary>
-        [JsonProperty("network")]
+        [JsonPropertyName("network")]
         public string Network { get; set; }
     }
 }

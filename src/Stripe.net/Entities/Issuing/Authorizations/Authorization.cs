@@ -3,7 +3,7 @@ namespace Stripe.Issuing
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -20,13 +20,13 @@ namespace Stripe.Issuing
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace Stripe.Issuing
         /// and in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest currency
         /// unit</a>.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long Amount { get; set; }
 
         /// <summary>
@@ -42,13 +42,13 @@ namespace Stripe.Issuing
         /// <c>currency</c> and in the <a
         /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
-        [JsonProperty("amount_details")]
+        [JsonPropertyName("amount_details")]
         public AuthorizationAmountDetails AmountDetails { get; set; }
 
         /// <summary>
         /// Whether the authorization has been approved.
         /// </summary>
-        [JsonProperty("approved")]
+        [JsonPropertyName("approved")]
         public bool Approved { get; set; }
 
         /// <summary>
@@ -56,20 +56,20 @@ namespace Stripe.Issuing
         /// One of: <c>chip</c>, <c>contactless</c>, <c>keyed_in</c>, <c>online</c>, or
         /// <c>swipe</c>.
         /// </summary>
-        [JsonProperty("authorization_method")]
+        [JsonPropertyName("authorization_method")]
         public string AuthorizationMethod { get; set; }
 
         /// <summary>
         /// List of balance transactions associated with this authorization.
         /// </summary>
-        [JsonProperty("balance_transactions")]
+        [JsonPropertyName("balance_transactions")]
         public List<BalanceTransaction> BalanceTransactions { get; set; }
 
         /// <summary>
         /// You can <a href="https://stripe.com/docs/issuing/cards">create physical or virtual
         /// cards</a> that are issued to cardholders.
         /// </summary>
-        [JsonProperty("card")]
+        [JsonPropertyName("card")]
         public Card Card { get; set; }
 
         #region Expandable Cardholder
@@ -98,7 +98,7 @@ namespace Stripe.Issuing
             set => this.InternalCardholder = SetExpandableFieldObject(value, this.InternalCardholder);
         }
 
-        [JsonProperty("cardholder")]
+        [JsonPropertyName("cardholder")]
         [JsonConverter(typeof(ExpandableFieldConverter<Cardholder>))]
         internal ExpandableField<Cardholder> InternalCardholder { get; set; }
         #endregion
@@ -106,7 +106,7 @@ namespace Stripe.Issuing
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -115,14 +115,14 @@ namespace Stripe.Issuing
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -130,7 +130,7 @@ namespace Stripe.Issuing
         /// <c>merchant_currency</c> and in the <a
         /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
-        [JsonProperty("merchant_amount")]
+        [JsonPropertyName("merchant_amount")]
         public long MerchantAmount { get; set; }
 
         /// <summary>
@@ -139,10 +139,10 @@ namespace Stripe.Issuing
         /// lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("merchant_currency")]
+        [JsonPropertyName("merchant_currency")]
         public string MerchantCurrency { get; set; }
 
-        [JsonProperty("merchant_data")]
+        [JsonPropertyName("merchant_data")]
         public AuthorizationMerchantData MerchantData { get; set; }
 
         /// <summary>
@@ -150,14 +150,14 @@ namespace Stripe.Issuing
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The pending authorization request. This field will only be non-null during an
         /// <c>issuing_authorization.request</c> webhook.
         /// </summary>
-        [JsonProperty("pending_request")]
+        [JsonPropertyName("pending_request")]
         public AuthorizationPendingRequest PendingRequest { get; set; }
 
         /// <summary>
@@ -168,21 +168,21 @@ namespace Stripe.Issuing
         /// authorization</a>, you can look at this field to see the previous requests for the
         /// authorization.
         /// </summary>
-        [JsonProperty("request_history")]
+        [JsonPropertyName("request_history")]
         public List<AuthorizationRequestHistory> RequestHistory { get; set; }
 
         /// <summary>
         /// The current status of the authorization in its lifecycle.
         /// One of: <c>closed</c>, <c>pending</c>, or <c>reversed</c>.
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
         /// <summary>
         /// List of <a href="https://stripe.com/docs/api/issuing/transactions">transactions</a>
         /// associated with this authorization.
         /// </summary>
-        [JsonProperty("transactions")]
+        [JsonPropertyName("transactions")]
         public List<Transaction> Transactions { get; set; }
 
         /// <summary>
@@ -190,17 +190,17 @@ namespace Stripe.Issuing
         /// authorization if it was created on a <a
         /// href="https://stripe.com/docs/api/treasury/financial_accounts">FinancialAccount</a>.
         /// </summary>
-        [JsonProperty("treasury")]
+        [JsonPropertyName("treasury")]
         public AuthorizationTreasury Treasury { get; set; }
 
-        [JsonProperty("verification_data")]
+        [JsonPropertyName("verification_data")]
         public AuthorizationVerificationData VerificationData { get; set; }
 
         /// <summary>
         /// The digital wallet used for this authorization. One of <c>apple_pay</c>,
         /// <c>google_pay</c>, or <c>samsung_pay</c>.
         /// </summary>
-        [JsonProperty("wallet")]
+        [JsonPropertyName("wallet")]
         public string Wallet { get; set; }
     }
 }

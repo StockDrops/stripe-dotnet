@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class AccountCapabilitiesBlikPaymentsOptions : INestedOptions
     {
@@ -10,7 +10,7 @@ namespace Stripe
         /// requested capability may not immediately become active. Any requirements to activate the
         /// capability are returned in the <c>requirements</c> arrays.
         /// </summary>
-        [JsonProperty("requested")]
+        [JsonPropertyName("requested")]
         public bool? Requested { get; set; }
     }
 }

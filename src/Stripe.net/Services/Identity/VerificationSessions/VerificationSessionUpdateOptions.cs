@@ -2,7 +2,7 @@
 namespace Stripe.Identity
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class VerificationSessionUpdateOptions : BaseOptions, IHasMetadata
     {
@@ -12,13 +12,13 @@ namespace Stripe.Identity
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// A set of options for the session’s verification checks.
         /// </summary>
-        [JsonProperty("options")]
+        [JsonPropertyName("options")]
         public VerificationSessionOptionsOptions Options { get; set; }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace Stripe.Identity
         /// check</a> to be performed.
         /// One of: <c>document</c>, or <c>id_number</c>.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
     }
 }

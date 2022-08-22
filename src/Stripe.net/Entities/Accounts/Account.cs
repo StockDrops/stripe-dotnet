@@ -3,7 +3,8 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -20,19 +21,19 @@ namespace Stripe
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
         /// Business information about the account.
         /// </summary>
-        [JsonProperty("business_profile")]
+        [JsonPropertyName("business_profile")]
         public AccountBusinessProfile BusinessProfile { get; set; }
 
         /// <summary>
@@ -40,34 +41,34 @@ namespace Stripe
         /// One of: <c>company</c>, <c>government_entity</c>, <c>individual</c>, or
         /// <c>non_profit</c>.
         /// </summary>
-        [JsonProperty("business_type")]
+        [JsonPropertyName("business_type")]
         public string BusinessType { get; set; }
 
-        [JsonProperty("capabilities")]
+        [JsonPropertyName("capabilities")]
         public AccountCapabilities Capabilities { get; set; }
 
         /// <summary>
         /// Whether the account can create live charges.
         /// </summary>
-        [JsonProperty("charges_enabled")]
+        [JsonPropertyName("charges_enabled")]
         public bool ChargesEnabled { get; set; }
 
-        [JsonProperty("company")]
+        [JsonPropertyName("company")]
         public AccountCompany Company { get; set; }
 
-        [JsonProperty("controller")]
+        [JsonPropertyName("controller")]
         public AccountController Controller { get; set; }
 
         /// <summary>
         /// The account's country.
         /// </summary>
-        [JsonProperty("country")]
+        [JsonPropertyName("country")]
         public string Country { get; set; }
 
         /// <summary>
         /// Time at which the account was connected. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -76,36 +77,37 @@ namespace Stripe
         /// must be a currency that <a href="https://stripe.com/docs/payouts">Stripe supports in the
         /// account's country</a>.
         /// </summary>
-        [JsonProperty("default_currency")]
+        [JsonPropertyName("default_currency")]
         public string DefaultCurrency { get; set; }
 
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
-        [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("deleted")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public bool? Deleted { get; set; }
 
         /// <summary>
         /// Whether account details have been submitted. Standard accounts cannot receive payouts
         /// before this is true.
         /// </summary>
-        [JsonProperty("details_submitted")]
+        [JsonPropertyName("details_submitted")]
         public bool DetailsSubmitted { get; set; }
 
         /// <summary>
         /// An email address associated with the account. You can treat this as metadata: it is not
         /// used for authentication or messaging account holders.
         /// </summary>
-        [JsonProperty("email")]
+        [JsonPropertyName("email")]
         public string Email { get; set; }
 
         /// <summary>
         /// External accounts (bank accounts and debit cards) currently attached to this account.
         /// </summary>
-        [JsonProperty("external_accounts")]
+        [JsonPropertyName("external_accounts")]
         public StripeList<IExternalAccount> ExternalAccounts { get; set; }
 
-        [JsonProperty("future_requirements")]
+        [JsonPropertyName("future_requirements")]
         public AccountFutureRequirements FutureRequirements { get; set; }
 
         /// <summary>
@@ -122,7 +124,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/connect/identity-verification-api#person-information">Handling
         /// Identity Verification with the API</a>.
         /// </summary>
-        [JsonProperty("individual")]
+        [JsonPropertyName("individual")]
         public Person Individual { get; set; }
 
         /// <summary>
@@ -130,32 +132,32 @@ namespace Stripe
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Whether Stripe can send payouts to this account.
         /// </summary>
-        [JsonProperty("payouts_enabled")]
+        [JsonPropertyName("payouts_enabled")]
         public bool PayoutsEnabled { get; set; }
 
-        [JsonProperty("requirements")]
+        [JsonPropertyName("requirements")]
         public AccountRequirements Requirements { get; set; }
 
         /// <summary>
         /// Options for customizing how the account functions within Stripe.
         /// </summary>
-        [JsonProperty("settings")]
+        [JsonPropertyName("settings")]
         public AccountSettings Settings { get; set; }
 
-        [JsonProperty("tos_acceptance")]
+        [JsonPropertyName("tos_acceptance")]
         public AccountTosAcceptance TosAcceptance { get; set; }
 
         /// <summary>
         /// The Stripe account type. Can be <c>standard</c>, <c>express</c>, or <c>custom</c>.
         /// One of: <c>custom</c>, <c>express</c>, or <c>standard</c>.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
     }
 }

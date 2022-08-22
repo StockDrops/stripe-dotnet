@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PaymentMethodCardThreeDSecureUsage : StripeEntity<PaymentMethodCardThreeDSecureUsage>
     {
         /// <summary>
         /// Whether 3D Secure is supported on this card.
         /// </summary>
-        [JsonProperty("supported")]
+        [JsonPropertyName("supported")]
         public bool Supported { get; set; }
     }
 }

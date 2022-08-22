@@ -1,92 +1,92 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class SourceCreateOptions : BaseOptions, IHasMetadata
     {
-        [JsonProperty("alipay")]
+        [JsonPropertyName("alipay")]
         public string Alipay { get; set; }
 
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long? Amount { get; set; }
 
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
-        [JsonProperty("customer")]
+        [JsonPropertyName("customer")]
         public string Customer { get; set; }
 
-        [JsonProperty("flow")]
+        [JsonPropertyName("flow")]
         public string Flow { get; set; }
 
-        [JsonProperty("mandate")]
+        [JsonPropertyName("mandate")]
         public SourceMandateOptions Mandate { get; set; }
 
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
-        [JsonProperty("original_source")]
+        [JsonPropertyName("original_source")]
         public string OriginalSource { get; set; }
 
-        [JsonProperty("owner")]
+        [JsonPropertyName("owner")]
         public SourceOwnerOptions Owner { get; set; }
 
-        [JsonProperty("receiver")]
+        [JsonPropertyName("receiver")]
         public SourceReceiverOptions Receiver { get; set; }
 
-        [JsonProperty("redirect")]
+        [JsonPropertyName("redirect")]
         public SourceRedirectOptions Redirect { get; set; }
 
-        [JsonProperty("source_order")]
+        [JsonPropertyName("source_order")]
         public SourceSourceOrderOptions SourceOrder { get; set; }
 
-        [JsonProperty("statement_descriptor")]
+        [JsonPropertyName("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 
-        [JsonProperty("token")]
+        [JsonPropertyName("token")]
         public string Token { get; set; }
 
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
-        [JsonProperty("usage")]
+        [JsonPropertyName("usage")]
         public string Usage { get; set; }
 
         /*
            Below we group all Source type specific paramters
         */
 
-        [JsonProperty("acss_debit")]
+        [JsonPropertyName("acss_debit")]
         public SourceAcssDebitCreateOptions AcssDebit { get; set; }
 
-        [JsonProperty("au_becs_debit")]
+        [JsonPropertyName("au_becs_debit")]
         public SourceAuBecsDebitCreateOptions AuBecsDebit { get; set; }
 
-        [JsonProperty("bancontact")]
+        [JsonPropertyName("bancontact")]
         public SourceBancontactCreateOptions Bancontact { get; set; }
 
-        [JsonProperty("card")]
+        [JsonPropertyName("card")]
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<string, SourceCardOptions> Card { get; set; }
 
-        [JsonProperty("ideal")]
+        [JsonPropertyName("ideal")]
         public SourceIdealCreateOptions Ideal { get; set; }
 
-        [JsonProperty("klarna")]
+        [JsonPropertyName("klarna")]
         public SourceKlarnaCreateOptions Klarna { get; set; }
 
-        [JsonProperty("sepa_debit")]
+        [JsonPropertyName("sepa_debit")]
         public SourceSepaDebitCreateOptions SepaDebit { get; set; }
 
-        [JsonProperty("sofort")]
+        [JsonPropertyName("sofort")]
         public SourceSofortCreateOptions Sofort { get; set; }
 
-        [JsonProperty("three_d_secure")]
+        [JsonPropertyName("three_d_secure")]
         public SourceThreeDSecureCreateOptions ThreeDSecure { get; set; }
 
-        [JsonProperty("wechat")]
+        [JsonPropertyName("wechat")]
         public SourceWechatCreateOptions Wechat { get; set; }
     }
 }

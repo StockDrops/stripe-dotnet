@@ -1,22 +1,22 @@
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class Shipping : StripeEntity<Shipping>
     {
-        [JsonProperty("address")]
+        [JsonPropertyName("address")]
         public Address Address { get; set; }
 
-        [JsonProperty("carrier")]
+        [JsonPropertyName("carrier")]
         public string Carrier { get; set; }
 
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
-        [JsonProperty("phone")]
+        [JsonPropertyName("phone")]
         public string Phone { get; set; }
 
-        [JsonProperty("tracking_number")]
+        [JsonPropertyName("tracking_number")]
         public string TrackingNumber { get; set; }
     }
 }

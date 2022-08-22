@@ -2,27 +2,27 @@
 namespace Stripe
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class SubscriptionScheduleListOptions : ListOptionsWithCreated
     {
-        [JsonProperty("canceled_at")]
+        [JsonPropertyName("canceled_at")]
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<DateTime?, DateRangeOptions> CanceledAt { get; set; }
 
-        [JsonProperty("completed_at")]
+        [JsonPropertyName("completed_at")]
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<DateTime?, DateRangeOptions> CompletedAt { get; set; }
 
-        [JsonProperty("customer")]
+        [JsonPropertyName("customer")]
         public string Customer { get; set; }
 
-        [JsonProperty("released_at")]
+        [JsonPropertyName("released_at")]
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<DateTime?, DateRangeOptions> ReleasedAt { get; set; }
 
-        [JsonProperty("scheduled")]
+        [JsonPropertyName("scheduled")]
         public bool? Scheduled { get; set; }
     }
 }

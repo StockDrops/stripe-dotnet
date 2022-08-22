@@ -2,14 +2,14 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ShippingRateFixedAmount : StripeEntity<ShippingRateFixedAmount>
     {
         /// <summary>
         /// A non-negative integer in cents representing how much to charge.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long Amount { get; set; }
 
         /// <summary>
@@ -17,7 +17,7 @@ namespace Stripe
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace Stripe
         /// three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
         /// code</a> and a <a href="https://stripe.com/docs/currencies">supported currency</a>.
         /// </summary>
-        [JsonProperty("currency_options")]
+        [JsonPropertyName("currency_options")]
         public Dictionary<string, ShippingRateFixedAmountCurrencyOptions> CurrencyOptions { get; set; }
     }
 }

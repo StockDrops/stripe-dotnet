@@ -1,21 +1,21 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SetupIntentConfirmOptions : BaseOptions
     {
-        [JsonProperty("client_secret")]
+        [JsonPropertyName("client_secret")]
         public string ClientSecret { get; set; }
 
-        [JsonProperty("mandate_data")]
+        [JsonPropertyName("mandate_data")]
         public SetupIntentMandateDataOptions MandateData { get; set; }
 
         /// <summary>
         /// ID of the payment method (a PaymentMethod, Card, or saved Source object) to attach to
         /// this SetupIntent.
         /// </summary>
-        [JsonProperty("payment_method")]
+        [JsonPropertyName("payment_method")]
         public string PaymentMethod { get; set; }
 
         /// <summary>
@@ -23,13 +23,13 @@ namespace Stripe
         /// href="https://stripe.com/docs/api/setup_intents/object#setup_intent_object-payment_method"><c>payment_method</c></a>
         /// value in the SetupIntent.
         /// </summary>
-        [JsonProperty("payment_method_data")]
+        [JsonPropertyName("payment_method_data")]
         public SetupIntentPaymentMethodDataOptions PaymentMethodData { get; set; }
 
         /// <summary>
         /// Payment-method-specific configuration for this SetupIntent.
         /// </summary>
-        [JsonProperty("payment_method_options")]
+        [JsonPropertyName("payment_method_options")]
         public SetupIntentPaymentMethodOptionsOptions PaymentMethodOptions { get; set; }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Stripe
         /// alternatively supply an application URI scheme. This parameter is only used for cards
         /// and other redirect-based payment methods.
         /// </summary>
-        [JsonProperty("return_url")]
+        [JsonPropertyName("return_url")]
         public string ReturnUrl { get; set; }
     }
 }

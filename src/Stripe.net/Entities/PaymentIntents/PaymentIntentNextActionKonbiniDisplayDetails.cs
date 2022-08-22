@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class PaymentIntentNextActionKonbiniDisplayDetails : StripeEntity<PaymentIntentNextActionKonbiniDisplayDetails>
@@ -10,7 +10,7 @@ namespace Stripe
         /// <summary>
         /// The timestamp at which the pending Konbini payment expires.
         /// </summary>
-        [JsonProperty("expires_at")]
+        [JsonPropertyName("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime ExpiresAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -18,10 +18,10 @@ namespace Stripe
         /// The URL for the Konbini payment instructions page, which allows customers to view and
         /// print a Konbini voucher.
         /// </summary>
-        [JsonProperty("hosted_voucher_url")]
+        [JsonPropertyName("hosted_voucher_url")]
         public string HostedVoucherUrl { get; set; }
 
-        [JsonProperty("stores")]
+        [JsonPropertyName("stores")]
         public PaymentIntentNextActionKonbiniDisplayDetailsStores Stores { get; set; }
     }
 }

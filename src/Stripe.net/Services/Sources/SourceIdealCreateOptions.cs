@@ -1,10 +1,10 @@
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SourceIdealCreateOptions : INestedOptions
     {
-        [JsonProperty("bank")]
+        [JsonPropertyName("bank")]
         public string Bank { get; set; }
     }
 }

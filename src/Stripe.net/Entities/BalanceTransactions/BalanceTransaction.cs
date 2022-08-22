@@ -3,7 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -20,32 +20,32 @@ namespace Stripe
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
         /// Gross amount of the transaction, in %s.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long Amount { get; set; }
 
         /// <summary>
         /// The date the transaction's net funds will become available in the Stripe balance.
         /// </summary>
-        [JsonProperty("available_on")]
+        [JsonPropertyName("available_on")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime AvailableOn { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -54,13 +54,13 @@ namespace Stripe
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
@@ -73,25 +73,25 @@ namespace Stripe
         /// <c>1234</c>, <c>currency</c> would be <c>usd</c>, and <c>exchange_rate</c> would be
         /// <c>1.234</c>.
         /// </summary>
-        [JsonProperty("exchange_rate")]
+        [JsonPropertyName("exchange_rate")]
         public decimal? ExchangeRate { get; set; }
 
         /// <summary>
         /// Fees (in %s) paid for this transaction.
         /// </summary>
-        [JsonProperty("fee")]
+        [JsonPropertyName("fee")]
         public long Fee { get; set; }
 
         /// <summary>
         /// Detailed breakdown of fees (in %s) paid for this transaction.
         /// </summary>
-        [JsonProperty("fee_details")]
+        [JsonPropertyName("fee_details")]
         public List<BalanceTransactionFeeDetail> FeeDetails { get; set; }
 
         /// <summary>
         /// Net amount of the transaction, in %s.
         /// </summary>
-        [JsonProperty("net")]
+        [JsonPropertyName("net")]
         public long Net { get; set; }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace Stripe
         /// reporting categories can help you understand balance transactions from an accounting
         /// perspective.
         /// </summary>
-        [JsonProperty("reporting_category")]
+        [JsonPropertyName("reporting_category")]
         public string ReportingCategory { get; set; }
 
         #region Expandable Source
@@ -128,7 +128,7 @@ namespace Stripe
             set => this.InternalSource = SetExpandableFieldObject(value, this.InternalSource);
         }
 
-        [JsonProperty("source")]
+        [JsonPropertyName("source")]
         [JsonConverter(typeof(ExpandableFieldConverter<IBalanceTransactionSource>))]
         internal ExpandableField<IBalanceTransactionSource> InternalSource { get; set; }
         #endregion
@@ -137,7 +137,7 @@ namespace Stripe
         /// If the transaction's net funds are available in the Stripe balance yet. Either
         /// <c>available</c> or <c>pending</c>.
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
         /// <summary>
@@ -168,7 +168,7 @@ namespace Stripe
         /// <c>transfer</c>, <c>transfer_cancel</c>, <c>transfer_failure</c>, or
         /// <c>transfer_refund</c>.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
     }
 }

@@ -3,7 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -17,25 +17,25 @@ namespace Stripe
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
         /// Whether the shipping rate can be used for new purchases. Defaults to <c>true</c>.
         /// </summary>
-        [JsonProperty("active")]
+        [JsonPropertyName("active")]
         public bool Active { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -43,24 +43,24 @@ namespace Stripe
         /// The estimated range for how long shipping will take, meant to be displayable to the
         /// customer. This will appear on CheckoutSessions.
         /// </summary>
-        [JsonProperty("delivery_estimate")]
+        [JsonPropertyName("delivery_estimate")]
         public ShippingRateDeliveryEstimate DeliveryEstimate { get; set; }
 
         /// <summary>
         /// The name of the shipping rate, meant to be displayable to the customer. This will appear
         /// on CheckoutSessions.
         /// </summary>
-        [JsonProperty("display_name")]
+        [JsonPropertyName("display_name")]
         public string DisplayName { get; set; }
 
-        [JsonProperty("fixed_amount")]
+        [JsonPropertyName("fixed_amount")]
         public ShippingRateFixedAmount FixedAmount { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Stripe
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Stripe
         /// of <c>inclusive</c>, <c>exclusive</c>, or <c>unspecified</c>.
         /// One of: <c>exclusive</c>, <c>inclusive</c>, or <c>unspecified</c>.
         /// </summary>
-        [JsonProperty("tax_behavior")]
+        [JsonPropertyName("tax_behavior")]
         public string TaxBehavior { get; set; }
 
         #region Expandable TaxCode
@@ -107,7 +107,7 @@ namespace Stripe
             set => this.InternalTaxCode = SetExpandableFieldObject(value, this.InternalTaxCode);
         }
 
-        [JsonProperty("tax_code")]
+        [JsonPropertyName("tax_code")]
         [JsonConverter(typeof(ExpandableFieldConverter<TaxCode>))]
         internal ExpandableField<TaxCode> InternalTaxCode { get; set; }
         #endregion
@@ -116,7 +116,7 @@ namespace Stripe
         /// The type of calculation to use on the shipping rate. Can only be <c>fixed_amount</c> for
         /// now.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
     }
 }

@@ -2,21 +2,21 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ShippingRateUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// Whether the shipping rate can be used for new purchases. Defaults to <c>true</c>.
         /// </summary>
-        [JsonProperty("active")]
+        [JsonPropertyName("active")]
         public bool? Active { get; set; }
 
         /// <summary>
         /// Describes a fixed amount to charge for shipping. Must be present if type is
         /// <c>fixed_amount</c>.
         /// </summary>
-        [JsonProperty("fixed_amount")]
+        [JsonPropertyName("fixed_amount")]
         public ShippingRateFixedAmountOptions FixedAmount { get; set; }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace Stripe
         /// of <c>inclusive</c>, <c>exclusive</c>, or <c>unspecified</c>.
         /// One of: <c>exclusive</c>, <c>inclusive</c>, or <c>unspecified</c>.
         /// </summary>
-        [JsonProperty("tax_behavior")]
+        [JsonPropertyName("tax_behavior")]
         public string TaxBehavior { get; set; }
     }
 }

@@ -2,14 +2,14 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class CouponAppliesToOptions : INestedOptions
     {
         /// <summary>
         /// An array of Product IDs that this Coupon will apply to.
         /// </summary>
-        [JsonProperty("products")]
+        [JsonPropertyName("products")]
         public List<string> Products { get; set; }
     }
 }

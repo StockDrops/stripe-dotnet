@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Identity
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class VerificationSessionLastError : StripeEntity<VerificationSessionLastError>
     {
@@ -16,13 +16,13 @@ namespace Stripe.Identity
         /// <c>selfie_face_mismatch</c>, <c>selfie_manipulated</c>, <c>selfie_unverified_other</c>,
         /// or <c>under_supported_age</c>.
         /// </summary>
-        [JsonProperty("code")]
+        [JsonPropertyName("code")]
         public string Code { get; set; }
 
         /// <summary>
         /// A message that explains the reason for verification or user-session failure.
         /// </summary>
-        [JsonProperty("reason")]
+        [JsonPropertyName("reason")]
         public string Reason { get; set; }
     }
 }

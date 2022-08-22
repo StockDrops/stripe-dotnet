@@ -4,7 +4,7 @@ namespace Stripe
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -46,27 +46,27 @@ namespace Stripe
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
         /// The country of the business associated with this invoice, most often the business
         /// creating the invoice.
         /// </summary>
-        [JsonProperty("account_country")]
+        [JsonPropertyName("account_country")]
         public string AccountCountry { get; set; }
 
         /// <summary>
         /// The public name of the business associated with this invoice, most often the business
         /// creating the invoice.
         /// </summary>
-        [JsonProperty("account_name")]
+        [JsonPropertyName("account_name")]
         public string AccountName { get; set; }
 
         #region Expandable AccountTaxIds
@@ -97,7 +97,7 @@ namespace Stripe
             set => this.InternalAccountTaxIds = SetExpandableArrayObjects(value);
         }
 
-        [JsonProperty("account_tax_ids", ItemConverterType = typeof(ExpandableFieldConverter<TaxId>))]
+        [JsonPropertyName("account_tax_ids", ItemConverterType = typeof(ExpandableFieldConverter<TaxId>))]
         internal List<ExpandableField<TaxId>> InternalAccountTaxIds { get; set; }
         #endregion
 
@@ -109,19 +109,19 @@ namespace Stripe
         /// will also take that into account. The charge that gets generated for the invoice will be
         /// for the amount specified in <c>amount_due</c>.
         /// </summary>
-        [JsonProperty("amount_due")]
+        [JsonPropertyName("amount_due")]
         public long AmountDue { get; set; }
 
         /// <summary>
         /// The amount, in %s, that was paid.
         /// </summary>
-        [JsonProperty("amount_paid")]
+        [JsonPropertyName("amount_paid")]
         public long AmountPaid { get; set; }
 
         /// <summary>
         /// The difference between amount_due and amount_paid, in %s.
         /// </summary>
-        [JsonProperty("amount_remaining")]
+        [JsonPropertyName("amount_remaining")]
         public long AmountRemaining { get; set; }
 
         #region Expandable Application
@@ -150,7 +150,7 @@ namespace Stripe
             set => this.InternalApplication = SetExpandableFieldObject(value, this.InternalApplication);
         }
 
-        [JsonProperty("application")]
+        [JsonPropertyName("application")]
         [JsonConverter(typeof(ExpandableFieldConverter<Application>))]
         internal ExpandableField<Application> InternalApplication { get; set; }
         #endregion
@@ -159,7 +159,7 @@ namespace Stripe
         /// The fee in %s that will be applied to the invoice and transferred to the application
         /// owner's Stripe account when the invoice is paid.
         /// </summary>
-        [JsonProperty("application_fee_amount")]
+        [JsonPropertyName("application_fee_amount")]
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
@@ -168,7 +168,7 @@ namespace Stripe
         /// automatic retries increment the attempt count. In other words, manual payment attempts
         /// after the first attempt do not affect the retry schedule.
         /// </summary>
-        [JsonProperty("attempt_count")]
+        [JsonPropertyName("attempt_count")]
         public long AttemptCount { get; set; }
 
         /// <summary>
@@ -176,7 +176,7 @@ namespace Stripe
         /// hour after the <c>invoice.created</c> webhook, for example, so you might not want to
         /// display that invoice as unpaid to your users.
         /// </summary>
-        [JsonProperty("attempted")]
+        [JsonPropertyName("attempted")]
         public bool Attempted { get; set; }
 
         /// <summary>
@@ -185,10 +185,10 @@ namespace Stripe
         /// collection</a> of the invoice. When <c>false</c>, the invoice's state will not
         /// automatically advance without an explicit action.
         /// </summary>
-        [JsonProperty("auto_advance")]
+        [JsonPropertyName("auto_advance")]
         public bool AutoAdvance { get; set; }
 
-        [JsonProperty("automatic_tax")]
+        [JsonPropertyName("automatic_tax")]
         public InvoiceAutomaticTax AutomaticTax { get; set; }
 
         /// <summary>
@@ -207,7 +207,7 @@ namespace Stripe
         /// <c>subscription_cycle</c>, <c>subscription_threshold</c>, <c>subscription_update</c>, or
         /// <c>upcoming</c>.
         /// </summary>
-        [JsonProperty("billing_reason")]
+        [JsonPropertyName("billing_reason")]
         public string BillingReason { get; set; }
 
         #region Expandable Charge
@@ -236,7 +236,7 @@ namespace Stripe
             set => this.InternalCharge = SetExpandableFieldObject(value, this.InternalCharge);
         }
 
-        [JsonProperty("charge")]
+        [JsonPropertyName("charge")]
         [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
         internal ExpandableField<Charge> InternalCharge { get; set; }
         #endregion
@@ -248,13 +248,13 @@ namespace Stripe
         /// payment instructions.
         /// One of: <c>charge_automatically</c>, or <c>send_invoice</c>.
         /// </summary>
-        [JsonProperty("collection_method")]
+        [JsonPropertyName("collection_method")]
         public string CollectionMethod { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -263,13 +263,13 @@ namespace Stripe
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
         /// Custom fields displayed on the invoice.
         /// </summary>
-        [JsonProperty("custom_fields")]
+        [JsonPropertyName("custom_fields")]
         public List<InvoiceCustomField> CustomFields { get; set; }
 
         #region Expandable Customer
@@ -298,7 +298,7 @@ namespace Stripe
             set => this.InternalCustomer = SetExpandableFieldObject(value, this.InternalCustomer);
         }
 
-        [JsonProperty("customer")]
+        [JsonPropertyName("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
@@ -308,7 +308,7 @@ namespace Stripe
         /// <c>customer.address</c>. Once the invoice is finalized, this field will no longer be
         /// updated.
         /// </summary>
-        [JsonProperty("customer_address")]
+        [JsonPropertyName("customer_address")]
         public Address CustomerAddress { get; set; }
 
         /// <summary>
@@ -316,7 +316,7 @@ namespace Stripe
         /// <c>customer.email</c>. Once the invoice is finalized, this field will no longer be
         /// updated.
         /// </summary>
-        [JsonProperty("customer_email")]
+        [JsonPropertyName("customer_email")]
         public string CustomerEmail { get; set; }
 
         /// <summary>
@@ -324,7 +324,7 @@ namespace Stripe
         /// <c>customer.name</c>. Once the invoice is finalized, this field will no longer be
         /// updated.
         /// </summary>
-        [JsonProperty("customer_name")]
+        [JsonPropertyName("customer_name")]
         public string CustomerName { get; set; }
 
         /// <summary>
@@ -332,7 +332,7 @@ namespace Stripe
         /// <c>customer.phone</c>. Once the invoice is finalized, this field will no longer be
         /// updated.
         /// </summary>
-        [JsonProperty("customer_phone")]
+        [JsonPropertyName("customer_phone")]
         public string CustomerPhone { get; set; }
 
         /// <summary>
@@ -340,7 +340,7 @@ namespace Stripe
         /// equal <c>customer.shipping</c>. Once the invoice is finalized, this field will no longer
         /// be updated.
         /// </summary>
-        [JsonProperty("customer_shipping")]
+        [JsonPropertyName("customer_shipping")]
         public Shipping CustomerShipping { get; set; }
 
         /// <summary>
@@ -349,7 +349,7 @@ namespace Stripe
         /// updated.
         /// One of: <c>exempt</c>, <c>none</c>, or <c>reverse</c>.
         /// </summary>
-        [JsonProperty("customer_tax_exempt")]
+        [JsonPropertyName("customer_tax_exempt")]
         public string CustomerTaxExempt { get; set; }
 
         /// <summary>
@@ -357,7 +357,7 @@ namespace Stripe
         /// tax IDs as <c>customer.tax_ids</c>. Once the invoice is finalized, this field will no
         /// longer be updated.
         /// </summary>
-        [JsonProperty("customer_tax_ids")]
+        [JsonPropertyName("customer_tax_ids")]
         public List<InvoiceCustomerTaxId> CustomerTaxIds { get; set; }
 
         #region Expandable DefaultPaymentMethod
@@ -390,7 +390,7 @@ namespace Stripe
             set => this.InternalDefaultPaymentMethod = SetExpandableFieldObject(value, this.InternalDefaultPaymentMethod);
         }
 
-        [JsonProperty("default_payment_method")]
+        [JsonPropertyName("default_payment_method")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
         internal ExpandableField<PaymentMethod> InternalDefaultPaymentMethod { get; set; }
         #endregion
@@ -425,7 +425,7 @@ namespace Stripe
             set => this.InternalDefaultSource = SetExpandableFieldObject(value, this.InternalDefaultSource);
         }
 
-        [JsonProperty("default_source")]
+        [JsonPropertyName("default_source")]
         [JsonConverter(typeof(ExpandableFieldConverter<IPaymentSource>))]
         internal ExpandableField<IPaymentSource> InternalDefaultSource { get; set; }
         #endregion
@@ -433,27 +433,28 @@ namespace Stripe
         /// <summary>
         /// The tax rates applied to this invoice, if any.
         /// </summary>
-        [JsonProperty("default_tax_rates")]
+        [JsonPropertyName("default_tax_rates")]
         public List<TaxRate> DefaultTaxRates { get; set; }
 
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
-        [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("deleted")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public bool? Deleted { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// Referenced as 'memo' in the Dashboard.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
         /// Describes the current discount applied to this invoice, if there is one. Not populated
         /// if there are multiple discounts.
         /// </summary>
-        [JsonProperty("discount")]
+        [JsonPropertyName("discount")]
         public Discount Discount { get; set; }
 
         #region Expandable Discounts
@@ -484,7 +485,7 @@ namespace Stripe
             set => this.InternalDiscounts = SetExpandableArrayObjects(value);
         }
 
-        [JsonProperty("discounts", ItemConverterType = typeof(ExpandableFieldConverter<Discount>))]
+        [JsonPropertyName("discounts", ItemConverterType = typeof(ExpandableFieldConverter<Discount>))]
         internal List<ExpandableField<Discount>> InternalDiscounts { get; set; }
         #endregion
 
@@ -492,7 +493,7 @@ namespace Stripe
         /// The date on which payment for this invoice is due. This value will be <c>null</c> for
         /// invoices where <c>collection_method=charge_automatically</c>.
         /// </summary>
-        [JsonProperty("due_date")]
+        [JsonPropertyName("due_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? DueDate { get; set; }
 
@@ -501,48 +502,48 @@ namespace Stripe
         /// approximately an hour after successful webhook delivery or when payment collection is
         /// attempted for the invoice. If the invoice has not been finalized yet, this will be null.
         /// </summary>
-        [JsonProperty("ending_balance")]
+        [JsonPropertyName("ending_balance")]
         public long? EndingBalance { get; set; }
 
         /// <summary>
         /// Footer displayed on the invoice.
         /// </summary>
-        [JsonProperty("footer")]
+        [JsonPropertyName("footer")]
         public string Footer { get; set; }
 
         /// <summary>
         /// The URL for the hosted invoice page, which allows customers to view and pay an invoice.
         /// If the invoice has not been finalized yet, this will be null.
         /// </summary>
-        [JsonProperty("hosted_invoice_url")]
+        [JsonPropertyName("hosted_invoice_url")]
         public string HostedInvoiceUrl { get; set; }
 
         /// <summary>
         /// The link to download the PDF for the invoice. If the invoice has not been finalized yet,
         /// this will be null.
         /// </summary>
-        [JsonProperty("invoice_pdf")]
+        [JsonPropertyName("invoice_pdf")]
         public string InvoicePdf { get; set; }
 
         /// <summary>
         /// The error encountered during the previous attempt to finalize the invoice. This field is
         /// cleared when the invoice is successfully finalized.
         /// </summary>
-        [JsonProperty("last_finalization_error")]
+        [JsonPropertyName("last_finalization_error")]
         public StripeError LastFinalizationError { get; set; }
 
         /// <summary>
         /// The individual line items that make up the invoice. <c>lines</c> is sorted as follows:
         /// invoice items in reverse chronological order, followed by the subscription, if any.
         /// </summary>
-        [JsonProperty("lines")]
+        [JsonPropertyName("lines")]
         public StripeList<InvoiceLineItem> Lines { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -550,14 +551,14 @@ namespace Stripe
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The time at which payment will next be attempted. This value will be <c>null</c> for
         /// invoices where <c>collection_method=send_invoice</c>.
         /// </summary>
-        [JsonProperty("next_payment_attempt")]
+        [JsonPropertyName("next_payment_attempt")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? NextPaymentAttempt { get; set; }
 
@@ -565,7 +566,7 @@ namespace Stripe
         /// A unique, identifying string that appears on emails sent to the customer for this
         /// invoice. This starts with the customer's unique invoice_prefix if it is specified.
         /// </summary>
-        [JsonProperty("number")]
+        [JsonPropertyName("number")]
         public string Number { get; set; }
 
         #region Expandable OnBehalfOf
@@ -600,7 +601,7 @@ namespace Stripe
             set => this.InternalOnBehalfOf = SetExpandableFieldObject(value, this.InternalOnBehalfOf);
         }
 
-        [JsonProperty("on_behalf_of")]
+        [JsonPropertyName("on_behalf_of")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
         internal ExpandableField<Account> InternalOnBehalfOf { get; set; }
         #endregion
@@ -609,14 +610,14 @@ namespace Stripe
         /// Whether payment was successfully collected for this invoice. An invoice can be paid
         /// (most commonly) with a charge or with credit from the customer's account balance.
         /// </summary>
-        [JsonProperty("paid")]
+        [JsonPropertyName("paid")]
         public bool Paid { get; set; }
 
         /// <summary>
         /// Returns true if the invoice was manually marked paid, returns false if the invoice
         /// hasn't been paid yet or was paid on Stripe.
         /// </summary>
-        [JsonProperty("paid_out_of_band")]
+        [JsonPropertyName("paid_out_of_band")]
         public bool PaidOutOfBand { get; set; }
 
         #region Expandable PaymentIntent
@@ -649,38 +650,38 @@ namespace Stripe
             set => this.InternalPaymentIntent = SetExpandableFieldObject(value, this.InternalPaymentIntent);
         }
 
-        [JsonProperty("payment_intent")]
+        [JsonPropertyName("payment_intent")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentIntent>))]
         internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
         #endregion
 
-        [JsonProperty("payment_settings")]
+        [JsonPropertyName("payment_settings")]
         public InvoicePaymentSettings PaymentSettings { get; set; }
 
         /// <summary>
         /// End of the usage period during which invoice items were added to this invoice.
         /// </summary>
-        [JsonProperty("period_end")]
+        [JsonPropertyName("period_end")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime PeriodEnd { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Start of the usage period during which invoice items were added to this invoice.
         /// </summary>
-        [JsonProperty("period_start")]
+        [JsonPropertyName("period_start")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime PeriodStart { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Total amount of all post-payment credit notes issued for this invoice.
         /// </summary>
-        [JsonProperty("post_payment_credit_notes_amount")]
+        [JsonPropertyName("post_payment_credit_notes_amount")]
         public long PostPaymentCreditNotesAmount { get; set; }
 
         /// <summary>
         /// Total amount of all pre-payment credit notes issued for this invoice.
         /// </summary>
-        [JsonProperty("pre_payment_credit_notes_amount")]
+        [JsonPropertyName("pre_payment_credit_notes_amount")]
         public long PrePaymentCreditNotesAmount { get; set; }
 
         #region Expandable Quote
@@ -709,7 +710,7 @@ namespace Stripe
             set => this.InternalQuote = SetExpandableFieldObject(value, this.InternalQuote);
         }
 
-        [JsonProperty("quote")]
+        [JsonPropertyName("quote")]
         [JsonConverter(typeof(ExpandableFieldConverter<Quote>))]
         internal ExpandableField<Quote> InternalQuote { get; set; }
         #endregion
@@ -717,26 +718,26 @@ namespace Stripe
         /// <summary>
         /// This is the transaction number that appears on email receipts sent for this invoice.
         /// </summary>
-        [JsonProperty("receipt_number")]
+        [JsonPropertyName("receipt_number")]
         public string ReceiptNumber { get; set; }
 
         /// <summary>
         /// Options for invoice PDF rendering.
         /// </summary>
-        [JsonProperty("rendering_options")]
+        [JsonPropertyName("rendering_options")]
         public InvoiceRenderingOptions RenderingOptions { get; set; }
 
         /// <summary>
         /// Starting customer balance before the invoice is finalized. If the invoice has not been
         /// finalized yet, this will be the current customer balance.
         /// </summary>
-        [JsonProperty("starting_balance")]
+        [JsonPropertyName("starting_balance")]
         public long StartingBalance { get; set; }
 
         /// <summary>
         /// Extra information about an invoice for the customer's credit card statement.
         /// </summary>
-        [JsonProperty("statement_descriptor")]
+        [JsonPropertyName("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 
         /// <summary>
@@ -747,10 +748,10 @@ namespace Stripe
         /// One of: <c>deleted</c>, <c>draft</c>, <c>open</c>, <c>paid</c>, <c>uncollectible</c>, or
         /// <c>void</c>.
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
-        [JsonProperty("status_transitions")]
+        [JsonPropertyName("status_transitions")]
         public InvoiceStatusTransitions StatusTransitions { get; set; }
 
         #region Expandable Subscription
@@ -779,7 +780,7 @@ namespace Stripe
             set => this.InternalSubscription = SetExpandableFieldObject(value, this.InternalSubscription);
         }
 
-        [JsonProperty("subscription")]
+        [JsonPropertyName("subscription")]
         [JsonConverter(typeof(ExpandableFieldConverter<Subscription>))]
         internal ExpandableField<Subscription> InternalSubscription { get; set; }
         #endregion
@@ -788,7 +789,7 @@ namespace Stripe
         /// Only set for upcoming invoices that preview prorations. The time used to calculate
         /// prorations.
         /// </summary>
-        [JsonProperty("subscription_proration_date")]
+        [JsonPropertyName("subscription_proration_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime SubscriptionProrationDate { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -797,21 +798,21 @@ namespace Stripe
         /// invoice level discount or exclusive tax is applied. Item discounts are already
         /// incorporated.
         /// </summary>
-        [JsonProperty("subtotal")]
+        [JsonPropertyName("subtotal")]
         public long Subtotal { get; set; }
 
         /// <summary>
         /// The integer amount in %s representing the subtotal of the invoice before any invoice
         /// level discount or tax is applied. Item discounts are already incorporated.
         /// </summary>
-        [JsonProperty("subtotal_excluding_tax")]
+        [JsonPropertyName("subtotal_excluding_tax")]
         public long? SubtotalExcludingTax { get; set; }
 
         /// <summary>
         /// The amount of tax on this invoice. This is the sum of all the tax amounts on this
         /// invoice.
         /// </summary>
-        [JsonProperty("tax")]
+        [JsonPropertyName("tax")]
         public long? Tax { get; set; }
 
         #region Expandable TestClock
@@ -840,44 +841,44 @@ namespace Stripe
             set => this.InternalTestClock = SetExpandableFieldObject(value, this.InternalTestClock);
         }
 
-        [JsonProperty("test_clock")]
+        [JsonPropertyName("test_clock")]
         [JsonConverter(typeof(ExpandableFieldConverter<TestHelpers.TestClock>))]
         internal ExpandableField<TestHelpers.TestClock> InternalTestClock { get; set; }
         #endregion
 
-        [JsonProperty("threshold_reason")]
+        [JsonPropertyName("threshold_reason")]
         public InvoiceThresholdReason ThresholdReason { get; set; }
 
         /// <summary>
         /// Total after discounts and taxes.
         /// </summary>
-        [JsonProperty("total")]
+        [JsonPropertyName("total")]
         public long Total { get; set; }
 
         /// <summary>
         /// The aggregate amounts calculated per discount across all line items.
         /// </summary>
-        [JsonProperty("total_discount_amounts")]
+        [JsonPropertyName("total_discount_amounts")]
         public List<InvoiceDiscountAmount> TotalDiscountAmounts { get; set; }
 
         /// <summary>
         /// The integer amount in %s representing the total amount of the invoice including all
         /// discounts but excluding all tax.
         /// </summary>
-        [JsonProperty("total_excluding_tax")]
+        [JsonPropertyName("total_excluding_tax")]
         public long? TotalExcludingTax { get; set; }
 
         /// <summary>
         /// The aggregate amounts calculated per tax rate for all line items.
         /// </summary>
-        [JsonProperty("total_tax_amounts")]
+        [JsonPropertyName("total_tax_amounts")]
         public List<InvoiceTaxAmount> TotalTaxAmounts { get; set; }
 
         /// <summary>
         /// The account (if any) the payment will be attributed to for tax reporting, and where
         /// funds from the payment will be transferred to for the invoice.
         /// </summary>
-        [JsonProperty("transfer_data")]
+        [JsonPropertyName("transfer_data")]
         public InvoiceTransferData TransferData { get; set; }
 
         /// <summary>
@@ -887,7 +888,7 @@ namespace Stripe
         /// field tracks the time when webhooks for this invoice were successfully delivered. If the
         /// invoice had no webhooks to deliver, this will be set while the invoice is being created.
         /// </summary>
-        [JsonProperty("webhooks_delivered_at")]
+        [JsonPropertyName("webhooks_delivered_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? WebhooksDeliveredAt { get; set; }
     }

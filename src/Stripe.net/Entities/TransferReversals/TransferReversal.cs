@@ -3,7 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -27,19 +27,19 @@ namespace Stripe
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
         /// Amount, in %s.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long Amount { get; set; }
 
         #region Expandable BalanceTransaction
@@ -68,7 +68,7 @@ namespace Stripe
             set => this.InternalBalanceTransaction = SetExpandableFieldObject(value, this.InternalBalanceTransaction);
         }
 
-        [JsonProperty("balance_transaction")]
+        [JsonPropertyName("balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
         internal ExpandableField<BalanceTransaction> InternalBalanceTransaction { get; set; }
         #endregion
@@ -76,7 +76,7 @@ namespace Stripe
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -85,7 +85,7 @@ namespace Stripe
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         #region Expandable DestinationPaymentRefund
@@ -114,7 +114,7 @@ namespace Stripe
             set => this.InternalDestinationPaymentRefund = SetExpandableFieldObject(value, this.InternalDestinationPaymentRefund);
         }
 
-        [JsonProperty("destination_payment_refund")]
+        [JsonPropertyName("destination_payment_refund")]
         [JsonConverter(typeof(ExpandableFieldConverter<Refund>))]
         internal ExpandableField<Refund> InternalDestinationPaymentRefund { get; set; }
         #endregion
@@ -124,7 +124,7 @@ namespace Stripe
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         #region Expandable SourceRefund
@@ -153,7 +153,7 @@ namespace Stripe
             set => this.InternalSourceRefund = SetExpandableFieldObject(value, this.InternalSourceRefund);
         }
 
-        [JsonProperty("source_refund")]
+        [JsonPropertyName("source_refund")]
         [JsonConverter(typeof(ExpandableFieldConverter<Refund>))]
         internal ExpandableField<Refund> InternalSourceRefund { get; set; }
         #endregion
@@ -184,7 +184,7 @@ namespace Stripe
             set => this.InternalTransfer = SetExpandableFieldObject(value, this.InternalTransfer);
         }
 
-        [JsonProperty("transfer")]
+        [JsonPropertyName("transfer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Transfer>))]
         internal ExpandableField<Transfer> InternalTransfer { get; set; }
         #endregion

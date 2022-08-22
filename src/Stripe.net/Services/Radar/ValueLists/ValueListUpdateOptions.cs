@@ -2,14 +2,14 @@
 namespace Stripe.Radar
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ValueListUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// The name of the value list for use in rules.
         /// </summary>
-        [JsonProperty("alias")]
+        [JsonPropertyName("alias")]
         public string Alias { get; set; }
 
         /// <summary>
@@ -18,13 +18,13 @@ namespace Stripe.Radar
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The human-readable name of the value list.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
     }
 }

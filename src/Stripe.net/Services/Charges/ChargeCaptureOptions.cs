@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ChargeCaptureOptions : BaseOptions
     {
@@ -9,23 +9,23 @@ namespace Stripe
         /// The amount to capture, which must be less than or equal to the original amount. Any
         /// additional amount will be automatically refunded.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long? Amount { get; set; }
 
         /// <summary>
         /// An application fee to add on to this charge.
         /// </summary>
-        [JsonProperty("application_fee")]
+        [JsonPropertyName("application_fee")]
         public long? ApplicationFee { get; set; }
 
         /// <summary>
         /// An application fee amount to add on to this charge, which must be less than or equal to
         /// the original amount.
         /// </summary>
-        [JsonProperty("application_fee_amount")]
+        [JsonPropertyName("application_fee_amount")]
         public long? ApplicationFeeAmount { get; set; }
 
-        [JsonProperty("exchange_rate")]
+        [JsonPropertyName("exchange_rate")]
         public decimal? ExchangeRate { get; set; }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace Stripe
         /// previously-specified email address for this charge, if one was set. Receipts will not be
         /// sent in test mode.
         /// </summary>
-        [JsonProperty("receipt_email")]
+        [JsonPropertyName("receipt_email")]
         public string ReceiptEmail { get; set; }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace Stripe
         /// this value as the complete description of a charge on your customers’ statements. Must
         /// contain at least one letter, maximum 22 characters.
         /// </summary>
-        [JsonProperty("statement_descriptor")]
+        [JsonPropertyName("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Stripe
         /// on the account to form the complete statement descriptor. Maximum 22 characters for the
         /// concatenated descriptor.
         /// </summary>
-        [JsonProperty("statement_descriptor_suffix")]
+        [JsonPropertyName("statement_descriptor_suffix")]
         public string StatementDescriptorSuffix { get; set; }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Stripe
         /// destination charge. <a href="https://stripe.com/docs/connect/destination-charges">See
         /// the Connect documentation</a> for details.
         /// </summary>
-        [JsonProperty("transfer_data")]
+        [JsonPropertyName("transfer_data")]
         public ChargeTransferDataOptions TransferData { get; set; }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/connect/charges-transfers#transfer-options">Connect
         /// documentation</a> for details.
         /// </summary>
-        [JsonProperty("transfer_group")]
+        [JsonPropertyName("transfer_group")]
         public string TransferGroup { get; set; }
     }
 }

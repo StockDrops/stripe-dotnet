@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PaymentIntentPaymentMethodOptionsKlarnaOptions : INestedOptions
     {
@@ -14,7 +14,7 @@ namespace Stripe
         /// If <c>capture_method</c> is already set on the PaymentIntent, providing an empty value
         /// for this parameter will unset the stored value for this payment method type.
         /// </summary>
-        [JsonProperty("capture_method")]
+        [JsonPropertyName("capture_method")]
         public string CaptureMethod { get; set; }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace Stripe
         /// <c>fr-BE</c>, <c>fr-CA</c>, <c>fr-FR</c>, <c>it-IT</c>, <c>nb-NO</c>, <c>nl-BE</c>,
         /// <c>nl-NL</c>, <c>sv-FI</c>, or <c>sv-SE</c>.
         /// </summary>
-        [JsonProperty("preferred_locale")]
+        [JsonPropertyName("preferred_locale")]
         public string PreferredLocale { get; set; }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Stripe
         /// publishable key, you may only update the value from <c>on_session</c> to
         /// <c>off_session</c>.
         /// </summary>
-        [JsonProperty("setup_future_usage")]
+        [JsonPropertyName("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
     }
 }

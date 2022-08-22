@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -37,13 +37,13 @@ namespace Stripe
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Stripe
         /// Related guide: <a href="https://stripe.com/docs/payments/bank-debits-transfers">Bank
         /// Debits and Transfers</a>.
         /// </summary>
-        [JsonProperty("bank_account")]
+        [JsonPropertyName("bank_account")]
         public BankAccount BankAccount { get; set; }
 
         /// <summary>
@@ -68,19 +68,19 @@ namespace Stripe
         /// Related guide: <a href="https://stripe.com/docs/sources/cards">Card Payments with
         /// Sources</a>.
         /// </summary>
-        [JsonProperty("card")]
+        [JsonPropertyName("card")]
         public Card Card { get; set; }
 
         /// <summary>
         /// IP address of the client that generated the token.
         /// </summary>
-        [JsonProperty("client_ip")]
+        [JsonPropertyName("client_ip")]
         public string ClientIp { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -88,19 +88,19 @@ namespace Stripe
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
         /// Type of the token: <c>account</c>, <c>bank_account</c>, <c>card</c>, or <c>pii</c>.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>
         /// Whether this token has already been used (tokens can be used only once).
         /// </summary>
-        [JsonProperty("used")]
+        [JsonPropertyName("used")]
         public bool Used { get; set; }
     }
 }

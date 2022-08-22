@@ -1,26 +1,26 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Issuing
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class CardListOptions : ListOptionsWithCreated
     {
-        [JsonProperty("cardholder")]
+        [JsonPropertyName("cardholder")]
         public string Cardholder { get; set; }
 
-        [JsonProperty("exp_month")]
+        [JsonPropertyName("exp_month")]
         public long? ExpMonth { get; set; }
 
-        [JsonProperty("exp_year")]
+        [JsonPropertyName("exp_year")]
         public long? ExpYear { get; set; }
 
-        [JsonProperty("last4")]
+        [JsonPropertyName("last4")]
         public string Last4 { get; set; }
 
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
     }
 }

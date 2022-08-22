@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PaymentIntentAmountDetails : StripeEntity<PaymentIntentAmountDetails>
     {
-        [JsonProperty("tip")]
+        [JsonPropertyName("tip")]
         public PaymentIntentAmountDetailsTip Tip { get; set; }
     }
 }

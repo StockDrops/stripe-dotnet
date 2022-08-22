@@ -1,26 +1,26 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SourceAchDebit : StripeEntity<SourceAchDebit>
     {
-        [JsonProperty("bank_name")]
+        [JsonPropertyName("bank_name")]
         public string BankName { get; set; }
 
-        [JsonProperty("country")]
+        [JsonPropertyName("country")]
         public string Country { get; set; }
 
-        [JsonProperty("fingerprint")]
+        [JsonPropertyName("fingerprint")]
         public string Fingerprint { get; set; }
 
-        [JsonProperty("last4")]
+        [JsonPropertyName("last4")]
         public string Last4 { get; set; }
 
-        [JsonProperty("routing_number")]
+        [JsonPropertyName("routing_number")]
         public string RoutingNumber { get; set; }
 
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
     }
 }

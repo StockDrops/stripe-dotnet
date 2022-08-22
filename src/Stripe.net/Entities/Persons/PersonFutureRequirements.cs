@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PersonFutureRequirements : StripeEntity<PersonFutureRequirements>
     {
@@ -10,7 +10,7 @@ namespace Stripe
         /// Fields that are due and can be satisfied by providing the corresponding alternative
         /// fields instead.
         /// </summary>
-        [JsonProperty("alternatives")]
+        [JsonPropertyName("alternatives")]
         public List<PersonFutureRequirementsAlternative> Alternatives { get; set; }
 
         /// <summary>
@@ -20,14 +20,14 @@ namespace Stripe
         /// <c>past_due</c>, but the account may also be given a grace period depending on the
         /// account's enablement state prior to transition.
         /// </summary>
-        [JsonProperty("currently_due")]
+        [JsonPropertyName("currently_due")]
         public List<string> CurrentlyDue { get; set; }
 
         /// <summary>
         /// Fields that are <c>currently_due</c> and need to be collected again because validation
         /// or verification failed.
         /// </summary>
-        [JsonProperty("errors")]
+        [JsonPropertyName("errors")]
         public List<PersonFutureRequirementsError> Errors { get; set; }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace Stripe
         /// become required, they appear in <c>currently_due</c> as well, and the account's
         /// <c>future_requirements[current_deadline]</c> becomes set.
         /// </summary>
-        [JsonProperty("eventually_due")]
+        [JsonPropertyName("eventually_due")]
         public List<string> EventuallyDue { get; set; }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Stripe
         /// appear here; <c>future_requirements.past_due</c> will always be a subset of
         /// <c>requirements.past_due</c>.
         /// </summary>
-        [JsonProperty("past_due")]
+        [JsonPropertyName("past_due")]
         public List<string> PastDue { get; set; }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Stripe
         /// be an empty array unless an asynchronous verification is pending. If verification fails,
         /// these fields move to <c>eventually_due</c> or <c>currently_due</c>.
         /// </summary>
-        [JsonProperty("pending_verification")]
+        [JsonPropertyName("pending_verification")]
         public List<string> PendingVerification { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SubscriptionScheduleCancelOptions : BaseOptions
     {
@@ -10,14 +10,14 @@ namespace Stripe
         /// generated that contains any un-invoiced metered usage and new/pending proration invoice
         /// items. Defaults to <c>true</c>.
         /// </summary>
-        [JsonProperty("invoice_now")]
+        [JsonPropertyName("invoice_now")]
         public bool? InvoiceNow { get; set; }
 
         /// <summary>
         /// If the subscription schedule is <c>active</c>, indicates if the cancellation should be
         /// prorated. Defaults to <c>true</c>.
         /// </summary>
-        [JsonProperty("prorate")]
+        [JsonPropertyName("prorate")]
         public bool? Prorate { get; set; }
     }
 }

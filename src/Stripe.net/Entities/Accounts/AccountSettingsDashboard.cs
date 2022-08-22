@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class AccountSettingsDashboard : StripeEntity<AccountSettingsDashboard>
     {
@@ -9,7 +9,7 @@ namespace Stripe
         /// The display name for this account. This is used on the Stripe Dashboard to differentiate
         /// between accounts.
         /// </summary>
-        [JsonProperty("display_name")]
+        [JsonPropertyName("display_name")]
         public string DisplayName { get; set; }
 
         /// <summary>
@@ -17,7 +17,7 @@ namespace Stripe
         /// values is maintained at the <a href="http://www.iana.org/time-zones">IANA Time Zone
         /// Database</a>.
         /// </summary>
-        [JsonProperty("timezone")]
+        [JsonPropertyName("timezone")]
         public string Timezone { get; set; }
     }
 }

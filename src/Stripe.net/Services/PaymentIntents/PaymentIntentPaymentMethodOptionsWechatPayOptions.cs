@@ -1,21 +1,21 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PaymentIntentPaymentMethodOptionsWechatPayOptions : INestedOptions
     {
         /// <summary>
         /// The app ID registered with WeChat Pay. Only required when client is ios or android.
         /// </summary>
-        [JsonProperty("app_id")]
+        [JsonPropertyName("app_id")]
         public string AppId { get; set; }
 
         /// <summary>
         /// The client type that the end customer will pay from.
         /// One of: <c>android</c>, <c>ios</c>, or <c>web</c>.
         /// </summary>
-        [JsonProperty("client")]
+        [JsonPropertyName("client")]
         public string Client { get; set; }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Stripe
         /// publishable key, you may only update the value from <c>on_session</c> to
         /// <c>off_session</c>.
         /// </summary>
-        [JsonProperty("setup_future_usage")]
+        [JsonPropertyName("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
     }
 }

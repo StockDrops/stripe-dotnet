@@ -3,7 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -17,26 +17,26 @@ namespace Stripe
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
         /// The integer amount in %s representing the total amount of the credit note, including
         /// tax.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long Amount { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -45,7 +45,7 @@ namespace Stripe
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         #region Expandable Customer
@@ -74,7 +74,7 @@ namespace Stripe
             set => this.InternalCustomer = SetExpandableFieldObject(value, this.InternalCustomer);
         }
 
-        [JsonProperty("customer")]
+        [JsonPropertyName("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
@@ -105,7 +105,7 @@ namespace Stripe
             set => this.InternalCustomerBalanceTransaction = SetExpandableFieldObject(value, this.InternalCustomerBalanceTransaction);
         }
 
-        [JsonProperty("customer_balance_transaction")]
+        [JsonPropertyName("customer_balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<CustomerBalanceTransaction>))]
         internal ExpandableField<CustomerBalanceTransaction> InternalCustomerBalanceTransaction { get; set; }
         #endregion
@@ -113,13 +113,13 @@ namespace Stripe
         /// <summary>
         /// The integer amount in %s representing the total amount of discount that was credited.
         /// </summary>
-        [JsonProperty("discount_amount")]
+        [JsonPropertyName("discount_amount")]
         public long DiscountAmount { get; set; }
 
         /// <summary>
         /// The aggregate amounts calculated per discount for all line items.
         /// </summary>
-        [JsonProperty("discount_amounts")]
+        [JsonPropertyName("discount_amounts")]
         public List<CreditNoteDiscountAmount> DiscountAmounts { get; set; }
 
         #region Expandable Invoice
@@ -148,7 +148,7 @@ namespace Stripe
             set => this.InternalInvoice = SetExpandableFieldObject(value, this.InternalInvoice);
         }
 
-        [JsonProperty("invoice")]
+        [JsonPropertyName("invoice")]
         [JsonConverter(typeof(ExpandableFieldConverter<Invoice>))]
         internal ExpandableField<Invoice> InternalInvoice { get; set; }
         #endregion
@@ -156,20 +156,20 @@ namespace Stripe
         /// <summary>
         /// Line items that make up the credit note.
         /// </summary>
-        [JsonProperty("lines")]
+        [JsonPropertyName("lines")]
         public StripeList<CreditNoteLineItem> Lines { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
         /// Customer-facing text that appears on the credit note PDF.
         /// </summary>
-        [JsonProperty("memo")]
+        [JsonPropertyName("memo")]
         public string Memo { get; set; }
 
         /// <summary>
@@ -177,26 +177,26 @@ namespace Stripe
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// A unique number that identifies this particular credit note and appears on the PDF of
         /// the credit note and its associated invoice.
         /// </summary>
-        [JsonProperty("number")]
+        [JsonPropertyName("number")]
         public string Number { get; set; }
 
         /// <summary>
         /// Amount that was credited outside of Stripe.
         /// </summary>
-        [JsonProperty("out_of_band_amount")]
+        [JsonPropertyName("out_of_band_amount")]
         public long? OutOfBandAmount { get; set; }
 
         /// <summary>
         /// The link to download the PDF of the credit note.
         /// </summary>
-        [JsonProperty("pdf")]
+        [JsonPropertyName("pdf")]
         public string Pdf { get; set; }
 
         /// <summary>
@@ -205,7 +205,7 @@ namespace Stripe
         /// One of: <c>duplicate</c>, <c>fraudulent</c>, <c>order_change</c>, or
         /// <c>product_unsatisfactory</c>.
         /// </summary>
-        [JsonProperty("reason")]
+        [JsonPropertyName("reason")]
         public string Reason { get; set; }
 
         #region Expandable Refund
@@ -234,7 +234,7 @@ namespace Stripe
             set => this.InternalRefund = SetExpandableFieldObject(value, this.InternalRefund);
         }
 
-        [JsonProperty("refund")]
+        [JsonPropertyName("refund")]
         [JsonConverter(typeof(ExpandableFieldConverter<Refund>))]
         internal ExpandableField<Refund> InternalRefund { get; set; }
         #endregion
@@ -245,41 +245,41 @@ namespace Stripe
         /// notes</a>.
         /// One of: <c>issued</c>, or <c>void</c>.
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
         /// <summary>
         /// The integer amount in %s representing the amount of the credit note, excluding exclusive
         /// tax and invoice level discounts.
         /// </summary>
-        [JsonProperty("subtotal")]
+        [JsonPropertyName("subtotal")]
         public long Subtotal { get; set; }
 
         /// <summary>
         /// The integer amount in %s representing the amount of the credit note, excluding all tax
         /// and invoice level discounts.
         /// </summary>
-        [JsonProperty("subtotal_excluding_tax")]
+        [JsonPropertyName("subtotal_excluding_tax")]
         public long? SubtotalExcludingTax { get; set; }
 
         /// <summary>
         /// The aggregate amounts calculated per tax rate for all line items.
         /// </summary>
-        [JsonProperty("tax_amounts")]
+        [JsonPropertyName("tax_amounts")]
         public List<CreditNoteTaxAmount> TaxAmounts { get; set; }
 
         /// <summary>
         /// The integer amount in %s representing the total amount of the credit note, including tax
         /// and all discount.
         /// </summary>
-        [JsonProperty("total")]
+        [JsonPropertyName("total")]
         public long Total { get; set; }
 
         /// <summary>
         /// The integer amount in %s representing the total amount of the credit note, excluding
         /// tax, but including discounts.
         /// </summary>
-        [JsonProperty("total_excluding_tax")]
+        [JsonPropertyName("total_excluding_tax")]
         public long? TotalExcludingTax { get; set; }
 
         /// <summary>
@@ -288,13 +288,13 @@ namespace Stripe
         /// <c>post_payment</c> credit note means it was issued when the invoice was paid.
         /// One of: <c>post_payment</c>, or <c>pre_payment</c>.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>
         /// The time that the credit note was voided.
         /// </summary>
-        [JsonProperty("voided_at")]
+        [JsonPropertyName("voided_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? VoidedAt { get; set; }
     }

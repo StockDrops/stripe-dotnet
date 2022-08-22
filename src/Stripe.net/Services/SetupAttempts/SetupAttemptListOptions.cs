@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SetupAttemptListOptions : ListOptionsWithCreated
     {
-        [JsonProperty("setup_intent")]
+        [JsonPropertyName("setup_intent")]
         public string SetupIntent { get; set; }
     }
 }

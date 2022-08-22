@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Checkout
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SessionLineItemAdjustableQuantityOptions : INestedOptions
     {
@@ -9,21 +9,21 @@ namespace Stripe.Checkout
         /// Set to true if the quantity can be adjusted to any non-negative integer. By default
         /// customers will be able to remove the line item by setting the quantity to 0.
         /// </summary>
-        [JsonProperty("enabled")]
+        [JsonPropertyName("enabled")]
         public bool? Enabled { get; set; }
 
         /// <summary>
         /// The maximum quantity the customer can purchase for the Checkout Session. By default this
         /// value is 99. You can specify a value up to 999.
         /// </summary>
-        [JsonProperty("maximum")]
+        [JsonPropertyName("maximum")]
         public long? Maximum { get; set; }
 
         /// <summary>
         /// The minimum quantity the customer must purchase for the Checkout Session. By default
         /// this value is 0.
         /// </summary>
-        [JsonProperty("minimum")]
+        [JsonPropertyName("minimum")]
         public long? Minimum { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 namespace StripeTests
 {
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
+    using System.Text.Json.Serialization;
+    
     using Stripe;
     using Xunit;
 
@@ -53,16 +53,16 @@ namespace StripeTests
 
         private class TestObject : StripeEntity<TestObject>
         {
-            [JsonProperty("supported_field")]
+            [JsonPropertyName("supported_field")]
             public long? SupportedField { get; set; }
 
-            [JsonProperty("child")]
+            [JsonPropertyName("child")]
             public TestChildObject Child { get; set; }
         }
 
         private class TestChildObject : StripeEntity<TestObject>
         {
-            [JsonProperty("child_supported_field")]
+            [JsonPropertyName("child_supported_field")]
             public long ChildSupportedField { get; set; }
         }
     }

@@ -1,86 +1,86 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SourceCardPresent : StripeEntity<SourceCardPresent>
     {
-        [JsonProperty("application_cryptogram")]
+        [JsonPropertyName("application_cryptogram")]
         public string ApplicationCryptogram { get; set; }
 
-        [JsonProperty("application_preferred_name")]
+        [JsonPropertyName("application_preferred_name")]
         public string ApplicationPreferredName { get; set; }
 
-        [JsonProperty("authorization_code")]
+        [JsonPropertyName("authorization_code")]
         public string AuthorizationCode { get; set; }
 
-        [JsonProperty("authorization_response_code")]
+        [JsonPropertyName("authorization_response_code")]
         public string AuthorizationResponseCode { get; set; }
 
-        [JsonProperty("brand")]
+        [JsonPropertyName("brand")]
         public string Brand { get; set; }
 
-        [JsonProperty("country")]
+        [JsonPropertyName("country")]
         public string Country { get; set; }
 
-        [JsonProperty("cvm_type")]
+        [JsonPropertyName("cvm_type")]
         public string CvmType { get; set; }
 
-        [JsonProperty("data_type")]
+        [JsonPropertyName("data_type")]
         public string DataType { get; set; }
 
-        [JsonProperty("dedicated_file_name")]
+        [JsonPropertyName("dedicated_file_name")]
         public string DedicatedFileName { get; set; }
 
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
-        [JsonProperty("emv_auth_data")]
+        [JsonPropertyName("emv_auth_data")]
         public string EmvAuthData { get; set; }
 
-        [JsonProperty("evidence_customer_signature")]
+        [JsonPropertyName("evidence_customer_signature")]
         public string EvidenceCustomerSignature { get; set; }
 
-        [JsonProperty("evidence_transaction_certificate")]
+        [JsonPropertyName("evidence_transaction_certificate")]
         public string EvidenceTransactionCertificate { get; set; }
 
-        [JsonProperty("exp_month")]
+        [JsonPropertyName("exp_month")]
         public long? ExpMonth { get; set; }
 
-        [JsonProperty("exp_year")]
+        [JsonPropertyName("exp_year")]
         public long? ExpYear { get; set; }
 
-        [JsonProperty("fingerprint")]
+        [JsonPropertyName("fingerprint")]
         public string Fingerprint { get; set; }
 
-        [JsonProperty("funding")]
+        [JsonPropertyName("funding")]
         public string Funding { get; set; }
 
-        [JsonProperty("iin")]
+        [JsonPropertyName("iin")]
         public string Iin { get; set; }
 
-        [JsonProperty("issuer")]
+        [JsonPropertyName("issuer")]
         public string Issuer { get; set; }
 
-        [JsonProperty("last4")]
+        [JsonPropertyName("last4")]
         public string Last4 { get; set; }
 
-        [JsonProperty("pos_device_id")]
+        [JsonPropertyName("pos_device_id")]
         public string PosDeviceId { get; set; }
 
-        [JsonProperty("pos_entry_mode")]
+        [JsonPropertyName("pos_entry_mode")]
         public string PosEntryMode { get; set; }
 
-        [JsonProperty("read_method")]
+        [JsonPropertyName("read_method")]
         public string ReadMethod { get; set; }
 
-        [JsonProperty("reader")]
+        [JsonPropertyName("reader")]
         public string Reader { get; set; }
 
-        [JsonProperty("terminal_verification_results")]
+        [JsonPropertyName("terminal_verification_results")]
         public string TerminalVerificationResults { get; set; }
 
-        [JsonProperty("transaction_status_information")]
+        [JsonPropertyName("transaction_status_information")]
         public string TransactionStatusInformation { get; set; }
     }
 }

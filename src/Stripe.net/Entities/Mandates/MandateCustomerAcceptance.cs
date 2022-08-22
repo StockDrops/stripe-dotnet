@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class MandateCustomerAcceptance : StripeEntity<MandateCustomerAcceptance>
@@ -10,14 +10,14 @@ namespace Stripe
         /// <summary>
         /// The time at which the customer accepted the Mandate.
         /// </summary>
-        [JsonProperty("accepted_at")]
+        [JsonPropertyName("accepted_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? AcceptedAt { get; set; }
 
-        [JsonProperty("offline")]
+        [JsonPropertyName("offline")]
         public MandateCustomerAcceptanceOffline Offline { get; set; }
 
-        [JsonProperty("online")]
+        [JsonPropertyName("online")]
         public MandateCustomerAcceptanceOnline Online { get; set; }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace Stripe
         /// <c>online</c> or <c>offline</c>.
         /// One of: <c>offline</c>, or <c>online</c>.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
     }
 }

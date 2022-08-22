@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Identity
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class VerificationSessionRedaction : StripeEntity<VerificationSessionRedaction>
     {
@@ -9,7 +9,7 @@ namespace Stripe.Identity
         /// Indicates whether this object and its related objects have been redacted or not.
         /// One of: <c>processing</c>, or <c>redacted</c>.
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
     }
 }

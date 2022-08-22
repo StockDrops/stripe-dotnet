@@ -4,7 +4,7 @@ namespace StripeTests
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe;
     using Xunit;
 
@@ -17,7 +17,7 @@ namespace StripeTests
     {
         private const string AssertionMessage =
             "Found at least one property lacking a Json*Attribute. Please add either a "
-            + "[JsonProperty(\"name\")] or a [JsonIgnore] attribute.";
+            + "[JsonPropertyName(\"name\")] or a [JsonIgnore] attribute.";
 
         [Fact]
         public void Check()

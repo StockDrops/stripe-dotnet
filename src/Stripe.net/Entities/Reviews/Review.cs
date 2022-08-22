@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -16,19 +16,19 @@ namespace Stripe
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
         /// The ZIP or postal code of the card used, if applicable.
         /// </summary>
-        [JsonProperty("billing_zip")]
+        [JsonPropertyName("billing_zip")]
         public string BillingZip { get; set; }
 
         #region Expandable Charge
@@ -57,7 +57,7 @@ namespace Stripe
             set => this.InternalCharge = SetExpandableFieldObject(value, this.InternalCharge);
         }
 
-        [JsonProperty("charge")]
+        [JsonPropertyName("charge")]
         [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
         internal ExpandableField<Charge> InternalCharge { get; set; }
         #endregion
@@ -69,20 +69,20 @@ namespace Stripe
         /// One of: <c>approved</c>, <c>disputed</c>, <c>redacted</c>, <c>refunded</c>, or
         /// <c>refunded_as_fraud</c>.
         /// </summary>
-        [JsonProperty("closed_reason")]
+        [JsonPropertyName("closed_reason")]
         public string ClosedReason { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The IP address where the payment originated.
         /// </summary>
-        [JsonProperty("ip_address")]
+        [JsonPropertyName("ip_address")]
         public string IpAddress { get; set; }
 
         /// <summary>
@@ -90,27 +90,27 @@ namespace Stripe
         /// approximation and attempts to locate the nearest population center - it should not be
         /// used to determine a specific address.
         /// </summary>
-        [JsonProperty("ip_address_location")]
+        [JsonPropertyName("ip_address_location")]
         public ReviewLocation IpAddressLocation { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
         /// If <c>true</c>, the review needs action.
         /// </summary>
-        [JsonProperty("open")]
+        [JsonPropertyName("open")]
         public bool Open { get; set; }
 
         /// <summary>
         /// The reason the review was opened. One of <c>rule</c> or <c>manual</c>.
         /// One of: <c>manual</c>, or <c>rule</c>.
         /// </summary>
-        [JsonProperty("opened_reason")]
+        [JsonPropertyName("opened_reason")]
         public string OpenedReason { get; set; }
 
         #region Expandable PaymentIntent
@@ -139,7 +139,7 @@ namespace Stripe
             set => this.InternalPaymentIntent = SetExpandableFieldObject(value, this.InternalPaymentIntent);
         }
 
-        [JsonProperty("payment_intent")]
+        [JsonPropertyName("payment_intent")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentIntent>))]
         internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
         #endregion
@@ -149,13 +149,13 @@ namespace Stripe
         /// <c>approved</c>, <c>refunded</c>, <c>refunded_as_fraud</c>, <c>disputed</c>, or
         /// <c>redacted</c>.
         /// </summary>
-        [JsonProperty("reason")]
+        [JsonPropertyName("reason")]
         public string Reason { get; set; }
 
         /// <summary>
         /// Information related to the browsing session of the user who initiated the payment.
         /// </summary>
-        [JsonProperty("session")]
+        [JsonPropertyName("session")]
         public ReviewSession Session { get; set; }
     }
 }

@@ -2,17 +2,17 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class RefundCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// A positive integer representing how much to refund.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long? Amount { get; set; }
 
-        [JsonProperty("charge")]
+        [JsonPropertyName("charge")]
         public string Charge { get; set; }
 
         /// <summary>
@@ -20,19 +20,19 @@ namespace Stripe
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
         /// Customer whose customer balance to refund from.
         /// </summary>
-        [JsonProperty("customer")]
+        [JsonPropertyName("customer")]
         public string Customer { get; set; }
 
         /// <summary>
         /// Address to send refund email, use customer email if not specified.
         /// </summary>
-        [JsonProperty("instructions_email")]
+        [JsonPropertyName("instructions_email")]
         public string InstructionsEmail { get; set; }
 
         /// <summary>
@@ -41,25 +41,25 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Origin of the refund.
         /// </summary>
-        [JsonProperty("origin")]
+        [JsonPropertyName("origin")]
         public string Origin { get; set; }
 
-        [JsonProperty("payment_intent")]
+        [JsonPropertyName("payment_intent")]
         public string PaymentIntent { get; set; }
 
-        [JsonProperty("reason")]
+        [JsonPropertyName("reason")]
         public string Reason { get; set; }
 
-        [JsonProperty("refund_application_fee")]
+        [JsonPropertyName("refund_application_fee")]
         public bool? RefundApplicationFee { get; set; }
 
-        [JsonProperty("reverse_transfer")]
+        [JsonPropertyName("reverse_transfer")]
         public bool? ReverseTransfer { get; set; }
     }
 }

@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Identity
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class VerificationReportOptions : StripeEntity<VerificationReportOptions>
     {
-        [JsonProperty("document")]
+        [JsonPropertyName("document")]
         public VerificationReportOptionsDocument Document { get; set; }
 
-        [JsonProperty("id_number")]
+        [JsonPropertyName("id_number")]
         public VerificationReportOptionsIdNumber IdNumber { get; set; }
     }
 }

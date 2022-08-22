@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class PaymentIntentPaymentMethodOptionsKonbini : StripeEntity<PaymentIntentPaymentMethodOptionsKonbini>
@@ -11,7 +11,7 @@ namespace Stripe
         /// An optional 10 to 11 digit numeric-only string determining the confirmation code at
         /// applicable convenience stores.
         /// </summary>
-        [JsonProperty("confirmation_number")]
+        [JsonPropertyName("confirmation_number")]
         public string ConfirmationNumber { get; set; }
 
         /// <summary>
@@ -20,14 +20,14 @@ namespace Stripe
         /// <c>expires_after_days</c> set to 2 on Monday JST, the instructions will expire on
         /// Wednesday 23:59:59 JST.
         /// </summary>
-        [JsonProperty("expires_after_days")]
+        [JsonPropertyName("expires_after_days")]
         public long? ExpiresAfterDays { get; set; }
 
         /// <summary>
         /// The timestamp at which the Konbini payment instructions will expire. Only one of
         /// <c>expires_after_days</c> or <c>expires_at</c> may be set.
         /// </summary>
-        [JsonProperty("expires_at")]
+        [JsonPropertyName("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ExpiresAt { get; set; }
 
@@ -35,7 +35,7 @@ namespace Stripe
         /// A product descriptor of up to 22 characters, which will appear to customers at the
         /// convenience store.
         /// </summary>
-        [JsonProperty("product_description")]
+        [JsonPropertyName("product_description")]
         public string ProductDescription { get; set; }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Stripe
         /// optimize your payment flow and comply with regional legislation and network rules, such
         /// as <a href="https://stripe.com/docs/strong-customer-authentication">SCA</a>.
         /// </summary>
-        [JsonProperty("setup_future_usage")]
+        [JsonPropertyName("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class CashBalanceSettingsOptions : INestedOptions
     {
@@ -12,7 +12,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/payments/customer-balance/reconciliation">Reconciliation</a>.
         /// One of: <c>automatic</c>, or <c>manual</c>.
         /// </summary>
-        [JsonProperty("reconciliation_mode")]
+        [JsonPropertyName("reconciliation_mode")]
         public string ReconciliationMode { get; set; }
     }
 }

@@ -1,13 +1,13 @@
 namespace Stripe.Checkout
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SessionDisplayItem : StripeEntity<SessionDisplayItem>
     {
         /// <summary>
         /// Amount for the display item.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long? Amount { get; set; }
 
         /// <summary>
@@ -15,10 +15,10 @@ namespace Stripe.Checkout
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
-        [JsonProperty("custom")]
+        [JsonPropertyName("custom")]
         public SessionDisplayItemCustom Custom { get; set; }
 
         /// <summary>
@@ -41,13 +41,13 @@ namespace Stripe.Checkout
         /// subscription</a> and more about <a
         /// href="https://stripe.com/docs/billing/prices-guide">products and prices</a>.
         /// </summary>
-        [JsonProperty("plan")]
+        [JsonPropertyName("plan")]
         public Plan Plan { get; set; }
 
         /// <summary>
         /// Quantity of the display item being purchased.
         /// </summary>
-        [JsonProperty("quantity")]
+        [JsonPropertyName("quantity")]
         public long? Quantity { get; set; }
 
         /// <summary>
@@ -62,13 +62,13 @@ namespace Stripe.Checkout
         /// Related guide: <a href="https://stripe.com/docs/orders">Tax, Shipping, and
         /// Inventory</a>.
         /// </summary>
-        [JsonProperty("sku")]
+        [JsonPropertyName("sku")]
         public Sku Sku { get; set; }
 
         /// <summary>
         /// The type of display item. One of <c>custom</c>, <c>plan</c> or <c>sku</c>.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
     }
 }

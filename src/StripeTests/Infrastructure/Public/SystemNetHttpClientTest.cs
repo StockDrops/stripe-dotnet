@@ -8,7 +8,7 @@ namespace StripeTests
     using System.Threading.Tasks;
     using Moq;
     using Moq.Protected;
-    using Newtonsoft.Json.Linq;
+    
     using Stripe;
     using Xunit;
 

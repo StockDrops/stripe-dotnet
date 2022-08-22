@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Checkout
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SessionShippingCostTax : StripeEntity<SessionShippingCostTax>
     {
         /// <summary>
         /// Amount of tax applied for this rate.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long Amount { get; set; }
 
         /// <summary>
@@ -20,7 +20,7 @@ namespace Stripe.Checkout
         ///
         /// Related guide: <a href="https://stripe.com/docs/billing/taxes/tax-rates">Tax Rates</a>.
         /// </summary>
-        [JsonProperty("rate")]
+        [JsonPropertyName("rate")]
         public TaxRate Rate { get; set; }
     }
 }

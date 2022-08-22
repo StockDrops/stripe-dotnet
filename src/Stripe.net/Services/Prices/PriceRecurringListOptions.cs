@@ -1,15 +1,15 @@
 namespace Stripe
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class PriceRecurringListOptions : INestedOptions
     {
-        [JsonProperty("interval")]
+        [JsonPropertyName("interval")]
         public string Interval { get; set; }
 
-        [JsonProperty("usage_type")]
+        [JsonPropertyName("usage_type")]
         public string UsageType { get; set; }
     }
 }

@@ -2,32 +2,32 @@
 namespace Stripe.Issuing
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class CardholderCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// The cardholder's billing address.
         /// </summary>
-        [JsonProperty("billing")]
+        [JsonPropertyName("billing")]
         public CardholderBillingOptions Billing { get; set; }
 
         /// <summary>
         /// Additional information about a <c>company</c> cardholder.
         /// </summary>
-        [JsonProperty("company")]
+        [JsonPropertyName("company")]
         public CardholderCompanyOptions Company { get; set; }
 
         /// <summary>
         /// The cardholder's email address.
         /// </summary>
-        [JsonProperty("email")]
+        [JsonPropertyName("email")]
         public string Email { get; set; }
 
         /// <summary>
         /// Additional information about an <c>individual</c> cardholder.
         /// </summary>
-        [JsonProperty("individual")]
+        [JsonPropertyName("individual")]
         public CardholderIndividualOptions Individual { get; set; }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Stripe.Issuing
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Stripe.Issuing
         /// of this field is 24 characters. This field cannot contain any special characters or
         /// numbers.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Stripe.Issuing
         /// the <a href="https://stripe.com/docs/issuing/3d-secure#when-is-3d-secure-applied">3D
         /// Secure documentation</a> for more details.
         /// </summary>
-        [JsonProperty("phone_number")]
+        [JsonPropertyName("phone_number")]
         public string PhoneNumber { get; set; }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace Stripe.Issuing
         /// href="https://stripe.com/docs/issuing/controls/spending-controls">documentation</a> for
         /// more details.
         /// </summary>
-        [JsonProperty("spending_controls")]
+        [JsonPropertyName("spending_controls")]
         public CardholderSpendingControlsOptions SpendingControls { get; set; }
 
         /// <summary>
@@ -70,14 +70,14 @@ namespace Stripe.Issuing
         /// <c>active</c>.
         /// One of: <c>active</c>, or <c>inactive</c>.
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
         /// <summary>
         /// One of <c>individual</c> or <c>company</c>.
         /// One of: <c>company</c>, or <c>individual</c>.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
     }
 }

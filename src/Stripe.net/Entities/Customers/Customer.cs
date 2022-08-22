@@ -3,7 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -18,19 +18,19 @@ namespace Stripe
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
         /// The customer's address.
         /// </summary>
-        [JsonProperty("address")]
+        [JsonPropertyName("address")]
         public Address Address { get; set; }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Stripe
         /// it solely takes into account amounts that have yet to be successfully applied to any
         /// invoice. This balance is only taken into account as invoices are finalized.
         /// </summary>
-        [JsonProperty("balance")]
+        [JsonPropertyName("balance")]
         public long Balance { get; set; }
 
         /// <summary>
@@ -49,13 +49,13 @@ namespace Stripe
         /// settings[reconciliation_mode] field describes whether these funds are applied to such
         /// payment intents manually or automatically.
         /// </summary>
-        [JsonProperty("cash_balance")]
+        [JsonPropertyName("cash_balance")]
         public CashBalance CashBalance { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -63,7 +63,7 @@ namespace Stripe
         /// Three-letter <a href="https://stripe.com/docs/currencies">ISO code for the currency</a>
         /// the customer can be charged in for recurring billing purposes.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         #region Expandable DefaultSource
@@ -100,7 +100,7 @@ namespace Stripe
             set => this.InternalDefaultSource = SetExpandableFieldObject(value, this.InternalDefaultSource);
         }
 
-        [JsonProperty("default_source")]
+        [JsonPropertyName("default_source")]
         [JsonConverter(typeof(ExpandableFieldConverter<IPaymentSource>))]
         internal ExpandableField<IPaymentSource> InternalDefaultSource { get; set; }
         #endregion
@@ -108,7 +108,8 @@ namespace Stripe
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
-        [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("deleted")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public bool? Deleted { get; set; }
 
         /// <summary>
@@ -121,25 +122,25 @@ namespace Stripe
         /// href="https://stripe.com/docs/billing/automatic-collection">dunning</a>,
         /// <c>delinquent</c> doesn't get reset to <c>false</c>.
         /// </summary>
-        [JsonProperty("delinquent")]
+        [JsonPropertyName("delinquent")]
         public bool? Delinquent { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
         /// Describes the current discount active on the customer, if there is one.
         /// </summary>
-        [JsonProperty("discount")]
+        [JsonPropertyName("discount")]
         public Discount Discount { get; set; }
 
         /// <summary>
         /// The customer's email address.
         /// </summary>
-        [JsonProperty("email")]
+        [JsonPropertyName("email")]
         public string Email { get; set; }
 
         /// <summary>
@@ -151,23 +152,23 @@ namespace Stripe
         /// invoice. A balance in a particular currency is only applied to any invoice as an invoice
         /// in that currency is finalized.
         /// </summary>
-        [JsonProperty("invoice_credit_balance")]
+        [JsonPropertyName("invoice_credit_balance")]
         public Dictionary<string, long> InvoiceCreditBalance { get; set; }
 
         /// <summary>
         /// The prefix for the customer used to generate unique invoice numbers.
         /// </summary>
-        [JsonProperty("invoice_prefix")]
+        [JsonPropertyName("invoice_prefix")]
         public string InvoicePrefix { get; set; }
 
-        [JsonProperty("invoice_settings")]
+        [JsonPropertyName("invoice_settings")]
         public CustomerInvoiceSettings InvoiceSettings { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -175,53 +176,53 @@ namespace Stripe
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The customer's full name or business name.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
         /// The suffix of the customer's next invoice number, e.g., 0001.
         /// </summary>
-        [JsonProperty("next_invoice_sequence")]
+        [JsonPropertyName("next_invoice_sequence")]
         public long NextInvoiceSequence { get; set; }
 
         /// <summary>
         /// The customer's phone number.
         /// </summary>
-        [JsonProperty("phone")]
+        [JsonPropertyName("phone")]
         public string Phone { get; set; }
 
         /// <summary>
         /// The customer's preferred locales (languages), ordered by preference.
         /// </summary>
-        [JsonProperty("preferred_locales")]
+        [JsonPropertyName("preferred_locales")]
         public List<string> PreferredLocales { get; set; }
 
         /// <summary>
         /// Mailing and shipping address for the customer. Appears on invoices emailed to this
         /// customer.
         /// </summary>
-        [JsonProperty("shipping")]
+        [JsonPropertyName("shipping")]
         public Shipping Shipping { get; set; }
 
         /// <summary>
         /// The customer's payment sources, if any.
         /// </summary>
-        [JsonProperty("sources")]
+        [JsonPropertyName("sources")]
         public StripeList<IPaymentSource> Sources { get; set; }
 
         /// <summary>
         /// The customer's current subscriptions, if any.
         /// </summary>
-        [JsonProperty("subscriptions")]
+        [JsonPropertyName("subscriptions")]
         public StripeList<Subscription> Subscriptions { get; set; }
 
-        [JsonProperty("tax")]
+        [JsonPropertyName("tax")]
         public CustomerTax Tax { get; set; }
 
         /// <summary>
@@ -230,13 +231,13 @@ namespace Stripe
         /// <strong>"Reverse charge"</strong>.
         /// One of: <c>exempt</c>, <c>none</c>, or <c>reverse</c>.
         /// </summary>
-        [JsonProperty("tax_exempt")]
+        [JsonPropertyName("tax_exempt")]
         public string TaxExempt { get; set; }
 
         /// <summary>
         /// The customer's tax IDs.
         /// </summary>
-        [JsonProperty("tax_ids")]
+        [JsonPropertyName("tax_ids")]
         public StripeList<TaxId> TaxIds { get; set; }
 
         #region Expandable TestClock
@@ -265,7 +266,7 @@ namespace Stripe
             set => this.InternalTestClock = SetExpandableFieldObject(value, this.InternalTestClock);
         }
 
-        [JsonProperty("test_clock")]
+        [JsonPropertyName("test_clock")]
         [JsonConverter(typeof(ExpandableFieldConverter<TestHelpers.TestClock>))]
         internal ExpandableField<TestHelpers.TestClock> InternalTestClock { get; set; }
         #endregion

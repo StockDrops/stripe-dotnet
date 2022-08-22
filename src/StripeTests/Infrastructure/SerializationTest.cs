@@ -1,7 +1,7 @@
 namespace StripeTests
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe;
     using StripeTests.Infrastructure.TestData;
     using Xunit;

@@ -1,20 +1,20 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Terminal
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ReaderProcessPaymentIntentOptions : BaseOptions
     {
         /// <summary>
         /// PaymentIntent ID.
         /// </summary>
-        [JsonProperty("payment_intent")]
+        [JsonPropertyName("payment_intent")]
         public string PaymentIntent { get; set; }
 
         /// <summary>
         /// Configuration overrides.
         /// </summary>
-        [JsonProperty("process_config")]
+        [JsonPropertyName("process_config")]
         public ReaderProcessConfigOptions ProcessConfig { get; set; }
     }
 }

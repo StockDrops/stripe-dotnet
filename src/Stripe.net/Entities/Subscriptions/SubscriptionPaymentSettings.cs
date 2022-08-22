@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SubscriptionPaymentSettings : StripeEntity<SubscriptionPaymentSettings>
     {
@@ -10,7 +10,7 @@ namespace Stripe
         /// Payment-method-specific configuration to provide to invoices created by the
         /// subscription.
         /// </summary>
-        [JsonProperty("payment_method_options")]
+        [JsonPropertyName("payment_method_options")]
         public SubscriptionPaymentSettingsPaymentMethodOptions PaymentMethodOptions { get; set; }
 
         /// <summary>
@@ -21,7 +21,7 @@ namespace Stripe
         /// href="https://dashboard.stripe.com/settings/billing/invoice">invoice template
         /// settings</a>.
         /// </summary>
-        [JsonProperty("payment_method_types")]
+        [JsonPropertyName("payment_method_types")]
         public List<string> PaymentMethodTypes { get; set; }
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace Stripe
         /// <c>subscription.default_payment_method</c> when a subscription payment succeeds.
         /// One of: <c>off</c>, or <c>on_subscription</c>.
         /// </summary>
-        [JsonProperty("save_default_payment_method")]
+        [JsonPropertyName("save_default_payment_method")]
         public string SaveDefaultPaymentMethod { get; set; }
     }
 }

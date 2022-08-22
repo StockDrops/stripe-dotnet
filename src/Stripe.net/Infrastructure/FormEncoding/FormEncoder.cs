@@ -9,7 +9,7 @@ namespace Stripe.Infrastructure.FormEncoding
     using System.Net;
     using System.Net.Http;
     using System.Reflection;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// This class provides methods to serialize various objects with
@@ -202,7 +202,7 @@ namespace Stripe.Infrastructure.FormEncoding
                     continue;
                 }
 
-                // Skip properties not annotated with `[JsonProperty]`
+                // Skip properties not annotated with `[JsonPropertyName]`
                 var attribute = property.GetCustomAttribute<JsonPropertyAttribute>();
                 if (attribute == null)
                 {

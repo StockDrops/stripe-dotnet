@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class CustomerCashBalanceOptions : INestedOptions
     {
@@ -9,7 +9,7 @@ namespace Stripe
         /// Settings controlling the behavior of the customer's cash balance, such as reconciliation
         /// of funds received.
         /// </summary>
-        [JsonProperty("settings")]
+        [JsonPropertyName("settings")]
         public CustomerCashBalanceSettingsOptions Settings { get; set; }
     }
 }

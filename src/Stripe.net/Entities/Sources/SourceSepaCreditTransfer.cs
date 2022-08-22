@@ -1,41 +1,41 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SourceSepaCreditTransfer : StripeEntity<SourceSepaCreditTransfer>
     {
-        [JsonProperty("bank_name")]
+        [JsonPropertyName("bank_name")]
         public string BankName { get; set; }
 
-        [JsonProperty("bic")]
+        [JsonPropertyName("bic")]
         public string Bic { get; set; }
 
-        [JsonProperty("iban")]
+        [JsonPropertyName("iban")]
         public string Iban { get; set; }
 
-        [JsonProperty("refund_account_holder_address_city")]
+        [JsonPropertyName("refund_account_holder_address_city")]
         public string RefundAccountHolderAddressCity { get; set; }
 
-        [JsonProperty("refund_account_holder_address_country")]
+        [JsonPropertyName("refund_account_holder_address_country")]
         public string RefundAccountHolderAddressCountry { get; set; }
 
-        [JsonProperty("refund_account_holder_address_line1")]
+        [JsonPropertyName("refund_account_holder_address_line1")]
         public string RefundAccountHolderAddressLine1 { get; set; }
 
-        [JsonProperty("refund_account_holder_address_line2")]
+        [JsonPropertyName("refund_account_holder_address_line2")]
         public string RefundAccountHolderAddressLine2 { get; set; }
 
-        [JsonProperty("refund_account_holder_address_postal_code")]
+        [JsonPropertyName("refund_account_holder_address_postal_code")]
         public string RefundAccountHolderAddressPostalCode { get; set; }
 
-        [JsonProperty("refund_account_holder_address_state")]
+        [JsonPropertyName("refund_account_holder_address_state")]
         public string RefundAccountHolderAddressState { get; set; }
 
-        [JsonProperty("refund_account_holder_name")]
+        [JsonPropertyName("refund_account_holder_name")]
         public string RefundAccountHolderName { get; set; }
 
-        [JsonProperty("refund_iban")]
+        [JsonPropertyName("refund_iban")]
         public string RefundIban { get; set; }
     }
 }

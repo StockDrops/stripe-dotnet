@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class FileLinkListOptions : ListOptionsWithCreated
     {
-        [JsonProperty("expired")]
+        [JsonPropertyName("expired")]
         public bool? Expired { get; set; }
 
-        [JsonProperty("file")]
+        [JsonPropertyName("file")]
         public string File { get; set; }
     }
 }

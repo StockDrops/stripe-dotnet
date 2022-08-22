@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class AccountTosAcceptance : StripeEntity<AccountTosAcceptance>
@@ -11,27 +11,27 @@ namespace Stripe
         /// The Unix timestamp marking when the account representative accepted their service
         /// agreement.
         /// </summary>
-        [JsonProperty("date")]
+        [JsonPropertyName("date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? Date { get; set; }
 
         /// <summary>
         /// The IP address from which the account representative accepted their service agreement.
         /// </summary>
-        [JsonProperty("ip")]
+        [JsonPropertyName("ip")]
         public string Ip { get; set; }
 
         /// <summary>
         /// The user's service agreement type.
         /// </summary>
-        [JsonProperty("service_agreement")]
+        [JsonPropertyName("service_agreement")]
         public string ServiceAgreement { get; set; }
 
         /// <summary>
         /// The user agent of the browser from which the account representative accepted their
         /// service agreement.
         /// </summary>
-        [JsonProperty("user_agent")]
+        [JsonPropertyName("user_agent")]
         public string UserAgent { get; set; }
     }
 }

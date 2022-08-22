@@ -2,20 +2,20 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PaymentMethodCardNetworks : StripeEntity<PaymentMethodCardNetworks>
     {
         /// <summary>
         /// All available networks for the card.
         /// </summary>
-        [JsonProperty("available")]
+        [JsonPropertyName("available")]
         public List<string> Available { get; set; }
 
         /// <summary>
         /// The preferred network for the card.
         /// </summary>
-        [JsonProperty("preferred")]
+        [JsonPropertyName("preferred")]
         public string Preferred { get; set; }
     }
 }

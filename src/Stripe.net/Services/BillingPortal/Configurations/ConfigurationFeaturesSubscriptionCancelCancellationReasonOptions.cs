@@ -2,20 +2,20 @@
 namespace Stripe.BillingPortal
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ConfigurationFeaturesSubscriptionCancelCancellationReasonOptions : INestedOptions
     {
         /// <summary>
         /// Whether the feature is enabled.
         /// </summary>
-        [JsonProperty("enabled")]
+        [JsonPropertyName("enabled")]
         public bool? Enabled { get; set; }
 
         /// <summary>
         /// Which cancellation reasons will be given as options to the customer.
         /// </summary>
-        [JsonProperty("options")]
+        [JsonPropertyName("options")]
         public List<string> Options { get; set; }
     }
 }

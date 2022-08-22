@@ -1,35 +1,35 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class AccountSettings : StripeEntity<AccountSettings>
     {
-        [JsonProperty("bacs_debit_payments")]
+        [JsonPropertyName("bacs_debit_payments")]
         public AccountSettingsBacsDebitPayments BacsDebitPayments { get; set; }
 
-        [JsonProperty("branding")]
+        [JsonPropertyName("branding")]
         public AccountSettingsBranding Branding { get; set; }
 
-        [JsonProperty("card_issuing")]
+        [JsonPropertyName("card_issuing")]
         public AccountSettingsCardIssuing CardIssuing { get; set; }
 
-        [JsonProperty("card_payments")]
+        [JsonPropertyName("card_payments")]
         public AccountSettingsCardPayments CardPayments { get; set; }
 
-        [JsonProperty("dashboard")]
+        [JsonPropertyName("dashboard")]
         public AccountSettingsDashboard Dashboard { get; set; }
 
-        [JsonProperty("payments")]
+        [JsonPropertyName("payments")]
         public AccountSettingsPayments Payments { get; set; }
 
-        [JsonProperty("payouts")]
+        [JsonPropertyName("payouts")]
         public AccountSettingsPayouts Payouts { get; set; }
 
-        [JsonProperty("sepa_debit_payments")]
+        [JsonPropertyName("sepa_debit_payments")]
         public AccountSettingsSepaDebitPayments SepaDebitPayments { get; set; }
 
-        [JsonProperty("treasury")]
+        [JsonPropertyName("treasury")]
         public AccountSettingsTreasury Treasury { get; set; }
     }
 }

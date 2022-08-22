@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class WebhookEndpointCreateOptions : BaseOptions, IHasMetadata
     {
@@ -35,27 +35,27 @@ namespace Stripe
         /// <c>2019-11-05</c>, <c>2019-12-03</c>, <c>2020-03-02</c>, <c>2020-08-27</c>, or
         /// <c>2022-08-01</c>.
         /// </summary>
-        [JsonProperty("api_version")]
+        [JsonPropertyName("api_version")]
         public string ApiVersion { get; set; }
 
         /// <summary>
         /// Whether this endpoint should receive events from connected accounts (<c>true</c>), or
         /// from your account (<c>false</c>). Defaults to <c>false</c>.
         /// </summary>
-        [JsonProperty("connect")]
+        [JsonPropertyName("connect")]
         public bool? Connect { get; set; }
 
         /// <summary>
         /// An optional description of what the webhook is used for.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
         /// The list of events to enable for this endpoint. You may specify <c>['*']</c> to enable
         /// all events, except those that require explicit selection.
         /// </summary>
-        [JsonProperty("enabled_events")]
+        [JsonPropertyName("enabled_events")]
         public List<string> EnabledEvents { get; set; }
 
         /// <summary>
@@ -64,13 +64,13 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The URL of the webhook endpoint.
         /// </summary>
-        [JsonProperty("url")]
+        [JsonPropertyName("url")]
         public string Url { get; set; }
     }
 }

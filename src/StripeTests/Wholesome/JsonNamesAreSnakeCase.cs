@@ -5,18 +5,18 @@ namespace StripeTests
     using System.Linq;
     using System.Reflection;
     using System.Text.RegularExpressions;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe;
     using Xunit;
 
     /// <summary>
     /// This wholesome test ensures that no entity or options class reuses the same name in
-    /// different `JsonProperty` attributes.
+    /// different `JsonPropertyName` attributes.
     /// </summary>
     public class JsonNamesAreSnakeCase : WholesomeTest
     {
         private const string AssertionMessage =
-            "Found at least one invalid JsonProperty name.";
+            "Found at least one invalid JsonPropertyName name.";
 
         [Fact]
         public void Check()
@@ -33,7 +33,7 @@ namespace StripeTests
                 {
                     var propType = property.PropertyType;
 
-                    // Skip properties that don't have a `JsonProperty` attribute
+                    // Skip properties that don't have a `JsonPropertyName` attribute
                     var attribute = property.GetCustomAttribute<JsonPropertyAttribute>();
                     if (attribute == null)
                     {

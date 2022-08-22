@@ -1,19 +1,19 @@
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PersonRelationshipListOptions : INestedOptions
     {
-        [JsonProperty("director")]
+        [JsonPropertyName("director")]
         public bool? Director { get; set; }
 
-        [JsonProperty("executive")]
+        [JsonPropertyName("executive")]
         public bool? Executive { get; set; }
 
-        [JsonProperty("owner")]
+        [JsonPropertyName("owner")]
         public bool? Owner { get; set; }
 
-        [JsonProperty("representative")]
+        [JsonPropertyName("representative")]
         public bool? Representative { get; set; }
     }
 }

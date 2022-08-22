@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class BalanceInstantAvailable : StripeEntity<BalanceInstantAvailable>
     {
         /// <summary>
         /// Balance amount.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long Amount { get; set; }
 
         /// <summary>
@@ -16,10 +16,10 @@ namespace Stripe
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
-        [JsonProperty("source_types")]
+        [JsonPropertyName("source_types")]
         public BalanceInstantAvailableSourceTypes SourceTypes { get; set; }
     }
 }

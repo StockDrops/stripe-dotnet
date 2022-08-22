@@ -2,7 +2,7 @@
 namespace Stripe.TestHelpers
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class TestClockCreateOptions : BaseOptions
@@ -10,14 +10,14 @@ namespace Stripe.TestHelpers
         /// <summary>
         /// The initial frozen time for this test clock.
         /// </summary>
-        [JsonProperty("frozen_time")]
+        [JsonPropertyName("frozen_time")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? FrozenTime { get; set; }
 
         /// <summary>
         /// The name for this test clock.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
     }
 }

@@ -4,7 +4,7 @@ namespace StripeTests.Infrastructure.TestData
     using System.Collections.Generic;
     using System.IO;
     using System.Runtime.Serialization;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Newtonsoft.Json.Converters;
     using Stripe;
     using Stripe.Infrastructure;
@@ -21,44 +21,44 @@ namespace StripeTests.Infrastructure.TestData
             TestTwo,
         }
 
-        [JsonProperty("any_of")]
+        [JsonPropertyName("any_of")]
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<string, Dictionary<string, string>> AnyOf { get; set; }
 
-        [JsonProperty("array")]
+        [JsonPropertyName("array")]
         public string[] Array { get; set; }
 
-        [JsonProperty("bool")]
+        [JsonPropertyName("bool")]
         public bool? Bool { get; set; }
 
-        [JsonProperty("date_filter")]
+        [JsonPropertyName("date_filter")]
         public DateRangeOptions DateRangeOptions { get; set; }
 
-        [JsonProperty("datetime")]
+        [JsonPropertyName("datetime")]
         public DateTime? DateTime { get; set; }
 
-        [JsonProperty("decimal")]
+        [JsonPropertyName("decimal")]
         public decimal? Decimal { get; set; }
 
-        [JsonProperty("dictionary")]
+        [JsonPropertyName("dictionary")]
         public Dictionary<string, object> Dictionary { get; set; }
 
-        [JsonProperty("enum")]
+        [JsonPropertyName("enum")]
         public TestEnum? Enum { get; set; }
 
-        [JsonProperty("list")]
+        [JsonPropertyName("list")]
         public List<object> List { get; set; }
 
-        [JsonProperty("long")]
+        [JsonPropertyName("long")]
         public long? Long { get; set; }
 
-        [JsonProperty("stream")]
+        [JsonPropertyName("stream")]
         public Stream Stream { get; set; }
 
-        [JsonProperty("string")]
+        [JsonPropertyName("string")]
         public string String { get; set; }
 
-        [JsonProperty("string_enum")]
+        [JsonPropertyName("string_enum")]
         public TestStringEnum StringEnum { get; set; }
 
         public class TestStringEnum : StringEnum

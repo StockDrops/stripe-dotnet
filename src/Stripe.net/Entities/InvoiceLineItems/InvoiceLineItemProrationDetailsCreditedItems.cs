@@ -2,20 +2,20 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class InvoiceLineItemProrationDetailsCreditedItems : StripeEntity<InvoiceLineItemProrationDetailsCreditedItems>
     {
         /// <summary>
         /// Invoice containing the credited invoice line items.
         /// </summary>
-        [JsonProperty("invoice")]
+        [JsonPropertyName("invoice")]
         public string Invoice { get; set; }
 
         /// <summary>
         /// Credited invoice line items.
         /// </summary>
-        [JsonProperty("invoice_line_items")]
+        [JsonPropertyName("invoice_line_items")]
         public List<string> InvoiceLineItems { get; set; }
     }
 }

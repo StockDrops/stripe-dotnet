@@ -1,24 +1,24 @@
 // File generated from our OpenAPI spec
 namespace Stripe.BillingPortal
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ConfigurationFeaturesSubscriptionCancel : StripeEntity<ConfigurationFeaturesSubscriptionCancel>
     {
-        [JsonProperty("cancellation_reason")]
+        [JsonPropertyName("cancellation_reason")]
         public ConfigurationFeaturesSubscriptionCancelCancellationReason CancellationReason { get; set; }
 
         /// <summary>
         /// Whether the feature is enabled.
         /// </summary>
-        [JsonProperty("enabled")]
+        [JsonPropertyName("enabled")]
         public bool Enabled { get; set; }
 
         /// <summary>
         /// Whether to cancel subscriptions immediately or at the end of the billing period.
         /// One of: <c>at_period_end</c>, or <c>immediately</c>.
         /// </summary>
-        [JsonProperty("mode")]
+        [JsonPropertyName("mode")]
         public string Mode { get; set; }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace Stripe.BillingPortal
         /// <c>none</c> and <c>create_prorations</c>.
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
         /// </summary>
-        [JsonProperty("proration_behavior")]
+        [JsonPropertyName("proration_behavior")]
         public string ProrationBehavior { get; set; }
     }
 }

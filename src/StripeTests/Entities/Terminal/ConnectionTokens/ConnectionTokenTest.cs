@@ -1,6 +1,6 @@
 namespace StripeTests.Terminal
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Terminal;
     using Xunit;
 

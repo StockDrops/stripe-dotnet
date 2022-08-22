@@ -3,7 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -29,19 +29,19 @@ namespace Stripe
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
         /// Whether the price can be used for new purchases.
         /// </summary>
-        [JsonProperty("active")]
+        [JsonPropertyName("active")]
         public bool Active { get; set; }
 
         /// <summary>
@@ -54,13 +54,13 @@ namespace Stripe
         /// <c>tiers_mode</c> attributes.
         /// One of: <c>per_unit</c>, or <c>tiered</c>.
         /// </summary>
-        [JsonProperty("billing_scheme")]
+        [JsonPropertyName("billing_scheme")]
         public string BillingScheme { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -69,7 +69,7 @@ namespace Stripe
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
@@ -77,34 +77,35 @@ namespace Stripe
         /// href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> and a <a
         /// href="https://stripe.com/docs/currencies">supported currency</a>.
         /// </summary>
-        [JsonProperty("currency_options")]
+        [JsonPropertyName("currency_options")]
         public Dictionary<string, PriceCurrencyOptions> CurrencyOptions { get; set; }
 
         /// <summary>
         /// When set, provides configuration for the amount to be adjusted by the customer during
         /// Checkout Sessions and Payment Links.
         /// </summary>
-        [JsonProperty("custom_unit_amount")]
+        [JsonPropertyName("custom_unit_amount")]
         public PriceCustomUnitAmount CustomUnitAmount { get; set; }
 
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
-        [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("deleted")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public bool? Deleted { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
         /// A lookup key used to retrieve prices dynamically from a static string. This may be up to
         /// 200 characters.
         /// </summary>
-        [JsonProperty("lookup_key")]
+        [JsonPropertyName("lookup_key")]
         public string LookupKey { get; set; }
 
         /// <summary>
@@ -112,13 +113,13 @@ namespace Stripe
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// A brief description of the price, hidden from customers.
         /// </summary>
-        [JsonProperty("nickname")]
+        [JsonPropertyName("nickname")]
         public string Nickname { get; set; }
 
         #region Expandable Product
@@ -147,7 +148,7 @@ namespace Stripe
             set => this.InternalProduct = SetExpandableFieldObject(value, this.InternalProduct);
         }
 
-        [JsonProperty("product")]
+        [JsonPropertyName("product")]
         [JsonConverter(typeof(ExpandableFieldConverter<Product>))]
         internal ExpandableField<Product> InternalProduct { get; set; }
         #endregion
@@ -155,7 +156,7 @@ namespace Stripe
         /// <summary>
         /// The recurring components of a price such as <c>interval</c> and <c>usage_type</c>.
         /// </summary>
-        [JsonProperty("recurring")]
+        [JsonPropertyName("recurring")]
         public PriceRecurring Recurring { get; set; }
 
         /// <summary>
@@ -164,14 +165,14 @@ namespace Stripe
         /// <c>inclusive</c> or <c>exclusive</c>, it cannot be changed.
         /// One of: <c>exclusive</c>, <c>inclusive</c>, or <c>unspecified</c>.
         /// </summary>
-        [JsonProperty("tax_behavior")]
+        [JsonPropertyName("tax_behavior")]
         public string TaxBehavior { get; set; }
 
         /// <summary>
         /// Each element represents a pricing tier. This parameter requires <c>billing_scheme</c> to
         /// be set to <c>tiered</c>. See also the documentation for <c>billing_scheme</c>.
         /// </summary>
-        [JsonProperty("tiers")]
+        [JsonPropertyName("tiers")]
         public List<PriceTier> Tiers { get; set; }
 
         /// <summary>
@@ -180,14 +181,14 @@ namespace Stripe
         /// unit price. In <c>graduated</c> tiering, pricing can change as the quantity grows.
         /// One of: <c>graduated</c>, or <c>volume</c>.
         /// </summary>
-        [JsonProperty("tiers_mode")]
+        [JsonPropertyName("tiers_mode")]
         public string TiersMode { get; set; }
 
         /// <summary>
         /// Apply a transformation to the reported usage or set quantity before computing the amount
         /// billed. Cannot be combined with <c>tiers</c>.
         /// </summary>
-        [JsonProperty("transform_quantity")]
+        [JsonPropertyName("transform_quantity")]
         public PriceTransformQuantity TransformQuantity { get; set; }
 
         /// <summary>
@@ -195,21 +196,21 @@ namespace Stripe
         /// one-time purchase or a recurring (subscription) purchase.
         /// One of: <c>one_time</c>, or <c>recurring</c>.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>
         /// The unit amount in %s to be charged, represented as a whole integer if possible. Only
         /// set if <c>billing_scheme=per_unit</c>.
         /// </summary>
-        [JsonProperty("unit_amount")]
+        [JsonPropertyName("unit_amount")]
         public long? UnitAmount { get; set; }
 
         /// <summary>
         /// The unit amount in %s to be charged, represented as a decimal string with at most 12
         /// decimal places. Only set if <c>billing_scheme=per_unit</c>.
         /// </summary>
-        [JsonProperty("unit_amount_decimal")]
+        [JsonPropertyName("unit_amount_decimal")]
         public decimal? UnitAmountDecimal { get; set; }
     }
 }

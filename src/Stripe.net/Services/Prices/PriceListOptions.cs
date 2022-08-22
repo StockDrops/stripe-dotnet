@@ -2,26 +2,26 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PriceListOptions : ListOptionsWithCreated
     {
-        [JsonProperty("active")]
+        [JsonPropertyName("active")]
         public bool? Active { get; set; }
 
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
-        [JsonProperty("lookup_keys")]
+        [JsonPropertyName("lookup_keys")]
         public List<string> LookupKeys { get; set; }
 
-        [JsonProperty("product")]
+        [JsonPropertyName("product")]
         public string Product { get; set; }
 
-        [JsonProperty("recurring")]
+        [JsonPropertyName("recurring")]
         public PriceRecurringListOptions Recurring { get; set; }
 
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
     }
 }

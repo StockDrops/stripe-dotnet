@@ -3,7 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -18,19 +18,19 @@ namespace Stripe
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
         /// Amount transferred.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long Amount { get; set; }
 
         #region Expandable BalanceTransaction
@@ -61,7 +61,7 @@ namespace Stripe
             set => this.InternalBalanceTransaction = SetExpandableFieldObject(value, this.InternalBalanceTransaction);
         }
 
-        [JsonProperty("balance_transaction")]
+        [JsonPropertyName("balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
         internal ExpandableField<BalanceTransaction> InternalBalanceTransaction { get; set; }
         #endregion
@@ -69,7 +69,7 @@ namespace Stripe
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -78,13 +78,13 @@ namespace Stripe
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Stripe
         /// in delays like weekends or bank holidays. May not be specified depending on status of
         /// top-up.
         /// </summary>
-        [JsonProperty("expected_availability_date")]
+        [JsonPropertyName("expected_availability_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ExpectedAvailabilityDate { get; set; }
 
@@ -100,20 +100,20 @@ namespace Stripe
         /// Error code explaining reason for top-up failure if available (see <a
         /// href="https://stripe.com/docs/api#errors">the errors section</a> for a list of codes).
         /// </summary>
-        [JsonProperty("failure_code")]
+        [JsonPropertyName("failure_code")]
         public string FailureCode { get; set; }
 
         /// <summary>
         /// Message to user further explaining reason for top-up failure if available.
         /// </summary>
-        [JsonProperty("failure_message")]
+        [JsonPropertyName("failure_message")]
         public string FailureMessage { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace Stripe
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -129,14 +129,14 @@ namespace Stripe
         /// the <a href="https://stripe.com/docs/api#source_object">source object</a> describing
         /// that bank account.
         /// </summary>
-        [JsonProperty("source")]
+        [JsonPropertyName("source")]
         public Source Source { get; set; }
 
         /// <summary>
         /// Extra information about a top-up. This will appear on your source's bank statement. It
         /// must contain at least one letter.
         /// </summary>
-        [JsonProperty("statement_descriptor")]
+        [JsonPropertyName("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 
         /// <summary>
@@ -145,13 +145,13 @@ namespace Stripe
         /// One of: <c>canceled</c>, <c>failed</c>, <c>pending</c>, <c>reversed</c>, or
         /// <c>succeeded</c>.
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
         /// <summary>
         /// A string that identifies this top-up as part of a group.
         /// </summary>
-        [JsonProperty("transfer_group")]
+        [JsonPropertyName("transfer_group")]
         public string TransferGroup { get; set; }
     }
 }

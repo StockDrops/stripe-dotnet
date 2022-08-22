@@ -1,6 +1,6 @@
 namespace StripeTests.Identity
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Identity;
     using Xunit;
 

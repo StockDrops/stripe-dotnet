@@ -1,16 +1,16 @@
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SourceMandateNotificationSepaDebit : StripeEntity<SourceMandateNotificationSepaDebit>
     {
-        [JsonProperty("creditor_identifier")]
+        [JsonPropertyName("creditor_identifier")]
         public string CreditorIdentifier { get; set; }
 
-        [JsonProperty("last4")]
+        [JsonPropertyName("last4")]
         public string Last4 { get; set; }
 
-        [JsonProperty("mandate_reference")]
+        [JsonPropertyName("mandate_reference")]
         public string MandateReference { get; set; }
     }
 }

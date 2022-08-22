@@ -5,16 +5,15 @@ namespace Stripe
     using System.Linq;
     using System.Reflection;
     using System.Runtime.CompilerServices;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
+    using System.Text.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
-    [JsonObject(MemberSerialization.OptIn)]
     [JsonConverter(typeof(StripeEntityConverter))]
     public abstract class StripeEntity : IStripeEntity
     {
         /// <summary>
-        /// Gets the raw <see cref="JObject">JObject</see> exposed by the Newtonsoft.Json library.
+        /// Gets the raw <see cref="JsonDocument">JObject</see> exposed by the System.Text.Json library.
         /// This can be used to access properties that are not directly exposed by Stripe's .NET
         /// library.
         /// </summary>
@@ -23,9 +22,9 @@ namespace Stripe
         /// accessor is not considered fully stable and might change or be removed in future
         /// versions.
         /// </remarks>
-        /// <returns>The raw <see cref="JObject">JObject</see>.</returns>
+        /// <returns>The raw <see cref="JsonDocument">JObject</see>.</returns>
         [JsonIgnore]
-        public JObject RawJObject { get; protected set; }
+        public JsonDocument RawJObject { get; protected set; }
 
         [JsonIgnore]
         public StripeResponse StripeResponse { get; set; }
@@ -51,7 +50,7 @@ namespace Stripe
             return JsonUtils.DeserializeObject<T>(value, StripeConfiguration.SerializerSettings);
         }
 
-        internal void SetRawJObject(JObject rawJObject)
+        internal void SetRawJObject(JsonDocument rawJObject)
         {
             this.RawJObject = rawJObject;
         }
@@ -77,7 +76,6 @@ namespace Stripe
         {
             return JsonUtils.SerializeObject(
                 this,
-                Formatting.Indented,
                 StripeConfiguration.SerializerSettings);
         }
 

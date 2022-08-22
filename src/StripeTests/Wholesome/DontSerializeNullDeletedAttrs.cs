@@ -4,7 +4,7 @@ namespace StripeTests
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe;
     using Xunit;
 

@@ -1,9 +1,10 @@
 namespace Stripe.Infrastructure
 {
     using System;
+    using System.Collections.Generic;
     using System.Reflection;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
+    using System.Text.Json;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// This converter can be used to deserialize any Stripe object. It is mainly useful for
@@ -12,58 +13,8 @@ namespace Stripe.Infrastructure
     /// decide which concrete type to instantiate. If no concrete type is found (or if one is found,
     /// but it's not compatible with the expected interface), then the converter returns `null`.
     /// </summary>
-    public class StripeObjectConverter : JsonConverter
+    public class StripeObjectConverter : JsonConverter<IHasObject>
     {
-        /// <summary>
-        /// Gets a value indicating whether this <see cref="JsonConverter"/> can write JSON.
-        /// </summary>
-        /// <value>
-        ///     <c>true</c> if this <see cref="JsonConverter"/> can write JSON; otherwise, <c>false</c>.
-        /// </value>
-        public override bool CanWrite => false;
-
-        /// <summary>
-        /// Writes the JSON representation of the object.
-        /// </summary>
-        /// <param name="writer">The <see cref="JsonWriter"/> to write to.</param>
-        /// <param name="value">The value.</param>
-        /// <param name="serializer">The calling serializer.</param>
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-        {
-            throw new NotSupportedException("StripeObjectConverter should only be used while deserializing.");
-        }
-
-        /// <summary>
-        /// Reads the JSON representation of the object.
-        /// </summary>
-        /// <param name="reader">The <see cref="JsonReader"/> to read from.</param>
-        /// <param name="objectType">Type of the object.</param>
-        /// <param name="existingValue">The existing value of object being read.</param>
-        /// <param name="serializer">The calling serializer.</param>
-        /// <returns>The object value.</returns>
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-        {
-            if (reader.TokenType == JsonToken.Null)
-            {
-                return null;
-            }
-
-            var jsonObject = JObject.Load(reader);
-            var objectValue = (string)jsonObject["object"];
-
-            Type concreteType = StripeTypeRegistry.GetConcreteType(objectType, objectValue);
-            if (concreteType == null)
-            {
-                // Couldn't find a concrete type to instantiate, return null.
-                return null;
-            }
-
-            using (var subReader = jsonObject.CreateReader())
-            {
-                return serializer.Deserialize(subReader, concreteType);
-            }
-        }
-
         /// <summary>
         /// Determines whether this instance can convert the specified object type.
         /// </summary>
@@ -74,6 +25,73 @@ namespace Stripe.Infrastructure
         public override bool CanConvert(Type objectType)
         {
             return objectType.GetTypeInfo().IsInterface;
+        }
+
+        /// <summary>
+        /// Reads the JSON representation of the object.
+        /// </summary>
+        /// <param name="reader">The <see cref="Utf8JsonReader"/> to read from.</param>
+        /// <param name="typeToConvert">Type of the object.</param>
+        /// <param name="options">The serialization options.</param>
+        /// <returns>The object value.</returns>
+        public override IHasObject Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        {
+            Utf8JsonReader readerClone = reader;
+
+            if (readerClone.TokenType != JsonTokenType.StartObject)
+            {
+                throw new JsonException();
+            }
+
+            if (!readerClone.Read())
+            {
+                throw new JsonException();
+            }
+
+            if (readerClone.TokenType == JsonTokenType.Null)
+            {
+                return null;
+            }
+
+            var objectValue = string.Empty;
+
+            while (readerClone.TokenType != JsonTokenType.EndObject)
+            {
+                if (readerClone.TokenType == JsonTokenType.PropertyName)
+                {
+                    var propertyName = readerClone.GetString();
+                    if (!readerClone.Read())
+                    {
+                        throw new JsonException();
+                    }
+
+                    if (propertyName == "object" && readerClone.Read() && readerClone.TokenType == JsonTokenType.String)
+                    {
+                        objectValue = readerClone.GetString();
+                        break;
+                    }
+                }
+            }
+
+            Type concreteType = StripeTypeRegistry.GetConcreteType(typeToConvert, objectValue);
+            if (concreteType == null)
+            {
+                // Couldn't find a concrete type to instantiate, return null.
+                return null;
+            }
+
+            return (IHasObject)JsonSerializer.Deserialize(ref reader, concreteType, options);
+        }
+
+        /// <summary>
+        /// Writes the JSON representation of the object.
+        /// </summary>
+        /// <param name="writer">The <see cref="Utf8JsonWriter"/> to write to.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="options">The serialization options.</param>
+        public override void Write(Utf8JsonWriter writer, IHasObject value, JsonSerializerOptions options)
+        {
+            throw new NotImplementedException();
         }
     }
 }

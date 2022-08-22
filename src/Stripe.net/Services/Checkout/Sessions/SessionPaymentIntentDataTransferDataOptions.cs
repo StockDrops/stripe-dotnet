@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Checkout
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SessionPaymentIntentDataTransferDataOptions : INestedOptions
     {
         /// <summary>
         /// The amount that will be transferred automatically when a charge succeeds.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long? Amount { get; set; }
 
         /// <summary>
@@ -17,7 +17,7 @@ namespace Stripe.Checkout
         /// The ID of the resulting transfer will be returned on the successful charge's
         /// <c>transfer</c> field.
         /// </summary>
-        [JsonProperty("destination")]
+        [JsonPropertyName("destination")]
         public string Destination { get; set; }
     }
 }

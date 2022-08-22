@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class PaymentIntentProcessingCardCustomerNotification : StripeEntity<PaymentIntentProcessingCardCustomerNotification>
@@ -12,13 +12,13 @@ namespace Stripe
         /// INR 15000 or mandate amount, the customer must provide explicit approval of the payment
         /// with their bank.
         /// </summary>
-        [JsonProperty("approval_requested")]
+        [JsonPropertyName("approval_requested")]
         public bool? ApprovalRequested { get; set; }
 
         /// <summary>
         /// If customer approval is required, they need to provide approval before this time.
         /// </summary>
-        [JsonProperty("completes_at")]
+        [JsonPropertyName("completes_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? CompletesAt { get; set; }
     }

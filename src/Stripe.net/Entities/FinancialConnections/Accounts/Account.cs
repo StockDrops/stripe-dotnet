@@ -3,7 +3,7 @@ namespace Stripe.FinancialConnections
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -15,44 +15,44 @@ namespace Stripe.FinancialConnections
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
         /// The account holder that this account belongs to.
         /// </summary>
-        [JsonProperty("account_holder")]
+        [JsonPropertyName("account_holder")]
         public AccountAccountHolder AccountHolder { get; set; }
 
         /// <summary>
         /// The most recent information about the account's balance.
         /// </summary>
-        [JsonProperty("balance")]
+        [JsonPropertyName("balance")]
         public AccountBalance Balance { get; set; }
 
         /// <summary>
         /// The state of the most recent attempt to refresh the account balance.
         /// </summary>
-        [JsonProperty("balance_refresh")]
+        [JsonPropertyName("balance_refresh")]
         public AccountBalanceRefresh BalanceRefresh { get; set; }
 
         /// <summary>
         /// The type of the account. Account category is further divided in <c>subcategory</c>.
         /// One of: <c>cash</c>, <c>credit</c>, <c>investment</c>, or <c>other</c>.
         /// </summary>
-        [JsonProperty("category")]
+        [JsonPropertyName("category")]
         public string Category { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -60,26 +60,26 @@ namespace Stripe.FinancialConnections
         /// A human-readable name that has been assigned to this account, either by the account
         /// holder or by the institution.
         /// </summary>
-        [JsonProperty("display_name")]
+        [JsonPropertyName("display_name")]
         public string DisplayName { get; set; }
 
         /// <summary>
         /// The name of the institution that holds this account.
         /// </summary>
-        [JsonProperty("institution_name")]
+        [JsonPropertyName("institution_name")]
         public string InstitutionName { get; set; }
 
         /// <summary>
         /// The last 4 digits of the account number. If present, this will be 4 numeric characters.
         /// </summary>
-        [JsonProperty("last4")]
+        [JsonPropertyName("last4")]
         public string Last4 { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         #region Expandable Ownership
@@ -108,7 +108,7 @@ namespace Stripe.FinancialConnections
             set => this.InternalOwnership = SetExpandableFieldObject(value, this.InternalOwnership);
         }
 
-        [JsonProperty("ownership")]
+        [JsonPropertyName("ownership")]
         [JsonConverter(typeof(ExpandableFieldConverter<AccountOwnership>))]
         internal ExpandableField<AccountOwnership> InternalOwnership { get; set; }
         #endregion
@@ -116,20 +116,20 @@ namespace Stripe.FinancialConnections
         /// <summary>
         /// The state of the most recent attempt to refresh the account owners.
         /// </summary>
-        [JsonProperty("ownership_refresh")]
+        [JsonPropertyName("ownership_refresh")]
         public AccountOwnershipRefresh OwnershipRefresh { get; set; }
 
         /// <summary>
         /// The list of permissions granted by this account.
         /// </summary>
-        [JsonProperty("permissions")]
+        [JsonPropertyName("permissions")]
         public List<string> Permissions { get; set; }
 
         /// <summary>
         /// The status of the link to the account.
         /// One of: <c>active</c>, <c>disconnected</c>, or <c>inactive</c>.
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace Stripe.FinancialConnections
         /// One of: <c>checking</c>, <c>credit_card</c>, <c>line_of_credit</c>, <c>mortgage</c>,
         /// <c>other</c>, or <c>savings</c>.
         /// </summary>
-        [JsonProperty("subcategory")]
+        [JsonPropertyName("subcategory")]
         public string Subcategory { get; set; }
 
         /// <summary>
@@ -153,7 +153,7 @@ namespace Stripe.FinancialConnections
         /// href="https://stripe.com/docs/api/payment_methods/object#payment_method_object-type">PaymentMethod
         /// type</a>(s) that can be created from this account.
         /// </summary>
-        [JsonProperty("supported_payment_method_types")]
+        [JsonPropertyName("supported_payment_method_types")]
         public List<string> SupportedPaymentMethodTypes { get; set; }
     }
 }

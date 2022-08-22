@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SourceCodeVerification : StripeEntity<SourceCodeVerification>
     {
@@ -9,7 +9,7 @@ namespace Stripe
         /// The number of attempts remaining to authenticate the source object with a verification
         /// code.
         /// </summary>
-        [JsonProperty("attempts_remaining")]
+        [JsonPropertyName("attempts_remaining")]
         public long AttemptsRemaining { get; set; }
 
         /// <summary>
@@ -18,7 +18,7 @@ namespace Stripe
         /// verification) or <c>failed</c> (failed verification, cannot be verified anymore as
         /// <c>attempts_remaining</c> should be 0).
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
     }
 }

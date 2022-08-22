@@ -1,13 +1,13 @@
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SourceThreeDSecureCreateOptions : INestedOptions
     {
-        [JsonProperty("customer")]
+        [JsonPropertyName("customer")]
         public string Customer { get; set; }
 
-        [JsonProperty("card")]
+        [JsonPropertyName("card")]
         public string Card { get; set; }
     }
 }

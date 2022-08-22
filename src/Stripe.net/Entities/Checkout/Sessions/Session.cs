@@ -3,7 +3,7 @@ namespace Stripe.Checkout
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -30,74 +30,74 @@ namespace Stripe.Checkout
         /// Unique identifier for the object. Used to pass to <c>redirectToCheckout</c> in
         /// Stripe.js.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
         /// When set, provides configuration for actions to take if this Checkout Session expires.
         /// </summary>
-        [JsonProperty("after_expiration")]
+        [JsonPropertyName("after_expiration")]
         public SessionAfterExpiration AfterExpiration { get; set; }
 
         /// <summary>
         /// Enables user redeemable promotion codes.
         /// </summary>
-        [JsonProperty("allow_promotion_codes")]
+        [JsonPropertyName("allow_promotion_codes")]
         public bool? AllowPromotionCodes { get; set; }
 
         /// <summary>
         /// Total of all items before discounts or taxes are applied.
         /// </summary>
-        [JsonProperty("amount_subtotal")]
+        [JsonPropertyName("amount_subtotal")]
         public long? AmountSubtotal { get; set; }
 
         /// <summary>
         /// Total of all items after discounts and taxes are applied.
         /// </summary>
-        [JsonProperty("amount_total")]
+        [JsonPropertyName("amount_total")]
         public long? AmountTotal { get; set; }
 
-        [JsonProperty("automatic_tax")]
+        [JsonPropertyName("automatic_tax")]
         public SessionAutomaticTax AutomaticTax { get; set; }
 
         /// <summary>
         /// Describes whether Checkout should collect the customer's billing address.
         /// One of: <c>auto</c>, or <c>required</c>.
         /// </summary>
-        [JsonProperty("billing_address_collection")]
+        [JsonPropertyName("billing_address_collection")]
         public string BillingAddressCollection { get; set; }
 
         /// <summary>
         /// The URL the customer will be directed to if they decide to cancel payment and return to
         /// your website.
         /// </summary>
-        [JsonProperty("cancel_url")]
+        [JsonPropertyName("cancel_url")]
         public string CancelUrl { get; set; }
 
         /// <summary>
         /// A unique string to reference the Checkout Session. This can be a customer ID, a cart ID,
         /// or similar, and can be used to reconcile the Session with your internal systems.
         /// </summary>
-        [JsonProperty("client_reference_id")]
+        [JsonPropertyName("client_reference_id")]
         public string ClientReferenceId { get; set; }
 
         /// <summary>
         /// Results of <c>consent_collection</c> for this session.
         /// </summary>
-        [JsonProperty("consent")]
+        [JsonPropertyName("consent")]
         public SessionConsent Consent { get; set; }
 
         /// <summary>
         /// When set, provides configuration for the Checkout Session to gather active consent from
         /// customers.
         /// </summary>
-        [JsonProperty("consent_collection")]
+        [JsonPropertyName("consent_collection")]
         public SessionConsentCollection ConsentCollection { get; set; }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Stripe.Checkout
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         #region Expandable Customer
@@ -140,7 +140,7 @@ namespace Stripe.Checkout
             set => this.InternalCustomer = SetExpandableFieldObject(value, this.InternalCustomer);
         }
 
-        [JsonProperty("customer")]
+        [JsonPropertyName("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
@@ -150,14 +150,14 @@ namespace Stripe.Checkout
         /// completes.
         /// One of: <c>always</c>, or <c>if_required</c>.
         /// </summary>
-        [JsonProperty("customer_creation")]
+        [JsonPropertyName("customer_creation")]
         public string CustomerCreation { get; set; }
 
         /// <summary>
         /// The customer details including the customer's tax exempt status and the customer's tax
         /// IDs. Only the customer's email is present on Sessions in <c>setup</c> mode.
         /// </summary>
-        [JsonProperty("customer_details")]
+        [JsonPropertyName("customer_details")]
         public SessionCustomerDetails CustomerDetails { get; set; }
 
         /// <summary>
@@ -166,27 +166,27 @@ namespace Stripe.Checkout
         /// prefill customer data if you already have an email on file. To access information about
         /// the customer once the payment flow is complete, use the <c>customer</c> attribute.
         /// </summary>
-        [JsonProperty("customer_email")]
+        [JsonPropertyName("customer_email")]
         public string CustomerEmail { get; set; }
 
         /// <summary>
         /// The timestamp at which the Checkout Session will expire.
         /// </summary>
-        [JsonProperty("expires_at")]
+        [JsonPropertyName("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime ExpiresAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The line items purchased by the customer.
         /// </summary>
-        [JsonProperty("line_items")]
+        [JsonPropertyName("line_items")]
         public StripeList<LineItem> LineItems { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -199,7 +199,7 @@ namespace Stripe.Checkout
         /// <c>pt-BR</c>, <c>ro</c>, <c>ru</c>, <c>sk</c>, <c>sl</c>, <c>sv</c>, <c>th</c>,
         /// <c>tr</c>, <c>vi</c>, <c>zh</c>, <c>zh-HK</c>, or <c>zh-TW</c>.
         /// </summary>
-        [JsonProperty("locale")]
+        [JsonPropertyName("locale")]
         public string Locale { get; set; }
 
         /// <summary>
@@ -207,14 +207,14 @@ namespace Stripe.Checkout
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The mode of the Checkout Session.
         /// One of: <c>payment</c>, <c>setup</c>, or <c>subscription</c>.
         /// </summary>
-        [JsonProperty("mode")]
+        [JsonPropertyName("mode")]
         public string Mode { get; set; }
 
         #region Expandable PaymentIntent
@@ -243,7 +243,7 @@ namespace Stripe.Checkout
             set => this.InternalPaymentIntent = SetExpandableFieldObject(value, this.InternalPaymentIntent);
         }
 
-        [JsonProperty("payment_intent")]
+        [JsonPropertyName("payment_intent")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentIntent>))]
         internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
         #endregion
@@ -274,7 +274,7 @@ namespace Stripe.Checkout
             set => this.InternalPaymentLink = SetExpandableFieldObject(value, this.InternalPaymentLink);
         }
 
-        [JsonProperty("payment_link")]
+        [JsonPropertyName("payment_link")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentLink>))]
         internal ExpandableField<PaymentLink> InternalPaymentLink { get; set; }
         #endregion
@@ -283,21 +283,21 @@ namespace Stripe.Checkout
         /// Configure whether a Checkout Session should collect a payment method.
         /// One of: <c>always</c>, or <c>if_required</c>.
         /// </summary>
-        [JsonProperty("payment_method_collection")]
+        [JsonPropertyName("payment_method_collection")]
         public string PaymentMethodCollection { get; set; }
 
         /// <summary>
         /// Payment-method-specific configuration for the PaymentIntent or SetupIntent of this
         /// CheckoutSession.
         /// </summary>
-        [JsonProperty("payment_method_options")]
+        [JsonPropertyName("payment_method_options")]
         public SessionPaymentMethodOptions PaymentMethodOptions { get; set; }
 
         /// <summary>
         /// A list of the types of payment methods (e.g. card) this Checkout Session is allowed to
         /// accept.
         /// </summary>
-        [JsonProperty("payment_method_types")]
+        [JsonPropertyName("payment_method_types")]
         public List<string> PaymentMethodTypes { get; set; }
 
         /// <summary>
@@ -306,16 +306,16 @@ namespace Stripe.Checkout
         /// customer's order.
         /// One of: <c>no_payment_required</c>, <c>paid</c>, or <c>unpaid</c>.
         /// </summary>
-        [JsonProperty("payment_status")]
+        [JsonPropertyName("payment_status")]
         public string PaymentStatus { get; set; }
 
-        [JsonProperty("phone_number_collection")]
+        [JsonPropertyName("phone_number_collection")]
         public SessionPhoneNumberCollection PhoneNumberCollection { get; set; }
 
         /// <summary>
         /// The ID of the original expired Checkout Session that triggered the recovery flow.
         /// </summary>
-        [JsonProperty("recovered_from")]
+        [JsonPropertyName("recovered_from")]
         public string RecoveredFrom { get; set; }
 
         #region Expandable SetupIntent
@@ -344,7 +344,7 @@ namespace Stripe.Checkout
             set => this.InternalSetupIntent = SetExpandableFieldObject(value, this.InternalSetupIntent);
         }
 
-        [JsonProperty("setup_intent")]
+        [JsonPropertyName("setup_intent")]
         [JsonConverter(typeof(ExpandableFieldConverter<SetupIntent>))]
         internal ExpandableField<SetupIntent> InternalSetupIntent { get; set; }
         #endregion
@@ -353,26 +353,26 @@ namespace Stripe.Checkout
         /// When set, provides configuration for Checkout to collect a shipping address from a
         /// customer.
         /// </summary>
-        [JsonProperty("shipping_address_collection")]
+        [JsonPropertyName("shipping_address_collection")]
         public SessionShippingAddressCollection ShippingAddressCollection { get; set; }
 
         /// <summary>
         /// The details of the customer cost of shipping, including the customer chosen
         /// ShippingRate.
         /// </summary>
-        [JsonProperty("shipping_cost")]
+        [JsonPropertyName("shipping_cost")]
         public SessionShippingCost ShippingCost { get; set; }
 
         /// <summary>
         /// Shipping information for this Checkout Session.
         /// </summary>
-        [JsonProperty("shipping_details")]
+        [JsonPropertyName("shipping_details")]
         public SessionShippingDetails ShippingDetails { get; set; }
 
         /// <summary>
         /// The shipping rate options applied to this Session.
         /// </summary>
-        [JsonProperty("shipping_options")]
+        [JsonPropertyName("shipping_options")]
         public List<SessionShippingOption> ShippingOptions { get; set; }
 
         /// <summary>
@@ -380,7 +380,7 @@ namespace Stripe.Checkout
         /// <c>expired</c>.
         /// One of: <c>complete</c>, <c>expired</c>, or <c>open</c>.
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
         /// <summary>
@@ -390,7 +390,7 @@ namespace Stripe.Checkout
         /// <c>subscription</c> or <c>setup</c> mode.
         /// One of: <c>auto</c>, <c>book</c>, <c>donate</c>, or <c>pay</c>.
         /// </summary>
-        [JsonProperty("submit_type")]
+        [JsonPropertyName("submit_type")]
         public string SubmitType { get; set; }
 
         #region Expandable Subscription
@@ -419,7 +419,7 @@ namespace Stripe.Checkout
             set => this.InternalSubscription = SetExpandableFieldObject(value, this.InternalSubscription);
         }
 
-        [JsonProperty("subscription")]
+        [JsonPropertyName("subscription")]
         [JsonConverter(typeof(ExpandableFieldConverter<Subscription>))]
         internal ExpandableField<Subscription> InternalSubscription { get; set; }
         #endregion
@@ -428,16 +428,16 @@ namespace Stripe.Checkout
         /// The URL the customer will be directed to after the payment or subscription creation is
         /// successful.
         /// </summary>
-        [JsonProperty("success_url")]
+        [JsonPropertyName("success_url")]
         public string SuccessUrl { get; set; }
 
-        [JsonProperty("tax_id_collection")]
+        [JsonPropertyName("tax_id_collection")]
         public SessionTaxIdCollection TaxIdCollection { get; set; }
 
         /// <summary>
         /// Tax and discount details for the computed total amount.
         /// </summary>
-        [JsonProperty("total_details")]
+        [JsonPropertyName("total_details")]
         public SessionTotalDetails TotalDetails { get; set; }
 
         /// <summary>
@@ -446,7 +446,7 @@ namespace Stripe.Checkout
         /// href="https://stripe.com/docs/payments/checkout/custom-domains">Custom Domains</a>, the
         /// URL will use your subdomain. Otherwise, it’ll use <c>checkout.stripe.com.</c>.
         /// </summary>
-        [JsonProperty("url")]
+        [JsonPropertyName("url")]
         public string Url { get; set; }
     }
 }

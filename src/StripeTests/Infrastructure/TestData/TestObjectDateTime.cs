@@ -1,7 +1,7 @@
 namespace StripeTests.Infrastructure.TestData
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class TestObjectDateTime

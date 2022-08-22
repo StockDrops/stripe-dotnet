@@ -1,77 +1,77 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Checkout
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SessionPaymentMethodOptions : StripeEntity<SessionPaymentMethodOptions>
     {
-        [JsonProperty("acss_debit")]
+        [JsonPropertyName("acss_debit")]
         public SessionPaymentMethodOptionsAcssDebit AcssDebit { get; set; }
 
-        [JsonProperty("affirm")]
+        [JsonPropertyName("affirm")]
         public SessionPaymentMethodOptionsAffirm Affirm { get; set; }
 
-        [JsonProperty("afterpay_clearpay")]
+        [JsonPropertyName("afterpay_clearpay")]
         public SessionPaymentMethodOptionsAfterpayClearpay AfterpayClearpay { get; set; }
 
-        [JsonProperty("alipay")]
+        [JsonPropertyName("alipay")]
         public SessionPaymentMethodOptionsAlipay Alipay { get; set; }
 
-        [JsonProperty("au_becs_debit")]
+        [JsonPropertyName("au_becs_debit")]
         public SessionPaymentMethodOptionsAuBecsDebit AuBecsDebit { get; set; }
 
-        [JsonProperty("bacs_debit")]
+        [JsonPropertyName("bacs_debit")]
         public SessionPaymentMethodOptionsBacsDebit BacsDebit { get; set; }
 
-        [JsonProperty("bancontact")]
+        [JsonPropertyName("bancontact")]
         public SessionPaymentMethodOptionsBancontact Bancontact { get; set; }
 
-        [JsonProperty("boleto")]
+        [JsonPropertyName("boleto")]
         public SessionPaymentMethodOptionsBoleto Boleto { get; set; }
 
-        [JsonProperty("card")]
+        [JsonPropertyName("card")]
         public SessionPaymentMethodOptionsCard Card { get; set; }
 
-        [JsonProperty("customer_balance")]
+        [JsonPropertyName("customer_balance")]
         public SessionPaymentMethodOptionsCustomerBalance CustomerBalance { get; set; }
 
-        [JsonProperty("eps")]
+        [JsonPropertyName("eps")]
         public SessionPaymentMethodOptionsEps Eps { get; set; }
 
-        [JsonProperty("fpx")]
+        [JsonPropertyName("fpx")]
         public SessionPaymentMethodOptionsFpx Fpx { get; set; }
 
-        [JsonProperty("giropay")]
+        [JsonPropertyName("giropay")]
         public SessionPaymentMethodOptionsGiropay Giropay { get; set; }
 
-        [JsonProperty("grabpay")]
+        [JsonPropertyName("grabpay")]
         public SessionPaymentMethodOptionsGrabpay Grabpay { get; set; }
 
-        [JsonProperty("ideal")]
+        [JsonPropertyName("ideal")]
         public SessionPaymentMethodOptionsIdeal Ideal { get; set; }
 
-        [JsonProperty("klarna")]
+        [JsonPropertyName("klarna")]
         public SessionPaymentMethodOptionsKlarna Klarna { get; set; }
 
-        [JsonProperty("konbini")]
+        [JsonPropertyName("konbini")]
         public SessionPaymentMethodOptionsKonbini Konbini { get; set; }
 
-        [JsonProperty("oxxo")]
+        [JsonPropertyName("oxxo")]
         public SessionPaymentMethodOptionsOxxo Oxxo { get; set; }
 
-        [JsonProperty("p24")]
+        [JsonPropertyName("p24")]
         public SessionPaymentMethodOptionsP24 P24 { get; set; }
 
-        [JsonProperty("paynow")]
+        [JsonPropertyName("paynow")]
         public SessionPaymentMethodOptionsPaynow Paynow { get; set; }
 
-        [JsonProperty("sepa_debit")]
+        [JsonPropertyName("sepa_debit")]
         public SessionPaymentMethodOptionsSepaDebit SepaDebit { get; set; }
 
-        [JsonProperty("sofort")]
+        [JsonPropertyName("sofort")]
         public SessionPaymentMethodOptionsSofort Sofort { get; set; }
 
-        [JsonProperty("us_bank_account")]
+        [JsonPropertyName("us_bank_account")]
         public SessionPaymentMethodOptionsUsBankAccount UsBankAccount { get; set; }
     }
 }

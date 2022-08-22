@@ -2,7 +2,7 @@
 namespace Stripe.Treasury
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class CreditReversalStatusTransitions : StripeEntity<CreditReversalStatusTransitions>
@@ -10,7 +10,7 @@ namespace Stripe.Treasury
         /// <summary>
         /// Timestamp describing when the CreditReversal changed status to <c>posted</c>.
         /// </summary>
-        [JsonProperty("posted_at")]
+        [JsonPropertyName("posted_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? PostedAt { get; set; }
     }

@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Apps
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SecretFindOptions : BaseOptions
     {
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
-        [JsonProperty("scope")]
+        [JsonPropertyName("scope")]
         public SecretScopeOptions Scope { get; set; }
     }
 }

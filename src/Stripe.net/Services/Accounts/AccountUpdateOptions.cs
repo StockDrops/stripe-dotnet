@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class AccountUpdateOptions : BaseOptions, IHasMetadata
@@ -11,13 +11,13 @@ namespace Stripe
         /// An <a href="https://stripe.com/docs/api#create_account_token">account token</a>, used to
         /// securely provide details to the account.
         /// </summary>
-        [JsonProperty("account_token")]
+        [JsonPropertyName("account_token")]
         public string AccountToken { get; set; }
 
         /// <summary>
         /// Business information about the account.
         /// </summary>
-        [JsonProperty("business_profile")]
+        [JsonPropertyName("business_profile")]
         public AccountBusinessProfileOptions BusinessProfile { get; set; }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace Stripe
         /// One of: <c>company</c>, <c>government_entity</c>, <c>individual</c>, or
         /// <c>non_profit</c>.
         /// </summary>
-        [JsonProperty("business_type")]
+        [JsonPropertyName("business_type")]
         public string BusinessType { get; set; }
 
         /// <summary>
@@ -34,14 +34,14 @@ namespace Stripe
         /// until you have provided its specific requirements and Stripe has verified them. An
         /// account may have some of its requested capabilities be active and some be inactive.
         /// </summary>
-        [JsonProperty("capabilities")]
+        [JsonPropertyName("capabilities")]
         public AccountCapabilitiesOptions Capabilities { get; set; }
 
         /// <summary>
         /// Information about the company or business. This field is available for any
         /// <c>business_type</c>.
         /// </summary>
-        [JsonProperty("company")]
+        [JsonPropertyName("company")]
         public AccountCompanyOptions Company { get; set; }
 
         /// <summary>
@@ -49,23 +49,23 @@ namespace Stripe
         /// must be a currency that <a href="https://stripe.com/docs/payouts">Stripe supports in the
         /// account's country</a>.
         /// </summary>
-        [JsonProperty("default_currency")]
+        [JsonPropertyName("default_currency")]
         public string DefaultCurrency { get; set; }
 
         /// <summary>
         /// Documents that may be submitted to satisfy various informational requests.
         /// </summary>
-        [JsonProperty("documents")]
+        [JsonPropertyName("documents")]
         public AccountDocumentsOptions Documents { get; set; }
 
         /// <summary>
         /// The email address of the account holder. This is only to make the account easier to
         /// identify to you. Stripe only emails Custom accounts with your consent.
         /// </summary>
-        [JsonProperty("email")]
+        [JsonPropertyName("email")]
         public string Email { get; set; }
 
-        [JsonProperty("external_account")]
+        [JsonPropertyName("external_account")]
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<string, AccountBankAccountOptions, AccountCardOptions> ExternalAccount { get; set; }
 
@@ -73,7 +73,7 @@ namespace Stripe
         /// Information about the person represented by the account. This field is null unless
         /// <c>business_type</c> is set to <c>individual</c>.
         /// </summary>
-        [JsonProperty("individual")]
+        [JsonPropertyName("individual")]
         public AccountIndividualOptions Individual { get; set; }
 
         /// <summary>
@@ -82,13 +82,13 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Options for customizing how the account functions within Stripe.
         /// </summary>
-        [JsonProperty("settings")]
+        [JsonPropertyName("settings")]
         public AccountSettingsOptions Settings { get; set; }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/connect/updating-accounts#tos-acceptance">Stripe Services
         /// Agreement</a>.
         /// </summary>
-        [JsonProperty("tos_acceptance")]
+        [JsonPropertyName("tos_acceptance")]
         public AccountTosAcceptanceOptions TosAcceptance { get; set; }
     }
 }

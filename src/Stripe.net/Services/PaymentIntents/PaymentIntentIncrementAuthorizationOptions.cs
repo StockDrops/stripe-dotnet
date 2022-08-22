@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PaymentIntentIncrementAuthorizationOptions : BaseOptions, IHasMetadata
     {
@@ -10,7 +10,7 @@ namespace Stripe
         /// The updated total amount you intend to collect from the cardholder. This amount must be
         /// greater than the currently authorized amount.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long? Amount { get; set; }
 
         /// <summary>
@@ -21,13 +21,13 @@ namespace Stripe
         /// href="https://stripe.com/docs/payments/connected-accounts">use case for connected
         /// accounts</a>.
         /// </summary>
-        [JsonProperty("application_fee_amount")]
+        [JsonPropertyName("application_fee_amount")]
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/payments/connected-accounts">use case for connected
         /// accounts</a>.
         /// </summary>
-        [JsonProperty("transfer_data")]
+        [JsonPropertyName("transfer_data")]
         public PaymentIntentTransferDataOptions TransferData { get; set; }
     }
 }

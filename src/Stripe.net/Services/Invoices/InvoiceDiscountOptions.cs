@@ -1,20 +1,20 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class InvoiceDiscountOptions : INestedOptions
     {
         /// <summary>
         /// ID of the coupon to create a new discount for.
         /// </summary>
-        [JsonProperty("coupon")]
+        [JsonPropertyName("coupon")]
         public string Coupon { get; set; }
 
         /// <summary>
         /// ID of an existing discount on the object (or one of its ancestors) to reuse.
         /// </summary>
-        [JsonProperty("discount")]
+        [JsonPropertyName("discount")]
         public string Discount { get; set; }
     }
 }

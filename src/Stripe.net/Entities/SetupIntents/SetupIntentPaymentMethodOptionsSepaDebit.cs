@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SetupIntentPaymentMethodOptionsSepaDebit : StripeEntity<SetupIntentPaymentMethodOptionsSepaDebit>
     {
-        [JsonProperty("mandate_options")]
+        [JsonPropertyName("mandate_options")]
         public SetupIntentPaymentMethodOptionsSepaDebitMandateOptions MandateOptions { get; set; }
     }
 }

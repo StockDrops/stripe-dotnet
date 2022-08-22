@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PersonFutureRequirementsError : StripeEntity<PersonFutureRequirementsError>
     {
@@ -37,21 +37,21 @@ namespace Stripe
         /// <c>verification_missing_executives</c>, <c>verification_missing_owners</c>, or
         /// <c>verification_requires_additional_memorandum_of_associations</c>.
         /// </summary>
-        [JsonProperty("code")]
+        [JsonPropertyName("code")]
         public string Code { get; set; }
 
         /// <summary>
         /// An informative message that indicates the error type and provides additional details
         /// about the error.
         /// </summary>
-        [JsonProperty("reason")]
+        [JsonPropertyName("reason")]
         public string Reason { get; set; }
 
         /// <summary>
         /// The specific user onboarding requirement field (in the requirements hash) that needs to
         /// be resolved.
         /// </summary>
-        [JsonProperty("requirement")]
+        [JsonPropertyName("requirement")]
         public string Requirement { get; set; }
     }
 }

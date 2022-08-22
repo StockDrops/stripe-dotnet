@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnections : StripeEntity<SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnections>
     {
@@ -10,7 +10,7 @@ namespace Stripe
         /// The list of permissions to request. The <c>payment_method</c> permission must be
         /// included.
         /// </summary>
-        [JsonProperty("permissions")]
+        [JsonPropertyName("permissions")]
         public List<string> Permissions { get; set; }
     }
 }

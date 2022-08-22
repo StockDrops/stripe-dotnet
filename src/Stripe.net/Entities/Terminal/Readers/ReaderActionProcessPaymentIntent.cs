@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Terminal
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class ReaderActionProcessPaymentIntent : StripeEntity<ReaderActionProcessPaymentIntent>
@@ -32,7 +32,7 @@ namespace Stripe.Terminal
             set => this.InternalPaymentIntent = SetExpandableFieldObject(value, this.InternalPaymentIntent);
         }
 
-        [JsonProperty("payment_intent")]
+        [JsonPropertyName("payment_intent")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentIntent>))]
         internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
         #endregion
@@ -40,7 +40,7 @@ namespace Stripe.Terminal
         /// <summary>
         /// Represents a per-transaction override of a reader configuration.
         /// </summary>
-        [JsonProperty("process_config")]
+        [JsonPropertyName("process_config")]
         public ReaderActionProcessPaymentIntentProcessConfig ProcessConfig { get; set; }
     }
 }

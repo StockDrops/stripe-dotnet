@@ -1,6 +1,6 @@
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SourceWechatCreateOptions : INestedOptions
     {

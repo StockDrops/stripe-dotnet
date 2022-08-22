@@ -2,7 +2,7 @@
 namespace Stripe.Issuing
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class DisputeEvidenceNotReceived : StripeEntity<DisputeEvidenceNotReceived>
@@ -35,7 +35,7 @@ namespace Stripe.Issuing
             set => this.InternalAdditionalDocumentation = SetExpandableFieldObject(value, this.InternalAdditionalDocumentation);
         }
 
-        [JsonProperty("additional_documentation")]
+        [JsonPropertyName("additional_documentation")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
         internal ExpandableField<File> InternalAdditionalDocumentation { get; set; }
         #endregion
@@ -43,27 +43,27 @@ namespace Stripe.Issuing
         /// <summary>
         /// Date when the cardholder expected to receive the product.
         /// </summary>
-        [JsonProperty("expected_at")]
+        [JsonPropertyName("expected_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ExpectedAt { get; set; }
 
         /// <summary>
         /// Explanation of why the cardholder is disputing this transaction.
         /// </summary>
-        [JsonProperty("explanation")]
+        [JsonPropertyName("explanation")]
         public string Explanation { get; set; }
 
         /// <summary>
         /// Description of the merchandise or service that was purchased.
         /// </summary>
-        [JsonProperty("product_description")]
+        [JsonPropertyName("product_description")]
         public string ProductDescription { get; set; }
 
         /// <summary>
         /// Whether the product was a merchandise or service.
         /// One of: <c>merchandise</c>, or <c>service</c>.
         /// </summary>
-        [JsonProperty("product_type")]
+        [JsonPropertyName("product_type")]
         public string ProductType { get; set; }
     }
 }

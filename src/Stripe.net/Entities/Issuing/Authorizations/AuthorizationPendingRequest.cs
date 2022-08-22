@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Issuing
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class AuthorizationPendingRequest : StripeEntity<AuthorizationPendingRequest>
     {
@@ -12,7 +12,7 @@ namespace Stripe.Issuing
         /// and in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest currency
         /// unit</a>.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long Amount { get; set; }
 
         /// <summary>
@@ -20,7 +20,7 @@ namespace Stripe.Issuing
         /// <c>currency</c> and in the <a
         /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
-        [JsonProperty("amount_details")]
+        [JsonPropertyName("amount_details")]
         public AuthorizationPendingRequestAmountDetails AmountDetails { get; set; }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Stripe.Issuing
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Stripe.Issuing
         /// href="https://stripe.com/docs/api/issuing/authorizations/approve#approve_issuing_authorization-amount">amount</a>
         /// to control how much to hold for the authorization.
         /// </summary>
-        [JsonProperty("is_amount_controllable")]
+        [JsonPropertyName("is_amount_controllable")]
         public bool IsAmountControllable { get; set; }
 
         /// <summary>
@@ -44,13 +44,13 @@ namespace Stripe.Issuing
         /// The amount is in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest
         /// currency unit</a>.
         /// </summary>
-        [JsonProperty("merchant_amount")]
+        [JsonPropertyName("merchant_amount")]
         public long MerchantAmount { get; set; }
 
         /// <summary>
         /// The local currency the merchant is requesting to authorize.
         /// </summary>
-        [JsonProperty("merchant_currency")]
+        [JsonPropertyName("merchant_currency")]
         public string MerchantCurrency { get; set; }
     }
 }

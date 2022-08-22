@@ -1,21 +1,21 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ChargeFraudDetails : StripeEntity<ChargeFraudDetails>
     {
         /// <summary>
         /// Assessments from Stripe. If set, the value is <c>fraudulent</c>.
         /// </summary>
-        [JsonProperty("stripe_report")]
+        [JsonPropertyName("stripe_report")]
         public string StripeReport { get; set; }
 
         /// <summary>
         /// Assessments reported by you. If set, possible values of are <c>safe</c> and
         /// <c>fraudulent</c>.
         /// </summary>
-        [JsonProperty("user_report")]
+        [JsonPropertyName("user_report")]
         public string UserReport { get; set; }
     }
 }

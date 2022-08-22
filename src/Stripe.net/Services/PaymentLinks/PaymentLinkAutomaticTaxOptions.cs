@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PaymentLinkAutomaticTaxOptions : INestedOptions
     {
         /// <summary>
         /// If <c>true</c>, tax will be calculated automatically using the customer's location.
         /// </summary>
-        [JsonProperty("enabled")]
+        [JsonPropertyName("enabled")]
         public bool? Enabled { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.FinancialConnections
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class AccountAccountHolder : StripeEntity<AccountAccountHolder>
@@ -34,7 +34,7 @@ namespace Stripe.FinancialConnections
             set => this.InternalAccount = SetExpandableFieldObject(value, this.InternalAccount);
         }
 
-        [JsonProperty("account")]
+        [JsonPropertyName("account")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
         internal ExpandableField<Account> InternalAccount { get; set; }
         #endregion
@@ -67,7 +67,7 @@ namespace Stripe.FinancialConnections
             set => this.InternalCustomer = SetExpandableFieldObject(value, this.InternalCustomer);
         }
 
-        [JsonProperty("customer")]
+        [JsonPropertyName("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
@@ -76,7 +76,7 @@ namespace Stripe.FinancialConnections
         /// Type of account holder that this account belongs to.
         /// One of: <c>account</c>, or <c>customer</c>.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
     }
 }

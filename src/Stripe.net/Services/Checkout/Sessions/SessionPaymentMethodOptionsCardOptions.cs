@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Checkout
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SessionPaymentMethodOptionsCardOptions : INestedOptions
     {
         /// <summary>
         /// Installment options for card payments.
         /// </summary>
-        [JsonProperty("installments")]
+        [JsonPropertyName("installments")]
         public SessionPaymentMethodOptionsCardInstallmentsOptions Installments { get; set; }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Stripe.Checkout
         /// as <a href="https://stripe.com/docs/strong-customer-authentication">SCA</a>.
         /// One of: <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
-        [JsonProperty("setup_future_usage")]
+        [JsonPropertyName("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Stripe.Checkout
         /// 22 characters. On card statements, the <em>concatenation</em> of both prefix and suffix
         /// (including separators) will appear truncated to 22 characters.
         /// </summary>
-        [JsonProperty("statement_descriptor_suffix_kana")]
+        [JsonPropertyName("statement_descriptor_suffix_kana")]
         public string StatementDescriptorSuffixKana { get; set; }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Stripe.Checkout
         /// 17 characters. On card statements, the <em>concatenation</em> of both prefix and suffix
         /// (including separators) will appear truncated to 17 characters.
         /// </summary>
-        [JsonProperty("statement_descriptor_suffix_kanji")]
+        [JsonPropertyName("statement_descriptor_suffix_kanji")]
         public string StatementDescriptorSuffixKanji { get; set; }
     }
 }

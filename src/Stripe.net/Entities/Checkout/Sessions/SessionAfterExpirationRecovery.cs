@@ -2,7 +2,7 @@
 namespace Stripe.Checkout
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class SessionAfterExpirationRecovery : StripeEntity<SessionAfterExpirationRecovery>
@@ -11,7 +11,7 @@ namespace Stripe.Checkout
         /// Enables user redeemable promotion codes on the recovered Checkout Sessions. Defaults to
         /// <c>false</c>.
         /// </summary>
-        [JsonProperty("allow_promotion_codes")]
+        [JsonPropertyName("allow_promotion_codes")]
         public bool AllowPromotionCodes { get; set; }
 
         /// <summary>
@@ -19,13 +19,13 @@ namespace Stripe.Checkout
         /// expires before a transaction is completed. It will be attached to the Checkout Session
         /// object upon expiration.
         /// </summary>
-        [JsonProperty("enabled")]
+        [JsonPropertyName("enabled")]
         public bool Enabled { get; set; }
 
         /// <summary>
         /// The timestamp at which the recovery URL will expire.
         /// </summary>
-        [JsonProperty("expires_at")]
+        [JsonPropertyName("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ExpiresAt { get; set; }
 
@@ -33,7 +33,7 @@ namespace Stripe.Checkout
         /// URL that creates a new Checkout Session when clicked that is a copy of this expired
         /// Checkout Session.
         /// </summary>
-        [JsonProperty("url")]
+        [JsonPropertyName("url")]
         public string Url { get; set; }
     }
 }

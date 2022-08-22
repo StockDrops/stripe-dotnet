@@ -2,7 +2,7 @@
 namespace Stripe.Checkout
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SessionCustomerDetails : StripeEntity<SessionCustomerDetails>
     {
@@ -10,7 +10,7 @@ namespace Stripe.Checkout
         /// The customer's address after a completed Checkout Session. Note: This property is
         /// populated only for sessions on or after March 30, 2022.
         /// </summary>
-        [JsonProperty("address")]
+        [JsonPropertyName("address")]
         public Address Address { get; set; }
 
         /// <summary>
@@ -19,33 +19,33 @@ namespace Stripe.Checkout
         /// consented to promotional content, this value is the most recent valid email provided by
         /// the customer on the Checkout form.
         /// </summary>
-        [JsonProperty("email")]
+        [JsonPropertyName("email")]
         public string Email { get; set; }
 
         /// <summary>
         /// The customer's name after a completed Checkout Session. Note: This property is populated
         /// only for sessions on or after March 30, 2022.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
         /// The customer's phone number after a completed Checkout Session.
         /// </summary>
-        [JsonProperty("phone")]
+        [JsonPropertyName("phone")]
         public string Phone { get; set; }
 
         /// <summary>
         /// The customer’s tax exempt status after a completed Checkout Session.
         /// One of: <c>exempt</c>, <c>none</c>, or <c>reverse</c>.
         /// </summary>
-        [JsonProperty("tax_exempt")]
+        [JsonPropertyName("tax_exempt")]
         public string TaxExempt { get; set; }
 
         /// <summary>
         /// The customer’s tax IDs after a completed Checkout Session.
         /// </summary>
-        [JsonProperty("tax_ids")]
+        [JsonPropertyName("tax_ids")]
         public List<SessionCustomerDetailsTaxId> TaxIds { get; set; }
     }
 }

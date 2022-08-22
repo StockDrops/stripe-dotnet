@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Treasury
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class OutboundPaymentEndUserDetails : StripeEntity<OutboundPaymentEndUserDetails>
     {
@@ -11,14 +11,14 @@ namespace Stripe.Treasury
         /// will be used to help determine if the OutboundPayment is authorized or should be
         /// blocked.
         /// </summary>
-        [JsonProperty("ip_address")]
+        [JsonPropertyName("ip_address")]
         public string IpAddress { get; set; }
 
         /// <summary>
         /// <c>true`` if the OutboundPayment creation request is being made on behalf of an end user
         /// by a platform. Otherwise, </c>false`.
         /// </summary>
-        [JsonProperty("present")]
+        [JsonPropertyName("present")]
         public bool Present { get; set; }
     }
 }

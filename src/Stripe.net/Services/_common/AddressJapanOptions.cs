@@ -1,10 +1,10 @@
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class AddressJapanOptions : AddressOptions
     {
-        [JsonProperty("town")]
+        [JsonPropertyName("town")]
         public string Town { get; set; }
     }
 }

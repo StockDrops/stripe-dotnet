@@ -1,101 +1,101 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ChargePaymentMethodDetails : StripeEntity<ChargePaymentMethodDetails>
     {
-        [JsonProperty("ach_credit_transfer")]
+        [JsonPropertyName("ach_credit_transfer")]
         public ChargePaymentMethodDetailsAchCreditTransfer AchCreditTransfer { get; set; }
 
-        [JsonProperty("ach_debit")]
+        [JsonPropertyName("ach_debit")]
         public ChargePaymentMethodDetailsAchDebit AchDebit { get; set; }
 
-        [JsonProperty("acss_debit")]
+        [JsonPropertyName("acss_debit")]
         public ChargePaymentMethodDetailsAcssDebit AcssDebit { get; set; }
 
-        [JsonProperty("affirm")]
+        [JsonPropertyName("affirm")]
         public ChargePaymentMethodDetailsAffirm Affirm { get; set; }
 
-        [JsonProperty("afterpay_clearpay")]
+        [JsonPropertyName("afterpay_clearpay")]
         public ChargePaymentMethodDetailsAfterpayClearpay AfterpayClearpay { get; set; }
 
-        [JsonProperty("alipay")]
+        [JsonPropertyName("alipay")]
         public ChargePaymentMethodDetailsAlipay Alipay { get; set; }
 
-        [JsonProperty("au_becs_debit")]
+        [JsonPropertyName("au_becs_debit")]
         public ChargePaymentMethodDetailsAuBecsDebit AuBecsDebit { get; set; }
 
-        [JsonProperty("bacs_debit")]
+        [JsonPropertyName("bacs_debit")]
         public ChargePaymentMethodDetailsBacsDebit BacsDebit { get; set; }
 
-        [JsonProperty("bancontact")]
+        [JsonPropertyName("bancontact")]
         public ChargePaymentMethodDetailsBancontact Bancontact { get; set; }
 
-        [JsonProperty("blik")]
+        [JsonPropertyName("blik")]
         public ChargePaymentMethodDetailsBlik Blik { get; set; }
 
-        [JsonProperty("boleto")]
+        [JsonPropertyName("boleto")]
         public ChargePaymentMethodDetailsBoleto Boleto { get; set; }
 
-        [JsonProperty("card")]
+        [JsonPropertyName("card")]
         public ChargePaymentMethodDetailsCard Card { get; set; }
 
-        [JsonProperty("card_present")]
+        [JsonPropertyName("card_present")]
         public ChargePaymentMethodDetailsCardPresent CardPresent { get; set; }
 
-        [JsonProperty("customer_balance")]
+        [JsonPropertyName("customer_balance")]
         public ChargePaymentMethodDetailsCustomerBalance CustomerBalance { get; set; }
 
-        [JsonProperty("eps")]
+        [JsonPropertyName("eps")]
         public ChargePaymentMethodDetailsEps Eps { get; set; }
 
-        [JsonProperty("fpx")]
+        [JsonPropertyName("fpx")]
         public ChargePaymentMethodDetailsFpx Fpx { get; set; }
 
-        [JsonProperty("giropay")]
+        [JsonPropertyName("giropay")]
         public ChargePaymentMethodDetailsGiropay Giropay { get; set; }
 
-        [JsonProperty("grabpay")]
+        [JsonPropertyName("grabpay")]
         public ChargePaymentMethodDetailsGrabpay Grabpay { get; set; }
 
-        [JsonProperty("ideal")]
+        [JsonPropertyName("ideal")]
         public ChargePaymentMethodDetailsIdeal Ideal { get; set; }
 
-        [JsonProperty("interac_present")]
+        [JsonPropertyName("interac_present")]
         public ChargePaymentMethodDetailsInteracPresent InteracPresent { get; set; }
 
-        [JsonProperty("klarna")]
+        [JsonPropertyName("klarna")]
         public ChargePaymentMethodDetailsKlarna Klarna { get; set; }
 
-        [JsonProperty("konbini")]
+        [JsonPropertyName("konbini")]
         public ChargePaymentMethodDetailsKonbini Konbini { get; set; }
 
-        [JsonProperty("link")]
+        [JsonPropertyName("link")]
         public ChargePaymentMethodDetailsLink Link { get; set; }
 
-        [JsonProperty("multibanco")]
+        [JsonPropertyName("multibanco")]
         public ChargePaymentMethodDetailsMultibanco Multibanco { get; set; }
 
-        [JsonProperty("oxxo")]
+        [JsonPropertyName("oxxo")]
         public ChargePaymentMethodDetailsOxxo Oxxo { get; set; }
 
-        [JsonProperty("p24")]
+        [JsonPropertyName("p24")]
         public ChargePaymentMethodDetailsP24 P24 { get; set; }
 
-        [JsonProperty("paynow")]
+        [JsonPropertyName("paynow")]
         public ChargePaymentMethodDetailsPaynow Paynow { get; set; }
 
-        [JsonProperty("promptpay")]
+        [JsonPropertyName("promptpay")]
         public ChargePaymentMethodDetailsPromptpay Promptpay { get; set; }
 
-        [JsonProperty("sepa_debit")]
+        [JsonPropertyName("sepa_debit")]
         public ChargePaymentMethodDetailsSepaDebit SepaDebit { get; set; }
 
-        [JsonProperty("sofort")]
+        [JsonPropertyName("sofort")]
         public ChargePaymentMethodDetailsSofort Sofort { get; set; }
 
-        [JsonProperty("stripe_account")]
+        [JsonPropertyName("stripe_account")]
         public ChargePaymentMethodDetailsStripeAccount StripeAccount { get; set; }
 
         /// <summary>
@@ -107,16 +107,16 @@ namespace Stripe
         /// hash is included on <c>payment_method_details</c> with a name matching this value. It
         /// contains information specific to the payment method.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
-        [JsonProperty("us_bank_account")]
+        [JsonPropertyName("us_bank_account")]
         public ChargePaymentMethodDetailsUsBankAccount UsBankAccount { get; set; }
 
-        [JsonProperty("wechat")]
+        [JsonPropertyName("wechat")]
         public ChargePaymentMethodDetailsWechat Wechat { get; set; }
 
-        [JsonProperty("wechat_pay")]
+        [JsonPropertyName("wechat_pay")]
         public ChargePaymentMethodDetailsWechatPay WechatPay { get; set; }
     }
 }

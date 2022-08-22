@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PaymentIntentCreateOptions : BaseOptions, IHasMetadata
     {
@@ -16,7 +16,7 @@ namespace Stripe
         /// in charge currency</a>. The amount value supports up to eight digits (e.g., a value of
         /// 99999999 for a USD charge of $999,999.99).
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long? Amount { get; set; }
 
         /// <summary>
@@ -27,21 +27,21 @@ namespace Stripe
         /// href="https://stripe.com/docs/payments/connected-accounts">use case for connected
         /// accounts</a>.
         /// </summary>
-        [JsonProperty("application_fee_amount")]
+        [JsonPropertyName("application_fee_amount")]
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
         /// When enabled, this PaymentIntent will accept payment methods that you have enabled in
         /// the Dashboard and are compatible with this PaymentIntent's other parameters.
         /// </summary>
-        [JsonProperty("automatic_payment_methods")]
+        [JsonPropertyName("automatic_payment_methods")]
         public PaymentIntentAutomaticPaymentMethodsOptions AutomaticPaymentMethods { get; set; }
 
         /// <summary>
         /// Controls when the funds will be captured from the customer's account.
         /// One of: <c>automatic</c>, or <c>manual</c>.
         /// </summary>
-        [JsonProperty("capture_method")]
+        [JsonPropertyName("capture_method")]
         public string CaptureMethod { get; set; }
 
         /// <summary>
@@ -52,10 +52,10 @@ namespace Stripe
         /// href="https://stripe.com/docs/api/payment_intents/confirm">confirm</a> API may also be
         /// provided.
         /// </summary>
-        [JsonProperty("confirm")]
+        [JsonPropertyName("confirm")]
         public bool? Confirm { get; set; }
 
-        [JsonProperty("confirmation_method")]
+        [JsonPropertyName("confirmation_method")]
         public string ConfirmationMethod { get; set; }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace Stripe
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
@@ -76,13 +76,13 @@ namespace Stripe
         /// this PaymentIntent's payment method will be attached to the Customer after the
         /// PaymentIntent has been confirmed and any required actions from the user are complete.
         /// </summary>
-        [JsonProperty("customer")]
+        [JsonPropertyName("customer")]
         public string Customer { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
@@ -93,14 +93,14 @@ namespace Stripe
         /// without authentication</a>. This parameter can only be used with <a
         /// href="https://stripe.com/docs/api/payment_intents/create#create_payment_intent-confirm"><c>confirm=true</c></a>.
         /// </summary>
-        [JsonProperty("error_on_requires_action")]
+        [JsonPropertyName("error_on_requires_action")]
         public bool? ErrorOnRequiresAction { get; set; }
 
         /// <summary>
         /// ID of the mandate to be used for this payment. This parameter can only be used with <a
         /// href="https://stripe.com/docs/api/payment_intents/create#create_payment_intent-confirm"><c>confirm=true</c></a>.
         /// </summary>
-        [JsonProperty("mandate")]
+        [JsonPropertyName("mandate")]
         public string Mandate { get; set; }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Stripe
         /// with <a
         /// href="https://stripe.com/docs/api/payment_intents/create#create_payment_intent-confirm"><c>confirm=true</c></a>.
         /// </summary>
-        [JsonProperty("mandate_data")]
+        [JsonPropertyName("mandate_data")]
         public PaymentIntentMandateDataOptions MandateData { get; set; }
 
         /// <summary>
@@ -117,10 +117,10 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
-        [JsonProperty("off_session")]
+        [JsonPropertyName("off_session")]
         public bool? OffSession { get; set; }
 
         /// <summary>
@@ -128,7 +128,7 @@ namespace Stripe
         /// PaymentIntents <a href="https://stripe.com/docs/payments/connected-accounts">use case
         /// for connected accounts</a>.
         /// </summary>
-        [JsonProperty("on_behalf_of")]
+        [JsonPropertyName("on_behalf_of")]
         public string OnBehalfOf { get; set; }
 
         /// <summary>
@@ -142,7 +142,7 @@ namespace Stripe
         /// Charges API. We recommend that you explicitly provide the <c>payment_method</c> going
         /// forward.
         /// </summary>
-        [JsonProperty("payment_method")]
+        [JsonPropertyName("payment_method")]
         public string PaymentMethod { get; set; }
 
         /// <summary>
@@ -151,13 +151,13 @@ namespace Stripe
         /// href="https://stripe.com/docs/api/payment_intents/object#payment_intent_object-payment_method">payment_method</a>
         /// property on the PaymentIntent.
         /// </summary>
-        [JsonProperty("payment_method_data")]
+        [JsonPropertyName("payment_method_data")]
         public PaymentIntentPaymentMethodDataOptions PaymentMethodData { get; set; }
 
         /// <summary>
         /// Payment-method-specific configuration for this PaymentIntent.
         /// </summary>
-        [JsonProperty("payment_method_options")]
+        [JsonPropertyName("payment_method_options")]
         public PaymentIntentPaymentMethodOptionsOptions PaymentMethodOptions { get; set; }
 
         /// <summary>
@@ -166,7 +166,7 @@ namespace Stripe
         /// payment methods from the <a
         /// href="https://dashboard.stripe.com/settings/payment_methods">Stripe Dashboard</a>.
         /// </summary>
-        [JsonProperty("payment_method_types")]
+        [JsonPropertyName("payment_method_types")]
         public List<string> PaymentMethodTypes { get; set; }
 
         /// <summary>
@@ -174,7 +174,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/radar/radar-session">Radar Session</a> for more
         /// information.
         /// </summary>
-        [JsonProperty("radar_options")]
+        [JsonPropertyName("radar_options")]
         public PaymentIntentRadarOptionsOptions RadarOptions { get; set; }
 
         /// <summary>
@@ -183,7 +183,7 @@ namespace Stripe
         /// regardless of your <a href="https://dashboard.stripe.com/account/emails">email
         /// settings</a>.
         /// </summary>
-        [JsonProperty("receipt_email")]
+        [JsonPropertyName("receipt_email")]
         public string ReceiptEmail { get; set; }
 
         /// <summary>
@@ -193,7 +193,7 @@ namespace Stripe
         /// only be used with <a
         /// href="https://stripe.com/docs/api/payment_intents/create#create_payment_intent-confirm"><c>confirm=true</c></a>.
         /// </summary>
-        [JsonProperty("return_url")]
+        [JsonPropertyName("return_url")]
         public string ReturnUrl { get; set; }
 
         /// <summary>
@@ -213,20 +213,20 @@ namespace Stripe
         /// as <a href="https://stripe.com/docs/strong-customer-authentication">SCA</a>.
         /// One of: <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
-        [JsonProperty("setup_future_usage")]
+        [JsonPropertyName("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
         /// Shipping information for this PaymentIntent.
         /// </summary>
-        [JsonProperty("shipping")]
+        [JsonPropertyName("shipping")]
         public ChargeShippingOptions Shipping { get; set; }
 
         /// <summary>
         /// For non-card charges, you can use this value as the complete description that appears on
         /// your customers’ statements. Must contain at least one letter, maximum 22 characters.
         /// </summary>
-        [JsonProperty("statement_descriptor")]
+        [JsonPropertyName("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 
         /// <summary>
@@ -235,7 +235,7 @@ namespace Stripe
         /// on the account to form the complete statement descriptor. Maximum 22 characters for the
         /// concatenated descriptor.
         /// </summary>
-        [JsonProperty("statement_descriptor_suffix")]
+        [JsonPropertyName("statement_descriptor_suffix")]
         public string StatementDescriptorSuffix { get; set; }
 
         /// <summary>
@@ -244,7 +244,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/payments/connected-accounts">use case for connected
         /// accounts</a>.
         /// </summary>
-        [JsonProperty("transfer_data")]
+        [JsonPropertyName("transfer_data")]
         public PaymentIntentTransferDataOptions TransferData { get; set; }
 
         /// <summary>
@@ -252,14 +252,14 @@ namespace Stripe
         /// PaymentIntents <a href="https://stripe.com/docs/payments/connected-accounts">use case
         /// for connected accounts</a> for details.
         /// </summary>
-        [JsonProperty("transfer_group")]
+        [JsonPropertyName("transfer_group")]
         public string TransferGroup { get; set; }
 
         /// <summary>
         /// Set to <c>true</c> only when using manual confirmation and the iOS or Android SDKs to
         /// handle additional authentication steps.
         /// </summary>
-        [JsonProperty("use_stripe_sdk")]
+        [JsonPropertyName("use_stripe_sdk")]
         public bool? UseStripeSdk { get; set; }
     }
 }

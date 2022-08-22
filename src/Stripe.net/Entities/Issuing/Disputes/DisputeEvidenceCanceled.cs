@@ -2,7 +2,7 @@
 namespace Stripe.Issuing
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class DisputeEvidenceCanceled : StripeEntity<DisputeEvidenceCanceled>
@@ -35,7 +35,7 @@ namespace Stripe.Issuing
             set => this.InternalAdditionalDocumentation = SetExpandableFieldObject(value, this.InternalAdditionalDocumentation);
         }
 
-        [JsonProperty("additional_documentation")]
+        [JsonPropertyName("additional_documentation")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
         internal ExpandableField<File> InternalAdditionalDocumentation { get; set; }
         #endregion
@@ -43,59 +43,59 @@ namespace Stripe.Issuing
         /// <summary>
         /// Date when order was canceled.
         /// </summary>
-        [JsonProperty("canceled_at")]
+        [JsonPropertyName("canceled_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? CanceledAt { get; set; }
 
         /// <summary>
         /// Whether the cardholder was provided with a cancellation policy.
         /// </summary>
-        [JsonProperty("cancellation_policy_provided")]
+        [JsonPropertyName("cancellation_policy_provided")]
         public bool? CancellationPolicyProvided { get; set; }
 
         /// <summary>
         /// Reason for canceling the order.
         /// </summary>
-        [JsonProperty("cancellation_reason")]
+        [JsonPropertyName("cancellation_reason")]
         public string CancellationReason { get; set; }
 
         /// <summary>
         /// Date when the cardholder expected to receive the product.
         /// </summary>
-        [JsonProperty("expected_at")]
+        [JsonPropertyName("expected_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ExpectedAt { get; set; }
 
         /// <summary>
         /// Explanation of why the cardholder is disputing this transaction.
         /// </summary>
-        [JsonProperty("explanation")]
+        [JsonPropertyName("explanation")]
         public string Explanation { get; set; }
 
         /// <summary>
         /// Description of the merchandise or service that was purchased.
         /// </summary>
-        [JsonProperty("product_description")]
+        [JsonPropertyName("product_description")]
         public string ProductDescription { get; set; }
 
         /// <summary>
         /// Whether the product was a merchandise or service.
         /// One of: <c>merchandise</c>, or <c>service</c>.
         /// </summary>
-        [JsonProperty("product_type")]
+        [JsonPropertyName("product_type")]
         public string ProductType { get; set; }
 
         /// <summary>
         /// Result of cardholder's attempt to return the product.
         /// One of: <c>merchant_rejected</c>, or <c>successful</c>.
         /// </summary>
-        [JsonProperty("return_status")]
+        [JsonPropertyName("return_status")]
         public string ReturnStatus { get; set; }
 
         /// <summary>
         /// Date when the product was returned or attempted to be returned.
         /// </summary>
-        [JsonProperty("returned_at")]
+        [JsonPropertyName("returned_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ReturnedAt { get; set; }
     }

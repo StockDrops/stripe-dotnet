@@ -1,23 +1,23 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class AccountCompany : StripeEntity<AccountCompany>
     {
-        [JsonProperty("address")]
+        [JsonPropertyName("address")]
         public Address Address { get; set; }
 
         /// <summary>
         /// The Kana variation of the company's primary address (Japan only).
         /// </summary>
-        [JsonProperty("address_kana")]
+        [JsonPropertyName("address_kana")]
         public AddressJapan AddressKana { get; set; }
 
         /// <summary>
         /// The Kanji variation of the company's primary address (Japan only).
         /// </summary>
-        [JsonProperty("address_kanji")]
+        [JsonPropertyName("address_kanji")]
         public AddressJapan AddressKanji { get; set; }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/api/accounts/update#update_account-company-directors_provided">the
         /// <c>directors_provided</c> parameter</a>.
         /// </summary>
-        [JsonProperty("directors_provided")]
+        [JsonPropertyName("directors_provided")]
         public bool DirectorsProvided { get; set; }
 
         /// <summary>
@@ -36,25 +36,25 @@ namespace Stripe
         /// <c>executives_provided</c> parameter</a>, or if Stripe determined that sufficient
         /// executives were provided.
         /// </summary>
-        [JsonProperty("executives_provided")]
+        [JsonPropertyName("executives_provided")]
         public bool ExecutivesProvided { get; set; }
 
         /// <summary>
         /// The company's legal name.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
         /// The Kana variation of the company's legal name (Japan only).
         /// </summary>
-        [JsonProperty("name_kana")]
+        [JsonPropertyName("name_kana")]
         public string NameKana { get; set; }
 
         /// <summary>
         /// The Kanji variation of the company's legal name (Japan only).
         /// </summary>
-        [JsonProperty("name_kanji")]
+        [JsonPropertyName("name_kanji")]
         public string NameKanji { get; set; }
 
         /// <summary>
@@ -66,20 +66,20 @@ namespace Stripe
         /// provided and their total percent ownership (calculated by adding the
         /// <c>percent_ownership</c> of each owner together).
         /// </summary>
-        [JsonProperty("owners_provided")]
+        [JsonPropertyName("owners_provided")]
         public bool OwnersProvided { get; set; }
 
         /// <summary>
         /// This hash is used to attest that the beneficial owner information provided to Stripe is
         /// both current and correct.
         /// </summary>
-        [JsonProperty("ownership_declaration")]
+        [JsonPropertyName("ownership_declaration")]
         public AccountCompanyOwnershipDeclaration OwnershipDeclaration { get; set; }
 
         /// <summary>
         /// The company's phone number (used for verification).
         /// </summary>
-        [JsonProperty("phone")]
+        [JsonPropertyName("phone")]
         public string Phone { get; set; }
 
         /// <summary>
@@ -95,32 +95,32 @@ namespace Stripe
         /// <c>sole_proprietorship</c>, <c>tax_exempt_government_instrumentality</c>,
         /// <c>unincorporated_association</c>, or <c>unincorporated_non_profit</c>.
         /// </summary>
-        [JsonProperty("structure")]
+        [JsonPropertyName("structure")]
         public string Structure { get; set; }
 
         /// <summary>
         /// Whether the company's business ID number was provided.
         /// </summary>
-        [JsonProperty("tax_id_provided")]
+        [JsonPropertyName("tax_id_provided")]
         public bool TaxIdProvided { get; set; }
 
         /// <summary>
         /// The jurisdiction in which the <c>tax_id</c> is registered (Germany-based companies
         /// only).
         /// </summary>
-        [JsonProperty("tax_id_registrar")]
+        [JsonPropertyName("tax_id_registrar")]
         public string TaxIdRegistrar { get; set; }
 
         /// <summary>
         /// Whether the company's business VAT number was provided.
         /// </summary>
-        [JsonProperty("vat_id_provided")]
+        [JsonPropertyName("vat_id_provided")]
         public bool VatIdProvided { get; set; }
 
         /// <summary>
         /// Information on the verification state of the company.
         /// </summary>
-        [JsonProperty("verification")]
+        [JsonPropertyName("verification")]
         public AccountCompanyVerification Verification { get; set; }
     }
 }

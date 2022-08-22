@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class SourceMandateAcceptanceOptions : INestedOptions
@@ -11,28 +11,28 @@ namespace Stripe
         /// The Unix timestamp (in seconds) when the mandate was accepted or refused by the
         /// customer.
         /// </summary>
-        [JsonProperty("date")]
+        [JsonPropertyName("date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? Date { get; set; }
 
         /// <summary>
         /// The IP address from which the mandate was accepted or refused by the customer.
         /// </summary>
-        [JsonProperty("ip")]
+        [JsonPropertyName("ip")]
         public string Ip { get; set; }
 
         /// <summary>
         /// The parameters required to store a mandate accepted offline. Should only be set if
         /// <c>mandate[type]</c> is <c>offline</c>.
         /// </summary>
-        [JsonProperty("offline")]
+        [JsonPropertyName("offline")]
         public SourceMandateAcceptanceOfflineOptions Offline { get; set; }
 
         /// <summary>
         /// The parameters required to store a mandate accepted online. Should only be set if
         /// <c>mandate[type]</c> is <c>online</c>.
         /// </summary>
-        [JsonProperty("online")]
+        [JsonPropertyName("online")]
         public SourceMandateAcceptanceOnlineOptions Online { get; set; }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Stripe
         /// or <c>refused</c> (the mandate was refused).
         /// One of: <c>accepted</c>, <c>pending</c>, <c>refused</c>, or <c>revoked</c>.
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
         /// <summary>
@@ -48,14 +48,14 @@ namespace Stripe
         /// <c>offline</c>.
         /// One of: <c>offline</c>, or <c>online</c>.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>
         /// The user agent of the browser from which the mandate was accepted or refused by the
         /// customer.
         /// </summary>
-        [JsonProperty("user_agent")]
+        [JsonPropertyName("user_agent")]
         public string UserAgent { get; set; }
     }
 }

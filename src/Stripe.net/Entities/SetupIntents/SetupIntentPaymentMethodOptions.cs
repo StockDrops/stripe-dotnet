@@ -1,26 +1,26 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SetupIntentPaymentMethodOptions : StripeEntity<SetupIntentPaymentMethodOptions>
     {
-        [JsonProperty("acss_debit")]
+        [JsonPropertyName("acss_debit")]
         public SetupIntentPaymentMethodOptionsAcssDebit AcssDebit { get; set; }
 
-        [JsonProperty("blik")]
+        [JsonPropertyName("blik")]
         public SetupIntentPaymentMethodOptionsBlik Blik { get; set; }
 
-        [JsonProperty("card")]
+        [JsonPropertyName("card")]
         public SetupIntentPaymentMethodOptionsCard Card { get; set; }
 
-        [JsonProperty("link")]
+        [JsonPropertyName("link")]
         public SetupIntentPaymentMethodOptionsLink Link { get; set; }
 
-        [JsonProperty("sepa_debit")]
+        [JsonPropertyName("sepa_debit")]
         public SetupIntentPaymentMethodOptionsSepaDebit SepaDebit { get; set; }
 
-        [JsonProperty("us_bank_account")]
+        [JsonPropertyName("us_bank_account")]
         public SetupIntentPaymentMethodOptionsUsBankAccount UsBankAccount { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class QuoteComputed : StripeEntity<QuoteComputed>
     {
@@ -11,10 +11,10 @@ namespace Stripe
         /// <c>duration=forever</c> coupons only. Defaults to <c>null</c> if no inputted line items
         /// with recurring prices.
         /// </summary>
-        [JsonProperty("recurring")]
+        [JsonPropertyName("recurring")]
         public QuoteComputedRecurring Recurring { get; set; }
 
-        [JsonProperty("upfront")]
+        [JsonPropertyName("upfront")]
         public QuoteComputedUpfront Upfront { get; set; }
     }
 }

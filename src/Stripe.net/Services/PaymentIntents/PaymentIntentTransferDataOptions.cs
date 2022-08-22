@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PaymentIntentTransferDataOptions : INestedOptions
     {
@@ -14,7 +14,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/api/payment_intents/create#create_payment_intent-application_fee_amount">application_fee_amount</a>
         /// might be a better fit for your integration.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long? Amount { get; set; }
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace Stripe
         /// The ID of the resulting transfer will be returned on the successful charge's
         /// <c>transfer</c> field.
         /// </summary>
-        [JsonProperty("destination")]
+        [JsonPropertyName("destination")]
         public string Destination { get; set; }
     }
 }

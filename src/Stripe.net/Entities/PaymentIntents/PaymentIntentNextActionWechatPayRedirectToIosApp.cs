@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PaymentIntentNextActionWechatPayRedirectToIosApp : StripeEntity<PaymentIntentNextActionWechatPayRedirectToIosApp>
     {
         /// <summary>
         /// An universal link that redirect to WeChat Pay app.
         /// </summary>
-        [JsonProperty("native_url")]
+        [JsonPropertyName("native_url")]
         public string NativeUrl { get; set; }
     }
 }

@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe.TestHelpers.Treasury
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class OutboundPaymentReturnOutboundPaymentOptions : BaseOptions
     {
         /// <summary>
         /// Optional hash to set the the return code.
         /// </summary>
-        [JsonProperty("returned_details")]
+        [JsonPropertyName("returned_details")]
         public OutboundPaymentReturnedDetailsOptions ReturnedDetails { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class EventRequest : StripeEntity<EventRequest>, IHasId
     {
@@ -10,14 +10,14 @@ namespace Stripe
         /// Stripe's automatic subscription handling). Request logs are available in the <a
         /// href="https://dashboard.stripe.com/logs">dashboard</a>, but currently not in the API.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// The idempotency key transmitted during the request, if any. <em>Note: This property is
         /// populated only for events on or after May 23, 2017</em>.
         /// </summary>
-        [JsonProperty("idempotency_key")]
+        [JsonPropertyName("idempotency_key")]
         public string IdempotencyKey { get; set; }
     }
 }

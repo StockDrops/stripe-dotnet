@@ -1,20 +1,20 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SourceGiropay : StripeEntity<SourceGiropay>
     {
-        [JsonProperty("bank_code")]
+        [JsonPropertyName("bank_code")]
         public string BankCode { get; set; }
 
-        [JsonProperty("bank_name")]
+        [JsonPropertyName("bank_name")]
         public string BankName { get; set; }
 
-        [JsonProperty("bic")]
+        [JsonPropertyName("bic")]
         public string Bic { get; set; }
 
-        [JsonProperty("statement_descriptor")]
+        [JsonPropertyName("statement_descriptor")]
         public string StatementDescriptor { get; set; }
     }
 }

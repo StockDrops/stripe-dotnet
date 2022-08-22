@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SetupIntentNextAction : StripeEntity<SetupIntentNextAction>
     {
-        [JsonProperty("redirect_to_url")]
+        [JsonPropertyName("redirect_to_url")]
         public SetupIntentNextActionRedirectToUrl RedirectToUrl { get; set; }
 
         /// <summary>
@@ -13,10 +13,10 @@ namespace Stripe
         /// <c>use_stripe_sdk</c>, <c>alipay_handle_redirect</c>, <c>oxxo_display_details</c>, or
         /// <c>verify_with_microdeposits</c>.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
-        [JsonProperty("verify_with_microdeposits")]
+        [JsonPropertyName("verify_with_microdeposits")]
         public SetupIntentNextActionVerifyWithMicrodeposits VerifyWithMicrodeposits { get; set; }
     }
 }

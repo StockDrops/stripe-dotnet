@@ -1,10 +1,10 @@
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SourceBancontactCreateOptions : INestedOptions
     {
-        [JsonProperty("preferred_language")]
+        [JsonPropertyName("preferred_language")]
         public string PreferredLanguage { get; set; }
     }
 }

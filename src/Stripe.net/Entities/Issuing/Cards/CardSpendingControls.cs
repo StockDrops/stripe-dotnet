@@ -2,7 +2,7 @@
 namespace Stripe.Issuing
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class CardSpendingControls : StripeEntity<CardSpendingControls>
     {
@@ -12,7 +12,7 @@ namespace Stripe.Issuing
         /// of authorizations to allow. All other categories will be blocked. Cannot be set with
         /// <c>blocked_categories</c>.
         /// </summary>
-        [JsonProperty("allowed_categories")]
+        [JsonPropertyName("allowed_categories")]
         public List<string> AllowedCategories { get; set; }
 
         /// <summary>
@@ -21,7 +21,7 @@ namespace Stripe.Issuing
         /// of authorizations to decline. All other categories will be allowed. Cannot be set with
         /// <c>allowed_categories</c>.
         /// </summary>
-        [JsonProperty("blocked_categories")]
+        [JsonPropertyName("blocked_categories")]
         public List<string> BlockedCategories { get; set; }
 
         /// <summary>
@@ -29,14 +29,14 @@ namespace Stripe.Issuing
         /// (i.e., its <c>replacement_for</c> card and <em>that</em> card's <c>replacement_for</c>
         /// card, up the chain).
         /// </summary>
-        [JsonProperty("spending_limits")]
+        [JsonPropertyName("spending_limits")]
         public List<CardSpendingControlsSpendingLimit> SpendingLimits { get; set; }
 
         /// <summary>
         /// Currency of the amounts within <c>spending_limits</c>. Always the same as the currency
         /// of the card.
         /// </summary>
-        [JsonProperty("spending_limits_currency")]
+        [JsonPropertyName("spending_limits_currency")]
         public string SpendingLimitsCurrency { get; set; }
     }
 }

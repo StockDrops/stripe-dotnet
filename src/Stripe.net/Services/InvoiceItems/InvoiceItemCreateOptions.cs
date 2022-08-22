@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class InvoiceItemCreateOptions : BaseOptions, IHasMetadata
     {
@@ -11,7 +11,7 @@ namespace Stripe
         /// upcoming invoice. Passing in a negative <c>amount</c> will reduce the <c>amount_due</c>
         /// on the invoice.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long? Amount { get; set; }
 
         /// <summary>
@@ -19,33 +19,33 @@ namespace Stripe
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
         /// The ID of the customer who will be billed when this invoice item is billed.
         /// </summary>
-        [JsonProperty("customer")]
+        [JsonPropertyName("customer")]
         public string Customer { get; set; }
 
         /// <summary>
         /// An arbitrary string which you can attach to the invoice item. The description is
         /// displayed in the invoice for easy tracking.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
         /// Controls whether discounts apply to this invoice item. Defaults to false for prorations
         /// or negative invoice items, and true for all other invoice items.
         /// </summary>
-        [JsonProperty("discountable")]
+        [JsonPropertyName("discountable")]
         public bool? Discountable { get; set; }
 
         /// <summary>
         /// The coupons to redeem into discounts for the invoice item or invoice line item.
         /// </summary>
-        [JsonProperty("discounts")]
+        [JsonPropertyName("discounts")]
         public List<InvoiceItemDiscountOptions> Discounts { get; set; }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Stripe
         /// invoice items in response to an invoice.created webhook. You can only add invoice items
         /// to draft invoices and there is a maximum of 250 items per invoice.
         /// </summary>
-        [JsonProperty("invoice")]
+        [JsonPropertyName("invoice")]
         public string Invoice { get; set; }
 
         /// <summary>
@@ -63,33 +63,33 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The period associated with this invoice item. When set to different values, the period
         /// will be rendered on the invoice.
         /// </summary>
-        [JsonProperty("period")]
+        [JsonPropertyName("period")]
         public InvoiceItemPeriodOptions Period { get; set; }
 
         /// <summary>
         /// The ID of the price object.
         /// </summary>
-        [JsonProperty("price")]
+        [JsonPropertyName("price")]
         public string Price { get; set; }
 
         /// <summary>
         /// Data used to generate a new <a href="https://stripe.com/docs/api/prices">Price</a>
         /// object inline.
         /// </summary>
-        [JsonProperty("price_data")]
+        [JsonPropertyName("price_data")]
         public InvoiceItemPriceDataOptions PriceData { get; set; }
 
         /// <summary>
         /// Non-negative integer. The quantity of units for the invoice item.
         /// </summary>
-        [JsonProperty("quantity")]
+        [JsonPropertyName("quantity")]
         public long? Quantity { get; set; }
 
         /// <summary>
@@ -99,14 +99,14 @@ namespace Stripe
         /// Use this when you want to express that an invoice item has been accrued within the
         /// context of a particular subscription.
         /// </summary>
-        [JsonProperty("subscription")]
+        [JsonPropertyName("subscription")]
         public string Subscription { get; set; }
 
         /// <summary>
         /// The tax rates which apply to the invoice item. When set, the <c>default_tax_rates</c> on
         /// the invoice do not apply to this invoice item.
         /// </summary>
-        [JsonProperty("tax_rates")]
+        [JsonPropertyName("tax_rates")]
         public List<string> TaxRates { get; set; }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace Stripe
         /// the full amount. Passing in a negative <c>unit_amount</c> will reduce the
         /// <c>amount_due</c> on the invoice.
         /// </summary>
-        [JsonProperty("unit_amount")]
+        [JsonPropertyName("unit_amount")]
         public long? UnitAmount { get; set; }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace Stripe
         /// with at most 12 decimal places. Only one of <c>unit_amount</c> and
         /// <c>unit_amount_decimal</c> can be set.
         /// </summary>
-        [JsonProperty("unit_amount_decimal")]
+        [JsonPropertyName("unit_amount_decimal")]
         public decimal? UnitAmountDecimal { get; set; }
     }
 }

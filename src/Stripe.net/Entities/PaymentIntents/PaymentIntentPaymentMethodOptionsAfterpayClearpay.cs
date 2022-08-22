@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PaymentIntentPaymentMethodOptionsAfterpayClearpay : StripeEntity<PaymentIntentPaymentMethodOptionsAfterpayClearpay>
     {
         /// <summary>
         /// Controls when the funds will be captured from the customer's account.
         /// </summary>
-        [JsonProperty("capture_method")]
+        [JsonPropertyName("capture_method")]
         public string CaptureMethod { get; set; }
 
         /// <summary>
@@ -17,7 +17,7 @@ namespace Stripe
         /// identifier is limited to 128 characters and may contain only letters, digits,
         /// underscores, backslashes and dashes.
         /// </summary>
-        [JsonProperty("reference")]
+        [JsonPropertyName("reference")]
         public string Reference { get; set; }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Stripe
         /// optimize your payment flow and comply with regional legislation and network rules, such
         /// as <a href="https://stripe.com/docs/strong-customer-authentication">SCA</a>.
         /// </summary>
-        [JsonProperty("setup_future_usage")]
+        [JsonPropertyName("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
     }
 }

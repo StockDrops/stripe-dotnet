@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PaymentIntentPaymentMethodDataBoletoOptions : INestedOptions
     {
@@ -9,7 +9,7 @@ namespace Stripe
         /// The tax ID of the customer (CPF for individual consumers or CNPJ for businesses
         /// consumers).
         /// </summary>
-        [JsonProperty("tax_id")]
+        [JsonPropertyName("tax_id")]
         public string TaxId { get; set; }
     }
 }

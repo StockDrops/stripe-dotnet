@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class QuoteSubscriptionData : StripeEntity<QuoteSubscriptionData>
@@ -12,7 +12,7 @@ namespace Stripe
         /// after the quote is accepted. This date is ignored if it is in the past when the quote is
         /// accepted. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("effective_date")]
+        [JsonPropertyName("effective_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? EffectiveDate { get; set; }
 
@@ -20,7 +20,7 @@ namespace Stripe
         /// Integer representing the number of trial period days before the customer is charged for
         /// the first time.
         /// </summary>
-        [JsonProperty("trial_period_days")]
+        [JsonPropertyName("trial_period_days")]
         public long? TrialPeriodDays { get; set; }
     }
 }

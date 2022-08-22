@@ -1,10 +1,10 @@
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SubscriptionSchedulePhasePlanBillingThresholds : StripeEntity<SubscriptionSchedulePhasePlanBillingThresholds>
     {
-        [JsonProperty("usage_gte")]
+        [JsonPropertyName("usage_gte")]
         public long? UsageGte { get; set; }
     }
 }

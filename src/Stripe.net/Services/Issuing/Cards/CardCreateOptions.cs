@@ -2,7 +2,7 @@
 namespace Stripe.Issuing
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class CardCreateOptions : BaseOptions, IHasMetadata
     {
@@ -10,16 +10,16 @@ namespace Stripe.Issuing
         /// The <a href="https://stripe.com/docs/api#issuing_cardholder_object">Cardholder</a>
         /// object with which the card will be associated.
         /// </summary>
-        [JsonProperty("cardholder")]
+        [JsonPropertyName("cardholder")]
         public string Cardholder { get; set; }
 
         /// <summary>
         /// The currency for the card.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
-        [JsonProperty("financial_account")]
+        [JsonPropertyName("financial_account")]
         public string FinancialAccount { get; set; }
 
         /// <summary>
@@ -28,13 +28,13 @@ namespace Stripe.Issuing
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The card this is meant to be a replacement for (if any).
         /// </summary>
-        [JsonProperty("replacement_for")]
+        [JsonPropertyName("replacement_for")]
         public string ReplacementFor { get; set; }
 
         /// <summary>
@@ -42,13 +42,13 @@ namespace Stripe.Issuing
         /// replaced.
         /// One of: <c>damaged</c>, <c>expired</c>, <c>lost</c>, or <c>stolen</c>.
         /// </summary>
-        [JsonProperty("replacement_reason")]
+        [JsonPropertyName("replacement_reason")]
         public string ReplacementReason { get; set; }
 
         /// <summary>
         /// The address where the card will be shipped.
         /// </summary>
-        [JsonProperty("shipping")]
+        [JsonPropertyName("shipping")]
         public CardShippingOptions Shipping { get; set; }
 
         /// <summary>
@@ -56,21 +56,21 @@ namespace Stripe.Issuing
         /// href="https://stripe.com/docs/issuing/controls/spending-controls">documentation</a> for
         /// more details.
         /// </summary>
-        [JsonProperty("spending_controls")]
+        [JsonPropertyName("spending_controls")]
         public CardSpendingControlsOptions SpendingControls { get; set; }
 
         /// <summary>
         /// Whether authorizations can be approved on this card. Defaults to <c>inactive</c>.
         /// One of: <c>active</c>, or <c>inactive</c>.
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
         /// <summary>
         /// The type of card to issue. Possible values are <c>physical</c> or <c>virtual</c>.
         /// One of: <c>physical</c>, or <c>virtual</c>.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
     }
 }

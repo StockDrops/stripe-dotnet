@@ -1,20 +1,20 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Treasury
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class TransactionListOptions : ListOptionsWithCreated
     {
-        [JsonProperty("financial_account")]
+        [JsonPropertyName("financial_account")]
         public string FinancialAccount { get; set; }
 
-        [JsonProperty("order_by")]
+        [JsonPropertyName("order_by")]
         public string OrderBy { get; set; }
 
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
-        [JsonProperty("status_transitions")]
+        [JsonPropertyName("status_transitions")]
         public TransactionStatusTransitionsOptions StatusTransitions { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 namespace StripeTests.BillingPortal
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe;
     using Stripe.BillingPortal;
     using Xunit;

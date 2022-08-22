@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SetupIntentCancelOptions : BaseOptions
     {
@@ -10,7 +10,7 @@ namespace Stripe
         /// <c>requested_by_customer</c>, or <c>duplicate</c>.
         /// One of: <c>abandoned</c>, <c>duplicate</c>, or <c>requested_by_customer</c>.
         /// </summary>
-        [JsonProperty("cancellation_reason")]
+        [JsonPropertyName("cancellation_reason")]
         public string CancellationReason { get; set; }
     }
 }

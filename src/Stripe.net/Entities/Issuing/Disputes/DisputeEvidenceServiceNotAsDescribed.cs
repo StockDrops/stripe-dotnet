@@ -2,7 +2,7 @@
 namespace Stripe.Issuing
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class DisputeEvidenceServiceNotAsDescribed : StripeEntity<DisputeEvidenceServiceNotAsDescribed>
@@ -35,7 +35,7 @@ namespace Stripe.Issuing
             set => this.InternalAdditionalDocumentation = SetExpandableFieldObject(value, this.InternalAdditionalDocumentation);
         }
 
-        [JsonProperty("additional_documentation")]
+        [JsonPropertyName("additional_documentation")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
         internal ExpandableField<File> InternalAdditionalDocumentation { get; set; }
         #endregion
@@ -43,26 +43,26 @@ namespace Stripe.Issuing
         /// <summary>
         /// Date when order was canceled.
         /// </summary>
-        [JsonProperty("canceled_at")]
+        [JsonPropertyName("canceled_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? CanceledAt { get; set; }
 
         /// <summary>
         /// Reason for canceling the order.
         /// </summary>
-        [JsonProperty("cancellation_reason")]
+        [JsonPropertyName("cancellation_reason")]
         public string CancellationReason { get; set; }
 
         /// <summary>
         /// Explanation of why the cardholder is disputing this transaction.
         /// </summary>
-        [JsonProperty("explanation")]
+        [JsonPropertyName("explanation")]
         public string Explanation { get; set; }
 
         /// <summary>
         /// Date when the product was received.
         /// </summary>
-        [JsonProperty("received_at")]
+        [JsonPropertyName("received_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ReceivedAt { get; set; }
     }

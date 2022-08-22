@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Treasury
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class OutboundPaymentDestinationPaymentMethodOptionsUsBankAccountOptions : INestedOptions
     {
@@ -10,7 +10,7 @@ namespace Stripe.Treasury
         /// will default to the PaymentMethod's preferred network.
         /// One of: <c>ach</c>, or <c>us_domestic_wire</c>.
         /// </summary>
-        [JsonProperty("network")]
+        [JsonPropertyName("network")]
         public string Network { get; set; }
     }
 }

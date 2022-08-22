@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PriceRecurring : StripeEntity<PriceRecurring>
     {
@@ -14,7 +14,7 @@ namespace Stripe
         /// Defaults to <c>sum</c>.
         /// One of: <c>last_during_period</c>, <c>last_ever</c>, <c>max</c>, or <c>sum</c>.
         /// </summary>
-        [JsonProperty("aggregate_usage")]
+        [JsonPropertyName("aggregate_usage")]
         public string AggregateUsage { get; set; }
 
         /// <summary>
@@ -22,7 +22,7 @@ namespace Stripe
         /// <c>month</c> or <c>year</c>.
         /// One of: <c>day</c>, <c>month</c>, <c>week</c>, or <c>year</c>.
         /// </summary>
-        [JsonProperty("interval")]
+        [JsonPropertyName("interval")]
         public string Interval { get; set; }
 
         /// <summary>
@@ -30,14 +30,14 @@ namespace Stripe
         /// subscription billings. For example, <c>interval=month</c> and <c>interval_count=3</c>
         /// bills every 3 months.
         /// </summary>
-        [JsonProperty("interval_count")]
+        [JsonPropertyName("interval_count")]
         public long IntervalCount { get; set; }
 
         /// <summary>
         /// Default number of trial days when subscribing a customer to this price using <a
         /// href="https://stripe.com/docs/api#create_subscription-trial_from_plan"><c>trial_from_plan=true</c></a>.
         /// </summary>
-        [JsonProperty("trial_period_days")]
+        [JsonPropertyName("trial_period_days")]
         public long? TrialPeriodDays { get; set; }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Stripe
         /// total usage based on usage records. Defaults to <c>licensed</c>.
         /// One of: <c>licensed</c>, or <c>metered</c>.
         /// </summary>
-        [JsonProperty("usage_type")]
+        [JsonPropertyName("usage_type")]
         public string UsageType { get; set; }
     }
 }

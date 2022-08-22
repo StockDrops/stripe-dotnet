@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PaymentIntentPaymentMethodOptionsSepaDebitOptions : INestedOptions
     {
         /// <summary>
         /// Additional fields for Mandate creation.
         /// </summary>
-        [JsonProperty("mandate_options")]
+        [JsonPropertyName("mandate_options")]
         public PaymentIntentPaymentMethodOptionsSepaDebitMandateOptionsOptions MandateOptions { get; set; }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace Stripe
         /// publishable key, you may only update the value from <c>on_session</c> to
         /// <c>off_session</c>.
         /// </summary>
-        [JsonProperty("setup_future_usage")]
+        [JsonPropertyName("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
     }
 }

@@ -2,11 +2,11 @@
 namespace Stripe.Checkout
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SessionPaymentMethodOptionsCustomerBalanceBankTransfer : StripeEntity<SessionPaymentMethodOptionsCustomerBalanceBankTransfer>
     {
-        [JsonProperty("eu_bank_transfer")]
+        [JsonPropertyName("eu_bank_transfer")]
         public SessionPaymentMethodOptionsCustomerBalanceBankTransferEuBankTransfer EuBankTransfer { get; set; }
 
         /// <summary>
@@ -15,7 +15,7 @@ namespace Stripe.Checkout
         ///
         /// Permitted values include: <c>sort_code</c>, <c>zengin</c>, <c>iban</c>, or <c>spei</c>.
         /// </summary>
-        [JsonProperty("requested_address_types")]
+        [JsonPropertyName("requested_address_types")]
         public List<string> RequestedAddressTypes { get; set; }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace Stripe.Checkout
         /// One of: <c>eu_bank_transfer</c>, <c>gb_bank_transfer</c>, <c>jp_bank_transfer</c>, or
         /// <c>mx_bank_transfer</c>.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
     }
 }

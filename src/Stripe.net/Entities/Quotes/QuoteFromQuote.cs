@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class QuoteFromQuote : StripeEntity<QuoteFromQuote>
@@ -9,7 +9,7 @@ namespace Stripe
         /// <summary>
         /// Whether this quote is a revision of a different quote.
         /// </summary>
-        [JsonProperty("is_revision")]
+        [JsonPropertyName("is_revision")]
         public bool IsRevision { get; set; }
 
         #region Expandable Quote
@@ -38,7 +38,7 @@ namespace Stripe
             set => this.InternalQuote = SetExpandableFieldObject(value, this.InternalQuote);
         }
 
-        [JsonProperty("quote")]
+        [JsonPropertyName("quote")]
         [JsonConverter(typeof(ExpandableFieldConverter<Quote>))]
         internal ExpandableField<Quote> InternalQuote { get; set; }
         #endregion

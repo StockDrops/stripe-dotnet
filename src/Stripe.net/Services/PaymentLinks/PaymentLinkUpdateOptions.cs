@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PaymentLinkUpdateOptions : BaseOptions, IHasMetadata
     {
@@ -10,32 +10,32 @@ namespace Stripe
         /// Whether the payment link's <c>url</c> is active. If <c>false</c>, customers visiting the
         /// URL will be shown a page saying that the link has been deactivated.
         /// </summary>
-        [JsonProperty("active")]
+        [JsonPropertyName("active")]
         public bool? Active { get; set; }
 
         /// <summary>
         /// Behavior after the purchase is complete.
         /// </summary>
-        [JsonProperty("after_completion")]
+        [JsonPropertyName("after_completion")]
         public PaymentLinkAfterCompletionOptions AfterCompletion { get; set; }
 
         /// <summary>
         /// Enables user redeemable promotion codes.
         /// </summary>
-        [JsonProperty("allow_promotion_codes")]
+        [JsonPropertyName("allow_promotion_codes")]
         public bool? AllowPromotionCodes { get; set; }
 
         /// <summary>
         /// Configuration for automatic tax collection.
         /// </summary>
-        [JsonProperty("automatic_tax")]
+        [JsonPropertyName("automatic_tax")]
         public PaymentLinkAutomaticTaxOptions AutomaticTax { get; set; }
 
         /// <summary>
         /// Configuration for collecting the customer's billing address.
         /// One of: <c>auto</c>, or <c>required</c>.
         /// </summary>
-        [JsonProperty("billing_address_collection")]
+        [JsonPropertyName("billing_address_collection")]
         public string BillingAddressCollection { get; set; }
 
         /// <summary>
@@ -44,14 +44,14 @@ namespace Stripe
         /// href="https://stripe.com/docs/api/customers">Customer</a>.
         /// One of: <c>always</c>, or <c>if_required</c>.
         /// </summary>
-        [JsonProperty("customer_creation")]
+        [JsonPropertyName("customer_creation")]
         public string CustomerCreation { get; set; }
 
         /// <summary>
         /// The line items representing what is being sold. Each line item represents an item being
         /// sold. Up to 20 line items are supported.
         /// </summary>
-        [JsonProperty("line_items")]
+        [JsonPropertyName("line_items")]
         public List<PaymentLinkLineItemOptions> LineItems { get; set; }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/api/checkout/sessions">checkout sessions</a> created by
         /// this payment link.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Stripe
         /// subscriptions with a free trial</a>.
         /// One of: <c>always</c>, or <c>if_required</c>.
         /// </summary>
-        [JsonProperty("payment_method_collection")]
+        [JsonPropertyName("payment_method_collection")]
         public string PaymentMethodCollection { get; set; }
 
         /// <summary>
@@ -88,13 +88,13 @@ namespace Stripe
         /// href="https://dashboard.stripe.com/settings/payment_methods">payment method
         /// settings</a>.
         /// </summary>
-        [JsonProperty("payment_method_types")]
+        [JsonPropertyName("payment_method_types")]
         public List<string> PaymentMethodTypes { get; set; }
 
         /// <summary>
         /// Configuration for collecting the customer's shipping address.
         /// </summary>
-        [JsonProperty("shipping_address_collection")]
+        [JsonPropertyName("shipping_address_collection")]
         public PaymentLinkShippingAddressCollectionOptions ShippingAddressCollection { get; set; }
     }
 }

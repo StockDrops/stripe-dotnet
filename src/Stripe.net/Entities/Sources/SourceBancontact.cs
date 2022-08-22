@@ -1,26 +1,26 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SourceBancontact : StripeEntity<SourceBancontact>
     {
-        [JsonProperty("bank_code")]
+        [JsonPropertyName("bank_code")]
         public string BankCode { get; set; }
 
-        [JsonProperty("bank_name")]
+        [JsonPropertyName("bank_name")]
         public string BankName { get; set; }
 
-        [JsonProperty("bic")]
+        [JsonPropertyName("bic")]
         public string Bic { get; set; }
 
-        [JsonProperty("iban_last4")]
+        [JsonPropertyName("iban_last4")]
         public string IbanLast4 { get; set; }
 
-        [JsonProperty("preferred_language")]
+        [JsonPropertyName("preferred_language")]
         public string PreferredLanguage { get; set; }
 
-        [JsonProperty("statement_descriptor")]
+        [JsonPropertyName("statement_descriptor")]
         public string StatementDescriptor { get; set; }
     }
 }

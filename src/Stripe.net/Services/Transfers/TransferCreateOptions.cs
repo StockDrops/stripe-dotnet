@@ -2,26 +2,26 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class TransferCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// A positive integer in cents (or local equivalent) representing how much to transfer.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long? Amount { get; set; }
 
         /// <summary>
         /// 3-letter <a href="https://stripe.com/docs/payouts">ISO code for currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace Stripe
         /// href="/docs/connect/charges-transfers"&gt;See the Connect documentation&lt;/a&gt; for
         /// details.
         /// </summary>
-        [JsonProperty("destination")]
+        [JsonPropertyName("destination")]
         public string Destination { get; set; }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/connect/charges-transfers#transfer-availability">See the
         /// Connect documentation</a> for details.
         /// </summary>
-        [JsonProperty("source_transaction")]
+        [JsonPropertyName("source_transaction")]
         public string SourceTransaction { get; set; }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Stripe
         /// <c>fpx</c>. For most users, this will default to <c>card</c>.
         /// One of: <c>bank_account</c>, <c>card</c>, or <c>fpx</c>.
         /// </summary>
-        [JsonProperty("source_type")]
+        [JsonPropertyName("source_type")]
         public string SourceType { get; set; }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/connect/charges-transfers#transfer-options">Connect
         /// documentation</a> for details.
         /// </summary>
-        [JsonProperty("transfer_group")]
+        [JsonPropertyName("transfer_group")]
         public string TransferGroup { get; set; }
     }
 }

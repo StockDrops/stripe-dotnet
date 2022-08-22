@@ -2,14 +2,14 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SubscriptionScheduleUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// Object representing the subscription schedule's default settings.
         /// </summary>
-        [JsonProperty("default_settings")]
+        [JsonPropertyName("default_settings")]
         public SubscriptionScheduleDefaultSettingsOptions DefaultSettings { get; set; }
 
         /// <summary>
@@ -20,7 +20,7 @@ namespace Stripe
         /// subscription.
         /// One of: <c>cancel</c>, <c>none</c>, <c>release</c>, or <c>renew</c>.
         /// </summary>
-        [JsonProperty("end_behavior")]
+        [JsonPropertyName("end_behavior")]
         public string EndBehavior { get; set; }
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Stripe
         /// <c>end_date</c> of one phase will always equal the <c>start_date</c> of the next phase.
         /// Note that past phases can be omitted.
         /// </summary>
-        [JsonProperty("phases")]
+        [JsonPropertyName("phases")]
         public List<SubscriptionSchedulePhaseOptions> Phases { get; set; }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace Stripe
         /// prorated. The default value is <c>create_prorations</c>.
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
         /// </summary>
-        [JsonProperty("proration_behavior")]
+        [JsonPropertyName("proration_behavior")]
         public string ProrationBehavior { get; set; }
     }
 }

@@ -1,32 +1,32 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SourceOwner : StripeEntity<SourceOwner>
     {
         /// <summary>
         /// Owner's address.
         /// </summary>
-        [JsonProperty("address")]
+        [JsonPropertyName("address")]
         public Address Address { get; set; }
 
         /// <summary>
         /// Owner's email address.
         /// </summary>
-        [JsonProperty("email")]
+        [JsonPropertyName("email")]
         public string Email { get; set; }
 
         /// <summary>
         /// Owner's full name.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
         /// Owner's phone number (including extension).
         /// </summary>
-        [JsonProperty("phone")]
+        [JsonPropertyName("phone")]
         public string Phone { get; set; }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace Stripe
         /// directly (and if supported) at the time of authorization or settlement. They cannot be
         /// set or mutated.
         /// </summary>
-        [JsonProperty("verified_address")]
+        [JsonPropertyName("verified_address")]
         public Address VerifiedAddress { get; set; }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Stripe
         /// method directly (and if supported) at the time of authorization or settlement. They
         /// cannot be set or mutated.
         /// </summary>
-        [JsonProperty("verified_email")]
+        [JsonPropertyName("verified_email")]
         public string VerifiedEmail { get; set; }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Stripe
         /// method directly (and if supported) at the time of authorization or settlement. They
         /// cannot be set or mutated.
         /// </summary>
-        [JsonProperty("verified_name")]
+        [JsonPropertyName("verified_name")]
         public string VerifiedName { get; set; }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Stripe
         /// provided by the payment method directly (and if supported) at the time of authorization
         /// or settlement. They cannot be set or mutated.
         /// </summary>
-        [JsonProperty("verified_phone")]
+        [JsonPropertyName("verified_phone")]
         public string VerifiedPhone { get; set; }
     }
 }

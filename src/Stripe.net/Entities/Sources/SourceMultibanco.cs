@@ -1,38 +1,38 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SourceMultibanco : StripeEntity<SourceMultibanco>
     {
-        [JsonProperty("entity")]
+        [JsonPropertyName("entity")]
         public string Entity { get; set; }
 
-        [JsonProperty("reference")]
+        [JsonPropertyName("reference")]
         public string Reference { get; set; }
 
-        [JsonProperty("refund_account_holder_address_city")]
+        [JsonPropertyName("refund_account_holder_address_city")]
         public string RefundAccountHolderAddressCity { get; set; }
 
-        [JsonProperty("refund_account_holder_address_country")]
+        [JsonPropertyName("refund_account_holder_address_country")]
         public string RefundAccountHolderAddressCountry { get; set; }
 
-        [JsonProperty("refund_account_holder_address_line1")]
+        [JsonPropertyName("refund_account_holder_address_line1")]
         public string RefundAccountHolderAddressLine1 { get; set; }
 
-        [JsonProperty("refund_account_holder_address_line2")]
+        [JsonPropertyName("refund_account_holder_address_line2")]
         public string RefundAccountHolderAddressLine2 { get; set; }
 
-        [JsonProperty("refund_account_holder_address_postal_code")]
+        [JsonPropertyName("refund_account_holder_address_postal_code")]
         public string RefundAccountHolderAddressPostalCode { get; set; }
 
-        [JsonProperty("refund_account_holder_address_state")]
+        [JsonPropertyName("refund_account_holder_address_state")]
         public string RefundAccountHolderAddressState { get; set; }
 
-        [JsonProperty("refund_account_holder_name")]
+        [JsonPropertyName("refund_account_holder_name")]
         public string RefundAccountHolderName { get; set; }
 
-        [JsonProperty("refund_iban")]
+        [JsonPropertyName("refund_iban")]
         public string RefundIban { get; set; }
     }
 }

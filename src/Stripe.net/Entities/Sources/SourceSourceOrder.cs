@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SourceSourceOrder : StripeEntity<SourceSourceOrder>
     {
@@ -11,7 +11,7 @@ namespace Stripe
         /// ¥1, Japanese Yen being a zero-decimal currency) representing the total amount for the
         /// order.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long Amount { get; set; }
 
         /// <summary>
@@ -19,22 +19,22 @@ namespace Stripe
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
         /// The email address of the customer placing the order.
         /// </summary>
-        [JsonProperty("email")]
+        [JsonPropertyName("email")]
         public string Email { get; set; }
 
         /// <summary>
         /// List of items constituting the order.
         /// </summary>
-        [JsonProperty("items")]
+        [JsonPropertyName("items")]
         public List<SourceSourceOrderItem> Items { get; set; }
 
-        [JsonProperty("shipping")]
+        [JsonPropertyName("shipping")]
         public Shipping Shipping { get; set; }
     }
 }

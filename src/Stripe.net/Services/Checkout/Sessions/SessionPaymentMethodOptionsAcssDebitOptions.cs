@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Checkout
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SessionPaymentMethodOptionsAcssDebitOptions : INestedOptions
     {
@@ -11,13 +11,13 @@ namespace Stripe.Checkout
         /// currency</a>. This is only accepted for Checkout Sessions in <c>setup</c> mode.
         /// One of: <c>cad</c>, or <c>usd</c>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
         /// Additional fields for Mandate creation.
         /// </summary>
-        [JsonProperty("mandate_options")]
+        [JsonPropertyName("mandate_options")]
         public SessionPaymentMethodOptionsAcssDebitMandateOptionsOptions MandateOptions { get; set; }
 
         /// <summary>
@@ -37,14 +37,14 @@ namespace Stripe.Checkout
         /// as <a href="https://stripe.com/docs/strong-customer-authentication">SCA</a>.
         /// One of: <c>none</c>, <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
-        [JsonProperty("setup_future_usage")]
+        [JsonPropertyName("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
         /// Verification method for the intent.
         /// One of: <c>automatic</c>, <c>instant</c>, or <c>microdeposits</c>.
         /// </summary>
-        [JsonProperty("verification_method")]
+        [JsonPropertyName("verification_method")]
         public string VerificationMethod { get; set; }
     }
 }

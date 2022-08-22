@@ -1,13 +1,13 @@
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class AccountSettingsDeclineOn : StripeEntity<AccountSettingsDeclineOn>
     {
-        [JsonProperty("avs_failure")]
+        [JsonPropertyName("avs_failure")]
         public bool AvsFailure { get; set; }
 
-        [JsonProperty("cvc_failure")]
+        [JsonPropertyName("cvc_failure")]
         public bool CvcFailure { get; set; }
     }
 }

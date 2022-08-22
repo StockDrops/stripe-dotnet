@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PaymentMethodFpx : StripeEntity<PaymentMethodFpx>
     {
@@ -9,7 +9,7 @@ namespace Stripe
         /// Account holder type, if provided. Can be one of <c>individual</c> or <c>company</c>.
         /// One of: <c>company</c>, or <c>individual</c>.
         /// </summary>
-        [JsonProperty("account_holder_type")]
+        [JsonPropertyName("account_holder_type")]
         public string AccountHolderType { get; set; }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace Stripe
         /// <c>maybank2u</c>, <c>ocbc</c>, <c>pb_enterprise</c>, <c>public_bank</c>, <c>rhb</c>,
         /// <c>standard_chartered</c>, or <c>uob</c>.
         /// </summary>
-        [JsonProperty("bank")]
+        [JsonPropertyName("bank")]
         public string Bank { get; set; }
     }
 }

@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class QuoteTotalDetailsBreakdownDiscount : StripeEntity<QuoteTotalDetailsBreakdownDiscount>
     {
         /// <summary>
         /// The amount discounted.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long Amount { get; set; }
 
         /// <summary>
@@ -21,7 +21,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/billing/subscriptions/discounts">Applying Discounts to
         /// Subscriptions</a>.
         /// </summary>
-        [JsonProperty("discount")]
+        [JsonPropertyName("discount")]
         public Discount Discount { get; set; }
     }
 }

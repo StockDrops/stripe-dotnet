@@ -3,7 +3,7 @@ namespace Stripe.Checkout
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class SessionSubscriptionDataOptions : INestedOptions, IHasMetadata
@@ -16,14 +16,14 @@ namespace Stripe.Checkout
         /// header or an OAuth key. For more information, see the application fees <a
         /// href="https://stripe.com/docs/connect/subscriptions#collecting-fees-on-subscriptions">documentation</a>.
         /// </summary>
-        [JsonProperty("application_fee_percent")]
+        [JsonPropertyName("application_fee_percent")]
         public decimal? ApplicationFeePercent { get; set; }
 
         /// <summary>
         /// The ID of the coupon to apply to this subscription. A coupon applied to a subscription
         /// will only affect invoices created for that particular subscription.
         /// </summary>
-        [JsonProperty("coupon")]
+        [JsonPropertyName("coupon")]
         public string Coupon { get; set; }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace Stripe.Checkout
         /// <c>tax_rates</c> set. Invoices created will have their <c>default_tax_rates</c>
         /// populated from the subscription.
         /// </summary>
-        [JsonProperty("default_tax_rates")]
+        [JsonPropertyName("default_tax_rates")]
         public List<string> DefaultTaxRates { get; set; }
 
         /// <summary>
@@ -39,14 +39,14 @@ namespace Stripe.Checkout
         /// to optionally store an explanation of the subscription for rendering in Stripe hosted
         /// surfaces.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
         /// A list of items, each with an attached plan, that the customer is subscribing to. Prefer
         /// using <c>line_items</c>.
         /// </summary>
-        [JsonProperty("items")]
+        [JsonPropertyName("items")]
         public List<SessionSubscriptionDataItemOptions> Items { get; set; }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace Stripe.Checkout
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -63,14 +63,14 @@ namespace Stripe.Checkout
         /// destination and the ID of the resulting transfers will be found on the resulting
         /// charges.
         /// </summary>
-        [JsonProperty("transfer_data")]
+        [JsonPropertyName("transfer_data")]
         public SessionSubscriptionDataTransferDataOptions TransferData { get; set; }
 
         /// <summary>
         /// Unix timestamp representing the end of the trial period the customer will get before
         /// being charged for the first time. Has to be at least 48 hours in the future.
         /// </summary>
-        [JsonProperty("trial_end")]
+        [JsonPropertyName("trial_end")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? TrialEnd { get; set; }
 
@@ -79,14 +79,14 @@ namespace Stripe.Checkout
         /// Setting <c>trial_end</c> on <c>subscription_data</c> is preferred. Defaults to
         /// <c>false</c>.
         /// </summary>
-        [JsonProperty("trial_from_plan")]
+        [JsonPropertyName("trial_from_plan")]
         public bool? TrialFromPlan { get; set; }
 
         /// <summary>
         /// Integer representing the number of trial period days before the customer is charged for
         /// the first time. Has to be at least 1.
         /// </summary>
-        [JsonProperty("trial_period_days")]
+        [JsonPropertyName("trial_period_days")]
         public long? TrialPeriodDays { get; set; }
     }
 }

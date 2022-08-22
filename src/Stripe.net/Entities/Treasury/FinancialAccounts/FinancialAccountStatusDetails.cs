@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Treasury
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class FinancialAccountStatusDetails : StripeEntity<FinancialAccountStatusDetails>
     {
         /// <summary>
         /// Details related to the closure of this FinancialAccount.
         /// </summary>
-        [JsonProperty("closed")]
+        [JsonPropertyName("closed")]
         public FinancialAccountStatusDetailsClosed Closed { get; set; }
     }
 }

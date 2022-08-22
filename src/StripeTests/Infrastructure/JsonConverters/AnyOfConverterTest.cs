@@ -1,6 +1,6 @@
 namespace StripeTests
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe;
     using Stripe.Infrastructure;
     using Xunit;
@@ -93,16 +93,16 @@ namespace StripeTests
 
         private class TestSubObject : StripeEntity<TestSubObject>, IHasId
         {
-            [JsonProperty("id")]
+            [JsonPropertyName("id")]
             public string Id { get; set; }
 
-            [JsonProperty("bar")]
+            [JsonPropertyName("bar")]
             public int Bar { get; set; }
         }
 
         private class TestObject : StripeEntity<TestObject>
         {
-            [JsonProperty("any_of")]
+            [JsonPropertyName("any_of")]
             [JsonConverter(typeof(AnyOfConverter))]
             internal AnyOf<string, TestSubObject> AnyOf { get; set; }
         }

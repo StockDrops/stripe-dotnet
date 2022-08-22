@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class PaymentIntentTransferData : StripeEntity<PaymentIntentTransferData>
@@ -16,7 +16,7 @@ namespace Stripe
         /// in charge currency</a>. The amount value supports up to eight digits (e.g., a value of
         /// 99999999 for a USD charge of $999,999.99).
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long Amount { get; set; }
 
         #region Expandable Destination
@@ -47,7 +47,7 @@ namespace Stripe
             set => this.InternalDestination = SetExpandableFieldObject(value, this.InternalDestination);
         }
 
-        [JsonProperty("destination")]
+        [JsonPropertyName("destination")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
         internal ExpandableField<Account> InternalDestination { get; set; }
         #endregion

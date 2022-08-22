@@ -2,68 +2,68 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class TokenAccountIndividualOptions : INestedOptions, IHasMetadata
     {
         /// <summary>
         /// The individual's primary address.
         /// </summary>
-        [JsonProperty("address")]
+        [JsonPropertyName("address")]
         public AddressOptions Address { get; set; }
 
         /// <summary>
         /// The Kana variation of the the individual's primary address (Japan only).
         /// </summary>
-        [JsonProperty("address_kana")]
+        [JsonPropertyName("address_kana")]
         public AddressJapanOptions AddressKana { get; set; }
 
         /// <summary>
         /// The Kanji variation of the the individual's primary address (Japan only).
         /// </summary>
-        [JsonProperty("address_kanji")]
+        [JsonPropertyName("address_kanji")]
         public AddressJapanOptions AddressKanji { get; set; }
 
         /// <summary>
         /// The individual's date of birth.
         /// </summary>
-        [JsonProperty("dob")]
+        [JsonPropertyName("dob")]
         public DobOptions Dob { get; set; }
 
         /// <summary>
         /// The individual's email address.
         /// </summary>
-        [JsonProperty("email")]
+        [JsonPropertyName("email")]
         public string Email { get; set; }
 
         /// <summary>
         /// The individual's first name.
         /// </summary>
-        [JsonProperty("first_name")]
+        [JsonPropertyName("first_name")]
         public string FirstName { get; set; }
 
         /// <summary>
         /// The Kana variation of the the individual's first name (Japan only).
         /// </summary>
-        [JsonProperty("first_name_kana")]
+        [JsonPropertyName("first_name_kana")]
         public string FirstNameKana { get; set; }
 
         /// <summary>
         /// The Kanji variation of the individual's first name (Japan only).
         /// </summary>
-        [JsonProperty("first_name_kanji")]
+        [JsonPropertyName("first_name_kanji")]
         public string FirstNameKanji { get; set; }
 
         /// <summary>
         /// A list of alternate names or aliases that the individual is known by.
         /// </summary>
-        [JsonProperty("full_name_aliases")]
+        [JsonPropertyName("full_name_aliases")]
         public List<string> FullNameAliases { get; set; }
 
         /// <summary>
         /// The individual's gender (International regulations require either "male" or "female").
         /// </summary>
-        [JsonProperty("gender")]
+        [JsonPropertyName("gender")]
         public string Gender { get; set; }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Stripe
         /// <a href="https://stripe.com/docs/js/tokens_sources/create_token?type=pii">PII token
         /// created with Stripe.js</a>.
         /// </summary>
-        [JsonProperty("id_number")]
+        [JsonPropertyName("id_number")]
         public string IdNumber { get; set; }
 
         /// <summary>
@@ -84,31 +84,31 @@ namespace Stripe
         /// href="https://stripe.com/docs/js/tokens_sources/create_token?type=pii">PII token created
         /// with Stripe.js</a>.
         /// </summary>
-        [JsonProperty("id_number_secondary")]
+        [JsonPropertyName("id_number_secondary")]
         public string IdNumberSecondary { get; set; }
 
         /// <summary>
         /// The individual's last name.
         /// </summary>
-        [JsonProperty("last_name")]
+        [JsonPropertyName("last_name")]
         public string LastName { get; set; }
 
         /// <summary>
         /// The Kana variation of the individual's last name (Japan only).
         /// </summary>
-        [JsonProperty("last_name_kana")]
+        [JsonPropertyName("last_name_kana")]
         public string LastNameKana { get; set; }
 
         /// <summary>
         /// The Kanji variation of the individual's last name (Japan only).
         /// </summary>
-        [JsonProperty("last_name_kanji")]
+        [JsonPropertyName("last_name_kanji")]
         public string LastNameKanji { get; set; }
 
         /// <summary>
         /// The individual's maiden name.
         /// </summary>
-        [JsonProperty("maiden_name")]
+        [JsonPropertyName("maiden_name")]
         public string MaidenName { get; set; }
 
         /// <summary>
@@ -117,13 +117,13 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The individual's phone number.
         /// </summary>
-        [JsonProperty("phone")]
+        [JsonPropertyName("phone")]
         public string Phone { get; set; }
 
         /// <summary>
@@ -132,25 +132,25 @@ namespace Stripe
         /// function, in any jurisdiction.
         /// One of: <c>existing</c>, or <c>none</c>.
         /// </summary>
-        [JsonProperty("political_exposure")]
+        [JsonPropertyName("political_exposure")]
         public string PoliticalExposure { get; set; }
 
         /// <summary>
         /// The individual's registered address.
         /// </summary>
-        [JsonProperty("registered_address")]
+        [JsonPropertyName("registered_address")]
         public AddressOptions RegisteredAddress { get; set; }
 
         /// <summary>
         /// The last four digits of the individual's Social Security Number (U.S. only).
         /// </summary>
-        [JsonProperty("ssn_last_4")]
+        [JsonPropertyName("ssn_last_4")]
         public string SsnLast4 { get; set; }
 
         /// <summary>
         /// The individual's verification document information.
         /// </summary>
-        [JsonProperty("verification")]
+        [JsonPropertyName("verification")]
         public TokenAccountIndividualVerificationOptions Verification { get; set; }
     }
 }

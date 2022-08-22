@@ -1,29 +1,29 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class MandatePaymentMethodDetails : StripeEntity<MandatePaymentMethodDetails>
     {
-        [JsonProperty("acss_debit")]
+        [JsonPropertyName("acss_debit")]
         public MandatePaymentMethodDetailsAcssDebit AcssDebit { get; set; }
 
-        [JsonProperty("au_becs_debit")]
+        [JsonPropertyName("au_becs_debit")]
         public MandatePaymentMethodDetailsAuBecsDebit AuBecsDebit { get; set; }
 
-        [JsonProperty("bacs_debit")]
+        [JsonPropertyName("bacs_debit")]
         public MandatePaymentMethodDetailsBacsDebit BacsDebit { get; set; }
 
-        [JsonProperty("blik")]
+        [JsonPropertyName("blik")]
         public MandatePaymentMethodDetailsBlik Blik { get; set; }
 
-        [JsonProperty("card")]
+        [JsonPropertyName("card")]
         public MandatePaymentMethodDetailsCard Card { get; set; }
 
-        [JsonProperty("link")]
+        [JsonPropertyName("link")]
         public MandatePaymentMethodDetailsLink Link { get; set; }
 
-        [JsonProperty("sepa_debit")]
+        [JsonPropertyName("sepa_debit")]
         public MandatePaymentMethodDetailsSepaDebit SepaDebit { get; set; }
 
         /// <summary>
@@ -31,10 +31,10 @@ namespace Stripe
         /// included on <c>payment_method_details</c> with a name matching this value. It contains
         /// mandate information specific to the payment method.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
-        [JsonProperty("us_bank_account")]
+        [JsonPropertyName("us_bank_account")]
         public MandatePaymentMethodDetailsUsBankAccount UsBankAccount { get; set; }
     }
 }

@@ -3,7 +3,7 @@ namespace Stripe.Issuing
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -18,48 +18,48 @@ namespace Stripe.Issuing
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
-        [JsonProperty("billing")]
+        [JsonPropertyName("billing")]
         public CardholderBilling Billing { get; set; }
 
         /// <summary>
         /// Additional information about a <c>company</c> cardholder.
         /// </summary>
-        [JsonProperty("company")]
+        [JsonPropertyName("company")]
         public CardholderCompany Company { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The cardholder's email address.
         /// </summary>
-        [JsonProperty("email")]
+        [JsonPropertyName("email")]
         public string Email { get; set; }
 
         /// <summary>
         /// Additional information about an <c>individual</c> cardholder.
         /// </summary>
-        [JsonProperty("individual")]
+        [JsonPropertyName("individual")]
         public CardholderIndividual Individual { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -67,13 +67,13 @@ namespace Stripe.Issuing
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The cardholder's name. This will be printed on cards issued to them.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
@@ -82,10 +82,10 @@ namespace Stripe.Issuing
         /// href="https://stripe.com/docs/issuing/3d-secure#when-is-3d-secure-applied">3D Secure
         /// documentation</a> for more details.
         /// </summary>
-        [JsonProperty("phone_number")]
+        [JsonPropertyName("phone_number")]
         public string PhoneNumber { get; set; }
 
-        [JsonProperty("requirements")]
+        [JsonPropertyName("requirements")]
         public CardholderRequirements Requirements { get; set; }
 
         /// <summary>
@@ -93,21 +93,21 @@ namespace Stripe.Issuing
         /// href="https://stripe.com/docs/issuing/controls/spending-controls">documentation</a> for
         /// more details.
         /// </summary>
-        [JsonProperty("spending_controls")]
+        [JsonPropertyName("spending_controls")]
         public CardholderSpendingControls SpendingControls { get; set; }
 
         /// <summary>
         /// Specifies whether to permit authorizations on this cardholder's cards.
         /// One of: <c>active</c>, <c>blocked</c>, or <c>inactive</c>.
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
         /// <summary>
         /// One of <c>individual</c> or <c>company</c>.
         /// One of: <c>company</c>, or <c>individual</c>.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
     }
 }

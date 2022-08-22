@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SetupIntentPaymentMethodDataKlarnaOptions : INestedOptions
     {
         /// <summary>
         /// Customer's date of birth.
         /// </summary>
-        [JsonProperty("dob")]
+        [JsonPropertyName("dob")]
         public SetupIntentPaymentMethodDataKlarnaDobOptions Dob { get; set; }
     }
 }

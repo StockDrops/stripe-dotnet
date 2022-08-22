@@ -1,6 +1,6 @@
 namespace StripeTests
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe;
     using Stripe.Infrastructure;
     using Xunit;
@@ -169,10 +169,10 @@ namespace StripeTests
 
         private class TestEntity : StripeEntity<TestEntity>
         {
-            [JsonProperty("integer")]
+            [JsonPropertyName("integer")]
             public int Integer { get; set; }
 
-            [JsonProperty("string")]
+            [JsonPropertyName("string")]
             public string String { get; set; }
 
             [JsonIgnore]
@@ -189,17 +189,17 @@ namespace StripeTests
                 set => this.InternalNested = SetExpandableFieldObject(value, this.InternalNested);
             }
 
-            [JsonProperty("nested")]
+            [JsonPropertyName("nested")]
             [JsonConverter(typeof(ExpandableFieldConverter<TestNestedEntity>))]
             internal ExpandableField<TestNestedEntity> InternalNested { get; set; }
         }
 
         private class TestNestedEntity : StripeEntity<TestNestedEntity>, IHasId
         {
-            [JsonProperty("id")]
+            [JsonPropertyName("id")]
             public string Id { get; set; }
 
-            [JsonProperty("bar")]
+            [JsonPropertyName("bar")]
             public int Bar { get; set; }
         }
     }

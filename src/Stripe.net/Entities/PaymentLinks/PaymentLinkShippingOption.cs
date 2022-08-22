@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class PaymentLinkShippingOption : StripeEntity<PaymentLinkShippingOption>
@@ -9,7 +9,7 @@ namespace Stripe
         /// <summary>
         /// A non-negative integer in cents representing how much to charge.
         /// </summary>
-        [JsonProperty("shipping_amount")]
+        [JsonPropertyName("shipping_amount")]
         public long ShippingAmount { get; set; }
 
         #region Expandable ShippingRate
@@ -38,7 +38,7 @@ namespace Stripe
             set => this.InternalShippingRate = SetExpandableFieldObject(value, this.InternalShippingRate);
         }
 
-        [JsonProperty("shipping_rate")]
+        [JsonPropertyName("shipping_rate")]
         [JsonConverter(typeof(ExpandableFieldConverter<ShippingRate>))]
         internal ExpandableField<ShippingRate> InternalShippingRate { get; set; }
         #endregion

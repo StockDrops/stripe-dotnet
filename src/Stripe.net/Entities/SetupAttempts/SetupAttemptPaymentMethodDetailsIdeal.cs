@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class SetupAttemptPaymentMethodDetailsIdeal : StripeEntity<SetupAttemptPaymentMethodDetailsIdeal>
@@ -15,7 +15,7 @@ namespace Stripe
         /// <c>knab</c>, <c>moneyou</c>, <c>rabobank</c>, <c>regiobank</c>, <c>revolut</c>,
         /// <c>sns_bank</c>, <c>triodos_bank</c>, or <c>van_lanschot</c>.
         /// </summary>
-        [JsonProperty("bank")]
+        [JsonPropertyName("bank")]
         public string Bank { get; set; }
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace Stripe
         /// <c>HANDNL2A</c>, <c>INGBNL2A</c>, <c>KNABNL2H</c>, <c>MOYONL21</c>, <c>RABONL2U</c>,
         /// <c>RBRBNL21</c>, <c>REVOLT21</c>, <c>SNSBNL2A</c>, or <c>TRIONL2U</c>.
         /// </summary>
-        [JsonProperty("bic")]
+        [JsonPropertyName("bic")]
         public string Bic { get; set; }
 
         #region Expandable GeneratedSepaDebit
@@ -53,7 +53,7 @@ namespace Stripe
             set => this.InternalGeneratedSepaDebit = SetExpandableFieldObject(value, this.InternalGeneratedSepaDebit);
         }
 
-        [JsonProperty("generated_sepa_debit")]
+        [JsonPropertyName("generated_sepa_debit")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
         internal ExpandableField<PaymentMethod> InternalGeneratedSepaDebit { get; set; }
         #endregion
@@ -86,7 +86,7 @@ namespace Stripe
             set => this.InternalGeneratedSepaDebitMandate = SetExpandableFieldObject(value, this.InternalGeneratedSepaDebitMandate);
         }
 
-        [JsonProperty("generated_sepa_debit_mandate")]
+        [JsonPropertyName("generated_sepa_debit_mandate")]
         [JsonConverter(typeof(ExpandableFieldConverter<Mandate>))]
         internal ExpandableField<Mandate> InternalGeneratedSepaDebitMandate { get; set; }
         #endregion
@@ -94,14 +94,14 @@ namespace Stripe
         /// <summary>
         /// Last four characters of the IBAN.
         /// </summary>
-        [JsonProperty("iban_last4")]
+        [JsonPropertyName("iban_last4")]
         public string IbanLast4 { get; set; }
 
         /// <summary>
         /// Owner's verified full name. Values are verified or provided by iDEAL directly (if
         /// supported) at the time of authorization or settlement. They cannot be set or mutated.
         /// </summary>
-        [JsonProperty("verified_name")]
+        [JsonPropertyName("verified_name")]
         public string VerifiedName { get; set; }
     }
 }

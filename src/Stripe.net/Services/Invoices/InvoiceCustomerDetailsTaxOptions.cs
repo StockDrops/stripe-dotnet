@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class InvoiceCustomerDetailsTaxOptions : INestedOptions
     {
@@ -11,7 +11,7 @@ namespace Stripe
         /// address field on the customer is updated. We recommend against updating this field more
         /// frequently since it could result in unexpected tax location/reporting outcomes.
         /// </summary>
-        [JsonProperty("ip_address")]
+        [JsonPropertyName("ip_address")]
         public string IpAddress { get; set; }
     }
 }

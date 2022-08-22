@@ -2,43 +2,43 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class SourceTransaction : StripeEntity<SourceTransaction>, IHasId, IHasObject
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long? Amount { get; set; }
 
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
-        [JsonProperty("customer_data")]
+        [JsonPropertyName("customer_data")]
         public string CustomerData { get; set; }
 
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
-        [JsonProperty("source")]
+        [JsonPropertyName("source")]
         public string Source { get; set; }
 
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
-        [JsonProperty("ach_credit_transfer")]
+        [JsonPropertyName("ach_credit_transfer")]
         public SourceTransactionAchCreditTransfer AchCreditTransfer { get; set; }
 
-        [JsonProperty("sepa_credit_transfer")]
+        [JsonPropertyName("sepa_credit_transfer")]
         public SourceTransactionSepaCreditTransfer SepaCreditTransfer { get; set; }
     }
 }

@@ -3,7 +3,7 @@ namespace Stripe.Issuing
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -15,26 +15,26 @@ namespace Stripe.Issuing
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
         /// The brand of the card.
         /// </summary>
-        [JsonProperty("brand")]
+        [JsonPropertyName("brand")]
         public string Brand { get; set; }
 
         /// <summary>
         /// The reason why the card was canceled.
         /// One of: <c>design_rejected</c>, <c>lost</c>, or <c>stolen</c>.
         /// </summary>
-        [JsonProperty("cancellation_reason")]
+        [JsonPropertyName("cancellation_reason")]
         public string CancellationReason { get; set; }
 
         /// <summary>
@@ -44,13 +44,13 @@ namespace Stripe.Issuing
         /// Related guide: <a href="https://stripe.com/docs/issuing/cards#create-cardholder">How to
         /// create a Cardholder</a>.
         /// </summary>
-        [JsonProperty("cardholder")]
+        [JsonPropertyName("cardholder")]
         public Cardholder Cardholder { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -59,7 +59,7 @@ namespace Stripe.Issuing
         /// code</a>, in lowercase. Supported currencies are <c>usd</c> in the US, <c>eur</c> in the
         /// EU, and <c>gbp</c> in the UK.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
@@ -70,38 +70,38 @@ namespace Stripe.Issuing
         /// href="https://stripe.com/docs/api/issuing/cards/retrieve">"Retrieve a card"
         /// endpoint</a>, not via "List all cards" or any other endpoint.
         /// </summary>
-        [JsonProperty("cvc")]
+        [JsonPropertyName("cvc")]
         public string Cvc { get; set; }
 
         /// <summary>
         /// The expiration month of the card.
         /// </summary>
-        [JsonProperty("exp_month")]
+        [JsonPropertyName("exp_month")]
         public long ExpMonth { get; set; }
 
         /// <summary>
         /// The expiration year of the card.
         /// </summary>
-        [JsonProperty("exp_year")]
+        [JsonPropertyName("exp_year")]
         public long ExpYear { get; set; }
 
         /// <summary>
         /// The financial account this card is attached to.
         /// </summary>
-        [JsonProperty("financial_account")]
+        [JsonPropertyName("financial_account")]
         public string FinancialAccount { get; set; }
 
         /// <summary>
         /// The last 4 digits of the card number.
         /// </summary>
-        [JsonProperty("last4")]
+        [JsonPropertyName("last4")]
         public string Last4 { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace Stripe.Issuing
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace Stripe.Issuing
         /// href="https://stripe.com/docs/api/issuing/cards/retrieve">"Retrieve a card"
         /// endpoint</a>, not via "List all cards" or any other endpoint.
         /// </summary>
-        [JsonProperty("number")]
+        [JsonPropertyName("number")]
         public string Number { get; set; }
 
         #region Expandable ReplacedBy
@@ -149,7 +149,7 @@ namespace Stripe.Issuing
             set => this.InternalReplacedBy = SetExpandableFieldObject(value, this.InternalReplacedBy);
         }
 
-        [JsonProperty("replaced_by")]
+        [JsonPropertyName("replaced_by")]
         [JsonConverter(typeof(ExpandableFieldConverter<Card>))]
         internal ExpandableField<Card> InternalReplacedBy { get; set; }
         #endregion
@@ -180,7 +180,7 @@ namespace Stripe.Issuing
             set => this.InternalReplacementFor = SetExpandableFieldObject(value, this.InternalReplacementFor);
         }
 
-        [JsonProperty("replacement_for")]
+        [JsonPropertyName("replacement_for")]
         [JsonConverter(typeof(ExpandableFieldConverter<Card>))]
         internal ExpandableField<Card> InternalReplacementFor { get; set; }
         #endregion
@@ -189,36 +189,36 @@ namespace Stripe.Issuing
         /// The reason why the previous card needed to be replaced.
         /// One of: <c>damaged</c>, <c>expired</c>, <c>lost</c>, or <c>stolen</c>.
         /// </summary>
-        [JsonProperty("replacement_reason")]
+        [JsonPropertyName("replacement_reason")]
         public string ReplacementReason { get; set; }
 
         /// <summary>
         /// Where and how the card will be shipped.
         /// </summary>
-        [JsonProperty("shipping")]
+        [JsonPropertyName("shipping")]
         public CardShipping Shipping { get; set; }
 
-        [JsonProperty("spending_controls")]
+        [JsonPropertyName("spending_controls")]
         public CardSpendingControls SpendingControls { get; set; }
 
         /// <summary>
         /// Whether authorizations can be approved on this card.
         /// One of: <c>active</c>, <c>canceled</c>, or <c>inactive</c>.
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
         /// <summary>
         /// The type of the card.
         /// One of: <c>physical</c>, or <c>virtual</c>.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>
         /// Information relating to digital wallets (like Apple Pay and Google Pay).
         /// </summary>
-        [JsonProperty("wallets")]
+        [JsonPropertyName("wallets")]
         public CardWallets Wallets { get; set; }
     }
 }

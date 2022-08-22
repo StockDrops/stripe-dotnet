@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PaymentIntentPaymentMethodOptionsCardPresent : StripeEntity<PaymentIntentPaymentMethodOptionsCardPresent>
     {
@@ -10,7 +10,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/terminal/features/extended-authorizations#authorization-validity">authorization
         /// validity window</a>.
         /// </summary>
-        [JsonProperty("request_extended_authorization")]
+        [JsonPropertyName("request_extended_authorization")]
         public bool? RequestExtendedAuthorization { get; set; }
 
         /// <summary>
@@ -21,7 +21,7 @@ namespace Stripe
         /// in the <a href="https://stripe.com/docs/api/payment_intents/confirm">Confirm</a>
         /// response to verify support.
         /// </summary>
-        [JsonProperty("request_incremental_authorization_support")]
+        [JsonPropertyName("request_incremental_authorization_support")]
         public bool? RequestIncrementalAuthorizationSupport { get; set; }
     }
 }

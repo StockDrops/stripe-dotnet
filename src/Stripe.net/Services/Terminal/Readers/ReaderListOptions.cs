@@ -1,17 +1,17 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Terminal
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ReaderListOptions : ListOptions
     {
-        [JsonProperty("device_type")]
+        [JsonPropertyName("device_type")]
         public string DeviceType { get; set; }
 
-        [JsonProperty("location")]
+        [JsonPropertyName("location")]
         public string Location { get; set; }
 
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
     }
 }

@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class AccountSettingsCardPayments : StripeEntity<AccountSettingsCardPayments>
     {
-        [JsonProperty("decline_on")]
+        [JsonPropertyName("decline_on")]
         public AccountSettingsDeclineOn DeclineOn { get; set; }
 
         /// <summary>
@@ -14,7 +14,7 @@ namespace Stripe
         /// <c>statement_descriptor_prefix</c> is useful for maximizing descriptor space for the
         /// dynamic portion.
         /// </summary>
-        [JsonProperty("statement_descriptor_prefix")]
+        [JsonPropertyName("statement_descriptor_prefix")]
         public string StatementDescriptorPrefix { get; set; }
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace Stripe
         /// <c>statement_descriptor_prefix_kana</c> is useful for maximizing descriptor space for
         /// the dynamic portion.
         /// </summary>
-        [JsonProperty("statement_descriptor_prefix_kana")]
+        [JsonPropertyName("statement_descriptor_prefix_kana")]
         public string StatementDescriptorPrefixKana { get; set; }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace Stripe
         /// <c>statement_descriptor_prefix_kanji</c> is useful for maximizing descriptor space for
         /// the dynamic portion.
         /// </summary>
-        [JsonProperty("statement_descriptor_prefix_kanji")]
+        [JsonPropertyName("statement_descriptor_prefix_kanji")]
         public string StatementDescriptorPrefixKanji { get; set; }
     }
 }

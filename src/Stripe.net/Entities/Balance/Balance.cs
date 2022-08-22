@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// This is an object representing your Stripe balance. You can retrieve it to see the
@@ -23,7 +23,7 @@ namespace Stripe
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace Stripe
         /// or <a href="https://stripe.com/docs/api#payouts">Payouts API</a>. The available balance
         /// for each currency and payment type can be found in the <c>source_types</c> property.
         /// </summary>
-        [JsonProperty("available")]
+        [JsonPropertyName("available")]
         public List<BalanceAmount> Available { get; set; }
 
         /// <summary>
@@ -40,23 +40,23 @@ namespace Stripe
         /// balance for each currency and payment type can be found in the <c>source_types</c>
         /// property.
         /// </summary>
-        [JsonProperty("connect_reserved")]
+        [JsonPropertyName("connect_reserved")]
         public List<BalanceAmount> ConnectReserved { get; set; }
 
         /// <summary>
         /// Funds that can be paid out using Instant Payouts.
         /// </summary>
-        [JsonProperty("instant_available")]
+        [JsonPropertyName("instant_available")]
         public List<BalanceInstantAvailable> InstantAvailable { get; set; }
 
-        [JsonProperty("issuing")]
+        [JsonPropertyName("issuing")]
         public BalanceIssuing Issuing { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Stripe
         /// pending balance for each currency, and for each payment type, can be found in the
         /// <c>source_types</c> property.
         /// </summary>
-        [JsonProperty("pending")]
+        [JsonPropertyName("pending")]
         public List<BalanceAmount> Pending { get; set; }
     }
 }

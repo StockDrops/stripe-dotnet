@@ -1,7 +1,7 @@
 namespace Stripe
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class Discount : StripeEntity<Discount>, IHasId, IHasObject
@@ -9,26 +9,26 @@ namespace Stripe
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
         /// The Checkout session that this coupon is applied to, if it is applied to a particular
         /// session in payment mode. Will not be present for subscription mode.
         /// </summary>
-        [JsonProperty("checkout_session")]
+        [JsonPropertyName("checkout_session")]
         public string CheckoutSession { get; set; }
 
         /// <summary>
         /// Hash describing the coupon applied to create this discount.
         /// </summary>
-        [JsonProperty("coupon")]
+        [JsonPropertyName("coupon")]
         public Coupon Coupon { get; set; }
 
         #region Expandable Customer
@@ -55,7 +55,7 @@ namespace Stripe
             set => this.InternalCustomer = SetExpandableFieldObject(value, this.InternalCustomer);
         }
 
-        [JsonProperty("customer")]
+        [JsonPropertyName("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
@@ -63,7 +63,8 @@ namespace Stripe
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
-        [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("deleted")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public bool? Deleted { get; set; }
 
         /// <summary>
@@ -71,7 +72,7 @@ namespace Stripe
         /// will end. If the coupon has a <c>duration</c> of <c>once</c> or forever, this attribute
         /// will be null.
         /// </summary>
-        [JsonProperty("end")]
+        [JsonPropertyName("end")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? End { get; set; }
 
@@ -79,7 +80,7 @@ namespace Stripe
         /// The invoice that the discount’s coupon was applied to, if it was applied directly to a
         /// particular invoice.
         /// </summary>
-        [JsonProperty("invoice")]
+        [JsonPropertyName("invoice")]
         public string Invoice { get; set; }
 
         /// <summary>
@@ -87,7 +88,7 @@ namespace Stripe
         /// type=‘subscription’) that the discount’s coupon was applied to, if it was applied
         /// directly to a particular invoice item or invoice line item.
         /// </summary>
-        [JsonProperty("invoice_item")]
+        [JsonPropertyName("invoice_item")]
         public string InvoiceItem { get; set; }
 
         #region Expandable PromotionCode
@@ -114,7 +115,7 @@ namespace Stripe
             set => this.InternalPromotionCode = SetExpandableFieldObject(value, this.InternalPromotionCode);
         }
 
-        [JsonProperty("promotion_code")]
+        [JsonPropertyName("promotion_code")]
         [JsonConverter(typeof(ExpandableFieldConverter<PromotionCode>))]
         internal ExpandableField<PromotionCode> InternalPromotionCode { get; set; }
         #endregion
@@ -122,7 +123,7 @@ namespace Stripe
         /// <summary>
         /// Date that the coupon was applied.
         /// </summary>
-        [JsonProperty("start")]
+        [JsonPropertyName("start")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? Start { get; set; }
 
@@ -152,7 +153,7 @@ namespace Stripe
             set => this.InternalSubscription = SetExpandableFieldObject(value, this.InternalSubscription);
         }
 
-        [JsonProperty("subscription")]
+        [JsonPropertyName("subscription")]
         [JsonConverter(typeof(ExpandableFieldConverter<Subscription>))]
         internal ExpandableField<Subscription> InternalSubscription { get; set; }
         #endregion

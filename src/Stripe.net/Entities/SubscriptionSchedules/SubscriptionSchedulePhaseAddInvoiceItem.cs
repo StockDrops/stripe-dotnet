@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class SubscriptionSchedulePhaseAddInvoiceItem : StripeEntity<SubscriptionSchedulePhaseAddInvoiceItem>
@@ -33,7 +33,7 @@ namespace Stripe
             set => this.InternalPrice = SetExpandableFieldObject(value, this.InternalPrice);
         }
 
-        [JsonProperty("price")]
+        [JsonPropertyName("price")]
         [JsonConverter(typeof(ExpandableFieldConverter<Price>))]
         internal ExpandableField<Price> InternalPrice { get; set; }
         #endregion
@@ -41,14 +41,14 @@ namespace Stripe
         /// <summary>
         /// The quantity of the invoice item.
         /// </summary>
-        [JsonProperty("quantity")]
+        [JsonPropertyName("quantity")]
         public long? Quantity { get; set; }
 
         /// <summary>
         /// The tax rates which apply to the item. When set, the <c>default_tax_rates</c> do not
         /// apply to this item.
         /// </summary>
-        [JsonProperty("tax_rates")]
+        [JsonPropertyName("tax_rates")]
         public List<TaxRate> TaxRates { get; set; }
     }
 }

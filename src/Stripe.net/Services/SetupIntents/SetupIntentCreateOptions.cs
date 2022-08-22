@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SetupIntentCreateOptions : BaseOptions, IHasMetadata
     {
@@ -15,7 +15,7 @@ namespace Stripe
         /// PaymentMethod for a Customer, and defaults to false when attaching a PaymentMethod to a
         /// Customer.
         /// </summary>
-        [JsonProperty("attach_to_self")]
+        [JsonPropertyName("attach_to_self")]
         public bool? AttachToSelf { get; set; }
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace Stripe
         /// defaults to <c>false</c>. If the payment method attached is a card, a return_url may be
         /// provided in case additional authentication is required.
         /// </summary>
-        [JsonProperty("confirm")]
+        [JsonPropertyName("confirm")]
         public bool? Confirm { get; set; }
 
         /// <summary>
@@ -33,13 +33,13 @@ namespace Stripe
         /// successful setup. Payment methods attached to other Customers cannot be used with this
         /// SetupIntent.
         /// </summary>
-        [JsonProperty("customer")]
+        [JsonPropertyName("customer")]
         public string Customer { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace Stripe
         /// destination to send funds to. You can include both if you intend to use the payment
         /// method for both purposes.
         /// </summary>
-        [JsonProperty("flow_directions")]
+        [JsonPropertyName("flow_directions")]
         public List<string> FlowDirections { get; set; }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Stripe
         /// with <a
         /// href="https://stripe.com/docs/api/setup_intents/create#create_setup_intent-confirm"><c>confirm=true</c></a>.
         /// </summary>
-        [JsonProperty("mandate_data")]
+        [JsonPropertyName("mandate_data")]
         public SetupIntentMandateDataOptions MandateData { get; set; }
 
         /// <summary>
@@ -68,20 +68,20 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The Stripe account ID for which this SetupIntent is created.
         /// </summary>
-        [JsonProperty("on_behalf_of")]
+        [JsonPropertyName("on_behalf_of")]
         public string OnBehalfOf { get; set; }
 
         /// <summary>
         /// ID of the payment method (a PaymentMethod, Card, or saved Source object) to attach to
         /// this SetupIntent.
         /// </summary>
-        [JsonProperty("payment_method")]
+        [JsonPropertyName("payment_method")]
         public string PaymentMethod { get; set; }
 
         /// <summary>
@@ -89,20 +89,20 @@ namespace Stripe
         /// href="https://stripe.com/docs/api/setup_intents/object#setup_intent_object-payment_method"><c>payment_method</c></a>
         /// value in the SetupIntent.
         /// </summary>
-        [JsonProperty("payment_method_data")]
+        [JsonPropertyName("payment_method_data")]
         public SetupIntentPaymentMethodDataOptions PaymentMethodData { get; set; }
 
         /// <summary>
         /// Payment-method-specific configuration for this SetupIntent.
         /// </summary>
-        [JsonProperty("payment_method_options")]
+        [JsonPropertyName("payment_method_options")]
         public SetupIntentPaymentMethodOptionsOptions PaymentMethodOptions { get; set; }
 
         /// <summary>
         /// The list of payment method types (e.g. card) that this SetupIntent is allowed to use. If
         /// this is not provided, defaults to ["card"].
         /// </summary>
-        [JsonProperty("payment_method_types")]
+        [JsonPropertyName("payment_method_types")]
         public List<string> PaymentMethodTypes { get; set; }
 
         /// <summary>
@@ -112,14 +112,14 @@ namespace Stripe
         /// only be used with <a
         /// href="https://stripe.com/docs/api/setup_intents/create#create_setup_intent-confirm"><c>confirm=true</c></a>.
         /// </summary>
-        [JsonProperty("return_url")]
+        [JsonPropertyName("return_url")]
         public string ReturnUrl { get; set; }
 
         /// <summary>
         /// If this hash is populated, this SetupIntent will generate a single_use Mandate on
         /// success.
         /// </summary>
-        [JsonProperty("single_use")]
+        [JsonPropertyName("single_use")]
         public SetupIntentSingleUseOptions SingleUse { get; set; }
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace Stripe
         /// this value defaults to <c>off_session</c>.
         /// One of: <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
-        [JsonProperty("usage")]
+        [JsonPropertyName("usage")]
         public string Usage { get; set; }
     }
 }

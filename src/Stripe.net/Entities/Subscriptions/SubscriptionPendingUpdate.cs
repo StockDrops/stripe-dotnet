@@ -3,7 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class SubscriptionPendingUpdate : StripeEntity<SubscriptionPendingUpdate>
@@ -13,7 +13,7 @@ namespace Stripe
         /// with <c>month</c> or <c>year</c> intervals, the day of the month for subsequent
         /// invoices. The timestamp is in UTC format.
         /// </summary>
-        [JsonProperty("billing_cycle_anchor")]
+        [JsonPropertyName("billing_cycle_anchor")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? BillingCycleAnchor { get; set; }
 
@@ -21,7 +21,7 @@ namespace Stripe
         /// The point after which the changes reflected by this update will be discarded and no
         /// longer applied.
         /// </summary>
-        [JsonProperty("expires_at")]
+        [JsonPropertyName("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime ExpiresAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -29,14 +29,14 @@ namespace Stripe
         /// List of subscription items, each with an attached plan, that will be set if the update
         /// is applied.
         /// </summary>
-        [JsonProperty("subscription_items")]
+        [JsonPropertyName("subscription_items")]
         public List<SubscriptionItem> SubscriptionItems { get; set; }
 
         /// <summary>
         /// Unix timestamp representing the end of the trial period the customer will get before
         /// being charged for the first time, if the update is applied.
         /// </summary>
-        [JsonProperty("trial_end")]
+        [JsonPropertyName("trial_end")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? TrialEnd { get; set; }
 
@@ -47,7 +47,7 @@ namespace Stripe
         /// allowed. See <a href="https://stripe.com/docs/billing/subscriptions/trials">Using trial
         /// periods on subscriptions</a> to learn more.
         /// </summary>
-        [JsonProperty("trial_from_plan")]
+        [JsonPropertyName("trial_from_plan")]
         public bool? TrialFromPlan { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 namespace Stripe.Issuing
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class AuthorizationApproveOptions : BaseOptions, IHasMetadata
     {
@@ -13,7 +13,7 @@ namespace Stripe.Issuing
         /// href="https://stripe.com/docs/api/issuing/authorizations/decline"><c>decline</c></a> to
         /// decline an authorization request).
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long? Amount { get; set; }
 
         /// <summary>
@@ -22,7 +22,7 @@ namespace Stripe.Issuing
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
     }
 }

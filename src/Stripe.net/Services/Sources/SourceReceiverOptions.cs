@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SourceReceiverOptions : INestedOptions
     {
@@ -13,7 +13,7 @@ namespace Stripe
         /// may be required.
         /// One of: <c>email</c>, <c>manual</c>, or <c>none</c>.
         /// </summary>
-        [JsonProperty("refund_attributes_method")]
+        [JsonPropertyName("refund_attributes_method")]
         public string RefundAttributesMethod { get; set; }
     }
 }

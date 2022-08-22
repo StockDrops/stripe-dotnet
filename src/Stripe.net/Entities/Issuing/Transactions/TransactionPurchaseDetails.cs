@@ -2,38 +2,38 @@
 namespace Stripe.Issuing
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class TransactionPurchaseDetails : StripeEntity<TransactionPurchaseDetails>
     {
         /// <summary>
         /// Information about the flight that was purchased with this transaction.
         /// </summary>
-        [JsonProperty("flight")]
+        [JsonPropertyName("flight")]
         public TransactionPurchaseDetailsFlight Flight { get; set; }
 
         /// <summary>
         /// Information about fuel that was purchased with this transaction.
         /// </summary>
-        [JsonProperty("fuel")]
+        [JsonPropertyName("fuel")]
         public TransactionPurchaseDetailsFuel Fuel { get; set; }
 
         /// <summary>
         /// Information about lodging that was purchased with this transaction.
         /// </summary>
-        [JsonProperty("lodging")]
+        [JsonPropertyName("lodging")]
         public TransactionPurchaseDetailsLodging Lodging { get; set; }
 
         /// <summary>
         /// The line items in the purchase.
         /// </summary>
-        [JsonProperty("receipt")]
+        [JsonPropertyName("receipt")]
         public List<TransactionPurchaseDetailsReceipt> Receipt { get; set; }
 
         /// <summary>
         /// A merchant-specific order number.
         /// </summary>
-        [JsonProperty("reference")]
+        [JsonPropertyName("reference")]
         public string Reference { get; set; }
     }
 }

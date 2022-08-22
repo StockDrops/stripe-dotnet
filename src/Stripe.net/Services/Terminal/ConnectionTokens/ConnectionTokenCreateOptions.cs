@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Terminal
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ConnectionTokenCreateOptions : BaseOptions
     {
@@ -13,7 +13,7 @@ namespace Stripe.Terminal
         /// href="https://stripe.com/docs/terminal/fleet/locations#connection-tokens">the docs on
         /// scoping connection tokens</a>.
         /// </summary>
-        [JsonProperty("location")]
+        [JsonPropertyName("location")]
         public string Location { get; set; }
     }
 }

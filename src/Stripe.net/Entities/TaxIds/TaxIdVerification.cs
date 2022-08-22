@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class TaxIdVerification : StripeEntity<TaxIdVerification>
     {
@@ -10,19 +10,19 @@ namespace Stripe
         /// <c>unavailable</c>.
         /// One of: <c>pending</c>, <c>unavailable</c>, <c>unverified</c>, or <c>verified</c>.
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
         /// <summary>
         /// Verified address.
         /// </summary>
-        [JsonProperty("verified_address")]
+        [JsonPropertyName("verified_address")]
         public string VerifiedAddress { get; set; }
 
         /// <summary>
         /// Verified name.
         /// </summary>
-        [JsonProperty("verified_name")]
+        [JsonPropertyName("verified_name")]
         public string VerifiedName { get; set; }
     }
 }

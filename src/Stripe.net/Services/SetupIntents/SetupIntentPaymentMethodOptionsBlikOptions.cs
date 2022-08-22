@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SetupIntentPaymentMethodOptionsBlikOptions : INestedOptions
     {
@@ -9,7 +9,7 @@ namespace Stripe
         /// The 6-digit BLIK code that a customer has generated using their banking application. Can
         /// only be set on confirmation.
         /// </summary>
-        [JsonProperty("code")]
+        [JsonPropertyName("code")]
         public string Code { get; set; }
     }
 }

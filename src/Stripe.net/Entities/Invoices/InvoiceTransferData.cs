@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class InvoiceTransferData : StripeEntity<InvoiceTransferData>
@@ -10,7 +10,7 @@ namespace Stripe
         /// The amount in %s that will be transferred to the destination account when the invoice is
         /// paid. By default, the entire amount is transferred to the destination.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long? Amount { get; set; }
 
         #region Expandable Destination
@@ -39,7 +39,7 @@ namespace Stripe
             set => this.InternalDestination = SetExpandableFieldObject(value, this.InternalDestination);
         }
 
-        [JsonProperty("destination")]
+        [JsonPropertyName("destination")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
         internal ExpandableField<Account> InternalDestination { get; set; }
         #endregion

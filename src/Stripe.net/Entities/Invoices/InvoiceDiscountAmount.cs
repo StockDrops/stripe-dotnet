@@ -1,11 +1,11 @@
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class InvoiceDiscountAmount : StripeEntity<InvoiceDiscountAmount>
     {
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long Amount { get; set; }
 
         #region Expandable Discount
@@ -24,7 +24,7 @@ namespace Stripe
             set => this.InternalDiscount = SetExpandableFieldObject(value, this.InternalDiscount);
         }
 
-        [JsonProperty("discount")]
+        [JsonPropertyName("discount")]
         [JsonConverter(typeof(ExpandableFieldConverter<Discount>))]
         internal ExpandableField<Discount> InternalDiscount { get; set; }
         #endregion

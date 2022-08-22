@@ -2,14 +2,14 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class CouponAppliesTo : StripeEntity<CouponAppliesTo>
     {
         /// <summary>
         /// A list of product IDs this coupon applies to.
         /// </summary>
-        [JsonProperty("products")]
+        [JsonPropertyName("products")]
         public List<string> Products { get; set; }
     }
 }

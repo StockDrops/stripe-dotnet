@@ -1,6 +1,6 @@
 namespace Stripe.Infrastructure
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// Used to indicate that a particular property is allowed to have a name that isn't a strict

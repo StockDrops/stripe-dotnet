@@ -2,17 +2,17 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class EventListOptions : ListOptionsWithCreated
     {
-        [JsonProperty("delivery_success")]
+        [JsonPropertyName("delivery_success")]
         public bool? DeliverySuccess { get; set; }
 
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
-        [JsonProperty("types")]
+        [JsonPropertyName("types")]
         public List<string> Types { get; set; }
     }
 }

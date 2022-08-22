@@ -2,14 +2,14 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ChargePaymentMethodDetailsInteracPresent : StripeEntity<ChargePaymentMethodDetailsInteracPresent>
     {
         /// <summary>
         /// Card brand. Can be <c>interac</c>, <c>mastercard</c> or <c>visa</c>.
         /// </summary>
-        [JsonProperty("brand")]
+        [JsonPropertyName("brand")]
         public string Brand { get; set; }
 
         /// <summary>
@@ -20,39 +20,39 @@ namespace Stripe
         /// configured the card. Cardholder name is typically not available on swipe or contactless
         /// payments, such as those made with Apple Pay and Google Pay.
         /// </summary>
-        [JsonProperty("cardholder_name")]
+        [JsonPropertyName("cardholder_name")]
         public string CardholderName { get; set; }
 
         /// <summary>
         /// Two-letter ISO code representing the country of the card. You could use this attribute
         /// to get a sense of the international breakdown of cards you've collected.
         /// </summary>
-        [JsonProperty("country")]
+        [JsonPropertyName("country")]
         public string Country { get; set; }
 
         /// <summary>
         /// A high-level description of the type of cards issued in this range. (For internal use
         /// only and not typically available in standard API requests.).
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
         /// Authorization response cryptogram.
         /// </summary>
-        [JsonProperty("emv_auth_data")]
+        [JsonPropertyName("emv_auth_data")]
         public string EmvAuthData { get; set; }
 
         /// <summary>
         /// Two-digit number representing the card's expiration month.
         /// </summary>
-        [JsonProperty("exp_month")]
+        [JsonPropertyName("exp_month")]
         public long ExpMonth { get; set; }
 
         /// <summary>
         /// Four-digit number representing the card's expiration year.
         /// </summary>
-        [JsonProperty("exp_year")]
+        [JsonPropertyName("exp_year")]
         public long ExpYear { get; set; }
 
         /// <summary>
@@ -64,14 +64,14 @@ namespace Stripe
         /// <em>Starting May 1, 2021, card fingerprint in India for Connect will change to allow two
         /// fingerprints for the same card --- one for India and one for the rest of the world.</em>.
         /// </summary>
-        [JsonProperty("fingerprint")]
+        [JsonPropertyName("fingerprint")]
         public string Fingerprint { get; set; }
 
         /// <summary>
         /// Card funding type. Can be <c>credit</c>, <c>debit</c>, <c>prepaid</c>, or
         /// <c>unknown</c>.
         /// </summary>
-        [JsonProperty("funding")]
+        [JsonPropertyName("funding")]
         public string Funding { get; set; }
 
         /// <summary>
@@ -79,27 +79,27 @@ namespace Stripe
         /// attached to a Customer for future transactions. Only present if it was possible to
         /// generate a card PaymentMethod.
         /// </summary>
-        [JsonProperty("generated_card")]
+        [JsonPropertyName("generated_card")]
         public string GeneratedCard { get; set; }
 
         /// <summary>
         /// Issuer identification number of the card. (For internal use only and not typically
         /// available in standard API requests.).
         /// </summary>
-        [JsonProperty("iin")]
+        [JsonPropertyName("iin")]
         public string Iin { get; set; }
 
         /// <summary>
         /// The name of the card's issuing bank. (For internal use only and not typically available
         /// in standard API requests.).
         /// </summary>
-        [JsonProperty("issuer")]
+        [JsonPropertyName("issuer")]
         public string Issuer { get; set; }
 
         /// <summary>
         /// The last four digits of the card.
         /// </summary>
-        [JsonProperty("last4")]
+        [JsonPropertyName("last4")]
         public string Last4 { get; set; }
 
         /// <summary>
@@ -107,13 +107,13 @@ namespace Stripe
         /// <c>cartes_bancaires</c>, <c>diners</c>, <c>discover</c>, <c>interac</c>, <c>jcb</c>,
         /// <c>mastercard</c>, <c>unionpay</c>, <c>visa</c>, or <c>unknown</c>.
         /// </summary>
-        [JsonProperty("network")]
+        [JsonPropertyName("network")]
         public string Network { get; set; }
 
         /// <summary>
         /// EMV tag 5F2D. Preferred languages specified by the integrated circuit chip.
         /// </summary>
-        [JsonProperty("preferred_locales")]
+        [JsonPropertyName("preferred_locales")]
         public List<string> PreferredLocales { get; set; }
 
         /// <summary>
@@ -121,14 +121,14 @@ namespace Stripe
         /// One of: <c>contact_emv</c>, <c>contactless_emv</c>, <c>contactless_magstripe_mode</c>,
         /// <c>magnetic_stripe_fallback</c>, or <c>magnetic_stripe_track2</c>.
         /// </summary>
-        [JsonProperty("read_method")]
+        [JsonPropertyName("read_method")]
         public string ReadMethod { get; set; }
 
         /// <summary>
         /// A collection of fields required to be displayed on receipts. Only required for EMV
         /// transactions.
         /// </summary>
-        [JsonProperty("receipt")]
+        [JsonPropertyName("receipt")]
         public ChargePaymentMethodDetailsInteracPresentReceipt Receipt { get; set; }
     }
 }

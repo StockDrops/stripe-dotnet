@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class PaymentIntentNextActionCardAwaitNotification : StripeEntity<PaymentIntentNextActionCardAwaitNotification>
@@ -11,7 +11,7 @@ namespace Stripe
         /// The time that payment will be attempted. If customer approval is required, they need to
         /// provide approval before this time.
         /// </summary>
-        [JsonProperty("charge_attempt_at")]
+        [JsonPropertyName("charge_attempt_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ChargeAttemptAt { get; set; }
 
@@ -19,7 +19,7 @@ namespace Stripe
         /// For payments greater than INR 15000, the customer must provide explicit approval of the
         /// payment with their bank. For payments of lower amount, no customer action is required.
         /// </summary>
-        [JsonProperty("customer_approval_required")]
+        [JsonPropertyName("customer_approval_required")]
         public bool? CustomerApprovalRequired { get; set; }
     }
 }

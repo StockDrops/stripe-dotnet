@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec
 namespace Stripe.FinancialConnections
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class AccountListOwnersOptions : ListOptions
     {
-        [JsonProperty("ownership")]
+        [JsonPropertyName("ownership")]
         public string Ownership { get; set; }
     }
 }

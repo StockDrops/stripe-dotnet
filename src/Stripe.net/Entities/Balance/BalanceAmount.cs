@@ -1,17 +1,17 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class BalanceAmount : StripeEntity<BalanceAmount>
     {
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long Amount { get; set; }
 
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
-        [JsonProperty("source_types")]
+        [JsonPropertyName("source_types")]
         public Dictionary<string, long> SourceTypes { get; set; }
     }
 }

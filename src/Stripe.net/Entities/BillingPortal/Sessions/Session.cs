@@ -2,7 +2,7 @@
 namespace Stripe.BillingPortal
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -27,13 +27,13 @@ namespace Stripe.BillingPortal
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         #region Expandable Configuration
@@ -62,7 +62,7 @@ namespace Stripe.BillingPortal
             set => this.InternalConfiguration = SetExpandableFieldObject(value, this.InternalConfiguration);
         }
 
-        [JsonProperty("configuration")]
+        [JsonPropertyName("configuration")]
         [JsonConverter(typeof(ExpandableFieldConverter<Configuration>))]
         internal ExpandableField<Configuration> InternalConfiguration { get; set; }
         #endregion
@@ -70,21 +70,21 @@ namespace Stripe.BillingPortal
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The ID of the customer for this session.
         /// </summary>
-        [JsonProperty("customer")]
+        [JsonPropertyName("customer")]
         public string Customer { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace Stripe.BillingPortal
         /// <c>pt-BR</c>, <c>ro</c>, <c>ru</c>, <c>sk</c>, <c>sl</c>, <c>sv</c>, <c>th</c>,
         /// <c>tr</c>, <c>vi</c>, <c>zh</c>, <c>zh-HK</c>, or <c>zh-TW</c>.
         /// </summary>
-        [JsonProperty("locale")]
+        [JsonPropertyName("locale")]
         public string Locale { get; set; }
 
         /// <summary>
@@ -111,20 +111,20 @@ namespace Stripe.BillingPortal
         /// API</a> to modify the <c>on_behalf_of</c> account's branding settings, which the portal
         /// displays.
         /// </summary>
-        [JsonProperty("on_behalf_of")]
+        [JsonPropertyName("on_behalf_of")]
         public string OnBehalfOf { get; set; }
 
         /// <summary>
         /// The URL to redirect customers to when they click on the portal's link to return to your
         /// website.
         /// </summary>
-        [JsonProperty("return_url")]
+        [JsonPropertyName("return_url")]
         public string ReturnUrl { get; set; }
 
         /// <summary>
         /// The short-lived URL of the session that gives customers access to the customer portal.
         /// </summary>
-        [JsonProperty("url")]
+        [JsonPropertyName("url")]
         public string Url { get; set; }
     }
 }

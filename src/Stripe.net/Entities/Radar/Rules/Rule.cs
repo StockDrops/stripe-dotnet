@@ -1,19 +1,20 @@
 namespace Stripe.Radar
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class Rule : StripeEntity<Rule>, IHasId
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
-        [JsonProperty("action")]
+        [JsonPropertyName("action")]
         public string Action { get; set; }
 
-        [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("deleted")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public bool? Deleted { get; set; }
 
-        [JsonProperty("predicate")]
+        [JsonPropertyName("predicate")]
         public string Predicate { get; set; }
     }
 }

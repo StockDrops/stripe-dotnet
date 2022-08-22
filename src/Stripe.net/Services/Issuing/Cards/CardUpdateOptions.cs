@@ -2,7 +2,7 @@
 namespace Stripe.Issuing
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class CardUpdateOptions : BaseOptions, IHasMetadata
     {
@@ -10,7 +10,7 @@ namespace Stripe.Issuing
         /// Reason why the <c>status</c> of this card is <c>canceled</c>.
         /// One of: <c>lost</c>, or <c>stolen</c>.
         /// </summary>
-        [JsonProperty("cancellation_reason")]
+        [JsonPropertyName("cancellation_reason")]
         public string CancellationReason { get; set; }
 
         /// <summary>
@@ -19,13 +19,13 @@ namespace Stripe.Issuing
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The desired new PIN for this card.
         /// </summary>
-        [JsonProperty("pin")]
+        [JsonPropertyName("pin")]
         public CardPinOptions Pin { get; set; }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace Stripe.Issuing
         /// href="https://stripe.com/docs/issuing/controls/spending-controls">documentation</a> for
         /// more details.
         /// </summary>
-        [JsonProperty("spending_controls")]
+        [JsonPropertyName("spending_controls")]
         public CardSpendingControlsOptions SpendingControls { get; set; }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Stripe.Issuing
         /// <c>cancellation_reason</c>.
         /// One of: <c>active</c>, <c>canceled</c>, or <c>inactive</c>.
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
     }
 }

@@ -3,7 +3,7 @@ namespace Stripe.Treasury
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -16,38 +16,38 @@ namespace Stripe.Treasury
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
         /// The array of paths to active Features in the Features hash.
         /// </summary>
-        [JsonProperty("active_features")]
+        [JsonPropertyName("active_features")]
         public List<string> ActiveFeatures { get; set; }
 
         /// <summary>
         /// Balance information for the FinancialAccount.
         /// </summary>
-        [JsonProperty("balance")]
+        [JsonPropertyName("balance")]
         public FinancialAccountBalance Balance { get; set; }
 
         /// <summary>
         /// Two-letter country code (<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO
         /// 3166-1 alpha-2</a>).
         /// </summary>
-        [JsonProperty("country")]
+        [JsonPropertyName("country")]
         public string Country { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -56,20 +56,20 @@ namespace Stripe.Treasury
         /// <c>status</c> enum and associated <c>status_details</c>. Stripe or the platform can
         /// control Features via the requested field.
         /// </summary>
-        [JsonProperty("features")]
+        [JsonPropertyName("features")]
         public FinancialAccountFeatures Features { get; set; }
 
         /// <summary>
         /// The set of credentials that resolve to a FinancialAccount.
         /// </summary>
-        [JsonProperty("financial_addresses")]
+        [JsonPropertyName("financial_addresses")]
         public List<FinancialAccountFinancialAddress> FinancialAddresses { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -77,35 +77,35 @@ namespace Stripe.Treasury
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The array of paths to pending Features in the Features hash.
         /// </summary>
-        [JsonProperty("pending_features")]
+        [JsonPropertyName("pending_features")]
         public List<string> PendingFeatures { get; set; }
 
         /// <summary>
         /// The set of functionalities that the platform can restrict on the FinancialAccount.
         /// </summary>
-        [JsonProperty("platform_restrictions")]
+        [JsonPropertyName("platform_restrictions")]
         public FinancialAccountPlatformRestrictions PlatformRestrictions { get; set; }
 
         /// <summary>
         /// The array of paths to restricted Features in the Features hash.
         /// </summary>
-        [JsonProperty("restricted_features")]
+        [JsonPropertyName("restricted_features")]
         public List<string> RestrictedFeatures { get; set; }
 
         /// <summary>
         /// The enum specifying what state the account is in.
         /// One of: <c>closed</c>, or <c>open</c>.
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
-        [JsonProperty("status_details")]
+        [JsonPropertyName("status_details")]
         public FinancialAccountStatusDetails StatusDetails { get; set; }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace Stripe.Treasury
         /// href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in
         /// lowercase.
         /// </summary>
-        [JsonProperty("supported_currencies")]
+        [JsonPropertyName("supported_currencies")]
         public List<string> SupportedCurrencies { get; set; }
     }
 }

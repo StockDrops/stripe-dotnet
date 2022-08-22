@@ -1,32 +1,32 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PaymentIntentNextActionKonbiniDisplayDetailsStores : StripeEntity<PaymentIntentNextActionKonbiniDisplayDetailsStores>
     {
         /// <summary>
         /// FamilyMart instruction details.
         /// </summary>
-        [JsonProperty("familymart")]
+        [JsonPropertyName("familymart")]
         public PaymentIntentNextActionKonbiniDisplayDetailsStoresFamilymart Familymart { get; set; }
 
         /// <summary>
         /// Lawson instruction details.
         /// </summary>
-        [JsonProperty("lawson")]
+        [JsonPropertyName("lawson")]
         public PaymentIntentNextActionKonbiniDisplayDetailsStoresLawson Lawson { get; set; }
 
         /// <summary>
         /// Ministop instruction details.
         /// </summary>
-        [JsonProperty("ministop")]
+        [JsonPropertyName("ministop")]
         public PaymentIntentNextActionKonbiniDisplayDetailsStoresMinistop Ministop { get; set; }
 
         /// <summary>
         /// Seicomart instruction details.
         /// </summary>
-        [JsonProperty("seicomart")]
+        [JsonPropertyName("seicomart")]
         public PaymentIntentNextActionKonbiniDisplayDetailsStoresSeicomart Seicomart { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 namespace Stripe.Treasury
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class ReceivedCreditReversalDetails : StripeEntity<ReceivedCreditReversalDetails>
@@ -10,7 +10,7 @@ namespace Stripe.Treasury
         /// <summary>
         /// Time before which a ReceivedCredit can be reversed.
         /// </summary>
-        [JsonProperty("deadline")]
+        [JsonPropertyName("deadline")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? Deadline { get; set; }
 
@@ -19,7 +19,7 @@ namespace Stripe.Treasury
         /// One of: <c>already_reversed</c>, <c>deadline_passed</c>, <c>network_restricted</c>,
         /// <c>other</c>, or <c>source_flow_restricted</c>.
         /// </summary>
-        [JsonProperty("restricted_reason")]
+        [JsonPropertyName("restricted_reason")]
         public string RestrictedReason { get; set; }
     }
 }

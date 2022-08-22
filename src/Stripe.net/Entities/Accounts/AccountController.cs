@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class AccountController : StripeEntity<AccountController>
     {
@@ -11,7 +11,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/connect/platform-controls-for-standard-accounts">platform
         /// controls</a>. Otherwise, this field is null.
         /// </summary>
-        [JsonProperty("is_controller")]
+        [JsonPropertyName("is_controller")]
         public bool IsController { get; set; }
 
         /// <summary>
@@ -19,7 +19,7 @@ namespace Stripe
         /// account, or <c>account</c>, if the account controls itself.
         /// One of: <c>account</c>, or <c>application</c>.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
     }
 }

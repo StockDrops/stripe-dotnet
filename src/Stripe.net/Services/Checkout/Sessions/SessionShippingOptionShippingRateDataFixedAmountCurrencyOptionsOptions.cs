@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Checkout
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SessionShippingOptionShippingRateDataFixedAmountCurrencyOptionsOptions : INestedOptions
     {
         /// <summary>
         /// A non-negative integer in cents representing how much to charge.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long? Amount { get; set; }
 
         /// <summary>
@@ -16,7 +16,7 @@ namespace Stripe.Checkout
         /// of <c>inclusive</c>, <c>exclusive</c>, or <c>unspecified</c>.
         /// One of: <c>exclusive</c>, <c>inclusive</c>, or <c>unspecified</c>.
         /// </summary>
-        [JsonProperty("tax_behavior")]
+        [JsonPropertyName("tax_behavior")]
         public string TaxBehavior { get; set; }
     }
 }

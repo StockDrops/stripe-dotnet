@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -21,13 +21,13 @@ namespace Stripe
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         #region Expandable Account
@@ -56,7 +56,7 @@ namespace Stripe
             set => this.InternalAccount = SetExpandableFieldObject(value, this.InternalAccount);
         }
 
-        [JsonProperty("account")]
+        [JsonPropertyName("account")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
         internal ExpandableField<Account> InternalAccount { get; set; }
         #endregion
@@ -64,47 +64,47 @@ namespace Stripe
         /// <summary>
         /// The name of the person or business that owns the bank account.
         /// </summary>
-        [JsonProperty("account_holder_name")]
+        [JsonPropertyName("account_holder_name")]
         public string AccountHolderName { get; set; }
 
         /// <summary>
         /// The type of entity that holds the account. This can be either <c>individual</c> or
         /// <c>company</c>.
         /// </summary>
-        [JsonProperty("account_holder_type")]
+        [JsonPropertyName("account_holder_type")]
         public string AccountHolderType { get; set; }
 
         /// <summary>
         /// The bank account type. This can only be <c>checking</c> or <c>savings</c> in most
         /// countries. In Japan, this can only be <c>futsu</c> or <c>toza</c>.
         /// </summary>
-        [JsonProperty("account_type")]
+        [JsonPropertyName("account_type")]
         public string AccountType { get; set; }
 
         /// <summary>
         /// A set of available payout methods for this bank account. Only values from this set
         /// should be passed as the <c>method</c> when creating a payout.
         /// </summary>
-        [JsonProperty("available_payout_methods")]
+        [JsonPropertyName("available_payout_methods")]
         public List<string> AvailablePayoutMethods { get; set; }
 
         /// <summary>
         /// Name of the bank associated with the routing number (e.g., <c>WELLS FARGO</c>).
         /// </summary>
-        [JsonProperty("bank_name")]
+        [JsonPropertyName("bank_name")]
         public string BankName { get; set; }
 
         /// <summary>
         /// Two-letter ISO code representing the country the bank account is located in.
         /// </summary>
-        [JsonProperty("country")]
+        [JsonPropertyName("country")]
         public string Country { get; set; }
 
         /// <summary>
         /// Three-letter <a href="https://stripe.com/docs/payouts">ISO code for the currency</a>
         /// paid out to the bank account.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         #region Expandable Customer
@@ -133,7 +133,7 @@ namespace Stripe
             set => this.InternalCustomer = SetExpandableFieldObject(value, this.InternalCustomer);
         }
 
-        [JsonProperty("customer")]
+        [JsonPropertyName("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
@@ -141,26 +141,27 @@ namespace Stripe
         /// <summary>
         /// Whether this bank account is the default external account for its currency.
         /// </summary>
-        [JsonProperty("default_for_currency")]
+        [JsonPropertyName("default_for_currency")]
         public bool? DefaultForCurrency { get; set; }
 
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
-        [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("deleted")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public bool? Deleted { get; set; }
 
         /// <summary>
         /// Uniquely identifies this particular bank account. You can use this attribute to check
         /// whether two bank accounts are the same.
         /// </summary>
-        [JsonProperty("fingerprint")]
+        [JsonPropertyName("fingerprint")]
         public string Fingerprint { get; set; }
 
         /// <summary>
         /// The last four digits of the bank account number.
         /// </summary>
-        [JsonProperty("last4")]
+        [JsonPropertyName("last4")]
         public string Last4 { get; set; }
 
         /// <summary>
@@ -168,13 +169,13 @@ namespace Stripe
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The routing transit number for the bank account.
         /// </summary>
-        [JsonProperty("routing_number")]
+        [JsonPropertyName("routing_number")]
         public string RoutingNumber { get; set; }
 
         /// <summary>
@@ -194,7 +195,7 @@ namespace Stripe
         /// the other statuses don't apply. If a transfer fails, the status is set to <c>errored</c>
         /// and transfers are stopped until account details are updated.
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
     }
 }

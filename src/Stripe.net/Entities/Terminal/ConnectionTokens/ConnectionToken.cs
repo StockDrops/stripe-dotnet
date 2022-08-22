@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Terminal
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// A Connection Token is used by the Stripe Terminal SDK to connect to a reader.
@@ -14,7 +14,7 @@ namespace Stripe.Terminal
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
@@ -23,13 +23,13 @@ namespace Stripe.Terminal
         /// href="https://stripe.com/docs/terminal/fleet/locations#connection-tokens">the docs on
         /// scoping connection tokens</a>.
         /// </summary>
-        [JsonProperty("location")]
+        [JsonPropertyName("location")]
         public string Location { get; set; }
 
         /// <summary>
         /// Your application should pass this token to the Stripe Terminal SDK.
         /// </summary>
-        [JsonProperty("secret")]
+        [JsonPropertyName("secret")]
         public string Secret { get; set; }
     }
 }

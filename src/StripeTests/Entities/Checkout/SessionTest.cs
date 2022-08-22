@@ -1,6 +1,6 @@
 namespace StripeTests.Checkout
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe;
     using Stripe.Checkout;
     using Xunit;

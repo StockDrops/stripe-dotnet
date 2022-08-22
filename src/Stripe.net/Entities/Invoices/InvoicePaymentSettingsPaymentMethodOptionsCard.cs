@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class InvoicePaymentSettingsPaymentMethodOptionsCard : StripeEntity<InvoicePaymentSettingsPaymentMethodOptionsCard>
     {
-        [JsonProperty("installments")]
+        [JsonPropertyName("installments")]
         public InvoicePaymentSettingsPaymentMethodOptionsCardInstallments Installments { get; set; }
 
         /// <summary>
@@ -19,7 +19,7 @@ namespace Stripe
         /// SCA Engine.
         /// One of: <c>any</c>, or <c>automatic</c>.
         /// </summary>
-        [JsonProperty("request_three_d_secure")]
+        [JsonPropertyName("request_three_d_secure")]
         public string RequestThreeDSecure { get; set; }
     }
 }

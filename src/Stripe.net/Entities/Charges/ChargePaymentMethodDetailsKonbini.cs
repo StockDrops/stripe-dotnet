@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ChargePaymentMethodDetailsKonbini : StripeEntity<ChargePaymentMethodDetailsKonbini>
     {
@@ -9,7 +9,7 @@ namespace Stripe
         /// If the payment succeeded, this contains the details of the convenience store where the
         /// payment was completed.
         /// </summary>
-        [JsonProperty("store")]
+        [JsonPropertyName("store")]
         public ChargePaymentMethodDetailsKonbiniStore Store { get; set; }
     }
 }

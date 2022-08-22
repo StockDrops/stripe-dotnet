@@ -1,38 +1,38 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PriceCurrencyOptionsTier : StripeEntity<PriceCurrencyOptionsTier>
     {
         /// <summary>
         /// Price for the entire tier.
         /// </summary>
-        [JsonProperty("flat_amount")]
+        [JsonPropertyName("flat_amount")]
         public long? FlatAmount { get; set; }
 
         /// <summary>
         /// Same as <c>flat_amount</c>, but contains a decimal value with at most 12 decimal places.
         /// </summary>
-        [JsonProperty("flat_amount_decimal")]
+        [JsonPropertyName("flat_amount_decimal")]
         public decimal? FlatAmountDecimal { get; set; }
 
         /// <summary>
         /// Per unit price for units relevant to the tier.
         /// </summary>
-        [JsonProperty("unit_amount")]
+        [JsonPropertyName("unit_amount")]
         public long? UnitAmount { get; set; }
 
         /// <summary>
         /// Same as <c>unit_amount</c>, but contains a decimal value with at most 12 decimal places.
         /// </summary>
-        [JsonProperty("unit_amount_decimal")]
+        [JsonPropertyName("unit_amount_decimal")]
         public decimal? UnitAmountDecimal { get; set; }
 
         /// <summary>
         /// Up to and including to this quantity will be contained in the tier.
         /// </summary>
-        [JsonProperty("up_to")]
+        [JsonPropertyName("up_to")]
         public long? UpTo { get; set; }
     }
 }

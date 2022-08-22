@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Checkout
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SessionConsent : StripeEntity<SessionConsent>
     {
@@ -10,7 +10,7 @@ namespace Stripe.Checkout
         /// merchant about this Checkout Session.
         /// One of: <c>opt_in</c>, or <c>opt_out</c>.
         /// </summary>
-        [JsonProperty("promotions")]
+        [JsonPropertyName("promotions")]
         public string Promotions { get; set; }
     }
 }

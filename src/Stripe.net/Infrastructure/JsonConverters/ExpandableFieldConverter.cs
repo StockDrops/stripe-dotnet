@@ -2,8 +2,8 @@ namespace Stripe.Infrastructure
 {
     using System;
     using System.Reflection;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
+    using System.Text.Json.Serialization;
+    
 
     /// <summary>
     /// Converts a <see cref="ExpandableField{T}"/> to and from JSON.

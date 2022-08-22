@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PersonVerification : StripeEntity<PersonVerification>
     {
@@ -9,14 +9,14 @@ namespace Stripe
         /// A document showing address, either a passport, local ID card, or utility bill from a
         /// well-known utility company.
         /// </summary>
-        [JsonProperty("additional_document")]
+        [JsonPropertyName("additional_document")]
         public PersonVerificationAdditionalDocument AdditionalDocument { get; set; }
 
         /// <summary>
         /// A user-displayable string describing the verification state for the person. For example,
         /// this may say "Provided identity information could not be verified".
         /// </summary>
-        [JsonProperty("details")]
+        [JsonPropertyName("details")]
         public string Details { get; set; }
 
         /// <summary>
@@ -26,17 +26,17 @@ namespace Stripe
         /// <c>failed_keyed_identity</c>, or <c>failed_other</c>. A machine-readable code specifying
         /// the verification state for the person.
         /// </summary>
-        [JsonProperty("details_code")]
+        [JsonPropertyName("details_code")]
         public string DetailsCode { get; set; }
 
-        [JsonProperty("document")]
+        [JsonPropertyName("document")]
         public PersonVerificationDocument Document { get; set; }
 
         /// <summary>
         /// The state of verification for the person. Possible values are <c>unverified</c>,
         /// <c>pending</c>, or <c>verified</c>.
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
     }
 }

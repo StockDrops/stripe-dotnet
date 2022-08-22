@@ -3,7 +3,7 @@ namespace Stripe.Treasury
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -21,31 +21,31 @@ namespace Stripe.Treasury
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
         /// Amount (in cents) transferred.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long Amount { get; set; }
 
         /// <summary>
         /// Returns <c>true</c> if the object can be canceled, and <c>false</c> otherwise.
         /// </summary>
-        [JsonProperty("cancelable")]
+        [JsonPropertyName("cancelable")]
         public bool Cancelable { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -54,52 +54,52 @@ namespace Stripe.Treasury
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
         /// ID of the <a href="https://stripe.com/docs/api/customers">customer</a> to whom an
         /// OutboundPayment is sent.
         /// </summary>
-        [JsonProperty("customer")]
+        [JsonPropertyName("customer")]
         public string Customer { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
         /// The PaymentMethod via which an OutboundPayment is sent. This field can be empty if the
         /// OutboundPayment was created using <c>destination_payment_method_data</c>.
         /// </summary>
-        [JsonProperty("destination_payment_method")]
+        [JsonPropertyName("destination_payment_method")]
         public string DestinationPaymentMethod { get; set; }
 
         /// <summary>
         /// Details about the PaymentMethod for an OutboundPayment.
         /// </summary>
-        [JsonProperty("destination_payment_method_details")]
+        [JsonPropertyName("destination_payment_method_details")]
         public OutboundPaymentDestinationPaymentMethodDetails DestinationPaymentMethodDetails { get; set; }
 
         /// <summary>
         /// Details about the end user.
         /// </summary>
-        [JsonProperty("end_user_details")]
+        [JsonPropertyName("end_user_details")]
         public OutboundPaymentEndUserDetails EndUserDetails { get; set; }
 
         /// <summary>
         /// The date when funds are expected to arrive in the destination account.
         /// </summary>
-        [JsonProperty("expected_arrival_date")]
+        [JsonPropertyName("expected_arrival_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime ExpectedArrivalDate { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The FinancialAccount that funds were pulled from.
         /// </summary>
-        [JsonProperty("financial_account")]
+        [JsonPropertyName("financial_account")]
         public string FinancialAccount { get; set; }
 
         /// <summary>
@@ -107,14 +107,14 @@ namespace Stripe.Treasury
         /// transaction receipt</a> URL that is provided when money movement is considered regulated
         /// under Stripe's money transmission licenses.
         /// </summary>
-        [JsonProperty("hosted_regulatory_receipt_url")]
+        [JsonPropertyName("hosted_regulatory_receipt_url")]
         public string HostedRegulatoryReceiptUrl { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -122,20 +122,20 @@ namespace Stripe.Treasury
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Details about a returned OutboundPayment. Only set when the status is <c>returned</c>.
         /// </summary>
-        [JsonProperty("returned_details")]
+        [JsonPropertyName("returned_details")]
         public OutboundPaymentReturnedDetails ReturnedDetails { get; set; }
 
         /// <summary>
         /// The description that appears on the receiving end for an OutboundPayment (for example,
         /// bank statement for external bank transfer).
         /// </summary>
-        [JsonProperty("statement_descriptor")]
+        [JsonPropertyName("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 
         /// <summary>
@@ -148,10 +148,10 @@ namespace Stripe.Treasury
         /// One of: <c>canceled</c>, <c>failed</c>, <c>posted</c>, <c>processing</c>, or
         /// <c>returned</c>.
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
-        [JsonProperty("status_transitions")]
+        [JsonPropertyName("status_transitions")]
         public OutboundPaymentStatusTransitions StatusTransitions { get; set; }
 
         #region Expandable Transaction
@@ -180,7 +180,7 @@ namespace Stripe.Treasury
             set => this.InternalTransaction = SetExpandableFieldObject(value, this.InternalTransaction);
         }
 
-        [JsonProperty("transaction")]
+        [JsonPropertyName("transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<Transaction>))]
         internal ExpandableField<Transaction> InternalTransaction { get; set; }
         #endregion

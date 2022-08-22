@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -17,22 +17,22 @@ namespace Stripe
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
-        [JsonProperty("applied_to_payment")]
+        [JsonPropertyName("applied_to_payment")]
         public CustomerCashBalanceTransactionAppliedToPayment AppliedToPayment { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -41,7 +41,7 @@ namespace Stripe
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         #region Expandable Customer
@@ -70,7 +70,7 @@ namespace Stripe
             set => this.InternalCustomer = SetExpandableFieldObject(value, this.InternalCustomer);
         }
 
-        [JsonProperty("customer")]
+        [JsonPropertyName("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
@@ -80,17 +80,17 @@ namespace Stripe
         /// applied. Represented in the <a
         /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
-        [JsonProperty("ending_balance")]
+        [JsonPropertyName("ending_balance")]
         public long EndingBalance { get; set; }
 
-        [JsonProperty("funded")]
+        [JsonPropertyName("funded")]
         public CustomerCashBalanceTransactionFunded Funded { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -99,10 +99,10 @@ namespace Stripe
         /// positive value represents funds being added to the cash balance, a negative value
         /// represents funds being removed from the cash balance.
         /// </summary>
-        [JsonProperty("net_amount")]
+        [JsonPropertyName("net_amount")]
         public long NetAmount { get; set; }
 
-        [JsonProperty("refunded_from_payment")]
+        [JsonPropertyName("refunded_from_payment")]
         public CustomerCashBalanceTransactionRefundedFromPayment RefundedFromPayment { get; set; }
 
         /// <summary>
@@ -114,10 +114,10 @@ namespace Stripe
         /// One of: <c>applied_to_payment</c>, <c>funded</c>, <c>refunded_from_payment</c>,
         /// <c>return_canceled</c>, <c>return_initiated</c>, or <c>unapplied_from_payment</c>.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
-        [JsonProperty("unapplied_from_payment")]
+        [JsonPropertyName("unapplied_from_payment")]
         public CustomerCashBalanceTransactionUnappliedFromPayment UnappliedFromPayment { get; set; }
     }
 }

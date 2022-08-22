@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Treasury
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class InboundTransferLinkedFlows : StripeEntity<InboundTransferLinkedFlows>
     {
@@ -9,7 +9,7 @@ namespace Stripe.Treasury
         /// If funds for this flow were returned after the flow went to the <c>succeeded</c> state,
         /// this field contains a reference to the ReceivedDebit return.
         /// </summary>
-        [JsonProperty("received_debit")]
+        [JsonPropertyName("received_debit")]
         public string ReceivedDebit { get; set; }
     }
 }

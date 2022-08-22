@@ -1,25 +1,25 @@
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ChargePaymentMethodDetailsBitcoin : StripeEntity<ChargePaymentMethodDetailsBitcoin>
     {
-        [JsonProperty("address")]
+        [JsonPropertyName("address")]
         public string Address { get; set; }
 
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long? Amount { get; set; }
 
-        [JsonProperty("amount_charged")]
+        [JsonPropertyName("amount_charged")]
         public long? AmountCharged { get; set; }
 
-        [JsonProperty("amount_received")]
+        [JsonPropertyName("amount_received")]
         public long? AmountReceived { get; set; }
 
-        [JsonProperty("amount_returned")]
+        [JsonPropertyName("amount_returned")]
         public long? AmountReturned { get; set; }
 
-        [JsonProperty("refund_address")]
+        [JsonPropertyName("refund_address")]
         public string RefundAddress { get; set; }
     }
 }

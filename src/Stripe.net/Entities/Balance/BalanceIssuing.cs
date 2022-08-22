@@ -2,14 +2,14 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class BalanceIssuing : StripeEntity<BalanceIssuing>
     {
         /// <summary>
         /// Funds that are available for use.
         /// </summary>
-        [JsonProperty("available")]
+        [JsonPropertyName("available")]
         public List<BalanceAmount> Available { get; set; }
     }
 }

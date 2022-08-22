@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PaymentMethodIdeal : StripeEntity<PaymentMethodIdeal>
     {
@@ -14,7 +14,7 @@ namespace Stripe
         /// <c>knab</c>, <c>moneyou</c>, <c>rabobank</c>, <c>regiobank</c>, <c>revolut</c>,
         /// <c>sns_bank</c>, <c>triodos_bank</c>, or <c>van_lanschot</c>.
         /// </summary>
-        [JsonProperty("bank")]
+        [JsonPropertyName("bank")]
         public string Bank { get; set; }
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace Stripe
         /// <c>HANDNL2A</c>, <c>INGBNL2A</c>, <c>KNABNL2H</c>, <c>MOYONL21</c>, <c>RABONL2U</c>,
         /// <c>RBRBNL21</c>, <c>REVOLT21</c>, <c>SNSBNL2A</c>, or <c>TRIONL2U</c>.
         /// </summary>
-        [JsonProperty("bic")]
+        [JsonPropertyName("bic")]
         public string Bic { get; set; }
     }
 }

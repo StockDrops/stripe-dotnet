@@ -1,26 +1,26 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class AccountCompanyOptions : INestedOptions
     {
         /// <summary>
         /// The company's primary address.
         /// </summary>
-        [JsonProperty("address")]
+        [JsonPropertyName("address")]
         public AddressOptions Address { get; set; }
 
         /// <summary>
         /// The Kana variation of the company's primary address (Japan only).
         /// </summary>
-        [JsonProperty("address_kana")]
+        [JsonPropertyName("address_kana")]
         public AddressJapanOptions AddressKana { get; set; }
 
         /// <summary>
         /// The Kanji variation of the company's primary address (Japan only).
         /// </summary>
-        [JsonProperty("address_kanji")]
+        [JsonPropertyName("address_kanji")]
         public AddressJapanOptions AddressKanji { get; set; }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace Stripe
         /// <c>true</c> after creating directors, so it needs to be updated to indicate all
         /// directors have been provided.
         /// </summary>
-        [JsonProperty("directors_provided")]
+        [JsonPropertyName("directors_provided")]
         public bool? DirectorsProvided { get; set; }
 
         /// <summary>
@@ -40,25 +40,25 @@ namespace Stripe
         /// href="https://stripe.com/docs/api/persons">the Persons API</a> for accounts with a
         /// <c>relationship.executive</c> requirement.
         /// </summary>
-        [JsonProperty("executives_provided")]
+        [JsonPropertyName("executives_provided")]
         public bool? ExecutivesProvided { get; set; }
 
         /// <summary>
         /// The company's legal name.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
         /// The Kana variation of the company's legal name (Japan only).
         /// </summary>
-        [JsonProperty("name_kana")]
+        [JsonPropertyName("name_kana")]
         public string NameKana { get; set; }
 
         /// <summary>
         /// The Kanji variation of the company's legal name (Japan only).
         /// </summary>
-        [JsonProperty("name_kanji")]
+        [JsonPropertyName("name_kanji")]
         public string NameKanji { get; set; }
 
         /// <summary>
@@ -66,20 +66,20 @@ namespace Stripe
         /// creating all the company's owners with <a href="https://stripe.com/docs/api/persons">the
         /// Persons API</a> for accounts with a <c>relationship.owner</c> requirement.
         /// </summary>
-        [JsonProperty("owners_provided")]
+        [JsonPropertyName("owners_provided")]
         public bool? OwnersProvided { get; set; }
 
         /// <summary>
         /// This hash is used to attest that the beneficial owner information provided to Stripe is
         /// both current and correct.
         /// </summary>
-        [JsonProperty("ownership_declaration")]
+        [JsonPropertyName("ownership_declaration")]
         public AccountCompanyOwnershipDeclarationOptions OwnershipDeclaration { get; set; }
 
         /// <summary>
         /// The company's phone number (used for verification).
         /// </summary>
-        [JsonProperty("phone")]
+        [JsonPropertyName("phone")]
         public string Phone { get; set; }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Stripe
         /// companies and LLP IN for partnerships in India, and the Company Registration Number in
         /// Hong Kong).
         /// </summary>
-        [JsonProperty("registration_number")]
+        [JsonPropertyName("registration_number")]
         public string RegistrationNumber { get; set; }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/connect/identity-verification#business-structure">Business
         /// structure</a> for more details.
         /// </summary>
-        [JsonProperty("structure")]
+        [JsonPropertyName("structure")]
         public string Structure { get; set; }
 
         /// <summary>
@@ -104,26 +104,26 @@ namespace Stripe
         /// (Examples are an Employer ID Number in the U.S., a Business Number in Canada, or a
         /// Company Number in the UK.).
         /// </summary>
-        [JsonProperty("tax_id")]
+        [JsonPropertyName("tax_id")]
         public string TaxId { get; set; }
 
         /// <summary>
         /// The jurisdiction in which the <c>tax_id</c> is registered (Germany-based companies
         /// only).
         /// </summary>
-        [JsonProperty("tax_id_registrar")]
+        [JsonPropertyName("tax_id_registrar")]
         public string TaxIdRegistrar { get; set; }
 
         /// <summary>
         /// The VAT number of the company.
         /// </summary>
-        [JsonProperty("vat_id")]
+        [JsonPropertyName("vat_id")]
         public string VatId { get; set; }
 
         /// <summary>
         /// Information on the verification state of the company.
         /// </summary>
-        [JsonProperty("verification")]
+        [JsonPropertyName("verification")]
         public AccountCompanyVerificationOptions Verification { get; set; }
     }
 }

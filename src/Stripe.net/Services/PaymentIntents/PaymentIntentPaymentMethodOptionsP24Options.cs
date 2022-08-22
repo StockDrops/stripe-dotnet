@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PaymentIntentPaymentMethodOptionsP24Options : INestedOptions
     {
@@ -25,13 +25,13 @@ namespace Stripe
         /// publishable key, you may only update the value from <c>on_session</c> to
         /// <c>off_session</c>.
         /// </summary>
-        [JsonProperty("setup_future_usage")]
+        [JsonPropertyName("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
         /// Confirm that the payer has accepted the P24 terms and conditions.
         /// </summary>
-        [JsonProperty("tos_shown_and_accepted")]
+        [JsonPropertyName("tos_shown_and_accepted")]
         public bool? TosShownAndAccepted { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class EventData : StripeEntity<EventData>
@@ -10,7 +10,7 @@ namespace Stripe
         /// <c>invoice.created</c> event will have a full invoice object (<see cref="Invoice"/>) as
         /// the value of the object key.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         [JsonConverter(typeof(StripeObjectConverter))]
         public IHasObject Object { get; set; }
 
@@ -18,7 +18,7 @@ namespace Stripe
         /// Object containing the names of the attributes that have changed, and their previous
         /// values (sent along only with *.updated events).
         /// </summary>
-        [JsonProperty("previous_attributes")]
+        [JsonPropertyName("previous_attributes")]
         public dynamic PreviousAttributes { get; set; }
 
         /// <summary>

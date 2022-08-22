@@ -1,14 +1,14 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SourceAttachOptions : BaseOptions
     {
-        [JsonProperty("source")]
+        [JsonPropertyName("source")]
         public string Source { get; set; }
 
-        [JsonProperty("validate")]
+        [JsonPropertyName("validate")]
         public bool? Validate { get; set; }
     }
 }

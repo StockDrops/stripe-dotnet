@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class AccountSettingsPayoutsOptions : INestedOptions
     {
@@ -11,7 +11,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/connect/account-balances">Understanding Connect Account
         /// Balances</a>.
         /// </summary>
-        [JsonProperty("debit_negative_balances")]
+        [JsonPropertyName("debit_negative_balances")]
         public bool? DebitNegativeBalances { get; set; }
 
         /// <summary>
@@ -20,14 +20,14 @@ namespace Stripe
         /// href="https://stripe.com/docs/connect/bank-transfers#payout-information">Setting Bank
         /// and Debit Card Payouts</a> documentation.
         /// </summary>
-        [JsonProperty("schedule")]
+        [JsonPropertyName("schedule")]
         public AccountSettingsPayoutsScheduleOptions Schedule { get; set; }
 
         /// <summary>
         /// The text that appears on the bank account statement for payouts. If not set, this
         /// defaults to the platform's bank descriptor as set in the Dashboard.
         /// </summary>
-        [JsonProperty("statement_descriptor")]
+        [JsonPropertyName("statement_descriptor")]
         public string StatementDescriptor { get; set; }
     }
 }

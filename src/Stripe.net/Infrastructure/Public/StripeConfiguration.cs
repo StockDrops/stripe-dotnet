@@ -4,8 +4,10 @@ namespace Stripe
     using System.Collections.Generic;
     using System.Configuration;
     using System.Reflection;
-    using Newtonsoft.Json;
+    using System.Text.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
+    using Stripe.Net.Infrastructure.JsonConverters;
 
     /// <summary>
     /// Global configuration class for Stripe.net settings.
@@ -98,7 +100,7 @@ namespace Stripe
         /// otherwise Stripe.net will no longer be able to deserialize polymorphic resources
         /// represented by interfaces (e.g. <see cref="IPaymentSource"/>).
         /// </summary>
-        public static JsonSerializerSettings SerializerSettings { get; set; } = DefaultSerializerSettings();
+        public static JsonSerializerOptions SerializerSettings { get; set; } = DefaultSerializerSettings();
 
         /// <summary>
         /// Gets or sets the maximum number of times that the library will retry requests that
@@ -195,21 +197,20 @@ namespace Stripe
         }
 
         /// <summary>
-        /// Returns a new instance of <see cref="Newtonsoft.Json.JsonSerializerSettings"/> with
+        /// Returns a new instance of <see cref="JsonSerializerOptions"/> with
         /// the default settings used by Stripe.net.
         /// </summary>
-        /// <returns>A <see cref="Newtonsoft.Json.JsonSerializerSettings"/> instance.</returns>
-        public static JsonSerializerSettings DefaultSerializerSettings()
+        /// <returns>A <see cref="JsonSerializerOptions"/> instance.</returns>
+        public static JsonSerializerOptions DefaultSerializerSettings()
         {
-            return new JsonSerializerSettings
-            {
-                Converters = new List<JsonConverter>
-                {
-                    new StripeObjectConverter(),
-                },
-                DateParseHandling = DateParseHandling.None,
-                MaxDepth = 128,
-            };
+            var options = new JsonSerializerOptions();
+            options.Converters.Add(new StripeObjectConverter());
+            options.Converters.Add(new ExpandableFieldConverterFactory());
+
+            // no DateParseHandling equivalent.
+            options.MaxDepth = 128;
+
+            return options;
         }
 
         /// <summary>

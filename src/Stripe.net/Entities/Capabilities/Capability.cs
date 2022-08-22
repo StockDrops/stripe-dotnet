@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -16,13 +16,13 @@ namespace Stripe
         /// <summary>
         /// The identifier for the capability.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         #region Expandable Account
@@ -51,28 +51,28 @@ namespace Stripe
             set => this.InternalAccount = SetExpandableFieldObject(value, this.InternalAccount);
         }
 
-        [JsonProperty("account")]
+        [JsonPropertyName("account")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
         internal ExpandableField<Account> InternalAccount { get; set; }
         #endregion
 
-        [JsonProperty("future_requirements")]
+        [JsonPropertyName("future_requirements")]
         public CapabilityFutureRequirements FutureRequirements { get; set; }
 
         /// <summary>
         /// Whether the capability has been requested.
         /// </summary>
-        [JsonProperty("requested")]
+        [JsonPropertyName("requested")]
         public bool Requested { get; set; }
 
         /// <summary>
         /// Time at which the capability was requested. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("requested_at")]
+        [JsonPropertyName("requested_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? RequestedAt { get; set; }
 
-        [JsonProperty("requirements")]
+        [JsonPropertyName("requirements")]
         public CapabilityRequirements Requirements { get; set; }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Stripe
         /// One of: <c>active</c>, <c>disabled</c>, <c>inactive</c>, <c>pending</c>, or
         /// <c>unrequested</c>.
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
     }
 }

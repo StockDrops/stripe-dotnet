@@ -2,7 +2,7 @@
 namespace Stripe.Treasury
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class CreditReversalCreateOptions : BaseOptions, IHasMetadata
     {
@@ -12,13 +12,13 @@ namespace Stripe.Treasury
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The ReceivedCredit to reverse.
         /// </summary>
-        [JsonProperty("received_credit")]
+        [JsonPropertyName("received_credit")]
         public string ReceivedCredit { get; set; }
     }
 }

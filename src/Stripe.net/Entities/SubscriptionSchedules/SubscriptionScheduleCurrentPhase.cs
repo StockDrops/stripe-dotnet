@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class SubscriptionScheduleCurrentPhase : StripeEntity<SubscriptionScheduleCurrentPhase>
@@ -10,14 +10,14 @@ namespace Stripe
         /// <summary>
         /// The end of this phase of the subscription schedule.
         /// </summary>
-        [JsonProperty("end_date")]
+        [JsonPropertyName("end_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? EndDate { get; set; }
 
         /// <summary>
         /// The start of this phase of the subscription schedule.
         /// </summary>
-        [JsonProperty("start_date")]
+        [JsonPropertyName("start_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? StartDate { get; set; }
     }

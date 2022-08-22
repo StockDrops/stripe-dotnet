@@ -4,7 +4,7 @@ namespace Stripe
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -22,20 +22,20 @@ namespace Stripe
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
         /// Amount (in the <c>currency</c> specified) of the invoice item. This should always be
         /// equal to <c>unit_amount * quantity</c>.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long Amount { get; set; }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Stripe
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         #region Expandable Customer
@@ -72,7 +72,7 @@ namespace Stripe
             set => this.InternalCustomer = SetExpandableFieldObject(value, this.InternalCustomer);
         }
 
-        [JsonProperty("customer")]
+        [JsonPropertyName("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
@@ -80,26 +80,27 @@ namespace Stripe
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("date")]
+        [JsonPropertyName("date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Date { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
-        [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("deleted")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public bool? Deleted { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
         /// If true, discounts will apply to this invoice item. Always false for prorations.
         /// </summary>
-        [JsonProperty("discountable")]
+        [JsonPropertyName("discountable")]
         public bool Discountable { get; set; }
 
         #region Expandable Discounts
@@ -130,7 +131,7 @@ namespace Stripe
             set => this.InternalDiscounts = SetExpandableArrayObjects(value);
         }
 
-        [JsonProperty("discounts", ItemConverterType = typeof(ExpandableFieldConverter<Discount>))]
+        [JsonPropertyName("discounts", ItemConverterType = typeof(ExpandableFieldConverter<Discount>))]
         internal List<ExpandableField<Discount>> InternalDiscounts { get; set; }
         #endregion
 
@@ -160,7 +161,7 @@ namespace Stripe
             set => this.InternalInvoice = SetExpandableFieldObject(value, this.InternalInvoice);
         }
 
-        [JsonProperty("invoice")]
+        [JsonPropertyName("invoice")]
         [JsonConverter(typeof(ExpandableFieldConverter<Invoice>))]
         internal ExpandableField<Invoice> InternalInvoice { get; set; }
         #endregion
@@ -169,7 +170,7 @@ namespace Stripe
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -177,37 +178,37 @@ namespace Stripe
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
-        [JsonProperty("period")]
+        [JsonPropertyName("period")]
         public InvoiceItemPeriod Period { get; set; }
 
         /// <summary>
         /// If the invoice item is a proration, the plan of the subscription that the proration was
         /// computed for.
         /// </summary>
-        [JsonProperty("plan")]
+        [JsonPropertyName("plan")]
         public Plan Plan { get; set; }
 
         /// <summary>
         /// The price of the invoice item.
         /// </summary>
-        [JsonProperty("price")]
+        [JsonPropertyName("price")]
         public Price Price { get; set; }
 
         /// <summary>
         /// Whether the invoice item was created automatically as a proration adjustment when the
         /// customer switched plans.
         /// </summary>
-        [JsonProperty("proration")]
+        [JsonPropertyName("proration")]
         public bool Proration { get; set; }
 
         /// <summary>
         /// Quantity of units for the invoice item. If the invoice item is a proration, the quantity
         /// of the subscription that the proration was computed for.
         /// </summary>
-        [JsonProperty("quantity")]
+        [JsonPropertyName("quantity")]
         public long Quantity { get; set; }
 
         #region Expandable Subscription
@@ -236,7 +237,7 @@ namespace Stripe
             set => this.InternalSubscription = SetExpandableFieldObject(value, this.InternalSubscription);
         }
 
-        [JsonProperty("subscription")]
+        [JsonPropertyName("subscription")]
         [JsonConverter(typeof(ExpandableFieldConverter<Subscription>))]
         internal ExpandableField<Subscription> InternalSubscription { get; set; }
         #endregion
@@ -244,14 +245,14 @@ namespace Stripe
         /// <summary>
         /// The subscription item that this invoice item has been created for, if any.
         /// </summary>
-        [JsonProperty("subscription_item")]
+        [JsonPropertyName("subscription_item")]
         public string SubscriptionItem { get; set; }
 
         /// <summary>
         /// The tax rates which apply to the invoice item. When set, the <c>default_tax_rates</c> on
         /// the invoice do not apply to this invoice item.
         /// </summary>
-        [JsonProperty("tax_rates")]
+        [JsonPropertyName("tax_rates")]
         public List<TaxRate> TaxRates { get; set; }
 
         #region Expandable TestClock
@@ -280,7 +281,7 @@ namespace Stripe
             set => this.InternalTestClock = SetExpandableFieldObject(value, this.InternalTestClock);
         }
 
-        [JsonProperty("test_clock")]
+        [JsonPropertyName("test_clock")]
         [JsonConverter(typeof(ExpandableFieldConverter<TestHelpers.TestClock>))]
         internal ExpandableField<TestHelpers.TestClock> InternalTestClock { get; set; }
         #endregion
@@ -288,13 +289,13 @@ namespace Stripe
         /// <summary>
         /// Unit amount (in the <c>currency</c> specified) of the invoice item.
         /// </summary>
-        [JsonProperty("unit_amount")]
+        [JsonPropertyName("unit_amount")]
         public long? UnitAmount { get; set; }
 
         /// <summary>
         /// Same as <c>unit_amount</c>, but contains a decimal value with at most 12 decimal places.
         /// </summary>
-        [JsonProperty("unit_amount_decimal")]
+        [JsonPropertyName("unit_amount_decimal")]
         public decimal? UnitAmountDecimal { get; set; }
     }
 }

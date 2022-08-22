@@ -1,27 +1,27 @@
 namespace Stripe
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class DateRangeOptions : INestedOptions
     {
-        [JsonProperty("gt")]
+        [JsonPropertyName("gt")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         [AllowNameMismatch]
         public DateTime? GreaterThan { get; set; }
 
-        [JsonProperty("gte")]
+        [JsonPropertyName("gte")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         [AllowNameMismatch]
         public DateTime? GreaterThanOrEqual { get; set; }
 
-        [JsonProperty("lt")]
+        [JsonPropertyName("lt")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         [AllowNameMismatch]
         public DateTime? LessThan { get; set; }
 
-        [JsonProperty("lte")]
+        [JsonPropertyName("lte")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         [AllowNameMismatch]
         public DateTime? LessThanOrEqual { get; set; }

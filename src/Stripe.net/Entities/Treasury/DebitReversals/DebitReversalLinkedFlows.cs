@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Treasury
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class DebitReversalLinkedFlows : StripeEntity<DebitReversalLinkedFlows>
     {
         /// <summary>
         /// Set if there is an Issuing dispute associated with the DebitReversal.
         /// </summary>
-        [JsonProperty("issuing_dispute")]
+        [JsonPropertyName("issuing_dispute")]
         public string IssuingDispute { get; set; }
     }
 }

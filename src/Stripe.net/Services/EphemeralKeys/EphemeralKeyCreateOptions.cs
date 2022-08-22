@@ -1,20 +1,20 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class EphemeralKeyCreateOptions : BaseOptions
     {
         /// <summary>
         /// The ID of the Customer you'd like to modify using the resulting ephemeral key.
         /// </summary>
-        [JsonProperty("customer")]
+        [JsonPropertyName("customer")]
         public string Customer { get; set; }
 
         /// <summary>
         /// The ID of the Issuing Card you'd like to access using the resulting ephemeral key.
         /// </summary>
-        [JsonProperty("issuing_card")]
+        [JsonPropertyName("issuing_card")]
         public string IssuingCard { get; set; }
 
         [JsonIgnore]

@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Issuing
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class TransactionTreasury : StripeEntity<TransactionTreasury>
     {
@@ -10,7 +10,7 @@ namespace Stripe.Issuing
         /// href="https://stripe.com/docs/api/treasury/received_debits">ReceivedCredit</a>
         /// representing this Issuing transaction if it is a refund.
         /// </summary>
-        [JsonProperty("received_credit")]
+        [JsonPropertyName("received_credit")]
         public string ReceivedCredit { get; set; }
 
         /// <summary>
@@ -18,7 +18,7 @@ namespace Stripe.Issuing
         /// href="https://stripe.com/docs/api/treasury/received_credits">ReceivedDebit</a>
         /// representing this Issuing transaction if it is a capture.
         /// </summary>
-        [JsonProperty("received_debit")]
+        [JsonPropertyName("received_debit")]
         public string ReceivedDebit { get; set; }
     }
 }

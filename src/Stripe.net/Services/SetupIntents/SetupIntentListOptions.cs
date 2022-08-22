@@ -1,17 +1,17 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SetupIntentListOptions : ListOptionsWithCreated
     {
-        [JsonProperty("attach_to_self")]
+        [JsonPropertyName("attach_to_self")]
         public bool? AttachToSelf { get; set; }
 
-        [JsonProperty("customer")]
+        [JsonPropertyName("customer")]
         public string Customer { get; set; }
 
-        [JsonProperty("payment_method")]
+        [JsonPropertyName("payment_method")]
         public string PaymentMethod { get; set; }
     }
 }

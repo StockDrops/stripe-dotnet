@@ -2,19 +2,19 @@
 namespace Stripe
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class PayoutListOptions : ListOptionsWithCreated
     {
-        [JsonProperty("arrival_date")]
+        [JsonPropertyName("arrival_date")]
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<DateTime?, DateRangeOptions> ArrivalDate { get; set; }
 
-        [JsonProperty("destination")]
+        [JsonPropertyName("destination")]
         public string Destination { get; set; }
 
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
     }
 }

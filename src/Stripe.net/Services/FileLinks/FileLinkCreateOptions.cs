@@ -3,7 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class FileLinkCreateOptions : BaseOptions, IHasMetadata
@@ -11,7 +11,7 @@ namespace Stripe
         /// <summary>
         /// A future timestamp after which the link will no longer be usable.
         /// </summary>
-        [JsonProperty("expires_at")]
+        [JsonPropertyName("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ExpiresAt { get; set; }
 
@@ -22,7 +22,7 @@ namespace Stripe
         /// <c>identity_document_downloadable</c>, <c>pci_document</c>, <c>selfie</c>,
         /// <c>sigma_scheduled_query</c>, or <c>tax_document_user_upload</c>.
         /// </summary>
-        [JsonProperty("file")]
+        [JsonPropertyName("file")]
         public string File { get; set; }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
     }
 }

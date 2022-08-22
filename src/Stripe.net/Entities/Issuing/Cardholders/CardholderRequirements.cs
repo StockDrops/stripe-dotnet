@@ -2,7 +2,7 @@
 namespace Stripe.Issuing
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class CardholderRequirements : StripeEntity<CardholderRequirements>
     {
@@ -11,14 +11,14 @@ namespace Stripe.Issuing
         /// <c>cardholder_verification_required</c> reason.
         /// One of: <c>listed</c>, <c>rejected.listed</c>, or <c>under_review</c>.
         /// </summary>
-        [JsonProperty("disabled_reason")]
+        [JsonPropertyName("disabled_reason")]
         public string DisabledReason { get; set; }
 
         /// <summary>
         /// Array of fields that need to be collected in order to verify and re-enable the
         /// cardholder.
         /// </summary>
-        [JsonProperty("past_due")]
+        [JsonPropertyName("past_due")]
         public List<string> PastDue { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 namespace Stripe
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class OAuthToken : StripeEntity<OAuthToken>
     {
@@ -23,7 +23,7 @@ namespace Stripe
         /// <see cref="StripeUserId"/>.
         /// </remarks>
         [Obsolete("Use StripeUserId instead.")]
-        [JsonProperty("access_token")]
+        [JsonPropertyName("access_token")]
         public string AccessToken { get; set; }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace Stripe
         /// </para>
         /// <para>Depends on the mode of the secret API key used to make the request.</para>
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -48,14 +48,14 @@ namespace Stripe
         /// conjunction with the connected account's ID found in <see cref="StripeUserId"/>.
         /// </remarks>
         [Obsolete("Use StripeUserId instead.")]
-        [JsonProperty("refresh_token")]
+        [JsonPropertyName("refresh_token")]
         public string RefreshToken { get; set; }
 
         /// <summary>
         /// The scope granted to the access token, depending on the scope of the authorization code
         /// and <c>scope</c> parameter.
         /// </summary>
-        [JsonProperty("scope")]
+        [JsonPropertyName("scope")]
         public string Scope { get; set; }
 
         /// <summary>
@@ -68,17 +68,17 @@ namespace Stripe
         /// <see cref="StripeUserId"/>.
         /// </remarks>
         [Obsolete("Use StripeUserId instead.")]
-        [JsonProperty("stripe_publishable_key")]
+        [JsonPropertyName("stripe_publishable_key")]
         public string StripePublishableKey { get; set; }
 
         /// <summary>
         /// The unique id of the account you have been granted access to, as a string.
         /// </summary>
-        [JsonProperty("stripe_user_id")]
+        [JsonPropertyName("stripe_user_id")]
         public string StripeUserId { get; set; }
 
         /// <summary>Will always have a value of <c>bearer</c>.</summary>
-        [JsonProperty("token_type")]
+        [JsonPropertyName("token_type")]
         public string TokenType { get; set; }
     }
 }

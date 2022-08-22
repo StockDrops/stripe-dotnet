@@ -1,6 +1,6 @@
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class OAuthAuthorizeUrlStripeUserOptions : INestedOptions
     {
@@ -11,7 +11,7 @@ namespace Stripe
         /// <c>JP</c> and <see cref="Zip"/> with a valid Japanese postal code to use this parameter.
         /// </para>
         /// </summary>
-        [JsonProperty("block_kana")]
+        [JsonPropertyName("block_kana")]
         public string BlockKana { get; set; }
 
         /// <summary>
@@ -21,7 +21,7 @@ namespace Stripe
         /// <c>JP</c> and <see cref="Zip"/> with a valid Japanese postal code to use this parameter.
         /// </para>
         /// </summary>
-        [JsonProperty("block_kanji")]
+        [JsonPropertyName("block_kanji")]
         public string BlockKanji { get; set; }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace Stripe
         /// <c>JP</c> and <see cref="Zip"/> with a valid Japanese postal code to use this parameter.
         /// </para>
         /// </summary>
-        [JsonProperty("building_kana")]
+        [JsonPropertyName("building_kana")]
         public string BuildingKana { get; set; }
 
         /// <summary>
@@ -41,11 +41,11 @@ namespace Stripe
         /// <c>JP</c> and <see cref="Zip"/> with a valid Japanese postal code to use this parameter.
         /// </para>
         /// </summary>
-        [JsonProperty("building_kanji")]
+        [JsonPropertyName("building_kanji")]
         public string BuildingKanji { get; set; }
 
         /// <summary>The legal name of the business, also used for the statement descriptor.</summary>
-        [JsonProperty("business_name")]
+        [JsonPropertyName("business_name")]
         public string BusinessName { get; set; }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace Stripe
         /// <c>partnership</c>, or <c>llc</c>.
         /// </para>
         /// </summary>
-        [JsonProperty("business_type")]
+        [JsonPropertyName("business_type")]
         public string BusinessType { get; set; }
 
         /// <summary>
@@ -65,14 +65,14 @@ namespace Stripe
         /// country.
         /// </para>
         /// </summary>
-        [JsonProperty("city")]
+        [JsonPropertyName("city")]
         public string City { get; set; }
 
         /// <summary>
         /// <para>Two-letter country code (e.g., <c>US</c> or <c>CA</c>).</para>
         /// <para>Must be a country that Stripe currently supports.</para>
         /// </summary>
-        [JsonProperty("country")]
+        [JsonPropertyName("country")]
         public string Country { get; set; }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace Stripe
         /// <para>Must be a valid country and currency combination that Stripe supports.</para>
         /// <para>Must prefill <see cref="Country"/> with the corresponding country.</para>
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Stripe
         /// <see cref="DobYear"/>.
         /// </para>
         /// </summary>
-        [JsonProperty("dob_day")]
+        [JsonPropertyName("dob_day")]
         public long? DobDay { get; set; }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace Stripe
         /// <see cref="DobYear"/>.
         /// </para>
         /// </summary>
-        [JsonProperty("dob_month")]
+        [JsonPropertyName("dob_month")]
         public long? DobMonth { get; set; }
 
         /// <summary>
@@ -122,16 +122,16 @@ namespace Stripe
         /// <see cref="DobMonth"/>.
         /// </para>
         /// </summary>
-        [JsonProperty("dob_year")]
+        [JsonPropertyName("dob_year")]
         public long? DobYear { get; set; }
 
         /// <summary>The user's email address. Must be a valid email format.</summary>
         /// <remarks>Recommended.</remarks>
-        [JsonProperty("email")]
+        [JsonPropertyName("email")]
         public string Email { get; set; }
 
         /// <summary>First name of the person who will be filling out a Stripe application.</summary>
-        [JsonProperty("first_name")]
+        [JsonPropertyName("first_name")]
         public string FirstName { get; set; }
 
         /// <summary>
@@ -144,7 +144,7 @@ namespace Stripe
         /// for Japan.
         /// </para>
         /// </summary>
-        [JsonProperty("first_name_kana")]
+        [JsonPropertyName("first_name_kana")]
         public string FirstNameKana { get; set; }
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace Stripe
         /// for Japan.
         /// </para>
         /// </summary>
-        [JsonProperty("first_name_kanji")]
+        [JsonPropertyName("first_name_kanji")]
         public string FirstNameKanji { get; set; }
 
         /// <summary>
@@ -170,11 +170,11 @@ namespace Stripe
         /// for Japan.
         /// </para>
         /// </summary>
-        [JsonProperty("gender")]
+        [JsonPropertyName("gender")]
         public string Gender { get; set; }
 
         /// <summary>Last name of the person who will be filling out a Stripe application.</summary>
-        [JsonProperty("last_name")]
+        [JsonPropertyName("last_name")]
         public string LastName { get; set; }
 
         /// <summary>
@@ -187,7 +187,7 @@ namespace Stripe
         /// for Japan.
         /// </para>
         /// </summary>
-        [JsonProperty("last_name_kana")]
+        [JsonPropertyName("last_name_kana")]
         public string LastNameKana { get; set; }
 
         /// <summary>
@@ -200,22 +200,22 @@ namespace Stripe
         /// for Japan.
         /// </para>
         /// </summary>
-        [JsonProperty("last_name_kanji")]
+        [JsonPropertyName("last_name_kanji")]
         public string LastNameKanji { get; set; }
 
         /// <summary>
         /// <para>The business phone number. Must be 10 digits only.</para>
         /// <para>Must also prefill <see cref="Country"/> with the corresponding country.</para>
         /// </summary>
-        [JsonProperty("phone_number")]
+        [JsonPropertyName("phone_number")]
         public string PhoneNumber { get; set; }
 
         /// <summary><c>true</c> if the user sells a physical product, <c>false</c> otherwise.</summary>
-        [JsonProperty("physical_product")]
+        [JsonPropertyName("physical_product")]
         public bool? PhysicalProduct { get; set; }
 
         /// <summary>A description of what the business is accepting payments for.</summary>
-        [JsonProperty("product_description")]
+        [JsonPropertyName("product_description")]
         public string ProductDescription { get; set; }
 
         /// <summary>
@@ -227,11 +227,11 @@ namespace Stripe
         /// Must also prefill <see cref="Country"/> with the corresponding country.
         /// </para>
         /// </summary>
-        [JsonProperty("state")]
+        [JsonPropertyName("state")]
         public string State { get; set; }
 
         /// <summary>Street address of the business.</summary>
-        [JsonProperty("street_address")]
+        [JsonPropertyName("street_address")]
         public string StreetAddress { get; set; }
 
         /// <summary>
@@ -251,7 +251,7 @@ namespace Stripe
         /// </para>
         /// </summary>
         /// <remarks>Recommended.</remarks>
-        [JsonProperty("url")]
+        [JsonPropertyName("url")]
         public string Url { get; set; }
 
         /// <summary>
@@ -261,7 +261,7 @@ namespace Stripe
         /// country.
         /// </para>
         /// </summary>
-        [JsonProperty("zip")]
+        [JsonPropertyName("zip")]
         public string Zip { get; set; }
     }
 }

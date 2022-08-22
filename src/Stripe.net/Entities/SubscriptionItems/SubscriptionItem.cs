@@ -3,7 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -15,33 +15,34 @@ namespace Stripe
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
         /// Define thresholds at which an invoice will be sent, and the related subscription
         /// advanced to a new billing period.
         /// </summary>
-        [JsonProperty("billing_thresholds")]
+        [JsonPropertyName("billing_thresholds")]
         public SubscriptionItemBillingThresholds BillingThresholds { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
-        [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("deleted")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public bool? Deleted { get; set; }
 
         /// <summary>
@@ -49,7 +50,7 @@ namespace Stripe
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -72,7 +73,7 @@ namespace Stripe
         /// subscription</a> and more about <a
         /// href="https://stripe.com/docs/products-prices/overview">products and prices</a>.
         /// </summary>
-        [JsonProperty("plan")]
+        [JsonPropertyName("plan")]
         public Plan Plan { get; set; }
 
         /// <summary>
@@ -93,20 +94,20 @@ namespace Stripe
         /// invoice</a>, and more about <a
         /// href="https://stripe.com/docs/products-prices/overview">products and prices</a>.
         /// </summary>
-        [JsonProperty("price")]
+        [JsonPropertyName("price")]
         public Price Price { get; set; }
 
         /// <summary>
         /// The <a href="https://stripe.com/docs/subscriptions/quantities">quantity</a> of the plan
         /// to which the customer should be subscribed.
         /// </summary>
-        [JsonProperty("quantity")]
+        [JsonPropertyName("quantity")]
         public long Quantity { get; set; }
 
         /// <summary>
         /// The <c>subscription</c> this <c>subscription_item</c> belongs to.
         /// </summary>
-        [JsonProperty("subscription")]
+        [JsonPropertyName("subscription")]
         public string Subscription { get; set; }
 
         /// <summary>
@@ -114,7 +115,7 @@ namespace Stripe
         /// <c>default_tax_rates</c> on the subscription do not apply to this
         /// <c>subscription_item</c>.
         /// </summary>
-        [JsonProperty("tax_rates")]
+        [JsonPropertyName("tax_rates")]
         public List<TaxRate> TaxRates { get; set; }
     }
 }

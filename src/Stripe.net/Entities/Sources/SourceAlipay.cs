@@ -1,17 +1,17 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SourceAlipay : StripeEntity<SourceAlipay>
     {
-        [JsonProperty("data_string")]
+        [JsonPropertyName("data_string")]
         public string DataString { get; set; }
 
-        [JsonProperty("native_url")]
+        [JsonPropertyName("native_url")]
         public string NativeUrl { get; set; }
 
-        [JsonProperty("statement_descriptor")]
+        [JsonPropertyName("statement_descriptor")]
         public string StatementDescriptor { get; set; }
     }
 }

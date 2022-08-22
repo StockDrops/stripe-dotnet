@@ -2,7 +2,7 @@
 namespace Stripe.Checkout
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SessionPaymentIntentDataOptions : INestedOptions, IHasMetadata
     {
@@ -14,20 +14,20 @@ namespace Stripe.Checkout
         /// href="https://stripe.com/docs/payments/connected-accounts">use case for connected
         /// accounts</a>.
         /// </summary>
-        [JsonProperty("application_fee_amount")]
+        [JsonPropertyName("application_fee_amount")]
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
         /// Controls when the funds will be captured from the customer's account.
         /// One of: <c>automatic</c>, or <c>manual</c>.
         /// </summary>
-        [JsonProperty("capture_method")]
+        [JsonPropertyName("capture_method")]
         public string CaptureMethod { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Stripe.Checkout
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Stripe.Checkout
         /// PaymentIntents <a href="https://stripe.com/docs/payments/connected-accounts">use case
         /// for connected accounts</a>.
         /// </summary>
-        [JsonProperty("on_behalf_of")]
+        [JsonPropertyName("on_behalf_of")]
         public string OnBehalfOf { get; set; }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Stripe.Checkout
         /// regardless of your <a href="https://dashboard.stripe.com/account/emails">email
         /// settings</a>.
         /// </summary>
-        [JsonProperty("receipt_email")]
+        [JsonPropertyName("receipt_email")]
         public string ReceiptEmail { get; set; }
 
         /// <summary>
@@ -79,20 +79,20 @@ namespace Stripe.Checkout
         /// rules, such as SCA.
         /// One of: <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
-        [JsonProperty("setup_future_usage")]
+        [JsonPropertyName("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
         /// Shipping information for this payment.
         /// </summary>
-        [JsonProperty("shipping")]
+        [JsonPropertyName("shipping")]
         public ChargeShippingOptions Shipping { get; set; }
 
         /// <summary>
         /// Extra information about the payment. This will appear on your customer's statement when
         /// this payment succeeds in creating a charge.
         /// </summary>
-        [JsonProperty("statement_descriptor")]
+        [JsonPropertyName("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace Stripe.Checkout
         /// on the account to form the complete statement descriptor. Maximum 22 characters for the
         /// concatenated descriptor.
         /// </summary>
-        [JsonProperty("statement_descriptor_suffix")]
+        [JsonPropertyName("statement_descriptor_suffix")]
         public string StatementDescriptorSuffix { get; set; }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace Stripe.Checkout
         /// href="https://stripe.com/docs/payments/connected-accounts">use case for connected
         /// accounts</a>.
         /// </summary>
-        [JsonProperty("transfer_data")]
+        [JsonPropertyName("transfer_data")]
         public SessionPaymentIntentDataTransferDataOptions TransferData { get; set; }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace Stripe.Checkout
         /// PaymentIntents <a href="https://stripe.com/docs/payments/connected-accounts">use case
         /// for connected accounts</a> for details.
         /// </summary>
-        [JsonProperty("transfer_group")]
+        [JsonPropertyName("transfer_group")]
         public string TransferGroup { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class TokenCreateOptions : BaseOptions
@@ -9,14 +9,14 @@ namespace Stripe
         /// <summary>
         /// Information for the account this token will represent.
         /// </summary>
-        [JsonProperty("account")]
+        [JsonPropertyName("account")]
         public TokenAccountOptions Account { get; set; }
 
-        [JsonProperty("bank_account")]
+        [JsonPropertyName("bank_account")]
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<string, TokenBankAccountOptions> BankAccount { get; set; }
 
-        [JsonProperty("card")]
+        [JsonPropertyName("card")]
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<string, TokenCardOptions> Card { get; set; }
 
@@ -29,25 +29,25 @@ namespace Stripe
         /// href="https://stripe.com/docs/connect/cloning-saved-payment-methods">Cloning Saved
         /// Payment Methods</a>.
         /// </summary>
-        [JsonProperty("customer")]
+        [JsonPropertyName("customer")]
         public string Customer { get; set; }
 
         /// <summary>
         /// The updated CVC value this token will represent.
         /// </summary>
-        [JsonProperty("cvc_update")]
+        [JsonPropertyName("cvc_update")]
         public TokenCvcUpdateOptions CvcUpdate { get; set; }
 
         /// <summary>
         /// Information for the person this token will represent.
         /// </summary>
-        [JsonProperty("person")]
+        [JsonPropertyName("person")]
         public TokenPersonOptions Person { get; set; }
 
         /// <summary>
         /// The PII this token will represent.
         /// </summary>
-        [JsonProperty("pii")]
+        [JsonPropertyName("pii")]
         public TokenPiiOptions Pii { get; set; }
     }
 }

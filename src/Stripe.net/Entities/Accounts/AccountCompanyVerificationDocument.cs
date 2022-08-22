@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class AccountCompanyVerificationDocument : StripeEntity<AccountCompanyVerificationDocument>
@@ -36,7 +36,7 @@ namespace Stripe
             set => this.InternalBack = SetExpandableFieldObject(value, this.InternalBack);
         }
 
-        [JsonProperty("back")]
+        [JsonPropertyName("back")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
         internal ExpandableField<File> InternalBack { get; set; }
         #endregion
@@ -44,7 +44,7 @@ namespace Stripe
         /// <summary>
         /// A user-displayable string describing the verification state of this document.
         /// </summary>
-        [JsonProperty("details")]
+        [JsonPropertyName("details")]
         public string Details { get; set; }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Stripe
         /// <c>document_type_not_supported</c>, or <c>document_too_large</c>. A machine-readable
         /// code specifying the verification state for this document.
         /// </summary>
-        [JsonProperty("details_code")]
+        [JsonPropertyName("details_code")]
         public string DetailsCode { get; set; }
 
         #region Expandable Front
@@ -89,7 +89,7 @@ namespace Stripe
             set => this.InternalFront = SetExpandableFieldObject(value, this.InternalFront);
         }
 
-        [JsonProperty("front")]
+        [JsonPropertyName("front")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
         internal ExpandableField<File> InternalFront { get; set; }
         #endregion

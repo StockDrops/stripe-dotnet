@@ -1,26 +1,26 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Issuing
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class DisputeEvidence : StripeEntity<DisputeEvidence>
     {
-        [JsonProperty("canceled")]
+        [JsonPropertyName("canceled")]
         public DisputeEvidenceCanceled Canceled { get; set; }
 
-        [JsonProperty("duplicate")]
+        [JsonPropertyName("duplicate")]
         public DisputeEvidenceDuplicate Duplicate { get; set; }
 
-        [JsonProperty("fraudulent")]
+        [JsonPropertyName("fraudulent")]
         public DisputeEvidenceFraudulent Fraudulent { get; set; }
 
-        [JsonProperty("merchandise_not_as_described")]
+        [JsonPropertyName("merchandise_not_as_described")]
         public DisputeEvidenceMerchandiseNotAsDescribed MerchandiseNotAsDescribed { get; set; }
 
-        [JsonProperty("not_received")]
+        [JsonPropertyName("not_received")]
         public DisputeEvidenceNotReceived NotReceived { get; set; }
 
-        [JsonProperty("other")]
+        [JsonPropertyName("other")]
         public DisputeEvidenceOther Other { get; set; }
 
         /// <summary>
@@ -30,10 +30,10 @@ namespace Stripe.Issuing
         /// <c>merchandise_not_as_described</c>, <c>not_received</c>, <c>other</c>, or
         /// <c>service_not_as_described</c>.
         /// </summary>
-        [JsonProperty("reason")]
+        [JsonPropertyName("reason")]
         public string Reason { get; set; }
 
-        [JsonProperty("service_not_as_described")]
+        [JsonPropertyName("service_not_as_described")]
         public DisputeEvidenceServiceNotAsDescribed ServiceNotAsDescribed { get; set; }
     }
 }

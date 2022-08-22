@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PaymentIntentPaymentMethodOptionsAcssDebit : StripeEntity<PaymentIntentPaymentMethodOptionsAcssDebit>
     {
-        [JsonProperty("mandate_options")]
+        [JsonPropertyName("mandate_options")]
         public PaymentIntentPaymentMethodOptionsAcssDebitMandateOptions MandateOptions { get; set; }
 
         /// <summary>
@@ -25,14 +25,14 @@ namespace Stripe
         /// as <a href="https://stripe.com/docs/strong-customer-authentication">SCA</a>.
         /// One of: <c>none</c>, <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
-        [JsonProperty("setup_future_usage")]
+        [JsonPropertyName("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
         /// Bank account verification method.
         /// One of: <c>automatic</c>, <c>instant</c>, or <c>microdeposits</c>.
         /// </summary>
-        [JsonProperty("verification_method")]
+        [JsonPropertyName("verification_method")]
         public string VerificationMethod { get; set; }
     }
 }

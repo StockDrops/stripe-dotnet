@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -23,59 +23,59 @@ namespace Stripe
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
         /// Whether the payment link's <c>url</c> is active. If <c>false</c>, customers visiting the
         /// URL will be shown a page saying that the link has been deactivated.
         /// </summary>
-        [JsonProperty("active")]
+        [JsonPropertyName("active")]
         public bool Active { get; set; }
 
-        [JsonProperty("after_completion")]
+        [JsonPropertyName("after_completion")]
         public PaymentLinkAfterCompletion AfterCompletion { get; set; }
 
         /// <summary>
         /// Whether user redeemable promotion codes are enabled.
         /// </summary>
-        [JsonProperty("allow_promotion_codes")]
+        [JsonPropertyName("allow_promotion_codes")]
         public bool AllowPromotionCodes { get; set; }
 
         /// <summary>
         /// The amount of the application fee (if any) that will be requested to be applied to the
         /// payment and transferred to the application owner's Stripe account.
         /// </summary>
-        [JsonProperty("application_fee_amount")]
+        [JsonPropertyName("application_fee_amount")]
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
         /// This represents the percentage of the subscription invoice subtotal that will be
         /// transferred to the application owner's Stripe account.
         /// </summary>
-        [JsonProperty("application_fee_percent")]
+        [JsonPropertyName("application_fee_percent")]
         public decimal? ApplicationFeePercent { get; set; }
 
-        [JsonProperty("automatic_tax")]
+        [JsonPropertyName("automatic_tax")]
         public PaymentLinkAutomaticTax AutomaticTax { get; set; }
 
         /// <summary>
         /// Configuration for collecting the customer's billing address.
         /// One of: <c>auto</c>, or <c>required</c>.
         /// </summary>
-        [JsonProperty("billing_address_collection")]
+        [JsonPropertyName("billing_address_collection")]
         public string BillingAddressCollection { get; set; }
 
         /// <summary>
         /// When set, provides configuration to gather active consent from customers.
         /// </summary>
-        [JsonProperty("consent_collection")]
+        [JsonPropertyName("consent_collection")]
         public PaymentLinkConsentCollection ConsentCollection { get; set; }
 
         /// <summary>
@@ -83,27 +83,27 @@ namespace Stripe
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
         /// Configuration for Customer creation during checkout.
         /// One of: <c>always</c>, or <c>if_required</c>.
         /// </summary>
-        [JsonProperty("customer_creation")]
+        [JsonPropertyName("customer_creation")]
         public string CustomerCreation { get; set; }
 
         /// <summary>
         /// The line items representing what is being sold.
         /// </summary>
-        [JsonProperty("line_items")]
+        [JsonPropertyName("line_items")]
         public StripeList<LineItem> LineItems { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace Stripe
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         #region Expandable OnBehalfOf
@@ -144,7 +144,7 @@ namespace Stripe
             set => this.InternalOnBehalfOf = SetExpandableFieldObject(value, this.InternalOnBehalfOf);
         }
 
-        [JsonProperty("on_behalf_of")]
+        [JsonPropertyName("on_behalf_of")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
         internal ExpandableField<Account> InternalOnBehalfOf { get; set; }
         #endregion
@@ -152,14 +152,14 @@ namespace Stripe
         /// <summary>
         /// Indicates the parameters to be passed to PaymentIntent creation during checkout.
         /// </summary>
-        [JsonProperty("payment_intent_data")]
+        [JsonPropertyName("payment_intent_data")]
         public PaymentLinkPaymentIntentData PaymentIntentData { get; set; }
 
         /// <summary>
         /// Configuration for collecting a payment method during checkout.
         /// One of: <c>always</c>, or <c>if_required</c>.
         /// </summary>
-        [JsonProperty("payment_method_collection")]
+        [JsonPropertyName("payment_method_collection")]
         public string PaymentMethodCollection { get; set; }
 
         /// <summary>
@@ -168,22 +168,22 @@ namespace Stripe
         /// href="https://dashboard.stripe.com/settings/payment_methods">payment method
         /// settings</a>.
         /// </summary>
-        [JsonProperty("payment_method_types")]
+        [JsonPropertyName("payment_method_types")]
         public List<string> PaymentMethodTypes { get; set; }
 
-        [JsonProperty("phone_number_collection")]
+        [JsonPropertyName("phone_number_collection")]
         public PaymentLinkPhoneNumberCollection PhoneNumberCollection { get; set; }
 
         /// <summary>
         /// Configuration for collecting the customer's shipping address.
         /// </summary>
-        [JsonProperty("shipping_address_collection")]
+        [JsonPropertyName("shipping_address_collection")]
         public PaymentLinkShippingAddressCollection ShippingAddressCollection { get; set; }
 
         /// <summary>
         /// The shipping rate options applied to the session.
         /// </summary>
-        [JsonProperty("shipping_options")]
+        [JsonPropertyName("shipping_options")]
         public List<PaymentLinkShippingOption> ShippingOptions { get; set; }
 
         /// <summary>
@@ -191,30 +191,30 @@ namespace Stripe
         /// page, such as the submit button.
         /// One of: <c>auto</c>, <c>book</c>, <c>donate</c>, or <c>pay</c>.
         /// </summary>
-        [JsonProperty("submit_type")]
+        [JsonPropertyName("submit_type")]
         public string SubmitType { get; set; }
 
         /// <summary>
         /// When creating a subscription, the specified configuration data will be used. There must
         /// be at least one line item with a recurring price to use <c>subscription_data</c>.
         /// </summary>
-        [JsonProperty("subscription_data")]
+        [JsonPropertyName("subscription_data")]
         public PaymentLinkSubscriptionData SubscriptionData { get; set; }
 
-        [JsonProperty("tax_id_collection")]
+        [JsonPropertyName("tax_id_collection")]
         public PaymentLinkTaxIdCollection TaxIdCollection { get; set; }
 
         /// <summary>
         /// The account (if any) the payments will be attributed to for tax reporting, and where
         /// funds from each payment will be transferred to.
         /// </summary>
-        [JsonProperty("transfer_data")]
+        [JsonPropertyName("transfer_data")]
         public PaymentLinkTransferData TransferData { get; set; }
 
         /// <summary>
         /// The public URL that can be shared with customers.
         /// </summary>
-        [JsonProperty("url")]
+        [JsonPropertyName("url")]
         public string Url { get; set; }
     }
 }

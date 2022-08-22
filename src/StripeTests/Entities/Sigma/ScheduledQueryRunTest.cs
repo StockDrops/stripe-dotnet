@@ -1,6 +1,6 @@
 namespace StripeTests.Sigma
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Sigma;
     using Xunit;
 

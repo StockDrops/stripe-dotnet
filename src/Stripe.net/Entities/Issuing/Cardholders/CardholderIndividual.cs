@@ -1,32 +1,32 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Issuing
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class CardholderIndividual : StripeEntity<CardholderIndividual>
     {
         /// <summary>
         /// The date of birth of this cardholder.
         /// </summary>
-        [JsonProperty("dob")]
+        [JsonPropertyName("dob")]
         public CardholderIndividualDob Dob { get; set; }
 
         /// <summary>
         /// The first name of this cardholder.
         /// </summary>
-        [JsonProperty("first_name")]
+        [JsonPropertyName("first_name")]
         public string FirstName { get; set; }
 
         /// <summary>
         /// The last name of this cardholder.
         /// </summary>
-        [JsonProperty("last_name")]
+        [JsonPropertyName("last_name")]
         public string LastName { get; set; }
 
         /// <summary>
         /// Government-issued ID document for this cardholder.
         /// </summary>
-        [JsonProperty("verification")]
+        [JsonPropertyName("verification")]
         public CardholderIndividualVerification Verification { get; set; }
     }
 }

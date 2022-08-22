@@ -1,26 +1,26 @@
 namespace Stripe.Checkout
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SessionDisplayItemCustom : StripeEntity<SessionDisplayItemCustom>
     {
         /// <summary>
         /// The description of the line item.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
         /// The images of the line item.
         /// </summary>
-        [JsonProperty("images")]
+        [JsonPropertyName("images")]
         public List<string> Images { get; set; }
 
         /// <summary>
         /// The name of the line item.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
     }
 }

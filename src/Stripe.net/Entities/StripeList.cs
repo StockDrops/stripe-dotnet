@@ -2,7 +2,7 @@ namespace Stripe
 {
     using System.Collections;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     [JsonObject]
@@ -11,26 +11,26 @@ namespace Stripe
         /// <summary>
         /// A string describing the object type returned.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
         /// A list containing the actual response elements, paginated by any request parameters.
         /// </summary>
-        [JsonProperty("data", ItemConverterType = typeof(StripeObjectConverter))]
+        [JsonPropertyName("data", ItemConverterType = typeof(StripeObjectConverter))]
         public List<T> Data { get; set; }
 
         /// <summary>
         /// Whether or not there are more elements available after this set. If <c>false</c>,
         /// this set comprises the end of the list.
         /// </summary>
-        [JsonProperty("has_more")]
+        [JsonPropertyName("has_more")]
         public bool HasMore { get; set; }
 
         /// <summary>
         /// The URL for accessing this list.
         /// </summary>
-        [JsonProperty("url")]
+        [JsonPropertyName("url")]
         public string Url { get; set; }
 
         public IEnumerator<T> GetEnumerator()

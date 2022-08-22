@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Reporting
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ReportRunCreateOptions : BaseOptions
     {
@@ -11,7 +11,7 @@ namespace Stripe.Reporting
         /// href="https://stripe.com/docs/reporting/statements/api">API Access to Reports</a>
         /// documentation.
         /// </summary>
-        [JsonProperty("parameters")]
+        [JsonPropertyName("parameters")]
         public ReportRunParametersOptions Parameters { get; set; }
 
         /// <summary>
@@ -19,7 +19,7 @@ namespace Stripe.Reporting
         /// href="https://stripe.com/docs/reporting/statements/api#report-types">report type</a> to
         /// run, such as <c>"balance.summary.1"</c>.
         /// </summary>
-        [JsonProperty("report_type")]
+        [JsonPropertyName("report_type")]
         public string ReportType { get; set; }
     }
 }

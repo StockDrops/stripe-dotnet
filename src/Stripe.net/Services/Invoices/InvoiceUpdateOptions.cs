@@ -3,7 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class InvoiceUpdateOptions : BaseOptions, IHasMetadata
@@ -12,7 +12,7 @@ namespace Stripe
         /// The account tax IDs associated with the invoice. Only editable when the invoice is a
         /// draft.
         /// </summary>
-        [JsonProperty("account_tax_ids")]
+        [JsonPropertyName("account_tax_ids")]
         public List<string> AccountTaxIds { get; set; }
 
         /// <summary>
@@ -22,7 +22,7 @@ namespace Stripe
         /// the application fees <a
         /// href="https://stripe.com/docs/billing/invoices/connect#collecting-fees">documentation</a>.
         /// </summary>
-        [JsonProperty("application_fee_amount")]
+        [JsonPropertyName("application_fee_amount")]
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
@@ -30,13 +30,13 @@ namespace Stripe
         /// href="https://stripe.com/docs/billing/invoices/workflow/#auto_advance">automatic
         /// collection</a> of the invoice.
         /// </summary>
-        [JsonProperty("auto_advance")]
+        [JsonPropertyName("auto_advance")]
         public bool? AutoAdvance { get; set; }
 
         /// <summary>
         /// Settings for automatic tax lookup for this invoice.
         /// </summary>
-        [JsonProperty("automatic_tax")]
+        [JsonPropertyName("automatic_tax")]
         public InvoiceAutomaticTaxOptions AutomaticTax { get; set; }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Stripe
         /// only on <c>draft</c> invoices.
         /// One of: <c>charge_automatically</c>, or <c>send_invoice</c>.
         /// </summary>
-        [JsonProperty("collection_method")]
+        [JsonPropertyName("collection_method")]
         public string CollectionMethod { get; set; }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Stripe
         /// <c>custom_fields</c> is specified, the list specified will replace the existing custom
         /// field list on this invoice. Pass an empty string to remove previously-defined fields.
         /// </summary>
-        [JsonProperty("custom_fields")]
+        [JsonPropertyName("custom_fields")]
         public List<InvoiceCustomFieldOptions> CustomFields { get; set; }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace Stripe
         /// invoices where <c>collection_method=send_invoice</c>. This field can only be updated on
         /// <c>draft</c> invoices.
         /// </summary>
-        [JsonProperty("days_until_due")]
+        [JsonPropertyName("days_until_due")]
         public long? DaysUntilDue { get; set; }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Stripe
         /// associated with the invoice. If not set, defaults to the subscription's default payment
         /// method, if any, or to the default payment method in the customer's invoice settings.
         /// </summary>
-        [JsonProperty("default_payment_method")]
+        [JsonPropertyName("default_payment_method")]
         public string DefaultPaymentMethod { get; set; }
 
         /// <summary>
@@ -76,28 +76,28 @@ namespace Stripe
         /// associated with the invoice and be in a chargeable state. If not set, defaults to the
         /// subscription's default source, if any, or to the customer's default source.
         /// </summary>
-        [JsonProperty("default_source")]
+        [JsonPropertyName("default_source")]
         public string DefaultSource { get; set; }
 
         /// <summary>
         /// The tax rates that will apply to any line item that does not have <c>tax_rates</c> set.
         /// Pass an empty string to remove previously-defined tax rates.
         /// </summary>
-        [JsonProperty("default_tax_rates")]
+        [JsonPropertyName("default_tax_rates")]
         public List<string> DefaultTaxRates { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// Referenced as 'memo' in the Dashboard.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
         /// The discounts that will apply to the invoice. Pass an empty string to remove
         /// previously-defined discounts.
         /// </summary>
-        [JsonProperty("discounts")]
+        [JsonPropertyName("discounts")]
         public List<InvoiceDiscountOptions> Discounts { get; set; }
 
         /// <summary>
@@ -105,14 +105,14 @@ namespace Stripe
         /// <c>collection_method=send_invoice</c>. This field can only be updated on <c>draft</c>
         /// invoices.
         /// </summary>
-        [JsonProperty("due_date")]
+        [JsonPropertyName("due_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? DueDate { get; set; }
 
         /// <summary>
         /// Footer to be displayed on the invoice.
         /// </summary>
-        [JsonProperty("footer")]
+        [JsonPropertyName("footer")]
         public string Footer { get; set; }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -130,20 +130,20 @@ namespace Stripe
         /// account. See the <a href="https://stripe.com/docs/billing/invoices/connect">Invoices
         /// with Connect</a> documentation for details.
         /// </summary>
-        [JsonProperty("on_behalf_of")]
+        [JsonPropertyName("on_behalf_of")]
         public string OnBehalfOf { get; set; }
 
         /// <summary>
         /// Configuration settings for the PaymentIntent that is generated when the invoice is
         /// finalized.
         /// </summary>
-        [JsonProperty("payment_settings")]
+        [JsonPropertyName("payment_settings")]
         public InvoicePaymentSettingsOptions PaymentSettings { get; set; }
 
         /// <summary>
         /// Options for invoice PDF rendering.
         /// </summary>
-        [JsonProperty("rendering_options")]
+        [JsonPropertyName("rendering_options")]
         public InvoiceRenderingOptionsOptions RenderingOptions { get; set; }
 
         /// <summary>
@@ -152,7 +152,7 @@ namespace Stripe
         /// subscription, the default <c>statement_descriptor</c> will be set to the first
         /// subscription item's product's <c>statement_descriptor</c>.
         /// </summary>
-        [JsonProperty("statement_descriptor")]
+        [JsonPropertyName("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 
         /// <summary>
@@ -160,7 +160,7 @@ namespace Stripe
         /// ID of the resulting transfer will be found on the invoice's charge. This will be unset
         /// if you POST an empty value.
         /// </summary>
-        [JsonProperty("transfer_data")]
+        [JsonPropertyName("transfer_data")]
         public InvoiceTransferDataOptions TransferData { get; set; }
     }
 }

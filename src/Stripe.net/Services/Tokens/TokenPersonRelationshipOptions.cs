@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class TokenPersonRelationshipOptions : INestedOptions
     {
@@ -10,26 +10,26 @@ namespace Stripe
         /// members of the governing board of the company, or responsible for ensuring the company
         /// meets its regulatory obligations.
         /// </summary>
-        [JsonProperty("director")]
+        [JsonPropertyName("director")]
         public bool? Director { get; set; }
 
         /// <summary>
         /// Whether the person has significant responsibility to control, manage, or direct the
         /// organization.
         /// </summary>
-        [JsonProperty("executive")]
+        [JsonPropertyName("executive")]
         public bool? Executive { get; set; }
 
         /// <summary>
         /// Whether the person is an owner of the account’s legal entity.
         /// </summary>
-        [JsonProperty("owner")]
+        [JsonPropertyName("owner")]
         public bool? Owner { get; set; }
 
         /// <summary>
         /// The percent owned by the person of the account's legal entity.
         /// </summary>
-        [JsonProperty("percent_ownership")]
+        [JsonPropertyName("percent_ownership")]
         public decimal? PercentOwnership { get; set; }
 
         /// <summary>
@@ -39,13 +39,13 @@ namespace Stripe
         /// time. At the time the account is created, this person should be set to the person
         /// responsible for opening the account.
         /// </summary>
-        [JsonProperty("representative")]
+        [JsonPropertyName("representative")]
         public bool? Representative { get; set; }
 
         /// <summary>
         /// The person's title (e.g., CEO, Support Engineer).
         /// </summary>
-        [JsonProperty("title")]
+        [JsonPropertyName("title")]
         public string Title { get; set; }
     }
 }

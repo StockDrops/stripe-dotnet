@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class AccountSettingsPayoutsScheduleOptions : INestedOptions
     {
         /// <summary>
         /// temp.
         /// </summary>
-        [JsonProperty("delay_days")]
+        [JsonPropertyName("delay_days")]
         public string DelayDays { get; set; }
 
         /// <summary>
@@ -16,7 +16,7 @@ namespace Stripe
         /// <c>weekly</c>, or <c>monthly</c>. Default is <c>daily</c>.
         /// One of: <c>daily</c>, <c>manual</c>, <c>monthly</c>, or <c>weekly</c>.
         /// </summary>
-        [JsonProperty("interval")]
+        [JsonPropertyName("interval")]
         public string Interval { get; set; }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace Stripe
         /// sent on the last day of a shorter month. Required and applicable only if <c>interval</c>
         /// is <c>monthly</c>.
         /// </summary>
-        [JsonProperty("monthly_anchor")]
+        [JsonPropertyName("monthly_anchor")]
         public string MonthlyAnchor { get; set; }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace Stripe
         /// One of: <c>friday</c>, <c>monday</c>, <c>saturday</c>, <c>sunday</c>, <c>thursday</c>,
         /// <c>tuesday</c>, or <c>wednesday</c>.
         /// </summary>
-        [JsonProperty("weekly_anchor")]
+        [JsonPropertyName("weekly_anchor")]
         public string WeeklyAnchor { get; set; }
     }
 }

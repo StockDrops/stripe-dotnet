@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Checkout
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SessionAfterExpirationRecoveryOptions : INestedOptions
     {
@@ -9,7 +9,7 @@ namespace Stripe.Checkout
         /// Enables user redeemable promotion codes on the recovered Checkout Sessions. Defaults to
         /// <c>false</c>.
         /// </summary>
-        [JsonProperty("allow_promotion_codes")]
+        [JsonPropertyName("allow_promotion_codes")]
         public bool? AllowPromotionCodes { get; set; }
 
         /// <summary>
@@ -17,7 +17,7 @@ namespace Stripe.Checkout
         /// expires before a successful transaction is completed. It will be attached to the
         /// Checkout Session object upon expiration.
         /// </summary>
-        [JsonProperty("enabled")]
+        [JsonPropertyName("enabled")]
         public bool? Enabled { get; set; }
     }
 }

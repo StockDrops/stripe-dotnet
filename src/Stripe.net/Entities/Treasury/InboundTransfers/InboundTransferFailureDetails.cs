@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Treasury
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class InboundTransferFailureDetails : StripeEntity<InboundTransferFailureDetails>
     {
@@ -14,7 +14,7 @@ namespace Stripe.Treasury
         /// <c>invalid_account_number</c>, <c>invalid_currency</c>, <c>no_account</c>, or
         /// <c>other</c>.
         /// </summary>
-        [JsonProperty("code")]
+        [JsonPropertyName("code")]
         public string Code { get; set; }
     }
 }

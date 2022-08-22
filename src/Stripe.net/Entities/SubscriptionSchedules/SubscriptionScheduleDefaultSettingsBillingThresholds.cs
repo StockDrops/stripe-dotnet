@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SubscriptionScheduleDefaultSettingsBillingThresholds : StripeEntity<SubscriptionScheduleDefaultSettingsBillingThresholds>
     {
         /// <summary>
         /// Monetary threshold that triggers the subscription to create an invoice.
         /// </summary>
-        [JsonProperty("amount_gte")]
+        [JsonPropertyName("amount_gte")]
         public long? AmountGte { get; set; }
 
         /// <summary>
@@ -18,7 +18,7 @@ namespace Stripe
         /// not be <c>true</c> if the subscription contains items with plans that have
         /// <c>aggregate_usage=last_ever</c>.
         /// </summary>
-        [JsonProperty("reset_billing_cycle_anchor")]
+        [JsonPropertyName("reset_billing_cycle_anchor")]
         public bool? ResetBillingCycleAnchor { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Treasury
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class FinancialAccountFeaturesCardIssuingStatusDetail : StripeEntity<FinancialAccountFeaturesCardIssuingStatusDetail>
     {
@@ -13,21 +13,21 @@ namespace Stripe.Treasury
         /// <c>requirements_pending_verification</c>, <c>restricted_by_platform</c>, or
         /// <c>restricted_other</c>.
         /// </summary>
-        [JsonProperty("code")]
+        [JsonPropertyName("code")]
         public string Code { get; set; }
 
         /// <summary>
         /// Represents what the user should do, if anything, to activate the Feature.
         /// One of: <c>contact_stripe</c>, <c>provide_information</c>, or <c>remove_restriction</c>.
         /// </summary>
-        [JsonProperty("resolution")]
+        [JsonPropertyName("resolution")]
         public string Resolution { get; set; }
 
         /// <summary>
         /// The <c>platform_restrictions</c> that are restricting this Feature.
         /// One of: <c>inbound_flows</c>, or <c>outbound_flows</c>.
         /// </summary>
-        [JsonProperty("restriction")]
+        [JsonPropertyName("restriction")]
         public string Restriction { get; set; }
     }
 }

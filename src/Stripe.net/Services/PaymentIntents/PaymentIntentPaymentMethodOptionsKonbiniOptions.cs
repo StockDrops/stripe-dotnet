@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class PaymentIntentPaymentMethodOptionsKonbiniOptions : INestedOptions
@@ -12,7 +12,7 @@ namespace Stripe
         /// applicable convenience stores. Must not consist of only zeroes and could be rejected in
         /// case of insufficient uniqueness. We recommend to use the customer's phone number.
         /// </summary>
-        [JsonProperty("confirmation_number")]
+        [JsonPropertyName("confirmation_number")]
         public string ConfirmationNumber { get; set; }
 
         /// <summary>
@@ -21,14 +21,14 @@ namespace Stripe
         /// <c>expires_after_days</c> set to 2 on Monday JST, the instructions will expire on
         /// Wednesday 23:59:59 JST. Defaults to 3 days.
         /// </summary>
-        [JsonProperty("expires_after_days")]
+        [JsonPropertyName("expires_after_days")]
         public long? ExpiresAfterDays { get; set; }
 
         /// <summary>
         /// The timestamp at which the Konbini payment instructions will expire. Only one of
         /// <c>expires_after_days</c> or <c>expires_at</c> may be set.
         /// </summary>
-        [JsonProperty("expires_at")]
+        [JsonPropertyName("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ExpiresAt { get; set; }
 
@@ -36,7 +36,7 @@ namespace Stripe
         /// A product descriptor of up to 22 characters, which will appear to customers at the
         /// convenience store.
         /// </summary>
-        [JsonProperty("product_description")]
+        [JsonPropertyName("product_description")]
         public string ProductDescription { get; set; }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Stripe
         /// publishable key, you may only update the value from <c>on_session</c> to
         /// <c>off_session</c>.
         /// </summary>
-        [JsonProperty("setup_future_usage")]
+        [JsonPropertyName("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
     }
 }

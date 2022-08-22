@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class CreditNoteCreateOptions : BaseOptions, IHasMetadata
     {
@@ -10,32 +10,32 @@ namespace Stripe
         /// The integer amount in cents (or local equivalent) representing the total amount of the
         /// credit note.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long? Amount { get; set; }
 
         /// <summary>
         /// The integer amount in cents (or local equivalent) representing the amount to credit the
         /// customer's balance, which will be automatically applied to their next invoice.
         /// </summary>
-        [JsonProperty("credit_amount")]
+        [JsonPropertyName("credit_amount")]
         public long? CreditAmount { get; set; }
 
         /// <summary>
         /// ID of the invoice.
         /// </summary>
-        [JsonProperty("invoice")]
+        [JsonPropertyName("invoice")]
         public string Invoice { get; set; }
 
         /// <summary>
         /// Line items that make up the credit note.
         /// </summary>
-        [JsonProperty("lines")]
+        [JsonPropertyName("lines")]
         public List<CreditNoteLineOptions> Lines { get; set; }
 
         /// <summary>
         /// The credit note's memo appears on the credit note PDF.
         /// </summary>
-        [JsonProperty("memo")]
+        [JsonPropertyName("memo")]
         public string Memo { get; set; }
 
         /// <summary>
@@ -44,14 +44,14 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The integer amount in cents (or local equivalent) representing the amount that is
         /// credited outside of Stripe.
         /// </summary>
-        [JsonProperty("out_of_band_amount")]
+        [JsonPropertyName("out_of_band_amount")]
         public long? OutOfBandAmount { get; set; }
 
         /// <summary>
@@ -60,20 +60,20 @@ namespace Stripe
         /// One of: <c>duplicate</c>, <c>fraudulent</c>, <c>order_change</c>, or
         /// <c>product_unsatisfactory</c>.
         /// </summary>
-        [JsonProperty("reason")]
+        [JsonPropertyName("reason")]
         public string Reason { get; set; }
 
         /// <summary>
         /// ID of an existing refund to link this credit note to.
         /// </summary>
-        [JsonProperty("refund")]
+        [JsonPropertyName("refund")]
         public string Refund { get; set; }
 
         /// <summary>
         /// The integer amount in cents (or local equivalent) representing the amount to refund. If
         /// set, a refund will be created for the charge associated with the invoice.
         /// </summary>
-        [JsonProperty("refund_amount")]
+        [JsonPropertyName("refund_amount")]
         public long? RefundAmount { get; set; }
     }
 }

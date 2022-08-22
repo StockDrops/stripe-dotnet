@@ -1,20 +1,20 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Terminal
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ReaderProcessSetupIntentOptions : BaseOptions
     {
         /// <summary>
         /// Customer Consent Collected.
         /// </summary>
-        [JsonProperty("customer_consent_collected")]
+        [JsonPropertyName("customer_consent_collected")]
         public bool? CustomerConsentCollected { get; set; }
 
         /// <summary>
         /// SetupIntent ID.
         /// </summary>
-        [JsonProperty("setup_intent")]
+        [JsonPropertyName("setup_intent")]
         public string SetupIntent { get; set; }
     }
 }

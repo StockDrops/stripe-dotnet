@@ -3,7 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -17,13 +17,13 @@ namespace Stripe
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         #region Expandable Application
@@ -52,7 +52,7 @@ namespace Stripe
             set => this.InternalApplication = SetExpandableFieldObject(value, this.InternalApplication);
         }
 
-        [JsonProperty("application")]
+        [JsonPropertyName("application")]
         [JsonConverter(typeof(ExpandableFieldConverter<Application>))]
         internal ExpandableField<Application> InternalApplication { get; set; }
         #endregion
@@ -62,10 +62,10 @@ namespace Stripe
         /// represents the percentage of the subscription invoice subtotal that will be transferred
         /// to the application owner's Stripe account.
         /// </summary>
-        [JsonProperty("application_fee_percent")]
+        [JsonPropertyName("application_fee_percent")]
         public decimal? ApplicationFeePercent { get; set; }
 
-        [JsonProperty("automatic_tax")]
+        [JsonPropertyName("automatic_tax")]
         public SubscriptionAutomaticTax AutomaticTax { get; set; }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Stripe
         /// <c>year</c> intervals, the day of the month for subsequent invoices. The timestamp is in
         /// UTC format.
         /// </summary>
-        [JsonProperty("billing_cycle_anchor")]
+        [JsonPropertyName("billing_cycle_anchor")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime BillingCycleAnchor { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -81,13 +81,13 @@ namespace Stripe
         /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
         /// new billing period.
         /// </summary>
-        [JsonProperty("billing_thresholds")]
+        [JsonPropertyName("billing_thresholds")]
         public SubscriptionBillingThresholds BillingThresholds { get; set; }
 
         /// <summary>
         /// A date in the future at which the subscription will automatically get canceled.
         /// </summary>
-        [JsonProperty("cancel_at")]
+        [JsonPropertyName("cancel_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? CancelAt { get; set; }
 
@@ -97,7 +97,7 @@ namespace Stripe
         /// this attribute to determine whether a subscription that has a status of active is
         /// scheduled to be canceled at the end of the current period.
         /// </summary>
-        [JsonProperty("cancel_at_period_end")]
+        [JsonPropertyName("cancel_at_period_end")]
         public bool CancelAtPeriodEnd { get; set; }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace Stripe
         /// reflect the time of the most recent update request, not the end of the subscription
         /// period when the subscription is automatically moved to a canceled state.
         /// </summary>
-        [JsonProperty("canceled_at")]
+        [JsonPropertyName("canceled_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? CanceledAt { get; set; }
 
@@ -117,13 +117,13 @@ namespace Stripe
         /// customer an invoice with payment instructions.
         /// One of: <c>charge_automatically</c>, or <c>send_invoice</c>.
         /// </summary>
-        [JsonProperty("collection_method")]
+        [JsonPropertyName("collection_method")]
         public string CollectionMethod { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -132,21 +132,21 @@ namespace Stripe
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
         /// End of the current period that the subscription has been invoiced for. At the end of
         /// this period, a new invoice will be created.
         /// </summary>
-        [JsonProperty("current_period_end")]
+        [JsonPropertyName("current_period_end")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime CurrentPeriodEnd { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Start of the current period that the subscription has been invoiced for.
         /// </summary>
-        [JsonProperty("current_period_start")]
+        [JsonPropertyName("current_period_start")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime CurrentPeriodStart { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -176,7 +176,7 @@ namespace Stripe
             set => this.InternalCustomer = SetExpandableFieldObject(value, this.InternalCustomer);
         }
 
-        [JsonProperty("customer")]
+        [JsonPropertyName("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
@@ -186,7 +186,7 @@ namespace Stripe
         /// will be <c>null</c> for subscriptions where
         /// <c>collection_method=charge_automatically</c>.
         /// </summary>
-        [JsonProperty("days_until_due")]
+        [JsonPropertyName("days_until_due")]
         public long? DaysUntilDue { get; set; }
 
         #region Expandable DefaultPaymentMethod
@@ -225,7 +225,7 @@ namespace Stripe
             set => this.InternalDefaultPaymentMethod = SetExpandableFieldObject(value, this.InternalDefaultPaymentMethod);
         }
 
-        [JsonProperty("default_payment_method")]
+        [JsonPropertyName("default_payment_method")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
         internal ExpandableField<PaymentMethod> InternalDefaultPaymentMethod { get; set; }
         #endregion
@@ -268,7 +268,7 @@ namespace Stripe
             set => this.InternalDefaultSource = SetExpandableFieldObject(value, this.InternalDefaultSource);
         }
 
-        [JsonProperty("default_source")]
+        [JsonPropertyName("default_source")]
         [JsonConverter(typeof(ExpandableFieldConverter<IPaymentSource>))]
         internal ExpandableField<IPaymentSource> InternalDefaultSource { get; set; }
         #endregion
@@ -278,14 +278,14 @@ namespace Stripe
         /// <c>tax_rates</c> set. Invoices created will have their <c>default_tax_rates</c>
         /// populated from the subscription.
         /// </summary>
-        [JsonProperty("default_tax_rates")]
+        [JsonPropertyName("default_tax_rates")]
         public List<TaxRate> DefaultTaxRates { get; set; }
 
         /// <summary>
         /// The subscription's description, meant to be displayable to the customer. Use this field
         /// to optionally store an explanation of the subscription for rendering in Stripe surfaces.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
@@ -293,20 +293,20 @@ namespace Stripe
         /// billing, a discount applied to a subscription overrides a discount applied on a
         /// customer-wide basis.
         /// </summary>
-        [JsonProperty("discount")]
+        [JsonPropertyName("discount")]
         public Discount Discount { get; set; }
 
         /// <summary>
         /// If the subscription has ended, the date the subscription ended.
         /// </summary>
-        [JsonProperty("ended_at")]
+        [JsonPropertyName("ended_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? EndedAt { get; set; }
 
         /// <summary>
         /// List of subscription items, each with an attached price.
         /// </summary>
-        [JsonProperty("items")]
+        [JsonPropertyName("items")]
         public StripeList<SubscriptionItem> Items { get; set; }
 
         #region Expandable LatestInvoice
@@ -335,7 +335,7 @@ namespace Stripe
             set => this.InternalLatestInvoice = SetExpandableFieldObject(value, this.InternalLatestInvoice);
         }
 
-        [JsonProperty("latest_invoice")]
+        [JsonPropertyName("latest_invoice")]
         [JsonConverter(typeof(ExpandableFieldConverter<Invoice>))]
         internal ExpandableField<Invoice> InternalLatestInvoice { get; set; }
         #endregion
@@ -344,7 +344,7 @@ namespace Stripe
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -352,27 +352,27 @@ namespace Stripe
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Specifies the approximate timestamp on which any pending invoice items will be billed
         /// according to the schedule provided at <c>pending_invoice_item_interval</c>.
         /// </summary>
-        [JsonProperty("next_pending_invoice_item_invoice")]
+        [JsonPropertyName("next_pending_invoice_item_invoice")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? NextPendingInvoiceItemInvoice { get; set; }
 
         /// <summary>
         /// If specified, payment collection for this subscription will be paused.
         /// </summary>
-        [JsonProperty("pause_collection")]
+        [JsonPropertyName("pause_collection")]
         public SubscriptionPauseCollection PauseCollection { get; set; }
 
         /// <summary>
         /// Payment settings passed on to invoices created by the subscription.
         /// </summary>
-        [JsonProperty("payment_settings")]
+        [JsonPropertyName("payment_settings")]
         public SubscriptionPaymentSettings PaymentSettings { get; set; }
 
         /// <summary>
@@ -380,7 +380,7 @@ namespace Stripe
         /// analogous to calling <a href="https://stripe.com/docs/api#create_invoice">Create an
         /// invoice</a> for the given subscription at the specified interval.
         /// </summary>
-        [JsonProperty("pending_invoice_item_interval")]
+        [JsonPropertyName("pending_invoice_item_interval")]
         public SubscriptionPendingInvoiceItemInterval PendingInvoiceItemInterval { get; set; }
 
         #region Expandable PendingSetupIntent
@@ -419,7 +419,7 @@ namespace Stripe
             set => this.InternalPendingSetupIntent = SetExpandableFieldObject(value, this.InternalPendingSetupIntent);
         }
 
-        [JsonProperty("pending_setup_intent")]
+        [JsonPropertyName("pending_setup_intent")]
         [JsonConverter(typeof(ExpandableFieldConverter<SetupIntent>))]
         internal ExpandableField<SetupIntent> InternalPendingSetupIntent { get; set; }
         #endregion
@@ -429,7 +429,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/billing/subscriptions/pending-updates">pending updates</a>
         /// that will be applied to the subscription once the <c>latest_invoice</c> has been paid.
         /// </summary>
-        [JsonProperty("pending_update")]
+        [JsonPropertyName("pending_update")]
         public SubscriptionPendingUpdate PendingUpdate { get; set; }
 
         #region Expandable Schedule
@@ -458,7 +458,7 @@ namespace Stripe
             set => this.InternalSchedule = SetExpandableFieldObject(value, this.InternalSchedule);
         }
 
-        [JsonProperty("schedule")]
+        [JsonPropertyName("schedule")]
         [JsonConverter(typeof(ExpandableFieldConverter<SubscriptionSchedule>))]
         internal ExpandableField<SubscriptionSchedule> InternalSchedule { get; set; }
         #endregion
@@ -467,7 +467,7 @@ namespace Stripe
         /// Date when the subscription was first created. The date might differ from the
         /// <c>created</c> date due to backdating.
         /// </summary>
-        [JsonProperty("start_date")]
+        [JsonPropertyName("start_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime StartDate { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -498,7 +498,7 @@ namespace Stripe
         /// One of: <c>active</c>, <c>canceled</c>, <c>incomplete</c>, <c>incomplete_expired</c>,
         /// <c>past_due</c>, <c>trialing</c>, or <c>unpaid</c>.
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
         #region Expandable TestClock
@@ -527,7 +527,7 @@ namespace Stripe
             set => this.InternalTestClock = SetExpandableFieldObject(value, this.InternalTestClock);
         }
 
-        [JsonProperty("test_clock")]
+        [JsonPropertyName("test_clock")]
         [JsonConverter(typeof(ExpandableFieldConverter<TestHelpers.TestClock>))]
         internal ExpandableField<TestHelpers.TestClock> InternalTestClock { get; set; }
         #endregion
@@ -537,20 +537,20 @@ namespace Stripe
         /// reporting, and where funds from each payment will be transferred to for each of the
         /// subscription's invoices.
         /// </summary>
-        [JsonProperty("transfer_data")]
+        [JsonPropertyName("transfer_data")]
         public SubscriptionTransferData TransferData { get; set; }
 
         /// <summary>
         /// If the subscription has a trial, the end of that trial.
         /// </summary>
-        [JsonProperty("trial_end")]
+        [JsonPropertyName("trial_end")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? TrialEnd { get; set; }
 
         /// <summary>
         /// If the subscription has a trial, the beginning of that trial.
         /// </summary>
-        [JsonProperty("trial_start")]
+        [JsonPropertyName("trial_start")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? TrialStart { get; set; }
     }

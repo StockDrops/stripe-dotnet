@@ -4,7 +4,7 @@ namespace Stripe
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -17,25 +17,25 @@ namespace Stripe
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
         /// Total before any discounts or taxes are applied.
         /// </summary>
-        [JsonProperty("amount_subtotal")]
+        [JsonPropertyName("amount_subtotal")]
         public long AmountSubtotal { get; set; }
 
         /// <summary>
         /// Total after discounts and taxes are applied.
         /// </summary>
-        [JsonProperty("amount_total")]
+        [JsonPropertyName("amount_total")]
         public long AmountTotal { get; set; }
 
         #region Expandable Application
@@ -64,7 +64,7 @@ namespace Stripe
             set => this.InternalApplication = SetExpandableFieldObject(value, this.InternalApplication);
         }
 
-        [JsonProperty("application")]
+        [JsonPropertyName("application")]
         [JsonConverter(typeof(ExpandableFieldConverter<Application>))]
         internal ExpandableField<Application> InternalApplication { get; set; }
         #endregion
@@ -74,7 +74,7 @@ namespace Stripe
         /// payment and transferred to the application owner's Stripe account. Only applicable if
         /// there are no line items with recurring prices on the quote.
         /// </summary>
-        [JsonProperty("application_fee_amount")]
+        [JsonPropertyName("application_fee_amount")]
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
@@ -83,10 +83,10 @@ namespace Stripe
         /// to the application owner's Stripe account. Only applicable if there are line items with
         /// recurring prices on the quote.
         /// </summary>
-        [JsonProperty("application_fee_percent")]
+        [JsonPropertyName("application_fee_percent")]
         public decimal? ApplicationFeePercent { get; set; }
 
-        [JsonProperty("automatic_tax")]
+        [JsonPropertyName("automatic_tax")]
         public QuoteAutomaticTax AutomaticTax { get; set; }
 
         /// <summary>
@@ -97,16 +97,16 @@ namespace Stripe
         /// instructions. Defaults to <c>charge_automatically</c>.
         /// One of: <c>charge_automatically</c>, or <c>send_invoice</c>.
         /// </summary>
-        [JsonProperty("collection_method")]
+        [JsonPropertyName("collection_method")]
         public string CollectionMethod { get; set; }
 
-        [JsonProperty("computed")]
+        [JsonPropertyName("computed")]
         public QuoteComputed Computed { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -115,7 +115,7 @@ namespace Stripe
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         #region Expandable Customer
@@ -146,7 +146,7 @@ namespace Stripe
             set => this.InternalCustomer = SetExpandableFieldObject(value, this.InternalCustomer);
         }
 
-        [JsonProperty("customer")]
+        [JsonPropertyName("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
@@ -177,14 +177,14 @@ namespace Stripe
             set => this.InternalDefaultTaxRates = SetExpandableArrayObjects(value);
         }
 
-        [JsonProperty("default_tax_rates", ItemConverterType = typeof(ExpandableFieldConverter<TaxRate>))]
+        [JsonPropertyName("default_tax_rates", ItemConverterType = typeof(ExpandableFieldConverter<TaxRate>))]
         internal List<ExpandableField<TaxRate>> InternalDefaultTaxRates { get; set; }
         #endregion
 
         /// <summary>
         /// A description that will be displayed on the quote PDF.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         #region Expandable Discounts
@@ -213,7 +213,7 @@ namespace Stripe
             set => this.InternalDiscounts = SetExpandableArrayObjects(value);
         }
 
-        [JsonProperty("discounts", ItemConverterType = typeof(ExpandableFieldConverter<Discount>))]
+        [JsonPropertyName("discounts", ItemConverterType = typeof(ExpandableFieldConverter<Discount>))]
         internal List<ExpandableField<Discount>> InternalDiscounts { get; set; }
         #endregion
 
@@ -221,27 +221,27 @@ namespace Stripe
         /// The date on which the quote will be canceled if in <c>open</c> or <c>draft</c> status.
         /// Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("expires_at")]
+        [JsonPropertyName("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime ExpiresAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// A footer that will be displayed on the quote PDF.
         /// </summary>
-        [JsonProperty("footer")]
+        [JsonPropertyName("footer")]
         public string Footer { get; set; }
 
         /// <summary>
         /// Details of the quote that was cloned. See the <a
         /// href="https://stripe.com/docs/quotes/clone">cloning documentation</a> for more details.
         /// </summary>
-        [JsonProperty("from_quote")]
+        [JsonPropertyName("from_quote")]
         public QuoteFromQuote FromQuote { get; set; }
 
         /// <summary>
         /// A header that will be displayed on the quote PDF.
         /// </summary>
-        [JsonProperty("header")]
+        [JsonPropertyName("header")]
         public string Header { get; set; }
 
         #region Expandable Invoice
@@ -270,7 +270,7 @@ namespace Stripe
             set => this.InternalInvoice = SetExpandableFieldObject(value, this.InternalInvoice);
         }
 
-        [JsonProperty("invoice")]
+        [JsonPropertyName("invoice")]
         [JsonConverter(typeof(ExpandableFieldConverter<Invoice>))]
         internal ExpandableField<Invoice> InternalInvoice { get; set; }
         #endregion
@@ -278,20 +278,20 @@ namespace Stripe
         /// <summary>
         /// All invoices will be billed using the specified settings.
         /// </summary>
-        [JsonProperty("invoice_settings")]
+        [JsonPropertyName("invoice_settings")]
         public QuoteInvoiceSettings InvoiceSettings { get; set; }
 
         /// <summary>
         /// A list of items the customer is being quoted for.
         /// </summary>
-        [JsonProperty("line_items")]
+        [JsonPropertyName("line_items")]
         public StripeList<LineItem> LineItems { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -299,14 +299,14 @@ namespace Stripe
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// A unique number that identifies this particular quote. This number is assigned once the
         /// quote is <a href="https://stripe.com/docs/quotes/overview#finalize">finalized</a>.
         /// </summary>
-        [JsonProperty("number")]
+        [JsonPropertyName("number")]
         public string Number { get; set; }
 
         #region Expandable OnBehalfOf
@@ -339,7 +339,7 @@ namespace Stripe
             set => this.InternalOnBehalfOf = SetExpandableFieldObject(value, this.InternalOnBehalfOf);
         }
 
-        [JsonProperty("on_behalf_of")]
+        [JsonPropertyName("on_behalf_of")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
         internal ExpandableField<Account> InternalOnBehalfOf { get; set; }
         #endregion
@@ -348,10 +348,10 @@ namespace Stripe
         /// The status of the quote.
         /// One of: <c>accepted</c>, <c>canceled</c>, <c>draft</c>, or <c>open</c>.
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
-        [JsonProperty("status_transitions")]
+        [JsonPropertyName("status_transitions")]
         public QuoteStatusTransitions StatusTransitions { get; set; }
 
         #region Expandable Subscription
@@ -380,12 +380,12 @@ namespace Stripe
             set => this.InternalSubscription = SetExpandableFieldObject(value, this.InternalSubscription);
         }
 
-        [JsonProperty("subscription")]
+        [JsonPropertyName("subscription")]
         [JsonConverter(typeof(ExpandableFieldConverter<Subscription>))]
         internal ExpandableField<Subscription> InternalSubscription { get; set; }
         #endregion
 
-        [JsonProperty("subscription_data")]
+        [JsonPropertyName("subscription_data")]
         public QuoteSubscriptionData SubscriptionData { get; set; }
 
         #region Expandable SubscriptionSchedule
@@ -414,7 +414,7 @@ namespace Stripe
             set => this.InternalSubscriptionSchedule = SetExpandableFieldObject(value, this.InternalSubscriptionSchedule);
         }
 
-        [JsonProperty("subscription_schedule")]
+        [JsonPropertyName("subscription_schedule")]
         [JsonConverter(typeof(ExpandableFieldConverter<SubscriptionSchedule>))]
         internal ExpandableField<SubscriptionSchedule> InternalSubscriptionSchedule { get; set; }
         #endregion
@@ -445,19 +445,19 @@ namespace Stripe
             set => this.InternalTestClock = SetExpandableFieldObject(value, this.InternalTestClock);
         }
 
-        [JsonProperty("test_clock")]
+        [JsonPropertyName("test_clock")]
         [JsonConverter(typeof(ExpandableFieldConverter<TestHelpers.TestClock>))]
         internal ExpandableField<TestHelpers.TestClock> InternalTestClock { get; set; }
         #endregion
 
-        [JsonProperty("total_details")]
+        [JsonPropertyName("total_details")]
         public QuoteTotalDetails TotalDetails { get; set; }
 
         /// <summary>
         /// The account (if any) the payments will be attributed to for tax reporting, and where
         /// funds from each payment will be transferred to for each of the invoices.
         /// </summary>
-        [JsonProperty("transfer_data")]
+        [JsonPropertyName("transfer_data")]
         public QuoteTransferData TransferData { get; set; }
     }
 }

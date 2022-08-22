@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Issuing
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class DisputeListOptions : ListOptionsWithCreated
     {
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
-        [JsonProperty("transaction")]
+        [JsonPropertyName("transaction")]
         public string Transaction { get; set; }
     }
 }

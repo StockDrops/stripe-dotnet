@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class AccountSettingsTreasury : StripeEntity<AccountSettingsTreasury>
     {
-        [JsonProperty("tos_acceptance")]
+        [JsonPropertyName("tos_acceptance")]
         public AccountSettingsTreasuryTosAcceptance TosAcceptance { get; set; }
     }
 }

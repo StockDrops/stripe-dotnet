@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SubscriptionPaymentSettingsPaymentMethodOptionsCardMandateOptionsOptions : INestedOptions
     {
         /// <summary>
         /// Amount to be charged for future payments.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long? Amount { get; set; }
 
         /// <summary>
@@ -17,14 +17,14 @@ namespace Stripe
         /// charged can be up to the value passed for the <c>amount</c> param.
         /// One of: <c>fixed</c>, or <c>maximum</c>.
         /// </summary>
-        [JsonProperty("amount_type")]
+        [JsonPropertyName("amount_type")]
         public string AmountType { get; set; }
 
         /// <summary>
         /// A description of the mandate or subscription that is meant to be displayed to the
         /// customer.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
     }
 }

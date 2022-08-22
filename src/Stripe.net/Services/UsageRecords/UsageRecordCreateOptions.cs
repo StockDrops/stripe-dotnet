@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class UsageRecordCreateOptions : BaseOptions
@@ -16,13 +16,13 @@ namespace Stripe
         /// thresholds</a>, <c>increment</c> is the only allowed value.
         /// One of: <c>increment</c>, or <c>set</c>.
         /// </summary>
-        [JsonProperty("action")]
+        [JsonPropertyName("action")]
         public string Action { get; set; }
 
         /// <summary>
         /// The usage quantity for the specified timestamp.
         /// </summary>
-        [JsonProperty("quantity")]
+        [JsonPropertyName("quantity")]
         public long? Quantity { get; set; }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace Stripe
         /// the future. When passing <c>"now"</c>, Stripe records usage for the current time.
         /// Default is <c>"now"</c> if a value is not provided.
         /// </summary>
-        [JsonProperty("timestamp")]
+        [JsonPropertyName("timestamp")]
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<DateTime?, UsageRecordTimestamp> Timestamp { get; set; }
     }

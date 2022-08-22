@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class CreditNoteTaxAmount : StripeEntity<CreditNoteTaxAmount>
@@ -9,13 +9,13 @@ namespace Stripe
         /// <summary>
         /// The amount, in %s, of the tax.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long Amount { get; set; }
 
         /// <summary>
         /// Whether this tax amount is inclusive or exclusive.
         /// </summary>
-        [JsonProperty("inclusive")]
+        [JsonPropertyName("inclusive")]
         public bool Inclusive { get; set; }
 
         #region Expandable TaxRate
@@ -44,7 +44,7 @@ namespace Stripe
             set => this.InternalTaxRate = SetExpandableFieldObject(value, this.InternalTaxRate);
         }
 
-        [JsonProperty("tax_rate")]
+        [JsonPropertyName("tax_rate")]
         [JsonConverter(typeof(ExpandableFieldConverter<TaxRate>))]
         internal ExpandableField<TaxRate> InternalTaxRate { get; set; }
         #endregion

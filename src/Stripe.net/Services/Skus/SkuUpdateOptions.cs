@@ -2,14 +2,14 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SkuUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// Whether this SKU is available for purchase.
         /// </summary>
-        [JsonProperty("active")]
+        [JsonPropertyName("active")]
         public bool? Active { get; set; }
 
         /// <summary>
@@ -18,7 +18,7 @@ namespace Stripe
         /// the product, with the postcondition that a value must be present for each attribute key
         /// on the product.
         /// </summary>
-        [JsonProperty("attributes")]
+        [JsonPropertyName("attributes")]
         public Dictionary<string, string> Attributes { get; set; }
 
         /// <summary>
@@ -26,19 +26,19 @@ namespace Stripe
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
         /// The URL of an image for this SKU, meant to be displayable to the customer.
         /// </summary>
-        [JsonProperty("image")]
+        [JsonPropertyName("image")]
         public string Image { get; set; }
 
         /// <summary>
         /// Description of the SKU's inventory.
         /// </summary>
-        [JsonProperty("inventory")]
+        [JsonPropertyName("inventory")]
         public SkuInventoryOptions Inventory { get; set; }
 
         /// <summary>
@@ -47,13 +47,13 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The dimensions of this SKU for shipping purposes.
         /// </summary>
-        [JsonProperty("package_dimensions")]
+        [JsonPropertyName("package_dimensions")]
         public SkuPackageDimensionsOptions PackageDimensions { get; set; }
 
         /// <summary>
@@ -61,14 +61,14 @@ namespace Stripe
         /// cents to charge $1.00, or 100 to charge ¥100, Japanese Yen being a zero-decimal
         /// currency).
         /// </summary>
-        [JsonProperty("price")]
+        [JsonPropertyName("price")]
         public long? Price { get; set; }
 
         /// <summary>
         /// The ID of the product that this SKU should belong to. The product must exist, have the
         /// same set of attribute names as the SKU's current product, and be of type <c>good</c>.
         /// </summary>
-        [JsonProperty("product")]
+        [JsonPropertyName("product")]
         public string Product { get; set; }
     }
 }

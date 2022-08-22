@@ -1,19 +1,19 @@
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SearchOptions : BaseOptions
     {
         /// <summary>
         /// A limit on the number of objects to be returned, between 1 and 100.
         /// </summary>
-        [JsonProperty("limit")]
+        [JsonPropertyName("limit")]
         public long? Limit { get; set; }
 
-        [JsonProperty("page")]
+        [JsonPropertyName("page")]
         public string Page { get; set; }
 
-        [JsonProperty("query")]
+        [JsonPropertyName("query")]
         public string Query { get; set; }
     }
 }

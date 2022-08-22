@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions : INestedOptions
     {
@@ -11,14 +11,14 @@ namespace Stripe
         /// <c>payment_method</c> permission must be included. Valid permissions include:
         /// <c>balances</c>, <c>ownership</c>, <c>payment_method</c>, and <c>transactions</c>.
         /// </summary>
-        [JsonProperty("permissions")]
+        [JsonPropertyName("permissions")]
         public List<string> Permissions { get; set; }
 
         /// <summary>
         /// For webview integrations only. Upon completing OAuth login in the native browser, the
         /// user will be redirected to this URL to return to your app.
         /// </summary>
-        [JsonProperty("return_url")]
+        [JsonPropertyName("return_url")]
         public string ReturnUrl { get; set; }
     }
 }

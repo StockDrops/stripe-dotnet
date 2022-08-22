@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PlanListOptions : ListOptionsWithCreated
     {
-        [JsonProperty("active")]
+        [JsonPropertyName("active")]
         public bool? Active { get; set; }
 
-        [JsonProperty("product")]
+        [JsonPropertyName("product")]
         public string Product { get; set; }
     }
 }

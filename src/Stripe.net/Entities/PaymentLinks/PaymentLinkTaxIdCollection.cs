@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PaymentLinkTaxIdCollection : StripeEntity<PaymentLinkTaxIdCollection>
     {
         /// <summary>
         /// Indicates whether tax ID collection is enabled for the session.
         /// </summary>
-        [JsonProperty("enabled")]
+        [JsonPropertyName("enabled")]
         public bool Enabled { get; set; }
     }
 }

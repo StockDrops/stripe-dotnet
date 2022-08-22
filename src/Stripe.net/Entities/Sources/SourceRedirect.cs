@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SourceRedirect : StripeEntity<SourceRedirect>
     {
@@ -11,13 +11,13 @@ namespace Stripe
         /// transaction was declined), or <c>processing_error</c> (the redirect failed due to a
         /// technical error). Present only if the redirect status is <c>failed</c>.
         /// </summary>
-        [JsonProperty("failure_reason")]
+        [JsonPropertyName("failure_reason")]
         public string FailureReason { get; set; }
 
         /// <summary>
         /// The URL you provide to redirect the customer to after they authenticated their payment.
         /// </summary>
-        [JsonProperty("return_url")]
+        [JsonPropertyName("return_url")]
         public string ReturnUrl { get; set; }
 
         /// <summary>
@@ -26,14 +26,14 @@ namespace Stripe
         /// reused) or <c>not_required</c> (redirect should not be used) or <c>failed</c> (failed
         /// authentication, cannot be reused).
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
         /// <summary>
         /// The URL provided to you to redirect a customer to as part of a <c>redirect</c>
         /// authentication flow.
         /// </summary>
-        [JsonProperty("url")]
+        [JsonPropertyName("url")]
         public string Url { get; set; }
     }
 }

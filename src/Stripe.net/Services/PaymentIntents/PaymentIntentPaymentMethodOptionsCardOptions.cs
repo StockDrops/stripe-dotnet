@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PaymentIntentPaymentMethodOptionsCardOptions : INestedOptions
     {
@@ -14,7 +14,7 @@ namespace Stripe
         /// If <c>capture_method</c> is already set on the PaymentIntent, providing an empty value
         /// for this parameter will unset the stored value for this payment method type.
         /// </summary>
-        [JsonProperty("capture_method")]
+        [JsonPropertyName("capture_method")]
         public string CaptureMethod { get; set; }
 
         /// <summary>
@@ -22,7 +22,7 @@ namespace Stripe
         /// the CVC value will be verified during the card payment attempt. This parameter can only
         /// be provided during confirmation.
         /// </summary>
-        [JsonProperty("cvc_token")]
+        [JsonPropertyName("cvc_token")]
         public string CvcToken { get; set; }
 
         /// <summary>
@@ -31,13 +31,13 @@ namespace Stripe
         /// For more information, see the <a
         /// href="https://stripe.com/docs/payments/installments">installments integration guide</a>.
         /// </summary>
-        [JsonProperty("installments")]
+        [JsonPropertyName("installments")]
         public PaymentIntentPaymentMethodOptionsCardInstallmentsOptions Installments { get; set; }
 
         /// <summary>
         /// Configuration options for setting up an eMandate for cards issued in India.
         /// </summary>
-        [JsonProperty("mandate_options")]
+        [JsonPropertyName("mandate_options")]
         public PaymentIntentPaymentMethodOptionsCardMandateOptionsOptions MandateOptions { get; set; }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Stripe
         /// Order Telephone Order) and thus out of scope for SCA. This parameter can only be
         /// provided during confirmation.
         /// </summary>
-        [JsonProperty("moto")]
+        [JsonPropertyName("moto")]
         public bool? Moto { get; set; }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace Stripe
         /// <c>interac</c>, <c>jcb</c>, <c>mastercard</c>, <c>unionpay</c>, <c>unknown</c>, or
         /// <c>visa</c>.
         /// </summary>
-        [JsonProperty("network")]
+        [JsonPropertyName("network")]
         public string Network { get; set; }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Stripe
         /// SCA Engine.
         /// One of: <c>any</c>, or <c>automatic</c>.
         /// </summary>
-        [JsonProperty("request_three_d_secure")]
+        [JsonPropertyName("request_three_d_secure")]
         public string RequestThreeDSecure { get; set; }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace Stripe
         /// publishable key, you may only update the value from <c>on_session</c> to
         /// <c>off_session</c>.
         /// </summary>
-        [JsonProperty("setup_future_usage")]
+        [JsonPropertyName("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace Stripe
         /// 22 characters. On card statements, the <em>concatenation</em> of both prefix and suffix
         /// (including separators) will appear truncated to 22 characters.
         /// </summary>
-        [JsonProperty("statement_descriptor_suffix_kana")]
+        [JsonPropertyName("statement_descriptor_suffix_kana")]
         public string StatementDescriptorSuffixKana { get; set; }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace Stripe
         /// 17 characters. On card statements, the <em>concatenation</em> of both prefix and suffix
         /// (including separators) will appear truncated to 17 characters.
         /// </summary>
-        [JsonProperty("statement_descriptor_suffix_kanji")]
+        [JsonPropertyName("statement_descriptor_suffix_kanji")]
         public string StatementDescriptorSuffixKanji { get; set; }
     }
 }

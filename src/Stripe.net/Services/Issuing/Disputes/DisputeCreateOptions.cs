@@ -2,14 +2,14 @@
 namespace Stripe.Issuing
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class DisputeCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// Evidence provided for the dispute.
         /// </summary>
-        [JsonProperty("evidence")]
+        [JsonPropertyName("evidence")]
         public DisputeEvidenceOptions Evidence { get; set; }
 
         /// <summary>
@@ -18,20 +18,20 @@ namespace Stripe.Issuing
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The ID of the issuing transaction to create a dispute for. For transaction on Treasury
         /// FinancialAccounts, use <c>treasury.received_debit</c>.
         /// </summary>
-        [JsonProperty("transaction")]
+        [JsonPropertyName("transaction")]
         public string Transaction { get; set; }
 
         /// <summary>
         /// Params for disputes related to Treasury FinancialAccounts.
         /// </summary>
-        [JsonProperty("treasury")]
+        [JsonPropertyName("treasury")]
         public DisputeTreasuryOptions Treasury { get; set; }
     }
 }

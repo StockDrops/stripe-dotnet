@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ApplePayDomainListOptions : ListOptions
     {
-        [JsonProperty("domain_name")]
+        [JsonPropertyName("domain_name")]
         public string DomainName { get; set; }
     }
 }

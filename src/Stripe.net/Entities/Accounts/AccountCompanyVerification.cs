@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class AccountCompanyVerification : StripeEntity<AccountCompanyVerification>
     {
-        [JsonProperty("document")]
+        [JsonPropertyName("document")]
         public AccountCompanyVerificationDocument Document { get; set; }
     }
 }

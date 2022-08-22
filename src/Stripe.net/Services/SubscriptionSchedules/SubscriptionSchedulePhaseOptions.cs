@@ -3,7 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class SubscriptionSchedulePhaseOptions : INestedOptions, IHasMetadata
@@ -12,7 +12,7 @@ namespace Stripe
         /// A list of prices and quantities that will generate invoice items appended to the next
         /// invoice for this phase. You may pass up to 20 items.
         /// </summary>
-        [JsonProperty("add_invoice_items")]
+        [JsonPropertyName("add_invoice_items")]
         public List<SubscriptionSchedulePhaseAddInvoiceItemOptions> AddInvoiceItems { get; set; }
 
         /// <summary>
@@ -23,13 +23,13 @@ namespace Stripe
         /// information, see the application fees <a
         /// href="https://stripe.com/docs/connect/subscriptions#collecting-fees-on-subscriptions">documentation</a>.
         /// </summary>
-        [JsonProperty("application_fee_percent")]
+        [JsonPropertyName("application_fee_percent")]
         public decimal? ApplicationFeePercent { get; set; }
 
         /// <summary>
         /// Automatic tax settings for this phase.
         /// </summary>
-        [JsonProperty("automatic_tax")]
+        [JsonPropertyName("automatic_tax")]
         public SubscriptionSchedulePhaseAutomaticTaxOptions AutomaticTax { get; set; }
 
         /// <summary>
@@ -40,14 +40,14 @@ namespace Stripe
         /// href="https://stripe.com/docs/billing/subscriptions/billing-cycle">documentation</a>.
         /// One of: <c>automatic</c>, or <c>phase_start</c>.
         /// </summary>
-        [JsonProperty("billing_cycle_anchor")]
+        [JsonPropertyName("billing_cycle_anchor")]
         public string BillingCycleAnchor { get; set; }
 
         /// <summary>
         /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
         /// new billing period. Pass an empty string to remove previously-defined thresholds.
         /// </summary>
-        [JsonProperty("billing_thresholds")]
+        [JsonPropertyName("billing_thresholds")]
         public SubscriptionSchedulePhaseBillingThresholdsOptions BillingThresholds { get; set; }
 
         /// <summary>
@@ -58,13 +58,13 @@ namespace Stripe
         /// <c>charge_automatically</c> on creation.
         /// One of: <c>charge_automatically</c>, or <c>send_invoice</c>.
         /// </summary>
-        [JsonProperty("collection_method")]
+        [JsonPropertyName("collection_method")]
         public string CollectionMethod { get; set; }
 
         /// <summary>
         /// The identifier of the coupon to apply to this phase of the subscription schedule.
         /// </summary>
-        [JsonProperty("coupon")]
+        [JsonPropertyName("coupon")]
         public string Coupon { get; set; }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Stripe
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Stripe
         /// customer associated with the subscription schedule. If not set, invoices will use the
         /// default payment method in the customer's invoice settings.
         /// </summary>
-        [JsonProperty("default_payment_method")]
+        [JsonPropertyName("default_payment_method")]
         public string DefaultPaymentMethod { get; set; }
 
         /// <summary>
@@ -91,28 +91,28 @@ namespace Stripe
         /// href="https://stripe.com/docs/api/invoices/create#create_invoice-default_tax_rates"><c>default_tax_rates</c></a>
         /// for any Invoices issued by the Subscription during this Phase.
         /// </summary>
-        [JsonProperty("default_tax_rates")]
+        [JsonPropertyName("default_tax_rates")]
         public List<string> DefaultTaxRates { get; set; }
 
         /// <summary>
         /// The date at which this phase of the subscription schedule ends. If set,
         /// <c>iterations</c> must not be set.
         /// </summary>
-        [JsonProperty("end_date")]
+        [JsonPropertyName("end_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? EndDate { get; set; }
 
         /// <summary>
         /// All invoices will be billed using the specified settings.
         /// </summary>
-        [JsonProperty("invoice_settings")]
+        [JsonPropertyName("invoice_settings")]
         public SubscriptionSchedulePhaseInvoiceSettingsOptions InvoiceSettings { get; set; }
 
         /// <summary>
         /// List of configuration items, each with an attached price, to apply during this phase of
         /// the subscription schedule.
         /// </summary>
-        [JsonProperty("items")]
+        [JsonPropertyName("items")]
         public List<SubscriptionSchedulePhaseItemOptions> Items { get; set; }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace Stripe
         /// <c>interval_count=3</c> results in a phase of duration <c>2 * 3 months = 6 months</c>.
         /// If set, <c>end_date</c> must not be set.
         /// </summary>
-        [JsonProperty("iterations")]
+        [JsonPropertyName("iterations")]
         public long? Iterations { get; set; }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace Stripe
         /// the subscription directly or unset every key individually from the phase's
         /// <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -143,10 +143,10 @@ namespace Stripe
         /// transitioning to this phase. The default value is <c>create_prorations</c>.
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
         /// </summary>
-        [JsonProperty("proration_behavior")]
+        [JsonPropertyName("proration_behavior")]
         public string ProrationBehavior { get; set; }
 
-        [JsonProperty("start_date")]
+        [JsonPropertyName("start_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? StartDate { get; set; }
 
@@ -154,21 +154,21 @@ namespace Stripe
         /// The data with which to automatically create a Transfer for each of the associated
         /// subscription's invoices.
         /// </summary>
-        [JsonProperty("transfer_data")]
+        [JsonPropertyName("transfer_data")]
         public SubscriptionSchedulePhaseTransferDataOptions TransferData { get; set; }
 
         /// <summary>
         /// If set to true the entire phase is counted as a trial and the customer will not be
         /// charged for any fees.
         /// </summary>
-        [JsonProperty("trial")]
+        [JsonPropertyName("trial")]
         public bool? Trial { get; set; }
 
         /// <summary>
         /// Sets the phase to trialing from the start date to this date. Must be before the phase
         /// end date, can not be combined with <c>trial</c>.
         /// </summary>
-        [JsonProperty("trial_end")]
+        [JsonPropertyName("trial_end")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? TrialEnd { get; set; }
     }

@@ -1,33 +1,33 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SourceSourceOrderItemOptions : INestedOptions
     {
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long? Amount { get; set; }
 
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
         /// The ID of the SKU being ordered.
         /// </summary>
-        [JsonProperty("parent")]
+        [JsonPropertyName("parent")]
         public string Parent { get; set; }
 
         /// <summary>
         /// The quantity of this order item. When type is <c>sku</c>, this is the number of
         /// instances of the SKU to be ordered.
         /// </summary>
-        [JsonProperty("quantity")]
+        [JsonPropertyName("quantity")]
         public long? Quantity { get; set; }
 
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
     }
 }

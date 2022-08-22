@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class TransferReversalCreateOptions : BaseOptions, IHasMetadata
     {
@@ -12,14 +12,14 @@ namespace Stripe
         /// Partial transfer reversals are only allowed for transfers to Stripe Accounts. Defaults
         /// to the entire transfer amount.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long? Amount { get; set; }
 
         /// <summary>
         /// An arbitrary string which you can attach to a reversal object. It is displayed alongside
         /// the reversal in the Dashboard. This will be unset if you POST an empty value.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Stripe
         /// refunded. Otherwise, the application fee will be refunded with an amount proportional to
         /// the amount of the transfer reversed.
         /// </summary>
-        [JsonProperty("refund_application_fee")]
+        [JsonPropertyName("refund_application_fee")]
         public bool? RefundApplicationFee { get; set; }
     }
 }

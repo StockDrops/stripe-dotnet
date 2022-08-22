@@ -1,17 +1,17 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class InvoiceItemListOptions : ListOptionsWithCreated
     {
-        [JsonProperty("customer")]
+        [JsonPropertyName("customer")]
         public string Customer { get; set; }
 
-        [JsonProperty("invoice")]
+        [JsonPropertyName("invoice")]
         public string Invoice { get; set; }
 
-        [JsonProperty("pending")]
+        [JsonPropertyName("pending")]
         public bool? Pending { get; set; }
     }
 }

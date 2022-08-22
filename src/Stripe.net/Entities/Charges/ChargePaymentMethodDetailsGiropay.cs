@@ -1,26 +1,26 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ChargePaymentMethodDetailsGiropay : StripeEntity<ChargePaymentMethodDetailsGiropay>
     {
         /// <summary>
         /// Bank code of bank associated with the bank account.
         /// </summary>
-        [JsonProperty("bank_code")]
+        [JsonPropertyName("bank_code")]
         public string BankCode { get; set; }
 
         /// <summary>
         /// Name of the bank associated with the bank account.
         /// </summary>
-        [JsonProperty("bank_name")]
+        [JsonPropertyName("bank_name")]
         public string BankName { get; set; }
 
         /// <summary>
         /// Bank Identifier Code of the bank associated with the bank account.
         /// </summary>
-        [JsonProperty("bic")]
+        [JsonPropertyName("bic")]
         public string Bic { get; set; }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Stripe
         /// supported) at the time of authorization or settlement. They cannot be set or mutated.
         /// Giropay rarely provides this information so the attribute is usually empty.
         /// </summary>
-        [JsonProperty("verified_name")]
+        [JsonPropertyName("verified_name")]
         public string VerifiedName { get; set; }
     }
 }

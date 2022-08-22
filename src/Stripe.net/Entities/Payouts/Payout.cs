@@ -3,7 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -21,26 +21,26 @@ namespace Stripe
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
         /// Amount (in %s) to be transferred to your bank account or debit card.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long Amount { get; set; }
 
         /// <summary>
         /// Date the payout is expected to arrive in the bank. This factors in delays like weekends
         /// or bank holidays.
         /// </summary>
-        [JsonProperty("arrival_date")]
+        [JsonPropertyName("arrival_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime ArrivalDate { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -50,7 +50,7 @@ namespace Stripe
         /// and <c>false</c> if it was <a
         /// href="https://stripe.com/docs/payouts#manual-payouts">requested manually</a>.
         /// </summary>
-        [JsonProperty("automatic")]
+        [JsonPropertyName("automatic")]
         public bool Automatic { get; set; }
 
         #region Expandable BalanceTransaction
@@ -81,7 +81,7 @@ namespace Stripe
             set => this.InternalBalanceTransaction = SetExpandableFieldObject(value, this.InternalBalanceTransaction);
         }
 
-        [JsonProperty("balance_transaction")]
+        [JsonPropertyName("balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
         internal ExpandableField<BalanceTransaction> InternalBalanceTransaction { get; set; }
         #endregion
@@ -89,7 +89,7 @@ namespace Stripe
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -98,13 +98,13 @@ namespace Stripe
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         #region Expandable Destination
@@ -133,7 +133,7 @@ namespace Stripe
             set => this.InternalDestination = SetExpandableFieldObject(value, this.InternalDestination);
         }
 
-        [JsonProperty("destination")]
+        [JsonPropertyName("destination")]
         [JsonConverter(typeof(ExpandableFieldConverter<IExternalAccount>))]
         internal ExpandableField<IExternalAccount> InternalDestination { get; set; }
         #endregion
@@ -168,7 +168,7 @@ namespace Stripe
             set => this.InternalFailureBalanceTransaction = SetExpandableFieldObject(value, this.InternalFailureBalanceTransaction);
         }
 
-        [JsonProperty("failure_balance_transaction")]
+        [JsonPropertyName("failure_balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
         internal ExpandableField<BalanceTransaction> InternalFailureBalanceTransaction { get; set; }
         #endregion
@@ -178,20 +178,20 @@ namespace Stripe
         /// href="https://stripe.com/docs/api#payout_failures">Types of payout failures</a> for a
         /// list of failure codes.
         /// </summary>
-        [JsonProperty("failure_code")]
+        [JsonPropertyName("failure_code")]
         public string FailureCode { get; set; }
 
         /// <summary>
         /// Message to user further explaining reason for payout failure if available.
         /// </summary>
-        [JsonProperty("failure_message")]
+        [JsonPropertyName("failure_message")]
         public string FailureMessage { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -199,7 +199,7 @@ namespace Stripe
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -208,7 +208,7 @@ namespace Stripe
         /// href="https://stripe.com/blog/instant-payouts-for-marketplaces">Instant payouts for
         /// marketplaces</a> for more information.).
         /// </summary>
-        [JsonProperty("method")]
+        [JsonPropertyName("method")]
         public string Method { get; set; }
 
         #region Expandable OriginalPayout
@@ -237,7 +237,7 @@ namespace Stripe
             set => this.InternalOriginalPayout = SetExpandableFieldObject(value, this.InternalOriginalPayout);
         }
 
-        [JsonProperty("original_payout")]
+        [JsonPropertyName("original_payout")]
         [JsonConverter(typeof(ExpandableFieldConverter<Payout>))]
         internal ExpandableField<Payout> InternalOriginalPayout { get; set; }
         #endregion
@@ -268,7 +268,7 @@ namespace Stripe
             set => this.InternalReversedBy = SetExpandableFieldObject(value, this.InternalReversedBy);
         }
 
-        [JsonProperty("reversed_by")]
+        [JsonPropertyName("reversed_by")]
         [JsonConverter(typeof(ExpandableFieldConverter<Payout>))]
         internal ExpandableField<Payout> InternalReversedBy { get; set; }
         #endregion
@@ -277,13 +277,13 @@ namespace Stripe
         /// The source balance this payout came from. One of <c>card</c>, <c>fpx</c>, or
         /// <c>bank_account</c>.
         /// </summary>
-        [JsonProperty("source_type")]
+        [JsonPropertyName("source_type")]
         public string SourceType { get; set; }
 
         /// <summary>
         /// Extra information about a payout to be displayed on the user's bank statement.
         /// </summary>
-        [JsonProperty("statement_descriptor")]
+        [JsonPropertyName("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 
         /// <summary>
@@ -294,14 +294,14 @@ namespace Stripe
         /// days). Some failed payouts may initially show as <c>paid</c> but then change to
         /// <c>failed</c>.
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
         /// <summary>
         /// Can be <c>bank_account</c> or <c>card</c>.
         /// One of: <c>bank_account</c>, or <c>card</c>.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
     }
 }

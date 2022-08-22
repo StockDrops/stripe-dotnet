@@ -1,12 +1,12 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Terminal
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class ReaderActionProcessSetupIntent : StripeEntity<ReaderActionProcessSetupIntent>
     {
-        [JsonProperty("generated_card")]
+        [JsonPropertyName("generated_card")]
         public string GeneratedCard { get; set; }
 
         #region Expandable SetupIntent
@@ -35,7 +35,7 @@ namespace Stripe.Terminal
             set => this.InternalSetupIntent = SetExpandableFieldObject(value, this.InternalSetupIntent);
         }
 
-        [JsonProperty("setup_intent")]
+        [JsonPropertyName("setup_intent")]
         [JsonConverter(typeof(ExpandableFieldConverter<SetupIntent>))]
         internal ExpandableField<SetupIntent> InternalSetupIntent { get; set; }
         #endregion

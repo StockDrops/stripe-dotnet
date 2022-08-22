@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class SubscriptionScheduleDefaultSettings : StripeEntity<SubscriptionScheduleDefaultSettings>
@@ -11,10 +11,10 @@ namespace Stripe
         /// represents the percentage of the subscription invoice subtotal that will be transferred
         /// to the application owner's Stripe account during this phase of the schedule.
         /// </summary>
-        [JsonProperty("application_fee_percent")]
+        [JsonPropertyName("application_fee_percent")]
         public decimal? ApplicationFeePercent { get; set; }
 
-        [JsonProperty("automatic_tax")]
+        [JsonPropertyName("automatic_tax")]
         public SubscriptionScheduleDefaultSettingsAutomaticTax AutomaticTax { get; set; }
 
         /// <summary>
@@ -25,14 +25,14 @@ namespace Stripe
         /// href="https://stripe.com/docs/billing/subscriptions/billing-cycle">documentation</a>.
         /// One of: <c>automatic</c>, or <c>phase_start</c>.
         /// </summary>
-        [JsonProperty("billing_cycle_anchor")]
+        [JsonPropertyName("billing_cycle_anchor")]
         public string BillingCycleAnchor { get; set; }
 
         /// <summary>
         /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
         /// new billing period.
         /// </summary>
-        [JsonProperty("billing_thresholds")]
+        [JsonPropertyName("billing_thresholds")]
         public SubscriptionScheduleDefaultSettingsBillingThresholds BillingThresholds { get; set; }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Stripe
         /// email your customer an invoice with payment instructions.
         /// One of: <c>charge_automatically</c>, or <c>send_invoice</c>.
         /// </summary>
-        [JsonProperty("collection_method")]
+        [JsonPropertyName("collection_method")]
         public string CollectionMethod { get; set; }
 
         #region Expandable DefaultPaymentMethod
@@ -73,7 +73,7 @@ namespace Stripe
             set => this.InternalDefaultPaymentMethod = SetExpandableFieldObject(value, this.InternalDefaultPaymentMethod);
         }
 
-        [JsonProperty("default_payment_method")]
+        [JsonPropertyName("default_payment_method")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
         internal ExpandableField<PaymentMethod> InternalDefaultPaymentMethod { get; set; }
         #endregion
@@ -81,7 +81,7 @@ namespace Stripe
         /// <summary>
         /// The subscription schedule's default invoice settings.
         /// </summary>
-        [JsonProperty("invoice_settings")]
+        [JsonPropertyName("invoice_settings")]
         public SubscriptionScheduleDefaultSettingsInvoiceSettings InvoiceSettings { get; set; }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Stripe
         /// tax reporting, and where funds from each payment will be transferred to for each of the
         /// subscription's invoices.
         /// </summary>
-        [JsonProperty("transfer_data")]
+        [JsonPropertyName("transfer_data")]
         public SubscriptionScheduleDefaultSettingsTransferData TransferData { get; set; }
     }
 }

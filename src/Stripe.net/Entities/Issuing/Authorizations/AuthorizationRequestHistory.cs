@@ -2,7 +2,7 @@
 namespace Stripe.Issuing
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class AuthorizationRequestHistory : StripeEntity<AuthorizationRequestHistory>
@@ -13,7 +13,7 @@ namespace Stripe.Issuing
         /// currency unit</a>. Stripe held this amount from your account to fund the authorization
         /// if the request was approved.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long Amount { get; set; }
 
         /// <summary>
@@ -21,19 +21,19 @@ namespace Stripe.Issuing
         /// <c>currency</c> and in the <a
         /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
-        [JsonProperty("amount_details")]
+        [JsonPropertyName("amount_details")]
         public AuthorizationRequestHistoryAmountDetails AmountDetails { get; set; }
 
         /// <summary>
         /// Whether this request was approved.
         /// </summary>
-        [JsonProperty("approved")]
+        [JsonPropertyName("approved")]
         public bool Approved { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -42,7 +42,7 @@ namespace Stripe.Issuing
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Stripe.Issuing
         /// <c>merchant_currency</c> and in the <a
         /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
-        [JsonProperty("merchant_amount")]
+        [JsonPropertyName("merchant_amount")]
         public long MerchantAmount { get; set; }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace Stripe.Issuing
         /// lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("merchant_currency")]
+        [JsonPropertyName("merchant_currency")]
         public string MerchantCurrency { get; set; }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace Stripe.Issuing
         /// <c>suspected_fraud</c>, <c>verification_failed</c>, <c>webhook_approved</c>,
         /// <c>webhook_declined</c>, or <c>webhook_timeout</c>.
         /// </summary>
-        [JsonProperty("reason")]
+        [JsonPropertyName("reason")]
         public string Reason { get; set; }
     }
 }

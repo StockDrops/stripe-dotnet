@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class QuoteInvoiceSettings : StripeEntity<QuoteInvoiceSettings>
     {
@@ -10,7 +10,7 @@ namespace Stripe
         /// value will be <c>null</c> for quotes where
         /// <c>collection_method=charge_automatically</c>.
         /// </summary>
-        [JsonProperty("days_until_due")]
+        [JsonPropertyName("days_until_due")]
         public long? DaysUntilDue { get; set; }
     }
 }

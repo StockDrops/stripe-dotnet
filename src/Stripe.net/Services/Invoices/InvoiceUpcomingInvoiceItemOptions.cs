@@ -1,52 +1,52 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class InvoiceUpcomingInvoiceItemOptions : INestedOptions, IHasMetadata
     {
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long? Amount { get; set; }
 
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
-        [JsonProperty("discountable")]
+        [JsonPropertyName("discountable")]
         public bool? Discountable { get; set; }
 
-        [JsonProperty("discounts")]
+        [JsonPropertyName("discounts")]
         public List<InvoiceItemDiscountOptions> Discounts { get; set; }
 
-        [JsonProperty("invoiceitem")]
+        [JsonPropertyName("invoiceitem")]
         [AllowNameMismatch]
         public string InvoiceItem { get; set; }
 
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
-        [JsonProperty("period")]
+        [JsonPropertyName("period")]
         public InvoiceItemPeriodOptions Period { get; set; }
 
-        [JsonProperty("price")]
+        [JsonPropertyName("price")]
         public string Price { get; set; }
 
-        [JsonProperty("price_data")]
+        [JsonPropertyName("price_data")]
         public InvoiceItemPriceDataOptions PriceData { get; set; }
 
-        [JsonProperty("quantity")]
+        [JsonPropertyName("quantity")]
         public long? Quantity { get; set; }
 
-        [JsonProperty("tax_rates")]
+        [JsonPropertyName("tax_rates")]
         public List<string> TaxRates { get; set; }
 
-        [JsonProperty("unit_amount")]
+        [JsonPropertyName("unit_amount")]
         public long? UnitAmount { get; set; }
 
-        [JsonProperty("unit_amount_decimal")]
+        [JsonPropertyName("unit_amount_decimal")]
         public decimal? UnitAmountDecimal { get; set; }
     }
 }

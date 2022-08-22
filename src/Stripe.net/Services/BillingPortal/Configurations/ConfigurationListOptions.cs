@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe.BillingPortal
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ConfigurationListOptions : ListOptions
     {
-        [JsonProperty("active")]
+        [JsonPropertyName("active")]
         public bool? Active { get; set; }
 
-        [JsonProperty("is_default")]
+        [JsonPropertyName("is_default")]
         public bool? IsDefault { get; set; }
     }
 }

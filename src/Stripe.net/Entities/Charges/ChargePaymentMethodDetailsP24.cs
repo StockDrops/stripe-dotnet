@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ChargePaymentMethodDetailsP24 : StripeEntity<ChargePaymentMethodDetailsP24>
     {
@@ -21,13 +21,13 @@ namespace Stripe
         /// <c>pbac_z_ipko</c>, <c>plus_bank</c>, <c>santander_przelew24</c>,
         /// <c>tmobile_usbugi_bankowe</c>, <c>toyota_bank</c>, or <c>volkswagen_bank</c>.
         /// </summary>
-        [JsonProperty("bank")]
+        [JsonPropertyName("bank")]
         public string Bank { get; set; }
 
         /// <summary>
         /// Unique reference for this Przelewy24 payment.
         /// </summary>
-        [JsonProperty("reference")]
+        [JsonPropertyName("reference")]
         public string Reference { get; set; }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace Stripe
         /// supported) at the time of authorization or settlement. They cannot be set or mutated.
         /// Przelewy24 rarely provides this information so the attribute is usually empty.
         /// </summary>
-        [JsonProperty("verified_name")]
+        [JsonPropertyName("verified_name")]
         public string VerifiedName { get; set; }
     }
 }

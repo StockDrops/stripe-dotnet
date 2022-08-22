@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Treasury
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class FinancialAccountFeaturesInboundTransfers : StripeEntity<FinancialAccountFeaturesInboundTransfers>
     {
         /// <summary>
         /// Toggle settings for enabling/disabling a feature.
         /// </summary>
-        [JsonProperty("ach")]
+        [JsonPropertyName("ach")]
         public FinancialAccountFeaturesInboundTransfersAch Ach { get; set; }
     }
 }

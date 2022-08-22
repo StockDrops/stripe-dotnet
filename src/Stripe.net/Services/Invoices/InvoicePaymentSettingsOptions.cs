@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class InvoicePaymentSettingsOptions : INestedOptions
     {
@@ -11,13 +11,13 @@ namespace Stripe
         /// used to pay the invoice, including the invoice's default_payment_method or
         /// default_source, if set.
         /// </summary>
-        [JsonProperty("default_mandate")]
+        [JsonPropertyName("default_mandate")]
         public string DefaultMandate { get; set; }
 
         /// <summary>
         /// Payment-method-specific configuration to provide to the invoice’s PaymentIntent.
         /// </summary>
-        [JsonProperty("payment_method_options")]
+        [JsonPropertyName("payment_method_options")]
         public InvoicePaymentSettingsPaymentMethodOptionsOptions PaymentMethodOptions { get; set; }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Stripe
         /// href="https://dashboard.stripe.com/settings/billing/invoice">invoice template
         /// settings</a>.
         /// </summary>
-        [JsonProperty("payment_method_types")]
+        [JsonPropertyName("payment_method_types")]
         public List<string> PaymentMethodTypes { get; set; }
     }
 }

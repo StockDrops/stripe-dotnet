@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class AccountRejectOptions : BaseOptions
     {
@@ -9,7 +9,7 @@ namespace Stripe
         /// The reason for rejecting the account. Can be <c>fraud</c>, <c>terms_of_service</c>, or
         /// <c>other</c>.
         /// </summary>
-        [JsonProperty("reason")]
+        [JsonPropertyName("reason")]
         public string Reason { get; set; }
     }
 }

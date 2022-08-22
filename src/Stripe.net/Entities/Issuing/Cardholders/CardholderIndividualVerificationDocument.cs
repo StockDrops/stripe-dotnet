@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Issuing
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class CardholderIndividualVerificationDocument : StripeEntity<CardholderIndividualVerificationDocument>
@@ -36,7 +36,7 @@ namespace Stripe.Issuing
             set => this.InternalBack = SetExpandableFieldObject(value, this.InternalBack);
         }
 
-        [JsonProperty("back")]
+        [JsonPropertyName("back")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
         internal ExpandableField<File> InternalBack { get; set; }
         #endregion
@@ -71,7 +71,7 @@ namespace Stripe.Issuing
             set => this.InternalFront = SetExpandableFieldObject(value, this.InternalFront);
         }
 
-        [JsonProperty("front")]
+        [JsonPropertyName("front")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
         internal ExpandableField<File> InternalFront { get; set; }
         #endregion

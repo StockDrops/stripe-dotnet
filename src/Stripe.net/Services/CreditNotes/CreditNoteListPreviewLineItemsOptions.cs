@@ -2,36 +2,36 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class CreditNoteListPreviewLineItemsOptions : ListOptions, IHasMetadata
     {
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long? Amount { get; set; }
 
-        [JsonProperty("credit_amount")]
+        [JsonPropertyName("credit_amount")]
         public long? CreditAmount { get; set; }
 
-        [JsonProperty("invoice")]
+        [JsonPropertyName("invoice")]
         public string Invoice { get; set; }
 
-        [JsonProperty("memo")]
+        [JsonPropertyName("memo")]
         public string Memo { get; set; }
 
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
-        [JsonProperty("out_of_band_amount")]
+        [JsonPropertyName("out_of_band_amount")]
         public long? OutOfBandAmount { get; set; }
 
-        [JsonProperty("reason")]
+        [JsonPropertyName("reason")]
         public string Reason { get; set; }
 
-        [JsonProperty("refund")]
+        [JsonPropertyName("refund")]
         public string Refund { get; set; }
 
-        [JsonProperty("refund_amount")]
+        [JsonPropertyName("refund_amount")]
         public long? RefundAmount { get; set; }
     }
 }

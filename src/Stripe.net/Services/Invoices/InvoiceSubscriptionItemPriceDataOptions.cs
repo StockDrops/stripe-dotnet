@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class InvoiceSubscriptionItemPriceDataOptions : INestedOptions
     {
@@ -10,19 +10,19 @@ namespace Stripe
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
         /// The ID of the product that this price will belong to.
         /// </summary>
-        [JsonProperty("product")]
+        [JsonPropertyName("product")]
         public string Product { get; set; }
 
         /// <summary>
         /// The recurring components of a price such as <c>interval</c> and <c>interval_count</c>.
         /// </summary>
-        [JsonProperty("recurring")]
+        [JsonPropertyName("recurring")]
         public InvoiceSubscriptionItemPriceDataRecurringOptions Recurring { get; set; }
 
         /// <summary>
@@ -31,14 +31,14 @@ namespace Stripe
         /// <c>inclusive</c> or <c>exclusive</c>, it cannot be changed.
         /// One of: <c>exclusive</c>, <c>inclusive</c>, or <c>unspecified</c>.
         /// </summary>
-        [JsonProperty("tax_behavior")]
+        [JsonPropertyName("tax_behavior")]
         public string TaxBehavior { get; set; }
 
         /// <summary>
         /// A positive integer in cents (or local equivalent) (or 0 for a free price) representing
         /// how much to charge.
         /// </summary>
-        [JsonProperty("unit_amount")]
+        [JsonPropertyName("unit_amount")]
         public long? UnitAmount { get; set; }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace Stripe
         /// with at most 12 decimal places. Only one of <c>unit_amount</c> and
         /// <c>unit_amount_decimal</c> can be set.
         /// </summary>
-        [JsonProperty("unit_amount_decimal")]
+        [JsonPropertyName("unit_amount_decimal")]
         public decimal? UnitAmountDecimal { get; set; }
     }
 }

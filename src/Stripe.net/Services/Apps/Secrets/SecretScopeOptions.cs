@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Apps
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SecretScopeOptions : INestedOptions
     {
@@ -9,14 +9,14 @@ namespace Stripe.Apps
         /// The secret scope type.
         /// One of: <c>account</c>, or <c>user</c>.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>
         /// The user ID. This field is required if <c>type</c> is set to <c>user</c>, and should not
         /// be provided if <c>type</c> is set to <c>account</c>.
         /// </summary>
-        [JsonProperty("user")]
+        [JsonPropertyName("user")]
         public string User { get; set; }
     }
 }

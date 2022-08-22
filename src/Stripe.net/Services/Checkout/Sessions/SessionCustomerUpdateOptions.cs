@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Checkout
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SessionCustomerUpdateOptions : INestedOptions
     {
@@ -11,7 +11,7 @@ namespace Stripe.Checkout
         /// to <c>never</c>.
         /// One of: <c>auto</c>, or <c>never</c>.
         /// </summary>
-        [JsonProperty("address")]
+        [JsonPropertyName("address")]
         public string Address { get; set; }
 
         /// <summary>
@@ -19,7 +19,7 @@ namespace Stripe.Checkout
         /// <c>never</c>.
         /// One of: <c>auto</c>, or <c>never</c>.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Stripe.Checkout
         /// <c>never</c>.
         /// One of: <c>auto</c>, or <c>never</c>.
         /// </summary>
-        [JsonProperty("shipping")]
+        [JsonPropertyName("shipping")]
         public string Shipping { get; set; }
     }
 }

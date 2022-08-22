@@ -2,7 +2,7 @@
 namespace Stripe.Radar
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -18,13 +18,13 @@ namespace Stripe.Radar
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace Stripe.Radar
         /// You may wish to proactively refund a charge that receives an EFW, in order to avoid
         /// receiving a dispute later.
         /// </summary>
-        [JsonProperty("actionable")]
+        [JsonPropertyName("actionable")]
         public bool Actionable { get; set; }
 
         #region Expandable Charge
@@ -61,7 +61,7 @@ namespace Stripe.Radar
             set => this.InternalCharge = SetExpandableFieldObject(value, this.InternalCharge);
         }
 
-        [JsonProperty("charge")]
+        [JsonPropertyName("charge")]
         [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
         internal ExpandableField<Charge> InternalCharge { get; set; }
         #endregion
@@ -69,7 +69,7 @@ namespace Stripe.Radar
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -79,14 +79,14 @@ namespace Stripe.Radar
         /// <c>made_with_lost_card</c>, <c>made_with_stolen_card</c>, <c>misc</c>,
         /// <c>unauthorized_use_of_card</c>.
         /// </summary>
-        [JsonProperty("fraud_type")]
+        [JsonPropertyName("fraud_type")]
         public string FraudType { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         #region Expandable PaymentIntent
@@ -115,7 +115,7 @@ namespace Stripe.Radar
             set => this.InternalPaymentIntent = SetExpandableFieldObject(value, this.InternalPaymentIntent);
         }
 
-        [JsonProperty("payment_intent")]
+        [JsonPropertyName("payment_intent")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentIntent>))]
         internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
         #endregion

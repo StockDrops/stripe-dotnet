@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SetupIntentPaymentMethodDataSepaDebitOptions : INestedOptions
     {
         /// <summary>
         /// IBAN of the bank account.
         /// </summary>
-        [JsonProperty("iban")]
+        [JsonPropertyName("iban")]
         public string Iban { get; set; }
     }
 }

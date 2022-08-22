@@ -1,14 +1,14 @@
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class InvoiceTaxAmount : StripeEntity<InvoiceTaxAmount>
     {
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long Amount { get; set; }
 
-        [JsonProperty("inclusive")]
+        [JsonPropertyName("inclusive")]
         public bool Inclusive { get; set; }
 
         #region Expandable TaxRate
@@ -27,7 +27,7 @@ namespace Stripe
             set => this.InternalTaxRate = SetExpandableFieldObject(value, this.InternalTaxRate);
         }
 
-        [JsonProperty("tax_rate")]
+        [JsonPropertyName("tax_rate")]
         [JsonConverter(typeof(ExpandableFieldConverter<TaxRate>))]
         internal ExpandableField<TaxRate> InternalTaxRate { get; set; }
         #endregion

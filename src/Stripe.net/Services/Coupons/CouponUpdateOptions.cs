@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class CouponUpdateOptions : BaseOptions, IHasMetadata
     {
@@ -12,7 +12,7 @@ namespace Stripe
         /// href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> and a <a
         /// href="https://stripe.com/docs/currencies">supported currency</a>.
         /// </summary>
-        [JsonProperty("currency_options")]
+        [JsonPropertyName("currency_options")]
         public Dictionary<string, CouponCurrencyOptionsOptions> CurrencyOptions { get; set; }
 
         /// <summary>
@@ -21,14 +21,14 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Name of the coupon displayed to customers on, for instance invoices, or receipts. By
         /// default the <c>id</c> is shown if <c>name</c> is not set.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
     }
 }

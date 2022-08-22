@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PersonRequirements : StripeEntity<PersonRequirements>
     {
@@ -10,7 +10,7 @@ namespace Stripe
         /// Fields that are due and can be satisfied by providing the corresponding alternative
         /// fields instead.
         /// </summary>
-        [JsonProperty("alternatives")]
+        [JsonPropertyName("alternatives")]
         public List<PersonRequirementsAlternative> Alternatives { get; set; }
 
         /// <summary>
@@ -18,14 +18,14 @@ namespace Stripe
         /// by the account's <c>current_deadline</c>, these fields appear in <c>past_due</c> as
         /// well, and the account is disabled.
         /// </summary>
-        [JsonProperty("currently_due")]
+        [JsonPropertyName("currently_due")]
         public List<string> CurrentlyDue { get; set; }
 
         /// <summary>
         /// Fields that are <c>currently_due</c> and need to be collected again because validation
         /// or verification failed.
         /// </summary>
-        [JsonProperty("errors")]
+        [JsonPropertyName("errors")]
         public List<PersonRequirementsError> Errors { get; set; }
 
         /// <summary>
@@ -33,14 +33,14 @@ namespace Stripe
         /// become required, they appear in <c>currently_due</c> as well, and the account's
         /// <c>current_deadline</c> becomes set.
         /// </summary>
-        [JsonProperty("eventually_due")]
+        [JsonPropertyName("eventually_due")]
         public List<string> EventuallyDue { get; set; }
 
         /// <summary>
         /// Fields that weren't collected by the account's <c>current_deadline</c>. These fields
         /// need to be collected to enable the person's account.
         /// </summary>
-        [JsonProperty("past_due")]
+        [JsonPropertyName("past_due")]
         public List<string> PastDue { get; set; }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Stripe
         /// be an empty array unless an asynchronous verification is pending. If verification fails,
         /// these fields move to <c>eventually_due</c>, <c>currently_due</c>, or <c>past_due</c>.
         /// </summary>
-        [JsonProperty("pending_verification")]
+        [JsonPropertyName("pending_verification")]
         public List<string> PendingVerification { get; set; }
     }
 }

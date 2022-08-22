@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PaymentIntentPaymentMethodOptionsBancontactOptions : INestedOptions
     {
@@ -10,7 +10,7 @@ namespace Stripe
         /// to.
         /// One of: <c>de</c>, <c>en</c>, <c>fr</c>, or <c>nl</c>.
         /// </summary>
-        [JsonProperty("preferred_language")]
+        [JsonPropertyName("preferred_language")]
         public string PreferredLanguage { get; set; }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace Stripe
         /// publishable key, you may only update the value from <c>on_session</c> to
         /// <c>off_session</c>.
         /// </summary>
-        [JsonProperty("setup_future_usage")]
+        [JsonPropertyName("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
     }
 }

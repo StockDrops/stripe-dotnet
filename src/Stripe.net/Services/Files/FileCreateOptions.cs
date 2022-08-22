@@ -1,17 +1,17 @@
 namespace Stripe
 {
     using System.IO;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class FileCreateOptions : BaseOptions
     {
-        [JsonProperty("file")]
+        [JsonPropertyName("file")]
         public Stream File { get; set; }
 
-        [JsonProperty("file_link_data")]
+        [JsonPropertyName("file_link_data")]
         public FileFileLinkDataOptions FileLinkData { get; set; }
 
-        [JsonProperty("purpose")]
+        [JsonPropertyName("purpose")]
         public string Purpose { get; set; }
     }
 }

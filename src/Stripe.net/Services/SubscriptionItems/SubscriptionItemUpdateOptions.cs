@@ -3,7 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class SubscriptionItemUpdateOptions : BaseOptions, IHasMetadata
@@ -13,7 +13,7 @@ namespace Stripe
         /// new billing period. When updating, pass an empty string to remove previously-defined
         /// thresholds.
         /// </summary>
-        [JsonProperty("billing_thresholds")]
+        [JsonPropertyName("billing_thresholds")]
         public SubscriptionItemBillingThresholdsOptions BillingThresholds { get; set; }
 
         /// <summary>
@@ -22,13 +22,13 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Indicates if a customer is on or off-session while an invoice payment is attempted.
         /// </summary>
-        [JsonProperty("off_session")]
+        [JsonPropertyName("off_session")]
         public bool? OffSession { get; set; }
 
         /// <summary>
@@ -62,27 +62,27 @@ namespace Stripe
         /// One of: <c>allow_incomplete</c>, <c>default_incomplete</c>, <c>error_if_incomplete</c>,
         /// or <c>pending_if_incomplete</c>.
         /// </summary>
-        [JsonProperty("payment_behavior")]
+        [JsonPropertyName("payment_behavior")]
         public string PaymentBehavior { get; set; }
 
         /// <summary>
         /// The identifier of the new plan for this subscription item.
         /// </summary>
-        [JsonProperty("plan")]
+        [JsonPropertyName("plan")]
         public string Plan { get; set; }
 
         /// <summary>
         /// The ID of the price object. When changing a subscription item's price, <c>quantity</c>
         /// is set to 1 unless a <c>quantity</c> parameter is provided.
         /// </summary>
-        [JsonProperty("price")]
+        [JsonPropertyName("price")]
         public string Price { get; set; }
 
         /// <summary>
         /// Data used to generate a new <a href="https://stripe.com/docs/api/prices">Price</a>
         /// object inline.
         /// </summary>
-        [JsonProperty("price_data")]
+        [JsonPropertyName("price_data")]
         public SubscriptionItemPriceDataOptions PriceData { get; set; }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace Stripe
         /// changes.
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
         /// </summary>
-        [JsonProperty("proration_behavior")]
+        [JsonPropertyName("proration_behavior")]
         public string ProrationBehavior { get; set; }
 
         /// <summary>
@@ -102,14 +102,14 @@ namespace Stripe
         /// href="https://stripe.com/docs/api#retrieve_customer_invoice">upcoming invoice</a>
         /// endpoint.
         /// </summary>
-        [JsonProperty("proration_date")]
+        [JsonPropertyName("proration_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ProrationDate { get; set; }
 
         /// <summary>
         /// The quantity you'd like to apply to the subscription item you're creating.
         /// </summary>
-        [JsonProperty("quantity")]
+        [JsonPropertyName("quantity")]
         public long? Quantity { get; set; }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace Stripe
         /// on the Subscription. When updating, pass an empty string to remove previously-defined
         /// tax rates.
         /// </summary>
-        [JsonProperty("tax_rates")]
+        [JsonPropertyName("tax_rates")]
         public List<string> TaxRates { get; set; }
     }
 }

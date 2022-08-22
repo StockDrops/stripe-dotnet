@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Terminal
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class ConfigurationBbposWiseposE : StripeEntity<ConfigurationBbposWiseposE>
@@ -32,7 +32,7 @@ namespace Stripe.Terminal
             set => this.InternalSplashscreen = SetExpandableFieldObject(value, this.InternalSplashscreen);
         }
 
-        [JsonProperty("splashscreen")]
+        [JsonPropertyName("splashscreen")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
         internal ExpandableField<File> InternalSplashscreen { get; set; }
         #endregion

@@ -3,7 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -19,27 +19,27 @@ namespace Stripe
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
-        [JsonProperty("object")]
+        [JsonPropertyName("object")]
         public string Object { get; set; }
 
         /// <summary>
         /// Disputed amount. Usually the amount of the charge, but can differ (usually because of
         /// currency fluctuation or because only part of the order is disputed).
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonPropertyName("amount")]
         public long Amount { get; set; }
 
         /// <summary>
         /// List of zero, one, or two balance transactions that show funds withdrawn and reinstated
         /// to your Stripe account as a result of this dispute.
         /// </summary>
-        [JsonProperty("balance_transactions")]
+        [JsonPropertyName("balance_transactions")]
         public List<BalanceTransaction> BalanceTransactions { get; set; }
 
         #region Expandable Charge
@@ -68,7 +68,7 @@ namespace Stripe
             set => this.InternalCharge = SetExpandableFieldObject(value, this.InternalCharge);
         }
 
-        [JsonProperty("charge")]
+        [JsonPropertyName("charge")]
         [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
         internal ExpandableField<Charge> InternalCharge { get; set; }
         #endregion
@@ -76,7 +76,7 @@ namespace Stripe
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("created")]
+        [JsonPropertyName("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -85,13 +85,13 @@ namespace Stripe
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
-        [JsonProperty("evidence")]
+        [JsonPropertyName("evidence")]
         public DisputeEvidence Evidence { get; set; }
 
-        [JsonProperty("evidence_details")]
+        [JsonPropertyName("evidence_details")]
         public DisputeEvidenceDetails EvidenceDetails { get; set; }
 
         /// <summary>
@@ -99,14 +99,14 @@ namespace Stripe
         /// fully refunded, no further funds will be withdrawn from your Stripe account as a result
         /// of this dispute.
         /// </summary>
-        [JsonProperty("is_charge_refundable")]
+        [JsonPropertyName("is_charge_refundable")]
         public bool IsChargeRefundable { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
-        [JsonProperty("livemode")]
+        [JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -114,13 +114,13 @@ namespace Stripe
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Network-dependent reason code for the dispute.
         /// </summary>
-        [JsonProperty("network_reason_code")]
+        [JsonPropertyName("network_reason_code")]
         public string NetworkReasonCode { get; set; }
 
         #region Expandable PaymentIntent
@@ -149,7 +149,7 @@ namespace Stripe
             set => this.InternalPaymentIntent = SetExpandableFieldObject(value, this.InternalPaymentIntent);
         }
 
-        [JsonProperty("payment_intent")]
+        [JsonPropertyName("payment_intent")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentIntent>))]
         internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
         #endregion
@@ -163,7 +163,7 @@ namespace Stripe
         /// or <c>unrecognized</c>. Read more about <a
         /// href="https://stripe.com/docs/disputes/categories">dispute reasons</a>.
         /// </summary>
-        [JsonProperty("reason")]
+        [JsonPropertyName("reason")]
         public string Reason { get; set; }
 
         /// <summary>
@@ -174,7 +174,7 @@ namespace Stripe
         /// <c>warning_closed</c>, <c>warning_needs_response</c>, <c>warning_under_review</c>, or
         /// <c>won</c>.
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
     }
 }

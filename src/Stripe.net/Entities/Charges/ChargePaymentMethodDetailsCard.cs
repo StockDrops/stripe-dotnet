@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ChargePaymentMethodDetailsCard : StripeEntity<ChargePaymentMethodDetailsCard>
     {
@@ -9,39 +9,39 @@ namespace Stripe
         /// Card brand. Can be <c>amex</c>, <c>diners</c>, <c>discover</c>, <c>jcb</c>,
         /// <c>mastercard</c>, <c>unionpay</c>, <c>visa</c>, or <c>unknown</c>.
         /// </summary>
-        [JsonProperty("brand")]
+        [JsonPropertyName("brand")]
         public string Brand { get; set; }
 
         /// <summary>
         /// Check results by Card networks on Card address and CVC at time of payment.
         /// </summary>
-        [JsonProperty("checks")]
+        [JsonPropertyName("checks")]
         public ChargePaymentMethodDetailsCardChecks Checks { get; set; }
 
         /// <summary>
         /// Two-letter ISO code representing the country of the card. You could use this attribute
         /// to get a sense of the international breakdown of cards you've collected.
         /// </summary>
-        [JsonProperty("country")]
+        [JsonPropertyName("country")]
         public string Country { get; set; }
 
         /// <summary>
         /// A high-level description of the type of cards issued in this range. (For internal use
         /// only and not typically available in standard API requests.).
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
         /// Two-digit number representing the card's expiration month.
         /// </summary>
-        [JsonProperty("exp_month")]
+        [JsonPropertyName("exp_month")]
         public long ExpMonth { get; set; }
 
         /// <summary>
         /// Four-digit number representing the card's expiration year.
         /// </summary>
-        [JsonProperty("exp_year")]
+        [JsonPropertyName("exp_year")]
         public long ExpYear { get; set; }
 
         /// <summary>
@@ -53,21 +53,21 @@ namespace Stripe
         /// <em>Starting May 1, 2021, card fingerprint in India for Connect will change to allow two
         /// fingerprints for the same card --- one for India and one for the rest of the world.</em>.
         /// </summary>
-        [JsonProperty("fingerprint")]
+        [JsonPropertyName("fingerprint")]
         public string Fingerprint { get; set; }
 
         /// <summary>
         /// Card funding type. Can be <c>credit</c>, <c>debit</c>, <c>prepaid</c>, or
         /// <c>unknown</c>.
         /// </summary>
-        [JsonProperty("funding")]
+        [JsonPropertyName("funding")]
         public string Funding { get; set; }
 
         /// <summary>
         /// Issuer identification number of the card. (For internal use only and not typically
         /// available in standard API requests.).
         /// </summary>
-        [JsonProperty("iin")]
+        [JsonPropertyName("iin")]
         public string Iin { get; set; }
 
         /// <summary>
@@ -76,32 +76,32 @@ namespace Stripe
         /// For more information, see the <a
         /// href="https://stripe.com/docs/payments/installments">installments integration guide</a>.
         /// </summary>
-        [JsonProperty("installments")]
+        [JsonPropertyName("installments")]
         public ChargePaymentMethodDetailsCardInstallments Installments { get; set; }
 
         /// <summary>
         /// The name of the card's issuing bank. (For internal use only and not typically available
         /// in standard API requests.).
         /// </summary>
-        [JsonProperty("issuer")]
+        [JsonPropertyName("issuer")]
         public string Issuer { get; set; }
 
         /// <summary>
         /// The last four digits of the card.
         /// </summary>
-        [JsonProperty("last4")]
+        [JsonPropertyName("last4")]
         public string Last4 { get; set; }
 
         /// <summary>
         /// ID of the mandate used to make this payment or created by it.
         /// </summary>
-        [JsonProperty("mandate")]
+        [JsonPropertyName("mandate")]
         public string Mandate { get; set; }
 
         /// <summary>
         /// True if this payment was marked as MOTO and out of scope for SCA.
         /// </summary>
-        [JsonProperty("moto")]
+        [JsonPropertyName("moto")]
         public bool? Moto { get; set; }
 
         /// <summary>
@@ -109,19 +109,19 @@ namespace Stripe
         /// <c>cartes_bancaires</c>, <c>diners</c>, <c>discover</c>, <c>interac</c>, <c>jcb</c>,
         /// <c>mastercard</c>, <c>unionpay</c>, <c>visa</c>, or <c>unknown</c>.
         /// </summary>
-        [JsonProperty("network")]
+        [JsonPropertyName("network")]
         public string Network { get; set; }
 
         /// <summary>
         /// Populated if this transaction used 3D Secure authentication.
         /// </summary>
-        [JsonProperty("three_d_secure")]
+        [JsonPropertyName("three_d_secure")]
         public ChargePaymentMethodDetailsCardThreeDSecure ThreeDSecure { get; set; }
 
         /// <summary>
         /// If this Card is part of a card wallet, this contains the details of the card wallet.
         /// </summary>
-        [JsonProperty("wallet")]
+        [JsonPropertyName("wallet")]
         public ChargePaymentMethodDetailsCardWallet Wallet { get; set; }
     }
 }

@@ -1,95 +1,95 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PaymentIntentPaymentMethodOptions : StripeEntity<PaymentIntentPaymentMethodOptions>
     {
-        [JsonProperty("acss_debit")]
+        [JsonPropertyName("acss_debit")]
         public PaymentIntentPaymentMethodOptionsAcssDebit AcssDebit { get; set; }
 
-        [JsonProperty("affirm")]
+        [JsonPropertyName("affirm")]
         public PaymentIntentPaymentMethodOptionsAffirm Affirm { get; set; }
 
-        [JsonProperty("afterpay_clearpay")]
+        [JsonPropertyName("afterpay_clearpay")]
         public PaymentIntentPaymentMethodOptionsAfterpayClearpay AfterpayClearpay { get; set; }
 
-        [JsonProperty("alipay")]
+        [JsonPropertyName("alipay")]
         public PaymentIntentPaymentMethodOptionsAlipay Alipay { get; set; }
 
-        [JsonProperty("au_becs_debit")]
+        [JsonPropertyName("au_becs_debit")]
         public PaymentIntentPaymentMethodOptionsAuBecsDebit AuBecsDebit { get; set; }
 
-        [JsonProperty("bacs_debit")]
+        [JsonPropertyName("bacs_debit")]
         public PaymentIntentPaymentMethodOptionsBacsDebit BacsDebit { get; set; }
 
-        [JsonProperty("bancontact")]
+        [JsonPropertyName("bancontact")]
         public PaymentIntentPaymentMethodOptionsBancontact Bancontact { get; set; }
 
-        [JsonProperty("blik")]
+        [JsonPropertyName("blik")]
         public PaymentIntentPaymentMethodOptionsBlik Blik { get; set; }
 
-        [JsonProperty("boleto")]
+        [JsonPropertyName("boleto")]
         public PaymentIntentPaymentMethodOptionsBoleto Boleto { get; set; }
 
-        [JsonProperty("card")]
+        [JsonPropertyName("card")]
         public PaymentIntentPaymentMethodOptionsCard Card { get; set; }
 
-        [JsonProperty("card_present")]
+        [JsonPropertyName("card_present")]
         public PaymentIntentPaymentMethodOptionsCardPresent CardPresent { get; set; }
 
-        [JsonProperty("customer_balance")]
+        [JsonPropertyName("customer_balance")]
         public PaymentIntentPaymentMethodOptionsCustomerBalance CustomerBalance { get; set; }
 
-        [JsonProperty("eps")]
+        [JsonPropertyName("eps")]
         public PaymentIntentPaymentMethodOptionsEps Eps { get; set; }
 
-        [JsonProperty("fpx")]
+        [JsonPropertyName("fpx")]
         public PaymentIntentPaymentMethodOptionsFpx Fpx { get; set; }
 
-        [JsonProperty("giropay")]
+        [JsonPropertyName("giropay")]
         public PaymentIntentPaymentMethodOptionsGiropay Giropay { get; set; }
 
-        [JsonProperty("grabpay")]
+        [JsonPropertyName("grabpay")]
         public PaymentIntentPaymentMethodOptionsGrabpay Grabpay { get; set; }
 
-        [JsonProperty("ideal")]
+        [JsonPropertyName("ideal")]
         public PaymentIntentPaymentMethodOptionsIdeal Ideal { get; set; }
 
-        [JsonProperty("interac_present")]
+        [JsonPropertyName("interac_present")]
         public PaymentIntentPaymentMethodOptionsInteracPresent InteracPresent { get; set; }
 
-        [JsonProperty("klarna")]
+        [JsonPropertyName("klarna")]
         public PaymentIntentPaymentMethodOptionsKlarna Klarna { get; set; }
 
-        [JsonProperty("konbini")]
+        [JsonPropertyName("konbini")]
         public PaymentIntentPaymentMethodOptionsKonbini Konbini { get; set; }
 
-        [JsonProperty("link")]
+        [JsonPropertyName("link")]
         public PaymentIntentPaymentMethodOptionsLink Link { get; set; }
 
-        [JsonProperty("oxxo")]
+        [JsonPropertyName("oxxo")]
         public PaymentIntentPaymentMethodOptionsOxxo Oxxo { get; set; }
 
-        [JsonProperty("p24")]
+        [JsonPropertyName("p24")]
         public PaymentIntentPaymentMethodOptionsP24 P24 { get; set; }
 
-        [JsonProperty("paynow")]
+        [JsonPropertyName("paynow")]
         public PaymentIntentPaymentMethodOptionsPaynow Paynow { get; set; }
 
-        [JsonProperty("promptpay")]
+        [JsonPropertyName("promptpay")]
         public PaymentIntentPaymentMethodOptionsPromptpay Promptpay { get; set; }
 
-        [JsonProperty("sepa_debit")]
+        [JsonPropertyName("sepa_debit")]
         public PaymentIntentPaymentMethodOptionsSepaDebit SepaDebit { get; set; }
 
-        [JsonProperty("sofort")]
+        [JsonPropertyName("sofort")]
         public PaymentIntentPaymentMethodOptionsSofort Sofort { get; set; }
 
-        [JsonProperty("us_bank_account")]
+        [JsonPropertyName("us_bank_account")]
         public PaymentIntentPaymentMethodOptionsUsBankAccount UsBankAccount { get; set; }
 
-        [JsonProperty("wechat_pay")]
+        [JsonPropertyName("wechat_pay")]
         public PaymentIntentPaymentMethodOptionsWechatPay WechatPay { get; set; }
     }
 }

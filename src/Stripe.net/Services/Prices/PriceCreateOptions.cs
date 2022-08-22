@@ -2,14 +2,14 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PriceCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// Whether the price can be used for new purchases. Defaults to <c>true</c>.
         /// </summary>
-        [JsonProperty("active")]
+        [JsonPropertyName("active")]
         public bool? Active { get; set; }
 
         /// <summary>
@@ -22,7 +22,7 @@ namespace Stripe
         /// <c>tiers_mode</c> attributes.
         /// One of: <c>per_unit</c>, or <c>tiered</c>.
         /// </summary>
-        [JsonProperty("billing_scheme")]
+        [JsonPropertyName("billing_scheme")]
         public string BillingScheme { get; set; }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace Stripe
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
@@ -38,21 +38,21 @@ namespace Stripe
         /// href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> and a <a
         /// href="https://stripe.com/docs/currencies">supported currency</a>.
         /// </summary>
-        [JsonProperty("currency_options")]
+        [JsonPropertyName("currency_options")]
         public Dictionary<string, PriceCurrencyOptionsOptions> CurrencyOptions { get; set; }
 
         /// <summary>
         /// When set, provides configuration for the amount to be adjusted by the customer during
         /// Checkout Sessions and Payment Links.
         /// </summary>
-        [JsonProperty("custom_unit_amount")]
+        [JsonPropertyName("custom_unit_amount")]
         public PriceCustomUnitAmountOptions CustomUnitAmount { get; set; }
 
         /// <summary>
         /// A lookup key used to retrieve prices dynamically from a static string. This may be up to
         /// 200 characters.
         /// </summary>
-        [JsonProperty("lookup_key")]
+        [JsonPropertyName("lookup_key")]
         public string LookupKey { get; set; }
 
         /// <summary>
@@ -61,31 +61,31 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// A brief description of the price, hidden from customers.
         /// </summary>
-        [JsonProperty("nickname")]
+        [JsonPropertyName("nickname")]
         public string Nickname { get; set; }
 
         /// <summary>
         /// The ID of the product that this price will belong to.
         /// </summary>
-        [JsonProperty("product")]
+        [JsonPropertyName("product")]
         public string Product { get; set; }
 
         /// <summary>
         /// These fields can be used to create a new product that this price will belong to.
         /// </summary>
-        [JsonProperty("product_data")]
+        [JsonPropertyName("product_data")]
         public PriceProductDataOptions ProductData { get; set; }
 
         /// <summary>
         /// The recurring components of a price such as <c>interval</c> and <c>usage_type</c>.
         /// </summary>
-        [JsonProperty("recurring")]
+        [JsonPropertyName("recurring")]
         public PriceRecurringOptions Recurring { get; set; }
 
         /// <summary>
@@ -94,14 +94,14 @@ namespace Stripe
         /// <c>inclusive</c> or <c>exclusive</c>, it cannot be changed.
         /// One of: <c>exclusive</c>, <c>inclusive</c>, or <c>unspecified</c>.
         /// </summary>
-        [JsonProperty("tax_behavior")]
+        [JsonPropertyName("tax_behavior")]
         public string TaxBehavior { get; set; }
 
         /// <summary>
         /// Each element represents a pricing tier. This parameter requires <c>billing_scheme</c> to
         /// be set to <c>tiered</c>. See also the documentation for <c>billing_scheme</c>.
         /// </summary>
-        [JsonProperty("tiers")]
+        [JsonPropertyName("tiers")]
         public List<PriceTierOptions> Tiers { get; set; }
 
         /// <summary>
@@ -111,21 +111,21 @@ namespace Stripe
         /// grows.
         /// One of: <c>graduated</c>, or <c>volume</c>.
         /// </summary>
-        [JsonProperty("tiers_mode")]
+        [JsonPropertyName("tiers_mode")]
         public string TiersMode { get; set; }
 
         /// <summary>
         /// If set to true, will atomically remove the lookup key from the existing price, and
         /// assign it to this price.
         /// </summary>
-        [JsonProperty("transfer_lookup_key")]
+        [JsonPropertyName("transfer_lookup_key")]
         public bool? TransferLookupKey { get; set; }
 
         /// <summary>
         /// Apply a transformation to the reported usage or set quantity before computing the billed
         /// price. Cannot be combined with <c>tiers</c>.
         /// </summary>
-        [JsonProperty("transform_quantity")]
+        [JsonPropertyName("transform_quantity")]
         public PriceTransformQuantityOptions TransformQuantity { get; set; }
 
         /// <summary>
@@ -133,7 +133,7 @@ namespace Stripe
         /// how much to charge. One of <c>unit_amount</c> or <c>custom_unit_amount</c> is required,
         /// unless <c>billing_scheme=tiered</c>.
         /// </summary>
-        [JsonProperty("unit_amount")]
+        [JsonPropertyName("unit_amount")]
         public long? UnitAmount { get; set; }
 
         /// <summary>
@@ -141,7 +141,7 @@ namespace Stripe
         /// with at most 12 decimal places. Only one of <c>unit_amount</c> and
         /// <c>unit_amount_decimal</c> can be set.
         /// </summary>
-        [JsonProperty("unit_amount_decimal")]
+        [JsonPropertyName("unit_amount_decimal")]
         public decimal? UnitAmountDecimal { get; set; }
     }
 }

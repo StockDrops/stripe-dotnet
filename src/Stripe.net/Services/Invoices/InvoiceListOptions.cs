@@ -2,25 +2,25 @@
 namespace Stripe
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class InvoiceListOptions : ListOptionsWithCreated
     {
-        [JsonProperty("collection_method")]
+        [JsonPropertyName("collection_method")]
         public string CollectionMethod { get; set; }
 
-        [JsonProperty("customer")]
+        [JsonPropertyName("customer")]
         public string Customer { get; set; }
 
-        [JsonProperty("due_date")]
+        [JsonPropertyName("due_date")]
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<DateTime?, DateRangeOptions> DueDate { get; set; }
 
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
-        [JsonProperty("subscription")]
+        [JsonPropertyName("subscription")]
         public string Subscription { get; set; }
     }
 }

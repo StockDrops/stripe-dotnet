@@ -2,21 +2,21 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class BankAccountUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// The name of the person or business that owns the bank account.
         /// </summary>
-        [JsonProperty("account_holder_name")]
+        [JsonPropertyName("account_holder_name")]
         public string AccountHolderName { get; set; }
 
         /// <summary>
         /// The type of entity that holds the account. This can be either <c>individual</c> or
         /// <c>company</c>.
         /// </summary>
-        [JsonProperty("account_holder_type")]
+        [JsonPropertyName("account_holder_type")]
         public string AccountHolderType { get; set; }
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace Stripe
         /// countries. In Japan, this can only be <c>futsu</c> or <c>toza</c>.
         /// One of: <c>checking</c>, <c>futsu</c>, <c>savings</c>, or <c>toza</c>.
         /// </summary>
-        [JsonProperty("account_type")]
+        [JsonPropertyName("account_type")]
         public string AccountType { get; set; }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 namespace Stripe
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class PaymentIntentNextActionVerifyWithMicrodeposits : StripeEntity<PaymentIntentNextActionVerifyWithMicrodeposits>
@@ -10,7 +10,7 @@ namespace Stripe
         /// <summary>
         /// The timestamp when the microdeposits are expected to land.
         /// </summary>
-        [JsonProperty("arrival_date")]
+        [JsonPropertyName("arrival_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime ArrivalDate { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
@@ -18,7 +18,7 @@ namespace Stripe
         /// The URL for the hosted verification page, which allows customers to verify their bank
         /// account.
         /// </summary>
-        [JsonProperty("hosted_verification_url")]
+        [JsonPropertyName("hosted_verification_url")]
         public string HostedVerificationUrl { get; set; }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace Stripe
         /// verification methods.
         /// One of: <c>amounts</c>, or <c>descriptor_code</c>.
         /// </summary>
-        [JsonProperty("microdeposit_type")]
+        [JsonPropertyName("microdeposit_type")]
         public string MicrodepositType { get; set; }
     }
 }

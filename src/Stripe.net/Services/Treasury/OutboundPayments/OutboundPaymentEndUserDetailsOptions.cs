@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Treasury
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class OutboundPaymentEndUserDetailsOptions : INestedOptions
     {
@@ -9,14 +9,14 @@ namespace Stripe.Treasury
         /// IP address of the user initiating the OutboundPayment. Must be supplied if
         /// <c>present</c> is set to <c>true</c>.
         /// </summary>
-        [JsonProperty("ip_address")]
+        [JsonPropertyName("ip_address")]
         public string IpAddress { get; set; }
 
         /// <summary>
         /// <c>True</c> if the OutboundPayment creation request is being made on behalf of an end
         /// user by a platform. Otherwise, <c>false</c>.
         /// </summary>
-        [JsonProperty("present")]
+        [JsonPropertyName("present")]
         public bool? Present { get; set; }
     }
 }

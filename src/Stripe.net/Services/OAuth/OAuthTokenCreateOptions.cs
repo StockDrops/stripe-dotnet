@@ -1,7 +1,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class OAuthTokenCreateOptions : BaseOptions
     {
@@ -15,7 +15,7 @@ namespace Stripe
         /// doesn't match the assertion: in this case, it's recommended to end the onboarding flow
         /// with a failure.
         /// </summary>
-        [JsonProperty("assert_capabilities")]
+        [JsonPropertyName("assert_capabilities")]
         public List<string> AssertCapabilities { get; set; }
 
         /// <summary>
@@ -23,22 +23,22 @@ namespace Stripe
         /// use an API key that matches the mode—live or test—of the authorization code (which
         /// depends on whether the <c>client_id</c> used was production or development).
         /// </summary>
-        [JsonProperty("client_secret")]
+        [JsonPropertyName("client_secret")]
         public string ClientSecret { get; set; }
 
         /// <summary>The value of the <c>code</c>, depending on the <c>grant_type</c>.</summary>
-        [JsonProperty("code")]
+        [JsonPropertyName("code")]
         public string Code { get; set; }
 
         /// <summary>
         /// <c>authorization_code</c> when turning an authorization code into an access token, or
         /// <c>refresh_token</c> when using a refresh token to get a new access token.
         /// </summary>
-        [JsonProperty("grant_type")]
+        [JsonPropertyName("grant_type")]
         public string GrantType { get; set; }
 
         /// <summary>The value of the <c>refresh_token</c>, depending on the <c>grant_type</c>.</summary>
-        [JsonProperty("refresh_token")]
+        [JsonPropertyName("refresh_token")]
         public string RefreshToken { get; set; }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Stripe
         /// </para>
         /// <para>Defaults to the scope of the refresh token.</para>
         /// </summary>
-        [JsonProperty("scope")]
+        [JsonPropertyName("scope")]
         public string Scope { get; set; }
     }
 }

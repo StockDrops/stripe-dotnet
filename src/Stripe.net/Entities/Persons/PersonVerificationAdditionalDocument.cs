@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
     public class PersonVerificationAdditionalDocument : StripeEntity<PersonVerificationAdditionalDocument>
@@ -34,7 +34,7 @@ namespace Stripe
             set => this.InternalBack = SetExpandableFieldObject(value, this.InternalBack);
         }
 
-        [JsonProperty("back")]
+        [JsonPropertyName("back")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
         internal ExpandableField<File> InternalBack { get; set; }
         #endregion
@@ -44,7 +44,7 @@ namespace Stripe
         /// example, if a document is uploaded and the picture is too fuzzy, this may say "Identity
         /// document is too unclear to read".
         /// </summary>
-        [JsonProperty("details")]
+        [JsonPropertyName("details")]
         public string Details { get; set; }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Stripe
         /// or <c>document_type_not_supported</c>. A machine-readable code specifying the
         /// verification state for this document.
         /// </summary>
-        [JsonProperty("details_code")]
+        [JsonPropertyName("details_code")]
         public string DetailsCode { get; set; }
 
         #region Expandable Front
@@ -89,7 +89,7 @@ namespace Stripe
             set => this.InternalFront = SetExpandableFieldObject(value, this.InternalFront);
         }
 
-        [JsonProperty("front")]
+        [JsonPropertyName("front")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
         internal ExpandableField<File> InternalFront { get; set; }
         #endregion

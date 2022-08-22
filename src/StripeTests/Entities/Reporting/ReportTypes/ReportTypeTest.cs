@@ -1,6 +1,6 @@
 namespace StripeTests.Reporting
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
     using Stripe.Reporting;
     using Xunit;
 
