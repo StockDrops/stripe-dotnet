@@ -9,26 +9,15 @@ namespace Stripe.Infrastructure
     /// <summary>
     /// Converts a <see cref="IAnyOf"/> to and from JSON.
     /// </summary>
-    public class AnyOfConverter : JsonConverter<IAnyOf>
+    /// <typeparam name="T">The types available.</typeparam>
+    public class AnyOfConverter<T> : JsonConverter<T>
+        where T : IAnyOf
     {
-        /// <summary>
-        /// Determines whether this instance can convert the specified object type.
-        /// </summary>
-        /// <param name="objectType">Type of the object.</param>
-        /// <returns>
-        ///     <c>true</c> if this instance can convert the specified object type; otherwise, <c>false</c>.
-        /// </returns>
-        public override bool CanConvert(Type objectType)
-        {
-            var result = typeof(IAnyOf).GetTypeInfo().IsAssignableFrom(objectType.GetTypeInfo());
-            return result;
-        }
-
-        public override IAnyOf Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             if (reader.TokenType == JsonTokenType.Null)
             {
-                return null;
+                return default(T);
             }
 
             object o = null;
@@ -41,14 +30,14 @@ namespace Stripe.Infrastructure
                 {
                     var clone = reader;
                     o = JsonSerializer.Deserialize(ref clone, type, options);
-
+                    reader = clone;
                     // If deserialization succeeds, stop
                     break;
                 }
                 catch (JsonException)
                 {
                     // Do nothing, just try the next type
-                }
+                }                
             }
 
             if (o == null)
@@ -58,10 +47,10 @@ namespace Stripe.Infrastructure
                     string.Join(", ", typeToConvert.GenericTypeArguments.Select(t => t.FullName))));
             }
 
-            return (IAnyOf)Activator.CreateInstance(typeToConvert, o);
+            return (T)Activator.CreateInstance(typeToConvert, o);
         }
 
-        public override void Write(Utf8JsonWriter writer, IAnyOf value, JsonSerializerOptions options)
+        public override void Write(Utf8JsonWriter writer, T value, JsonSerializerOptions options)
         {
             switch (value)
             {

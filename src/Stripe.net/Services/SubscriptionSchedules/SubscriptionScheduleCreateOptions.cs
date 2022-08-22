@@ -65,7 +65,7 @@ namespace Stripe
         /// to start on.
         /// </summary>
         [JsonPropertyName("start_date")]
-        [JsonConverter(typeof(AnyOfConverter))]
+        [JsonConverter(typeof(AnyOfConverterFactory))]
         public AnyOf<DateTime?, SubscriptionScheduleStartDate> StartDate { get; set; }
     }
 }

@@ -5,7 +5,7 @@ namespace Stripe
     using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
-    public class StripeList<T> : StripeEntity<StripeList<T>>, IHasObject, IEnumerable<T>, IBaseStripeList
+    public class StripeList<T> : StripeEntity<StripeList<T>>, IHasObject, IBaseStripeList, IEnumerable<T> // https://github.com/dotnet/runtime/issues/63791 in stj this has issues, because it treats this as an ienumerable instead of an object. No equivalent to [JsonObject] exists in STJ.
     {
         /// <summary>
         /// A string describing the object type returned.

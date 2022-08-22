@@ -32,7 +32,7 @@ namespace Stripe
         /// Default is <c>"now"</c> if a value is not provided.
         /// </summary>
         [JsonPropertyName("timestamp")]
-        [JsonConverter(typeof(AnyOfConverter))]
+        [JsonConverter(typeof(AnyOfConverterFactory))]
         public AnyOf<DateTime?, UsageRecordTimestamp> Timestamp { get; set; }
     }
 }

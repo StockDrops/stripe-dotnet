@@ -73,7 +73,8 @@ namespace Stripe
 
         [JsonPropertyName("file")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
-        internal ExpandableField<File> InternalFile { get; set; }
+        [JsonInclude]
+        public ExpandableField<File> InternalFile { get; private set; }
         #endregion
 
         /// <summary>

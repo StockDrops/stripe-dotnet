@@ -22,7 +22,7 @@ namespace StripeTests.Infrastructure.TestData
         }
 
         [JsonPropertyName("any_of")]
-        [JsonConverter(typeof(AnyOfConverter))]
+        [JsonConverter(typeof(AnyOfConverterFactory))]
         public AnyOf<string, Dictionary<string, string>> AnyOf { get; set; }
 
         [JsonPropertyName("array")]

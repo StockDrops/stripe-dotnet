@@ -11,7 +11,7 @@ namespace Stripe.Treasury
         /// Returns Transactions with <c>posted_at</c> within the specified range.
         /// </summary>
         [JsonPropertyName("posted_at")]
-        [JsonConverter(typeof(AnyOfConverter))]
+        [JsonConverter(typeof(AnyOfConverterFactory))]
         public AnyOf<DateTime?, DateRangeOptions> PostedAt { get; set; }
     }
 }

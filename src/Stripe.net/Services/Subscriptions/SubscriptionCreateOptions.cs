@@ -258,7 +258,7 @@ namespace Stripe
         /// subscriptions</a> to learn more.
         /// </summary>
         [JsonPropertyName("trial_end")]
-        [JsonConverter(typeof(AnyOfConverter))]
+        [JsonConverter(typeof(AnyOfConverterFactory))]
         public AnyOf<DateTime?, SubscriptionTrialEnd> TrialEnd { get; set; }
 
         /// <summary>

@@ -16,7 +16,7 @@ namespace StripeTests
         public void Deserialize()
         {
             string json = this.GetFixture("/v1/application_fees/fee_123");
-            var applicationFee = JsonSerializer.Deserialize<ApplicationFee>(json);
+            var applicationFee = JsonSerializer.Deserialize<ApplicationFee>(json, new JsonSerializerOptions(StripeConfiguration.SerializerSettings));
             Assert.NotNull(applicationFee);
             Assert.IsType<ApplicationFee>(applicationFee);
             Assert.NotNull(applicationFee.Id);
@@ -36,7 +36,7 @@ namespace StripeTests
             };
 
             string json = this.GetFixture("/v1/application_fees/fee_123", expansions);
-            var applicationFee = JsonSerializer.Deserialize<ApplicationFee>(json);
+            var applicationFee = JsonSerializer.Deserialize<ApplicationFee>(json, new JsonSerializerOptions(StripeConfiguration.SerializerSettings));
             Assert.NotNull(applicationFee);
             Assert.IsType<ApplicationFee>(applicationFee);
             Assert.NotNull(applicationFee.Id);

@@ -53,7 +53,7 @@ namespace StripeTests
                     }
                     else if (typeof(IAnyOf).GetTypeInfo().IsAssignableFrom(propType.GetTypeInfo()))
                     {
-                        expectedConverterType = typeof(AnyOfConverter);
+                        expectedConverterType = typeof(AnyOfConverterFactory);
                     }
                     else if (typeof(IExpandableField).GetTypeInfo().IsAssignableFrom(propType.GetTypeInfo()))
                     {

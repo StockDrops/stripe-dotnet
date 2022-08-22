@@ -16,11 +16,7 @@
             if (typeToConvert.IsGenericType)
             {
                 var genericArgument = typeToConvert.GetGenericArguments()[0];
-                if (genericArgument.IsInterface)
-                {
-                    return typeof(StripeList<>).IsAssignableFrom(typeToConvert.GetGenericTypeDefinition());
-                }
-                return false;
+                return typeof(StripeList<>).IsAssignableFrom(typeToConvert.GetGenericTypeDefinition());
             }
 
             return false;
@@ -30,7 +26,15 @@
         {
             Type elementType = typeToConvert.GetGenericArguments()[0];
 
-            var typeToMake = typeof(StripeListInterfaceConverter<>).MakeGenericType(elementType);
+            Type typeToMake;
+            if (elementType.IsInterface)
+            {
+                typeToMake = typeof(StripeListInterfaceConverter<>).MakeGenericType(elementType);
+            }
+            else
+            {
+                typeToMake = typeof(StripeListConcreteTypeConverter<>).MakeGenericType(elementType);
+            }
 
             JsonConverter converter = (JsonConverter)Activator.CreateInstance(typeToMake);
 

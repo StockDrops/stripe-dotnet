@@ -112,7 +112,7 @@ namespace Stripe
         public ShippingOptions Shipping { get; set; }
 
         [JsonPropertyName("source")]
-        [JsonConverter(typeof(AnyOfConverter))]
+        [JsonConverter(typeof(AnyOfConverterFactory))]
         public AnyOf<string, CardCreateNestedOptions> Source { get; set; }
 
         /// <summary>

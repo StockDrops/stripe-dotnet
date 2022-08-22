@@ -36,7 +36,8 @@ namespace Stripe
 
         [JsonPropertyName("icon")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
-        internal ExpandableField<File> InternalIcon { get; set; }
+        [JsonInclude]
+        public ExpandableField<File> InternalIcon { get; private set; }
         #endregion
 
         #region Expandable Logo
@@ -71,7 +72,8 @@ namespace Stripe
 
         [JsonPropertyName("logo")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
-        internal ExpandableField<File> InternalLogo { get; set; }
+        [JsonInclude]
+        public ExpandableField<File> InternalLogo { get; private set; }
         #endregion
 
         /// <summary>

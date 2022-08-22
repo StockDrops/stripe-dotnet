@@ -10,7 +10,7 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         [JsonPropertyName("source")]
-        [JsonConverter(typeof(AnyOfConverter))]
+        [JsonConverter(typeof(AnyOfConverterFactory))]
         public AnyOf<string, SourceBankAccount> Source { get; set; }
     }
 }

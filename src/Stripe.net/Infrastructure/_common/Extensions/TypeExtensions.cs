@@ -1,0 +1,256 @@
+﻿namespace Stripe.Infrastructure.Extensions
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Numerics;
+    using System.Reflection;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    public static class TypeExtensions
+    {
+        /// <summary>
+        /// Determines whether the given type is a collection.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <returns>true if the type is a collection; otherwise, false.</returns>
+        public static bool IsCollection(this Type type)
+        {
+            if (!type.IsGenericType)
+            {
+                return false;
+            }
+
+            switch (type.GetGenericTypeDefinition())
+            {
+                case var _ when type == typeof(IReadOnlyList<>):
+                case var _ when type == typeof(IReadOnlyCollection<>):
+                case var _ when type == typeof(IList<>):
+                case var _ when type == typeof(ICollection<>):
+                case var _ when type == typeof(List<>):
+                    {
+                        return true;
+                    }
+                default:
+                    {
+                        return false;
+                    }
+            }
+        }
+
+        /// <summary>
+        /// Determines whether the given type is unsigned.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <returns>true if the type is unsigned; otherwise, false.</returns>
+        public static bool IsUnsigned(this Type type)
+        {
+            switch (type)
+            {
+                case var _ when type == typeof(sbyte):
+                case var _ when type == typeof(short):
+                case var _ when type == typeof(int):
+                case var _ when type == typeof(long):
+                case var _ when type == typeof(float):
+                case var _ when type == typeof(double):
+                case var _ when type == typeof(decimal):
+                case var _ when type == typeof(BigInteger):
+                    {
+                        return false;
+                    }
+                case var _ when type == typeof(byte):
+                case var _ when type == typeof(ushort):
+                case var _ when type == typeof(uint):
+                case var _ when type == typeof(ulong):
+                    {
+                        return true;
+                    }
+            }
+
+            throw new InvalidOperationException($"{nameof(type)} was not a numeric type.");
+        }
+
+        /// <summary>
+        /// Checks whether the type is one of C#'s builtin types.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <returns>true if the type is a builtin type; otherwise, false.</returns>
+        public static bool IsBuiltin(this Type type)
+        {
+            switch (type)
+            {
+                case var _ when type == typeof(sbyte):
+                case var _ when type == typeof(short):
+                case var _ when type == typeof(int):
+                case var _ when type == typeof(long):
+                case var _ when type == typeof(float):
+                case var _ when type == typeof(double):
+                case var _ when type == typeof(decimal):
+                case var _ when type == typeof(byte):
+                case var _ when type == typeof(ushort):
+                case var _ when type == typeof(uint):
+                case var _ when type == typeof(ulong):
+                case var _ when type == typeof(string):
+                case var _ when type == typeof(bool):
+                    {
+                        return true;
+                    }
+                default:
+                    {
+                        return false;
+                    }
+            }
+        }
+
+        /// <summary>
+        /// Checks whether the type is one of C#'s builtin numeric types.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <returns>true if the type is a builtin numeric type; otherwise, false.</returns>
+        public static bool IsNumeric(this Type type)
+        {
+            switch (type)
+            {
+                case var _ when type == typeof(sbyte):
+                case var _ when type == typeof(short):
+                case var _ when type == typeof(int):
+                case var _ when type == typeof(long):
+                case var _ when type == typeof(float):
+                case var _ when type == typeof(double):
+                case var _ when type == typeof(decimal):
+                case var _ when type == typeof(byte):
+                case var _ when type == typeof(ushort):
+                case var _ when type == typeof(uint):
+                case var _ when type == typeof(ulong):
+                    {
+                        return true;
+                    }
+                default:
+                    {
+                        return false;
+                    }
+            }
+        }
+
+        /// <summary>
+        /// Checks whether the type is one of C#'s builtin integer types.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <returns>true if the type is a builtin integer type; otherwise, false.</returns>
+        public static bool IsInteger(this Type type)
+        {
+            switch (type)
+            {
+                case var _ when type == typeof(sbyte):
+                case var _ when type == typeof(short):
+                case var _ when type == typeof(int):
+                case var _ when type == typeof(long):
+                case var _ when type == typeof(byte):
+                case var _ when type == typeof(ushort):
+                case var _ when type == typeof(uint):
+                case var _ when type == typeof(ulong):
+                    {
+                        return true;
+                    }
+                default:
+                    {
+                        return false;
+                    }
+            }
+        }
+
+        /// <summary>
+        /// Checks whether the type is one of C#'s builtin floating-point types.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <returns>true if the type is a builtin floating-point type; otherwise, false.</returns>
+        public static bool IsFloatingPoint(this Type type)
+        {
+            switch (type)
+            {
+                case var _ when type == typeof(float):
+                case var _ when type == typeof(double):
+                case var _ when type == typeof(decimal):
+                    {
+                        return true;
+                    }
+                default:
+                    {
+                        return false;
+                    }
+            }
+        }
+
+        /// <summary>
+        /// Determines whether the given type is a closed <see cref="Nullable{TValue}"/>.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <returns>true if the type is a closed Nullable; otherwise, false.</returns>
+        public static bool IsNullable(this Type type)
+        {
+            if (!type.IsGenericType)
+            {
+                return false;
+            }
+
+            return type.GetGenericTypeDefinition() == typeof(Nullable<>);
+        }
+
+        /// <summary>
+        /// Retrieves the innermost type from a type wrapped by
+        /// <see cref="Nullable{T}"/>.
+        /// </summary>
+        /// <param name="type">The type to unwrap.</param>
+        /// <returns>The unwrapped type.</returns>
+        public static Type Unwrap(this Type type)
+        {
+            var currentType = type;
+            while (currentType.IsGenericType)
+            {
+                if (currentType.IsNullable())
+                {
+                    currentType = currentType.GetGenericArguments()[0];
+                    continue;
+                }
+
+                break;
+            }
+
+            return currentType;
+        }
+
+        /// <summary>
+        /// Gets all publicly visible properties of the given type.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <returns>The public properties.</returns>
+        public static IEnumerable<PropertyInfo> GetPublicProperties(this Type type)
+        {
+            if (!type.IsInterface)
+            {
+                foreach (var property in type.GetProperties())
+                {
+                    if (property.DeclaringType != type && property.DeclaringType != null)
+                    {
+                        // this is an inherited property, so we'll return the declaring class type's version of it
+                        yield return property.DeclaringType.GetProperty(property.Name) ?? throw new MissingMemberException();
+                        continue;
+                    }
+
+                    yield return property;
+                }
+
+                yield break;
+            }
+
+            foreach (var implementedInterface in type.GetInterfaces().Concat(new[] { type }))
+            {
+                foreach (var property in implementedInterface.GetProperties())
+                {
+                    yield return property;
+                }
+            }
+        }
+    }
+}

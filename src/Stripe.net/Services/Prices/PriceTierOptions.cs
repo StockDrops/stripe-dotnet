@@ -40,7 +40,7 @@ namespace Stripe
         /// the previous tier adding one. Use <c>inf</c> to define a fallback tier.
         /// </summary>
         [JsonPropertyName("up_to")]
-        [JsonConverter(typeof(AnyOfConverter))]
+        [JsonConverter(typeof(AnyOfConverterFactory))]
         public AnyOf<long?, PriceTierUpTo> UpTo { get; set; }
     }
 }

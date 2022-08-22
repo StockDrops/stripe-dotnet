@@ -14,7 +14,7 @@ namespace Stripe
         public string Customer { get; set; }
 
         [JsonPropertyName("due_date")]
-        [JsonConverter(typeof(AnyOfConverter))]
+        [JsonConverter(typeof(AnyOfConverterFactory))]
         public AnyOf<DateTime?, DateRangeOptions> DueDate { get; set; }
 
         [JsonPropertyName("status")]

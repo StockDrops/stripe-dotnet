@@ -15,7 +15,7 @@ namespace Stripe
         public bool? DefaultForCurrency { get; set; }
 
         [JsonPropertyName("external_account")]
-        [JsonConverter(typeof(AnyOfConverter))]
+        [JsonConverter(typeof(AnyOfConverterFactory))]
         public AnyOf<string, AccountBankAccountOptions> ExternalAccount { get; set; }
 
         /// <summary>

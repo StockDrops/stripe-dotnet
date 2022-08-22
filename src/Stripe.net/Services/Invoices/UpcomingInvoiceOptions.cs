@@ -35,7 +35,7 @@ namespace Stripe
         public string Schedule { get; set; }
 
         [JsonPropertyName("subscription_billing_cycle_anchor")]
-        [JsonConverter(typeof(AnyOfConverter))]
+        [JsonConverter(typeof(AnyOfConverterFactory))]
         public AnyOf<DateTime?, SubscriptionBillingCycleAnchor> SubscriptionBillingCycleAnchor { get; set; }
 
         [JsonPropertyName("subscription_cancel_at")]
@@ -73,7 +73,7 @@ namespace Stripe
         public DateTime? SubscriptionStartDate { get; set; }
 
         [JsonPropertyName("subscription_trial_end")]
-        [JsonConverter(typeof(AnyOfConverter))]
+        [JsonConverter(typeof(AnyOfConverterFactory))]
         public AnyOf<DateTime?, SubscriptionTrialEnd> SubscriptionTrialEnd { get; set; }
 
         [JsonPropertyName("subscription_trial_from_plan")]

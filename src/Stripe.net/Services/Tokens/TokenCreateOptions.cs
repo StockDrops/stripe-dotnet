@@ -13,11 +13,11 @@ namespace Stripe
         public TokenAccountOptions Account { get; set; }
 
         [JsonPropertyName("bank_account")]
-        [JsonConverter(typeof(AnyOfConverter))]
+        [JsonConverter(typeof(AnyOfConverterFactory))]
         public AnyOf<string, TokenBankAccountOptions> BankAccount { get; set; }
 
         [JsonPropertyName("card")]
-        [JsonConverter(typeof(AnyOfConverter))]
+        [JsonConverter(typeof(AnyOfConverterFactory))]
         public AnyOf<string, TokenCardOptions> Card { get; set; }
 
         /// <summary>

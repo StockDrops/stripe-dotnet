@@ -3,6 +3,7 @@ namespace Stripe
     using System;
     using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
+    using Stripe.Infrastructure.JsonConverters;
 
     public class ListOptionsWithCreated : ListOptions
     {
@@ -11,7 +12,7 @@ namespace Stripe
         /// <see cref="DateTime"/> or a <see cref="DateRangeOptions"/>.
         /// </summary>
         [JsonPropertyName("created")]
-        [JsonConverter(typeof(AnyOfConverter))]
+        [JsonConverter(typeof(AnyOfConverterFactory))]
         public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
     }
 }

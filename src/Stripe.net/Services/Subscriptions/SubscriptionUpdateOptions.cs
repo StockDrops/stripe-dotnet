@@ -252,7 +252,7 @@ namespace Stripe
         /// <c>billing_cycle_anchor</c>.
         /// </summary>
         [JsonPropertyName("trial_end")]
-        [JsonConverter(typeof(AnyOfConverter))]
+        [JsonConverter(typeof(AnyOfConverterFactory))]
         public AnyOf<DateTime?, SubscriptionTrialEnd> TrialEnd { get; set; }
 
         /// <summary>

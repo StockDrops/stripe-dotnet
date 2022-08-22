@@ -100,7 +100,7 @@ namespace Stripe
         public string Nickname { get; set; }
 
         [JsonPropertyName("product")]
-        [JsonConverter(typeof(AnyOfConverter))]
+        [JsonConverter(typeof(AnyOfConverterFactory))]
         public AnyOf<string, PlanProductOptions> Product { get; set; }
 
         /// <summary>

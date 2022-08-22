@@ -56,7 +56,10 @@ namespace Stripe
         {
             return JsonUtils.SerializeObject(
                 this,
-                StripeConfiguration.SerializerSettings);
+                new JsonSerializerOptions(StripeConfiguration.SerializerSettings)
+                {
+                    WriteIndented = true,
+                });
         }
 
         /// <summary>

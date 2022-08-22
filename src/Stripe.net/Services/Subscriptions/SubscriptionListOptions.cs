@@ -11,11 +11,11 @@ namespace Stripe
         public string CollectionMethod { get; set; }
 
         [JsonPropertyName("current_period_end")]
-        [JsonConverter(typeof(AnyOfConverter))]
+        [JsonConverter(typeof(AnyOfConverterFactory))]
         public AnyOf<DateTime?, DateRangeOptions> CurrentPeriodEnd { get; set; }
 
         [JsonPropertyName("current_period_start")]
-        [JsonConverter(typeof(AnyOfConverter))]
+        [JsonConverter(typeof(AnyOfConverterFactory))]
         public AnyOf<DateTime?, DateRangeOptions> CurrentPeriodStart { get; set; }
 
         [JsonPropertyName("customer")]

@@ -16,7 +16,7 @@ namespace Stripe
         /// is accepted.
         /// </summary>
         [JsonPropertyName("effective_date")]
-        [JsonConverter(typeof(AnyOfConverter))]
+        [JsonConverter(typeof(AnyOfConverterFactory))]
         public AnyOf<DateTime?, QuoteSubscriptionDataEffectiveDate> EffectiveDate { get; set; }
 
         /// <summary>

@@ -4,6 +4,7 @@ namespace Stripe
     using System.Collections.Generic;
     using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
+    using Stripe.Infrastructure.JsonConverters;
 
     public class AccountUpdateOptions : BaseOptions, IHasMetadata
     {
@@ -66,7 +67,7 @@ namespace Stripe
         public string Email { get; set; }
 
         [JsonPropertyName("external_account")]
-        [JsonConverter(typeof(AnyOfConverter))]
+        [JsonConverter(typeof(AnyOfConverterFactory))]
         public AnyOf<string, AccountBankAccountOptions, AccountCardOptions> ExternalAccount { get; set; }
 
         /// <summary>

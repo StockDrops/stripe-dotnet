@@ -22,7 +22,10 @@ namespace StripeTests
         public void DeserializeSecondType()
         {
             var json = "{\n  \"any_of\": {\n    \"id\": \"id_123\",\n    \"bar\": 42\n  }\n}";
-            var obj = JsonSerializer.Deserialize<TestObject>(json);
+            var obj = JsonSerializer.Deserialize<TestObject>(json, new JsonSerializerOptions
+            {
+                WriteIndented = true,
+            });
 
             Assert.NotNull(obj.AnyOf);
             Assert.Equal("id_123", ((TestSubObject)obj.AnyOf).Id);
@@ -104,8 +107,8 @@ namespace StripeTests
         private class TestObject : StripeEntity<TestObject>
         {
             [JsonPropertyName("any_of")]
-            [JsonConverter(typeof(AnyOfConverter))]
-            internal AnyOf<string, TestSubObject> AnyOf { get; set; }
+            [JsonConverter(typeof(AnyOfConverterFactory))]
+            public AnyOf<string, TestSubObject> AnyOf { get; set; }
         }
     }
 }

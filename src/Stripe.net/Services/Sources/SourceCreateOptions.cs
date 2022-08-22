@@ -68,7 +68,7 @@ namespace Stripe
         public SourceBancontactCreateOptions Bancontact { get; set; }
 
         [JsonPropertyName("card")]
-        [JsonConverter(typeof(AnyOfConverter))]
+        [JsonConverter(typeof(AnyOfConverterFactory))]
         public AnyOf<string, SourceCardOptions> Card { get; set; }
 
         [JsonPropertyName("ideal")]

@@ -8,18 +8,18 @@ namespace Stripe
     public class SubscriptionScheduleListOptions : ListOptionsWithCreated
     {
         [JsonPropertyName("canceled_at")]
-        [JsonConverter(typeof(AnyOfConverter))]
+        [JsonConverter(typeof(AnyOfConverterFactory))]
         public AnyOf<DateTime?, DateRangeOptions> CanceledAt { get; set; }
 
         [JsonPropertyName("completed_at")]
-        [JsonConverter(typeof(AnyOfConverter))]
+        [JsonConverter(typeof(AnyOfConverterFactory))]
         public AnyOf<DateTime?, DateRangeOptions> CompletedAt { get; set; }
 
         [JsonPropertyName("customer")]
         public string Customer { get; set; }
 
         [JsonPropertyName("released_at")]
-        [JsonConverter(typeof(AnyOfConverter))]
+        [JsonConverter(typeof(AnyOfConverterFactory))]
         public AnyOf<DateTime?, DateRangeOptions> ReleasedAt { get; set; }
 
         [JsonPropertyName("scheduled")]
