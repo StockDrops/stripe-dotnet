@@ -33,7 +33,7 @@ namespace StripeTests
             };
 
             string json = this.GetFixture("/v1/accounts/acct_123", expansions);
-            var account = JsonSerializer.Deserialize<Account>(json);
+            var account = JsonSerializer.Deserialize<Account>(json, StripeConfiguration.SerializerSettings);
 
             Assert.NotNull(account);
             Assert.IsType<Account>(account);

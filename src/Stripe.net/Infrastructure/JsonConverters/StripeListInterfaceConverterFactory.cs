@@ -9,13 +9,18 @@
     using System.Text.Json.Serialization;
     using System.Threading.Tasks;
 
-    public class StripeListInterfacteConverterFactory : JsonConverterFactory
+    public class StripeListInterfaceConverterFactory : JsonConverterFactory
     {
         public override bool CanConvert(Type typeToConvert)
         {
             if (typeToConvert.IsGenericType)
             {
-                return typeof(StripeList<>).IsAssignableFrom(typeToConvert.GetGenericTypeDefinition());
+                var genericArgument = typeToConvert.GetGenericArguments()[0];
+                if (genericArgument.IsInterface)
+                {
+                    return typeof(StripeList<>).IsAssignableFrom(typeToConvert.GetGenericTypeDefinition());
+                }
+                return false;
             }
 
             return false;

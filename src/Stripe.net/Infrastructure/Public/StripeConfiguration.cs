@@ -205,11 +205,12 @@ namespace Stripe
         {
             var options = new JsonSerializerOptions();
             options.Converters.Add(new StripeObjectConverterFactory());
-            options.Converters.Add(new StripeListInterfacteConverterFactory());
+            options.Converters.Add(new StripeListInterfaceConverterFactory());
             options.Converters.Add(new StringDecimalConverter());
-            options.Converters.Add(new EventConverter());
+
+            // options.Converters.Add(new EventConverter());
             // options.Converters.Add(new StripeEntityConverterFactory());
-            options.Converters.Add(new ExpandableFieldConverterFactory());
+            // options.Converters.Add(new ExpandableFieldConverterFactory());
 
             // no DateParseHandling equivalent.
             options.MaxDepth = 128;

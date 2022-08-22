@@ -20,7 +20,8 @@ namespace Stripe.Infrastructure
         /// </returns>
         public override bool CanConvert(Type objectType)
         {
-            return typeof(IAnyOf).GetTypeInfo().IsAssignableFrom(objectType.GetTypeInfo());
+            var result = typeof(IAnyOf).GetTypeInfo().IsAssignableFrom(objectType.GetTypeInfo());
+            return result;
         }
 
         public override IAnyOf Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)

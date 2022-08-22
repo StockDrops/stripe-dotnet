@@ -11,20 +11,6 @@ namespace Stripe
 
     public abstract class StripeEntity : IStripeEntity
     {
-        /// <summary>
-        /// Gets the raw <see cref="JsonDocument">JObject</see> exposed by the System.Text.Json library.
-        /// This can be used to access properties that are not directly exposed by Stripe's .NET
-        /// library.
-        /// </summary>
-        /// <remarks>
-        /// You should always prefer using the standard property accessors whenever possible. This
-        /// accessor is not considered fully stable and might change or be removed in future
-        /// versions.
-        /// </remarks>
-        /// <returns>The raw <see cref="JsonDocument">JObject</see>.</returns>
-        [JsonIgnore]
-        public JsonDocument RawJObject { get; protected set; }
-
         [JsonIgnore]
         public StripeResponse StripeResponse { get; set; }
 
@@ -47,11 +33,6 @@ namespace Stripe
             where T : IStripeEntity
         {
             return JsonUtils.DeserializeObject<T>(value, StripeConfiguration.SerializerSettings);
-        }
-
-        internal void SetRawJObject(JsonDocument rawJObject)
-        {
-            this.RawJObject = rawJObject;
         }
 
         /// <summary>Reports a Stripe object as a string.</summary>
