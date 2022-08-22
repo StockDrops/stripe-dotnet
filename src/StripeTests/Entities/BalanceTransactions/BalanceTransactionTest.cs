@@ -17,7 +17,7 @@ namespace StripeTests
         public void Deserialize()
         {
             string json = this.GetFixture("/v1/balance/history/txn_123");
-            var balanceTransaction = JsonSerializer.Deserialize<BalanceTransaction>(json);
+            var balanceTransaction = JsonSerializer.Deserialize<BalanceTransaction>(json, StripeConfiguration.SerializerSettings);
             Assert.NotNull(balanceTransaction);
             Assert.IsType<BalanceTransaction>(balanceTransaction);
             Assert.NotNull(balanceTransaction.Id);
@@ -30,7 +30,7 @@ namespace StripeTests
             // We test all balance transaction possible source types to ensure the deserializer
             // works as expectes.
             var json = GetResourceAsString("api_fixtures.balance_transaction_with_expansion.json");
-            var balanceTransactions = JsonSerializer.Deserialize<StripeList<BalanceTransaction>>(json);
+            var balanceTransactions = JsonSerializer.Deserialize<StripeList<BalanceTransaction>>(json, StripeConfiguration.SerializerSettings);
 
             Assert.NotNull(balanceTransactions);
             Assert.NotNull(balanceTransactions.Data);

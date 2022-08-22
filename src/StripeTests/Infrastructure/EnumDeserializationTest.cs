@@ -35,7 +35,7 @@ namespace StripeTests
             var exception = Assert.Throws<JsonException>(() =>
                 JsonSerializer.Deserialize<TestOptions>(json));
 
-            Assert.Contains("Error converting value \"unknown_value\"", exception.Message);
+            Assert.Contains("The JSON value could not be converted to System.Nullable`1[StripeTests.Infrastructure.TestData.TestOptions+TestEnum]. Path: $.enum | LineNumber: 0 | BytePositionInLine: 24.", exception.Message);
         }
     }
 }

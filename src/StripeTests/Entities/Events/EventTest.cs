@@ -16,7 +16,7 @@ namespace StripeTests
         public void Deserialize()
         {
             var json = GetResourceAsString("api_fixtures.events.event_plan.json");
-            var evt = JsonSerializer.Deserialize<Event>(json);
+            var evt = JsonSerializer.Deserialize<Event>(json, StripeConfiguration.SerializerSettings);
             Assert.NotNull(evt);
             Assert.IsType<Event>(evt);
             Assert.NotNull(evt.Id);
@@ -37,7 +37,7 @@ namespace StripeTests
         public void DeserializePreviousAttributes()
         {
             var json = GetResourceAsString("api_fixtures.events.customer_updated.json");
-            var evt = JsonSerializer.Deserialize<Event>(json);
+            var evt = JsonSerializer.Deserialize<Event>(json, StripeConfiguration.SerializerSettings);
             Assert.NotNull(evt);
             Assert.IsType<Event>(evt);
             Assert.NotNull(evt.Id);
@@ -45,16 +45,16 @@ namespace StripeTests
 
             Assert.NotNull(evt.Data);
             Assert.NotNull(evt.Data.PreviousAttributes);
-            Assert.NotNull(evt.Data.PreviousAttributes.metadata);
-            Assert.NotNull(evt.Data.PreviousAttributes.metadata["foo"]);
-            Assert.Equal("bar", (string)evt.Data.PreviousAttributes.metadata["foo"]);
+            Assert.NotNull(((JsonElement)evt.Data.PreviousAttributes).GetProperty("metadata").GetRawText());
+            Assert.NotNull(((JsonElement)evt.Data.PreviousAttributes).GetProperty("metadata").GetProperty("foo").GetRawText());
+            Assert.Equal("bar", (string)((JsonElement)evt.Data.PreviousAttributes).GetProperty("metadata").GetProperty("foo").ToString());
         }
 
         [Fact]
         public void DeserializeRequestString()
         {
-            var json = GetResourceAsString("api_fixtures.events.event_pre_2017-05-25.json");
-            var evt = JsonSerializer.Deserialize<Event>(json);
+            var json = GetResourceAsString("api_fixtures.events.event_pre_2017-05-25.json"); // this data is misformated. Is the trailing coma normal? "object": null,
+            var evt = JsonSerializer.Deserialize<Event>(json, StripeConfiguration.SerializerSettings);
             Assert.NotNull(evt);
             Assert.IsType<Event>(evt);
             Assert.NotNull(evt.Id);
@@ -67,7 +67,7 @@ namespace StripeTests
         public void DeserializeUnknownObject()
         {
             var json = GetResourceAsString("api_fixtures.events.event_unknown_object.json");
-            var evt = JsonSerializer.Deserialize<Event>(json);
+            var evt = JsonSerializer.Deserialize<Event>(json, StripeConfiguration.SerializerSettings);
             Assert.NotNull(evt);
             Assert.IsType<Event>(evt);
             Assert.NotNull(evt.Id);

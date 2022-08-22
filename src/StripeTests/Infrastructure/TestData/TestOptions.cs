@@ -11,13 +11,14 @@ namespace StripeTests.Infrastructure.TestData
 
     public class TestOptions : BaseOptions
     {
-        [JsonConverter(typeof(StringEnumConverter))]
         public enum TestEnum
         {
-            [EnumMember(Value = "test_one")]
+            [JsonPropertyName("test_one")]
             TestOne,
 
             // TestTwo purposefully doesn't define a serialization value
+            [JsonPropertyName("test_two")]
+            [EnumMember(Value = "test_two")]
             TestTwo,
         }
 
@@ -44,6 +45,7 @@ namespace StripeTests.Infrastructure.TestData
         public Dictionary<string, object> Dictionary { get; set; }
 
         [JsonPropertyName("enum")]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public TestEnum? Enum { get; set; }
 
         [JsonPropertyName("list")]

@@ -87,6 +87,12 @@ namespace StripeTests
                         continue;
                     }
 
+                    // This converter must be ignored, it is there just to transalte string represented decimals to decimal.
+                    if (actualConverterName == "StringDecimalConverter" || expectedConverterName == "null")
+                    {
+                        continue;
+                    }
+
                     results.Add(
                         $"{stripeClass.Name}.{property.Name}, expected = {expectedConverterName}, "
                             + $"actual = {actualConverterName}");
