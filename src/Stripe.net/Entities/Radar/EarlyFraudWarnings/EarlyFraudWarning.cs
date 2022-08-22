@@ -63,7 +63,8 @@ namespace Stripe.Radar
 
         [JsonPropertyName("charge")]
         [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
-        internal ExpandableField<Charge> InternalCharge { get; set; }
+        [JsonInclude]
+        public ExpandableField<Charge> InternalCharge { get; private set; }
         #endregion
 
         /// <summary>
@@ -117,7 +118,8 @@ namespace Stripe.Radar
 
         [JsonPropertyName("payment_intent")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentIntent>))]
-        internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
+        [JsonInclude]
+        public ExpandableField<PaymentIntent> InternalPaymentIntent { get; private set; }
         #endregion
     }
 }

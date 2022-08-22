@@ -142,7 +142,8 @@ namespace Stripe.Checkout
 
         [JsonPropertyName("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
-        internal ExpandableField<Customer> InternalCustomer { get; set; }
+        [JsonInclude]
+        public ExpandableField<Customer> InternalCustomer { get; private set; }
         #endregion
 
         /// <summary>
@@ -245,7 +246,8 @@ namespace Stripe.Checkout
 
         [JsonPropertyName("payment_intent")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentIntent>))]
-        internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
+        [JsonInclude]
+        public ExpandableField<PaymentIntent> InternalPaymentIntent { get; private set; }
         #endregion
 
         #region Expandable PaymentLink
@@ -276,7 +278,8 @@ namespace Stripe.Checkout
 
         [JsonPropertyName("payment_link")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentLink>))]
-        internal ExpandableField<PaymentLink> InternalPaymentLink { get; set; }
+        [JsonInclude]
+        public ExpandableField<PaymentLink> InternalPaymentLink { get; private set; }
         #endregion
 
         /// <summary>
@@ -346,7 +349,8 @@ namespace Stripe.Checkout
 
         [JsonPropertyName("setup_intent")]
         [JsonConverter(typeof(ExpandableFieldConverter<SetupIntent>))]
-        internal ExpandableField<SetupIntent> InternalSetupIntent { get; set; }
+        [JsonInclude]
+        public ExpandableField<SetupIntent> InternalSetupIntent { get; private set; }
         #endregion
 
         /// <summary>
@@ -421,7 +425,8 @@ namespace Stripe.Checkout
 
         [JsonPropertyName("subscription")]
         [JsonConverter(typeof(ExpandableFieldConverter<Subscription>))]
-        internal ExpandableField<Subscription> InternalSubscription { get; set; }
+        [JsonInclude]
+        public ExpandableField<Subscription> InternalSubscription { get; private set; }
         #endregion
 
         /// <summary>

@@ -63,7 +63,8 @@ namespace Stripe
 
         [JsonPropertyName("balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
-        internal ExpandableField<BalanceTransaction> InternalBalanceTransaction { get; set; }
+        [JsonInclude]
+        public ExpandableField<BalanceTransaction> InternalBalanceTransaction { get; private set; }
         #endregion
 
         /// <summary>
@@ -109,7 +110,8 @@ namespace Stripe
 
         [JsonPropertyName("fee")]
         [JsonConverter(typeof(ExpandableFieldConverter<ApplicationFee>))]
-        internal ExpandableField<ApplicationFee> InternalFee { get; set; }
+        [JsonInclude]
+        public ExpandableField<ApplicationFee> InternalFee { get; private set; }
         #endregion
 
         /// <summary>

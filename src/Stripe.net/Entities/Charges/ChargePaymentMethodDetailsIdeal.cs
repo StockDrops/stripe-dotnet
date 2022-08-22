@@ -55,7 +55,8 @@ namespace Stripe
 
         [JsonPropertyName("generated_sepa_debit")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
-        internal ExpandableField<PaymentMethod> InternalGeneratedSepaDebit { get; set; }
+        [JsonInclude]
+        public ExpandableField<PaymentMethod> InternalGeneratedSepaDebit { get; private set; }
         #endregion
 
         #region Expandable GeneratedSepaDebitMandate
@@ -86,7 +87,8 @@ namespace Stripe
 
         [JsonPropertyName("generated_sepa_debit_mandate")]
         [JsonConverter(typeof(ExpandableFieldConverter<Mandate>))]
-        internal ExpandableField<Mandate> InternalGeneratedSepaDebitMandate { get; set; }
+        [JsonInclude]
+        public ExpandableField<Mandate> InternalGeneratedSepaDebitMandate { get; private set; }
         #endregion
 
         /// <summary>

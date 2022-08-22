@@ -50,7 +50,8 @@ namespace Stripe
 
         [JsonPropertyName("cancellation_policy")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
-        internal ExpandableField<File> InternalCancellationPolicy { get; set; }
+        [JsonInclude]
+        public ExpandableField<File> InternalCancellationPolicy { get; private set; }
         #endregion
 
         /// <summary>
@@ -100,7 +101,8 @@ namespace Stripe
 
         [JsonPropertyName("customer_communication")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
-        internal ExpandableField<File> InternalCustomerCommunication { get; set; }
+        [JsonInclude]
+        public ExpandableField<File> InternalCustomerCommunication { get; private set; }
         #endregion
 
         /// <summary>
@@ -151,7 +153,8 @@ namespace Stripe
 
         [JsonPropertyName("customer_signature")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
-        internal ExpandableField<File> InternalCustomerSignature { get; set; }
+        [JsonInclude]
+        public ExpandableField<File> InternalCustomerSignature { get; private set; }
         #endregion
 
         #region Expandable DuplicateChargeDocumentation
@@ -188,7 +191,8 @@ namespace Stripe
 
         [JsonPropertyName("duplicate_charge_documentation")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
-        internal ExpandableField<File> InternalDuplicateChargeDocumentation { get; set; }
+        [JsonInclude]
+        public ExpandableField<File> InternalDuplicateChargeDocumentation { get; private set; }
         #endregion
 
         /// <summary>
@@ -241,7 +245,8 @@ namespace Stripe
 
         [JsonPropertyName("receipt")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
-        internal ExpandableField<File> InternalReceipt { get; set; }
+        [JsonInclude]
+        public ExpandableField<File> InternalReceipt { get; private set; }
         #endregion
 
         #region Expandable RefundPolicy
@@ -274,7 +279,8 @@ namespace Stripe
 
         [JsonPropertyName("refund_policy")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
-        internal ExpandableField<File> InternalRefundPolicy { get; set; }
+        [JsonInclude]
+        public ExpandableField<File> InternalRefundPolicy { get; private set; }
         #endregion
 
         /// <summary>
@@ -329,7 +335,8 @@ namespace Stripe
 
         [JsonPropertyName("service_documentation")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
-        internal ExpandableField<File> InternalServiceDocumentation { get; set; }
+        [JsonInclude]
+        public ExpandableField<File> InternalServiceDocumentation { get; private set; }
         #endregion
 
         /// <summary>
@@ -387,7 +394,8 @@ namespace Stripe
 
         [JsonPropertyName("shipping_documentation")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
-        internal ExpandableField<File> InternalShippingDocumentation { get; set; }
+        [JsonInclude]
+        public ExpandableField<File> InternalShippingDocumentation { get; private set; }
         #endregion
 
         /// <summary>
@@ -428,7 +436,8 @@ namespace Stripe
 
         [JsonPropertyName("uncategorized_file")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
-        internal ExpandableField<File> InternalUncategorizedFile { get; set; }
+        [JsonInclude]
+        public ExpandableField<File> InternalUncategorizedFile { get; private set; }
         #endregion
 
         /// <summary>

@@ -1,4 +1,4 @@
-﻿namespace Stripe.Infrastructure.JsonConverters
+﻿namespace Stripe.Infrastructure
 {
     using System;
     using System.Collections.Generic;

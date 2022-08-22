@@ -42,7 +42,7 @@ namespace Stripe
     /// </item>
     /// </list>
     /// </summary>
-    [JsonConverter(typeof(StripeObjectConverter<IBalanceTransactionSource>))]
+    [JsonConverter(typeof(StripeObjectConverterFactory))]
     public interface IBalanceTransactionSource : IStripeEntity, IHasId, IHasObject
     {
     }

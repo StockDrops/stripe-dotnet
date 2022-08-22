@@ -76,7 +76,8 @@ namespace Stripe
 
         [JsonPropertyName("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
-        internal ExpandableField<Customer> InternalCustomer { get; set; }
+        [JsonInclude]
+        public ExpandableField<Customer> InternalCustomer { get; private set; }
         #endregion
 
         #region Expandable CustomerBalanceTransaction
@@ -107,7 +108,8 @@ namespace Stripe
 
         [JsonPropertyName("customer_balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<CustomerBalanceTransaction>))]
-        internal ExpandableField<CustomerBalanceTransaction> InternalCustomerBalanceTransaction { get; set; }
+        [JsonInclude]
+        public ExpandableField<CustomerBalanceTransaction> InternalCustomerBalanceTransaction { get; private set; }
         #endregion
 
         /// <summary>
@@ -150,7 +152,8 @@ namespace Stripe
 
         [JsonPropertyName("invoice")]
         [JsonConverter(typeof(ExpandableFieldConverter<Invoice>))]
-        internal ExpandableField<Invoice> InternalInvoice { get; set; }
+        [JsonInclude]
+        public ExpandableField<Invoice> InternalInvoice { get; private set; }
         #endregion
 
         /// <summary>
@@ -236,7 +239,8 @@ namespace Stripe
 
         [JsonPropertyName("refund")]
         [JsonConverter(typeof(ExpandableFieldConverter<Refund>))]
-        internal ExpandableField<Refund> InternalRefund { get; set; }
+        [JsonInclude]
+        public ExpandableField<Refund> InternalRefund { get; private set; }
         #endregion
 
         /// <summary>

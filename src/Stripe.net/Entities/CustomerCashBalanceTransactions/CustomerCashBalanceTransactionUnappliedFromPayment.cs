@@ -36,7 +36,8 @@ namespace Stripe
 
         [JsonPropertyName("payment_intent")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentIntent>))]
-        internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
+        [JsonInclude]
+        public ExpandableField<PaymentIntent> InternalPaymentIntent { get; private set; }
         #endregion
     }
 }

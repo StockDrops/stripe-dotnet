@@ -74,7 +74,8 @@ namespace Stripe
 
         [JsonPropertyName("balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
-        internal ExpandableField<BalanceTransaction> InternalBalanceTransaction { get; set; }
+        [JsonInclude]
+        public ExpandableField<BalanceTransaction> InternalBalanceTransaction { get; private set; }
         #endregion
 
         /// <summary>
@@ -126,7 +127,8 @@ namespace Stripe
 
         [JsonPropertyName("destination")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
-        internal ExpandableField<Account> InternalDestination { get; set; }
+        [JsonInclude]
+        public ExpandableField<Account> InternalDestination { get; private set; }
         #endregion
 
         #region Expandable DestinationPayment
@@ -159,7 +161,8 @@ namespace Stripe
 
         [JsonPropertyName("destination_payment")]
         [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
-        internal ExpandableField<Charge> InternalDestinationPayment { get; set; }
+        [JsonInclude]
+        public ExpandableField<Charge> InternalDestinationPayment { get; private set; }
         #endregion
 
         /// <summary>
@@ -220,7 +223,8 @@ namespace Stripe
 
         [JsonPropertyName("source_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
-        internal ExpandableField<Charge> InternalSourceTransaction { get; set; }
+        [JsonInclude]
+        public ExpandableField<Charge> InternalSourceTransaction { get; private set; }
         #endregion
 
         /// <summary>

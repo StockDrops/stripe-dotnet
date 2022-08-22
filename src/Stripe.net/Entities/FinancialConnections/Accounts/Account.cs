@@ -110,7 +110,8 @@ namespace Stripe.FinancialConnections
 
         [JsonPropertyName("ownership")]
         [JsonConverter(typeof(ExpandableFieldConverter<AccountOwnership>))]
-        internal ExpandableField<AccountOwnership> InternalOwnership { get; set; }
+        [JsonInclude]
+        public ExpandableField<AccountOwnership> InternalOwnership { get; private set; }
         #endregion
 
         /// <summary>

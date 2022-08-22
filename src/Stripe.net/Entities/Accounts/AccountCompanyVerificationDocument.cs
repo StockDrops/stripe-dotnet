@@ -38,7 +38,8 @@ namespace Stripe
 
         [JsonPropertyName("back")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
-        internal ExpandableField<File> InternalBack { get; set; }
+        [JsonInclude]
+        public ExpandableField<File> InternalBack { get; private set; }
         #endregion
 
         /// <summary>
@@ -91,7 +92,8 @@ namespace Stripe
 
         [JsonPropertyName("front")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
-        internal ExpandableField<File> InternalFront { get; set; }
+        [JsonInclude]
+        public ExpandableField<File> InternalFront { get; private set; }
         #endregion
     }
 }

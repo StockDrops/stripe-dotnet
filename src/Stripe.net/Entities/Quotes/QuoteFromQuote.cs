@@ -40,7 +40,8 @@ namespace Stripe
 
         [JsonPropertyName("quote")]
         [JsonConverter(typeof(ExpandableFieldConverter<Quote>))]
-        internal ExpandableField<Quote> InternalQuote { get; set; }
+        [JsonInclude]
+        public ExpandableField<Quote> InternalQuote { get; private set; }
         #endregion
     }
 }

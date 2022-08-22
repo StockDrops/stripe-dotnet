@@ -74,7 +74,8 @@ namespace Stripe
 
         [JsonPropertyName("rule")]
         [JsonConverter(typeof(ExpandableFieldConverter<Radar.Rule>))]
-        internal ExpandableField<Radar.Rule> InternalRule { get; set; }
+        [JsonInclude]
+        public ExpandableField<Radar.Rule> InternalRule { get; private set; }
         #endregion
 
         /// <summary>

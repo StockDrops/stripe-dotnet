@@ -100,7 +100,8 @@ namespace Stripe.Issuing
 
         [JsonPropertyName("cardholder")]
         [JsonConverter(typeof(ExpandableFieldConverter<Cardholder>))]
-        internal ExpandableField<Cardholder> InternalCardholder { get; set; }
+        [JsonInclude]
+        public ExpandableField<Cardholder> InternalCardholder { get; private set; }
         #endregion
 
         /// <summary>

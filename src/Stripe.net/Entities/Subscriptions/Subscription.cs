@@ -55,7 +55,8 @@ namespace Stripe
 
         [JsonPropertyName("application")]
         [JsonConverter(typeof(ExpandableFieldConverter<Application>))]
-        internal ExpandableField<Application> InternalApplication { get; set; }
+        [JsonInclude]
+        public ExpandableField<Application> InternalApplication { get; private set; }
         #endregion
 
         /// <summary>
@@ -180,7 +181,8 @@ namespace Stripe
 
         [JsonPropertyName("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
-        internal ExpandableField<Customer> InternalCustomer { get; set; }
+        [JsonInclude]
+        public ExpandableField<Customer> InternalCustomer { get; private set; }
         #endregion
 
         /// <summary>
@@ -229,7 +231,8 @@ namespace Stripe
 
         [JsonPropertyName("default_payment_method")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
-        internal ExpandableField<PaymentMethod> InternalDefaultPaymentMethod { get; set; }
+        [JsonInclude]
+        public ExpandableField<PaymentMethod> InternalDefaultPaymentMethod { get; private set; }
         #endregion
 
         #region Expandable DefaultSource
@@ -272,7 +275,8 @@ namespace Stripe
 
         [JsonPropertyName("default_source")]
         [JsonConverter(typeof(ExpandableFieldConverter<IPaymentSource>))]
-        internal ExpandableField<IPaymentSource> InternalDefaultSource { get; set; }
+        [JsonInclude]
+        public ExpandableField<IPaymentSource> InternalDefaultSource { get; private set; }
         #endregion
 
         /// <summary>
@@ -339,7 +343,8 @@ namespace Stripe
 
         [JsonPropertyName("latest_invoice")]
         [JsonConverter(typeof(ExpandableFieldConverter<Invoice>))]
-        internal ExpandableField<Invoice> InternalLatestInvoice { get; set; }
+        [JsonInclude]
+        public ExpandableField<Invoice> InternalLatestInvoice { get; private set; }
         #endregion
 
         /// <summary>
@@ -423,7 +428,8 @@ namespace Stripe
 
         [JsonPropertyName("pending_setup_intent")]
         [JsonConverter(typeof(ExpandableFieldConverter<SetupIntent>))]
-        internal ExpandableField<SetupIntent> InternalPendingSetupIntent { get; set; }
+        [JsonInclude]
+        public ExpandableField<SetupIntent> InternalPendingSetupIntent { get; private set; }
         #endregion
 
         /// <summary>
@@ -462,7 +468,8 @@ namespace Stripe
 
         [JsonPropertyName("schedule")]
         [JsonConverter(typeof(ExpandableFieldConverter<SubscriptionSchedule>))]
-        internal ExpandableField<SubscriptionSchedule> InternalSchedule { get; set; }
+        [JsonInclude]
+        public ExpandableField<SubscriptionSchedule> InternalSchedule { get; private set; }
         #endregion
 
         /// <summary>
@@ -531,7 +538,8 @@ namespace Stripe
 
         [JsonPropertyName("test_clock")]
         [JsonConverter(typeof(ExpandableFieldConverter<TestHelpers.TestClock>))]
-        internal ExpandableField<TestHelpers.TestClock> InternalTestClock { get; set; }
+        [JsonInclude]
+        public ExpandableField<TestHelpers.TestClock> InternalTestClock { get; private set; }
         #endregion
 
         /// <summary>

@@ -36,7 +36,8 @@ namespace Stripe
 
         [JsonPropertyName("refund")]
         [JsonConverter(typeof(ExpandableFieldConverter<Refund>))]
-        internal ExpandableField<Refund> InternalRefund { get; set; }
+        [JsonInclude]
+        public ExpandableField<Refund> InternalRefund { get; private set; }
         #endregion
     }
 }

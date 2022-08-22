@@ -95,7 +95,8 @@ namespace Stripe.Identity
 
         [JsonPropertyName("last_verification_report")]
         [JsonConverter(typeof(ExpandableFieldConverter<VerificationReport>))]
-        internal ExpandableField<VerificationReport> InternalLastVerificationReport { get; set; }
+        [JsonInclude]
+        public ExpandableField<VerificationReport> InternalLastVerificationReport { get; private set; }
         #endregion
 
         /// <summary>

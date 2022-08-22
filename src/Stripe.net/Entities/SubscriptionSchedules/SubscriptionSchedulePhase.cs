@@ -84,7 +84,8 @@ namespace Stripe
 
         [JsonPropertyName("coupon")]
         [JsonConverter(typeof(ExpandableFieldConverter<Coupon>))]
-        internal ExpandableField<Coupon> InternalCoupon { get; set; }
+        [JsonInclude]
+        public ExpandableField<Coupon> InternalCoupon { get; private set; }
         #endregion
 
         /// <summary>
@@ -127,7 +128,8 @@ namespace Stripe
 
         [JsonPropertyName("default_payment_method")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
-        internal ExpandableField<PaymentMethod> InternalDefaultPaymentMethod { get; set; }
+        [JsonInclude]
+        public ExpandableField<PaymentMethod> InternalDefaultPaymentMethod { get; private set; }
         #endregion
 
         /// <summary>

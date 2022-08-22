@@ -57,7 +57,8 @@ namespace Stripe.BillingPortal
 
         [JsonPropertyName("application")]
         [JsonConverter(typeof(ExpandableFieldConverter<Application>))]
-        internal ExpandableField<Application> InternalApplication { get; set; }
+        [JsonInclude]
+        public ExpandableField<Application> InternalApplication { get; private set; }
         #endregion
 
         [JsonPropertyName("business_profile")]

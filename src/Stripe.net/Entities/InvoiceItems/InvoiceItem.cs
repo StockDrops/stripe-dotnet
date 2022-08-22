@@ -75,7 +75,8 @@ namespace Stripe
 
         [JsonPropertyName("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
-        internal ExpandableField<Customer> InternalCustomer { get; set; }
+        [JsonInclude]
+        public ExpandableField<Customer> InternalCustomer { get; private set; }
         #endregion
 
         /// <summary>
@@ -164,7 +165,8 @@ namespace Stripe
 
         [JsonPropertyName("invoice")]
         [JsonConverter(typeof(ExpandableFieldConverter<Invoice>))]
-        internal ExpandableField<Invoice> InternalInvoice { get; set; }
+        [JsonInclude]
+        public ExpandableField<Invoice> InternalInvoice { get; private set; }
         #endregion
 
         /// <summary>
@@ -240,7 +242,8 @@ namespace Stripe
 
         [JsonPropertyName("subscription")]
         [JsonConverter(typeof(ExpandableFieldConverter<Subscription>))]
-        internal ExpandableField<Subscription> InternalSubscription { get; set; }
+        [JsonInclude]
+        public ExpandableField<Subscription> InternalSubscription { get; private set; }
         #endregion
 
         /// <summary>
@@ -284,7 +287,8 @@ namespace Stripe
 
         [JsonPropertyName("test_clock")]
         [JsonConverter(typeof(ExpandableFieldConverter<TestHelpers.TestClock>))]
-        internal ExpandableField<TestHelpers.TestClock> InternalTestClock { get; set; }
+        [JsonInclude]
+        public ExpandableField<TestHelpers.TestClock> InternalTestClock { get; private set; }
         #endregion
 
         /// <summary>

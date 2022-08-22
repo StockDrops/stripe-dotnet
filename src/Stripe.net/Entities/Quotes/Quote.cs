@@ -67,7 +67,8 @@ namespace Stripe
 
         [JsonPropertyName("application")]
         [JsonConverter(typeof(ExpandableFieldConverter<Application>))]
-        internal ExpandableField<Application> InternalApplication { get; set; }
+        [JsonInclude]
+        public ExpandableField<Application> InternalApplication { get; private set; }
         #endregion
 
         /// <summary>
@@ -150,7 +151,8 @@ namespace Stripe
 
         [JsonPropertyName("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
-        internal ExpandableField<Customer> InternalCustomer { get; set; }
+        [JsonInclude]
+        public ExpandableField<Customer> InternalCustomer { get; private set; }
         #endregion
 
         #region Expandable DefaultTaxRates
@@ -274,7 +276,8 @@ namespace Stripe
 
         [JsonPropertyName("invoice")]
         [JsonConverter(typeof(ExpandableFieldConverter<Invoice>))]
-        internal ExpandableField<Invoice> InternalInvoice { get; set; }
+        [JsonInclude]
+        public ExpandableField<Invoice> InternalInvoice { get; private set; }
         #endregion
 
         /// <summary>
@@ -343,7 +346,8 @@ namespace Stripe
 
         [JsonPropertyName("on_behalf_of")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
-        internal ExpandableField<Account> InternalOnBehalfOf { get; set; }
+        [JsonInclude]
+        public ExpandableField<Account> InternalOnBehalfOf { get; private set; }
         #endregion
 
         /// <summary>
@@ -384,7 +388,8 @@ namespace Stripe
 
         [JsonPropertyName("subscription")]
         [JsonConverter(typeof(ExpandableFieldConverter<Subscription>))]
-        internal ExpandableField<Subscription> InternalSubscription { get; set; }
+        [JsonInclude]
+        public ExpandableField<Subscription> InternalSubscription { get; private set; }
         #endregion
 
         [JsonPropertyName("subscription_data")]
@@ -418,7 +423,8 @@ namespace Stripe
 
         [JsonPropertyName("subscription_schedule")]
         [JsonConverter(typeof(ExpandableFieldConverter<SubscriptionSchedule>))]
-        internal ExpandableField<SubscriptionSchedule> InternalSubscriptionSchedule { get; set; }
+        [JsonInclude]
+        public ExpandableField<SubscriptionSchedule> InternalSubscriptionSchedule { get; private set; }
         #endregion
 
         #region Expandable TestClock
@@ -449,7 +455,8 @@ namespace Stripe
 
         [JsonPropertyName("test_clock")]
         [JsonConverter(typeof(ExpandableFieldConverter<TestHelpers.TestClock>))]
-        internal ExpandableField<TestHelpers.TestClock> InternalTestClock { get; set; }
+        [JsonInclude]
+        public ExpandableField<TestHelpers.TestClock> InternalTestClock { get; private set; }
         #endregion
 
         [JsonPropertyName("total_details")]

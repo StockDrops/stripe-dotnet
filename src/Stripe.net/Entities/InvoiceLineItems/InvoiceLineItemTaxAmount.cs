@@ -46,7 +46,8 @@ namespace Stripe
 
         [JsonPropertyName("tax_rate")]
         [JsonConverter(typeof(ExpandableFieldConverter<TaxRate>))]
-        internal ExpandableField<TaxRate> InternalTaxRate { get; set; }
+        [JsonInclude]
+        public ExpandableField<TaxRate> InternalTaxRate { get; private set; }
         #endregion
     }
 }

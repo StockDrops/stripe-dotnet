@@ -50,9 +50,25 @@ namespace Stripe.Infrastructure
             }
 
             var objectValue = string.Empty;
+            var startsSeen = 0;
 
             while (readerClone.Read())
             {
+                if (readerClone.TokenType == JsonTokenType.StartObject)
+                {
+                    startsSeen++;
+                }
+
+                if (readerClone.TokenType == JsonTokenType.EndObject)
+                {
+                    if (startsSeen == 0)
+                    {
+                        break;
+                    }
+
+                    startsSeen--; // we have come back to parity between { and } signs.
+                }
+
                 if (readerClone.TokenType == JsonTokenType.PropertyName)
                 {
                     var propertyName = readerClone.GetString();
@@ -69,6 +85,12 @@ namespace Stripe.Infrastructure
             if (concreteType == null)
             {
                 // Couldn't find a concrete type to instantiate, return null.
+                // we need to advance the reader until the end or else we will get  The converter 'Stripe.Infrastructure.StripeObjectConverter`1[Stripe.IBalanceTransactionSource]' read too much or not enough.
+                while (reader.TokenType != JsonTokenType.EndObject)
+                {
+                    _ = reader.TrySkip();
+                }
+
                 return default(T);
             }
 

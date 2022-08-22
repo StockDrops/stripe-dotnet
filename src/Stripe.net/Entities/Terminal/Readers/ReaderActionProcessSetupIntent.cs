@@ -37,7 +37,8 @@ namespace Stripe.Terminal
 
         [JsonPropertyName("setup_intent")]
         [JsonConverter(typeof(ExpandableFieldConverter<SetupIntent>))]
-        internal ExpandableField<SetupIntent> InternalSetupIntent { get; set; }
+        [JsonInclude]
+        public ExpandableField<SetupIntent> InternalSetupIntent { get; private set; }
         #endregion
     }
 }

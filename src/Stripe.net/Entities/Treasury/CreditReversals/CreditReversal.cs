@@ -119,7 +119,8 @@ namespace Stripe.Treasury
 
         [JsonPropertyName("transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<Transaction>))]
-        internal ExpandableField<Transaction> InternalTransaction { get; set; }
+        [JsonInclude]
+        public ExpandableField<Transaction> InternalTransaction { get; private set; }
         #endregion
     }
 }

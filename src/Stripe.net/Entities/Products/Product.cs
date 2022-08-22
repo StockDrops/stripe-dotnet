@@ -100,7 +100,8 @@ namespace Stripe
 
         [JsonPropertyName("default_price")]
         [JsonConverter(typeof(ExpandableFieldConverter<Price>))]
-        internal ExpandableField<Price> InternalDefaultPrice { get; set; }
+        [JsonInclude]
+        public ExpandableField<Price> InternalDefaultPrice { get; private set; }
         #endregion
 
         /// <summary>
@@ -194,7 +195,8 @@ namespace Stripe
 
         [JsonPropertyName("tax_code")]
         [JsonConverter(typeof(ExpandableFieldConverter<TaxCode>))]
-        internal ExpandableField<TaxCode> InternalTaxCode { get; set; }
+        [JsonInclude]
+        public ExpandableField<TaxCode> InternalTaxCode { get; private set; }
         #endregion
 
         /// <summary>

@@ -132,7 +132,8 @@ namespace Stripe
 
         [JsonPropertyName("source")]
         [JsonConverter(typeof(ExpandableFieldConverter<IBalanceTransactionSource>))]
-        internal ExpandableField<IBalanceTransactionSource> InternalSource { get; set; }
+        [JsonInclude]
+        public ExpandableField<IBalanceTransactionSource> InternalSource { get; private set; }
         #endregion
 
         /// <summary>

@@ -36,7 +36,8 @@ namespace Stripe.Issuing
 
         [JsonPropertyName("additional_documentation")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
-        internal ExpandableField<File> InternalAdditionalDocumentation { get; set; }
+        [JsonInclude]
+        public ExpandableField<File> InternalAdditionalDocumentation { get; private set; }
         #endregion
 
         /// <summary>

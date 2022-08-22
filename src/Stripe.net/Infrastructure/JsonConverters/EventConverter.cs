@@ -1,6 +1,7 @@
 namespace Stripe.Infrastructure
 {
     using System;
+    using System.Linq;
     using System.Reflection;
     using System.Text.Json;
     using System.Text.Json.Nodes;
@@ -17,7 +18,6 @@ namespace Stripe.Infrastructure
     /// </summary>
     public class EventConverter : JsonConverter<Event>
     {
-
         /// <summary>
         /// Reads the JSON representation of the object.
         /// </summary>
@@ -33,6 +33,7 @@ namespace Stripe.Infrastructure
             }
 
             var readerClone = reader;
+            var rawClone = reader;
             EventRequest eventRequest = null;
 
             while (readerClone.Read())
@@ -59,25 +60,28 @@ namespace Stripe.Infrastructure
                 }
             }
 
-            if (eventRequest != null)
+            var newOptions = new JsonSerializerOptions(options);
+            var converterToRemove = newOptions.Converters.Where(x => x.GetType() == typeof(EventConverter)).FirstOrDefault();
+            if (converterToRemove != null)
             {
-                var jsonObject = JsonNode.Parse(ref reader);
-                jsonObject["request"] = JsonNode.Parse(JsonSerializer.Serialize(eventRequest));
-
-                // At this point, jsonObject should be formatted in a way that's compatible with
-                // Stripe.net's API version.
-                var value = jsonObject.Deserialize<Event>();
-
-                // Store the raw object as a JToken
-                if (value.Data != null)
-                {
-                    value.Data.RawObject = jsonObject["data"]["object"];
-                }
-
-                return value;
+                newOptions.Converters.Remove(converterToRemove);
             }
 
-            return (Event)JsonSerializer.Deserialize(ref reader, typeof(Event));
+            var jsonObject = JsonNode.Parse(ref reader);
+
+            if (eventRequest != null)
+            {
+                // At this point, jsonObject should be formatted in a way that's compatible with
+                // Stripe.net's API version.
+                jsonObject["request"] = JsonNode.Parse(JsonSerializer.Serialize(eventRequest));
+            }
+            Event value = jsonObject.Deserialize<Event>(newOptions);
+            if (value.Data != null)
+            {
+                value.Data.RawObject = jsonObject["data"]["object"];
+            }
+
+            return value;
         }
 
         /// <summary>

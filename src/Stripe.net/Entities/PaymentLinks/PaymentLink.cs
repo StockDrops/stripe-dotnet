@@ -148,7 +148,8 @@ namespace Stripe
 
         [JsonPropertyName("on_behalf_of")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
-        internal ExpandableField<Account> InternalOnBehalfOf { get; set; }
+        [JsonInclude]
+        public ExpandableField<Account> InternalOnBehalfOf { get; private set; }
         #endregion
 
         /// <summary>

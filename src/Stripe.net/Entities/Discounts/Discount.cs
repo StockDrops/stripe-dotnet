@@ -57,7 +57,8 @@ namespace Stripe
 
         [JsonPropertyName("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
-        internal ExpandableField<Customer> InternalCustomer { get; set; }
+        [JsonInclude]
+        public ExpandableField<Customer> InternalCustomer { get; private set; }
         #endregion
 
         /// <summary>
@@ -117,7 +118,8 @@ namespace Stripe
 
         [JsonPropertyName("promotion_code")]
         [JsonConverter(typeof(ExpandableFieldConverter<PromotionCode>))]
-        internal ExpandableField<PromotionCode> InternalPromotionCode { get; set; }
+        [JsonInclude]
+        public ExpandableField<PromotionCode> InternalPromotionCode { get; private set; }
         #endregion
 
         /// <summary>
@@ -155,7 +157,8 @@ namespace Stripe
 
         [JsonPropertyName("subscription")]
         [JsonConverter(typeof(ExpandableFieldConverter<Subscription>))]
-        internal ExpandableField<Subscription> InternalSubscription { get; set; }
+        [JsonInclude]
+        public ExpandableField<Subscription> InternalSubscription { get; private set; }
         #endregion
     }
 }

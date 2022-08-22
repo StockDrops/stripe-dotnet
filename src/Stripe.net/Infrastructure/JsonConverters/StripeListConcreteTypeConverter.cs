@@ -1,4 +1,4 @@
-﻿namespace Stripe.Infrastructure.JsonConverters
+﻿namespace Stripe.Infrastructure
 {
     using System;
     using System.Collections.Generic;
@@ -21,11 +21,11 @@
         {
             return new StripeList<T>()
             {
-                Data = properties.FirstOrDefault(p => p.Key.Name == "Data").Value as List<T>,
-                HasMore = (bool)properties.FirstOrDefault(p => p.Key.Name == "HasMore").Value,
-                Object = properties.FirstOrDefault(p => p.Key.Name == "Object").Value as string,
-                StripeResponse = properties.FirstOrDefault(p => p.Key.Name == "StripeResponse").Value as StripeResponse,
-                Url = properties.FirstOrDefault(p => p.Key.Name == "Url").Value as string,
+                Data = properties.Where(x => x.Key.Name == "Data").Select(x => x.Value).FirstOrDefault() as List<T>,
+                HasMore = (bool)(properties.Where(x => x.Key.Name == "HasMore").Select(x => x.Value).FirstOrDefault() ?? false),
+                Object = properties.Where(x => x.Key.Name == "Object").Select(x => x.Value).FirstOrDefault() as string,
+                StripeResponse = properties.Where(x => x.Key.Name == "StripeResponse").Select(x => x.Value).FirstOrDefault() as StripeResponse,
+                Url = properties.Where(x => x.Key.Name == "Url").Select(x => x.Value).FirstOrDefault() as string,
             };
         }
 

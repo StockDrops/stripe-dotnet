@@ -57,7 +57,8 @@ namespace Stripe
 
         [JsonPropertyName("application")]
         [JsonConverter(typeof(ExpandableFieldConverter<Application>))]
-        internal ExpandableField<Application> InternalApplication { get; set; }
+        [JsonInclude]
+        public ExpandableField<Application> InternalApplication { get; private set; }
         #endregion
 
         /// <summary>
@@ -111,7 +112,8 @@ namespace Stripe
 
         [JsonPropertyName("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
-        internal ExpandableField<Customer> InternalCustomer { get; set; }
+        [JsonInclude]
+        public ExpandableField<Customer> InternalCustomer { get; private set; }
         #endregion
 
         /// <summary>
@@ -165,7 +167,8 @@ namespace Stripe
 
         [JsonPropertyName("on_behalf_of")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
-        internal ExpandableField<Account> InternalOnBehalfOf { get; set; }
+        [JsonInclude]
+        public ExpandableField<Account> InternalOnBehalfOf { get; private set; }
         #endregion
 
         #region Expandable PaymentMethod
@@ -196,7 +199,8 @@ namespace Stripe
 
         [JsonPropertyName("payment_method")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
-        internal ExpandableField<PaymentMethod> InternalPaymentMethod { get; set; }
+        [JsonInclude]
+        public ExpandableField<PaymentMethod> InternalPaymentMethod { get; private set; }
         #endregion
 
         [JsonPropertyName("payment_method_details")]
@@ -236,7 +240,8 @@ namespace Stripe
 
         [JsonPropertyName("setup_intent")]
         [JsonConverter(typeof(ExpandableFieldConverter<SetupIntent>))]
-        internal ExpandableField<SetupIntent> InternalSetupIntent { get; set; }
+        [JsonInclude]
+        public ExpandableField<SetupIntent> InternalSetupIntent { get; private set; }
         #endregion
 
         /// <summary>

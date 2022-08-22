@@ -90,7 +90,8 @@ namespace Stripe
 
         [JsonPropertyName("application")]
         [JsonConverter(typeof(ExpandableFieldConverter<Application>))]
-        internal ExpandableField<Application> InternalApplication { get; set; }
+        [JsonInclude]
+        public ExpandableField<Application> InternalApplication { get; private set; }
         #endregion
 
         /// <summary>
@@ -217,7 +218,8 @@ namespace Stripe
 
         [JsonPropertyName("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
-        internal ExpandableField<Customer> InternalCustomer { get; set; }
+        [JsonInclude]
+        public ExpandableField<Customer> InternalCustomer { get; private set; }
         #endregion
 
         /// <summary>
@@ -254,7 +256,8 @@ namespace Stripe
 
         [JsonPropertyName("invoice")]
         [JsonConverter(typeof(ExpandableFieldConverter<Invoice>))]
-        internal ExpandableField<Invoice> InternalInvoice { get; set; }
+        [JsonInclude]
+        public ExpandableField<Invoice> InternalInvoice { get; private set; }
         #endregion
 
         /// <summary>
@@ -319,7 +322,8 @@ namespace Stripe
 
         [JsonPropertyName("on_behalf_of")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
-        internal ExpandableField<Account> InternalOnBehalfOf { get; set; }
+        [JsonInclude]
+        public ExpandableField<Account> InternalOnBehalfOf { get; private set; }
         #endregion
 
         #region Expandable PaymentMethod
@@ -350,7 +354,8 @@ namespace Stripe
 
         [JsonPropertyName("payment_method")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
-        internal ExpandableField<PaymentMethod> InternalPaymentMethod { get; set; }
+        [JsonInclude]
+        public ExpandableField<PaymentMethod> InternalPaymentMethod { get; private set; }
         #endregion
 
         /// <summary>
@@ -408,7 +413,8 @@ namespace Stripe
 
         [JsonPropertyName("review")]
         [JsonConverter(typeof(ExpandableFieldConverter<Review>))]
-        internal ExpandableField<Review> InternalReview { get; set; }
+        [JsonInclude]
+        public ExpandableField<Review> InternalReview { get; private set; }
         #endregion
 
         /// <summary>
@@ -467,7 +473,8 @@ namespace Stripe
 
         [JsonPropertyName("source")]
         [JsonConverter(typeof(ExpandableFieldConverter<IPaymentSource>))]
-        internal ExpandableField<IPaymentSource> InternalSource { get; set; }
+        [JsonInclude]
+        public ExpandableField<IPaymentSource> InternalSource { get; private set; }
         #endregion
 
         /// <summary>

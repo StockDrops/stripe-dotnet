@@ -109,7 +109,8 @@ namespace Stripe
 
         [JsonPropertyName("tax_code")]
         [JsonConverter(typeof(ExpandableFieldConverter<TaxCode>))]
-        internal ExpandableField<TaxCode> InternalTaxCode { get; set; }
+        [JsonInclude]
+        public ExpandableField<TaxCode> InternalTaxCode { get; private set; }
         #endregion
 
         /// <summary>

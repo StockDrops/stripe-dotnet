@@ -64,7 +64,8 @@ namespace Stripe.BillingPortal
 
         [JsonPropertyName("configuration")]
         [JsonConverter(typeof(ExpandableFieldConverter<Configuration>))]
-        internal ExpandableField<Configuration> InternalConfiguration { get; set; }
+        [JsonInclude]
+        public ExpandableField<Configuration> InternalConfiguration { get; private set; }
         #endregion
 
         /// <summary>

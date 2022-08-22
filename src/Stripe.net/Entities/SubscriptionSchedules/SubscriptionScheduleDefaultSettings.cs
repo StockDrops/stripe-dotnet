@@ -77,7 +77,8 @@ namespace Stripe
 
         [JsonPropertyName("default_payment_method")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
-        internal ExpandableField<PaymentMethod> InternalDefaultPaymentMethod { get; set; }
+        [JsonInclude]
+        public ExpandableField<PaymentMethod> InternalDefaultPaymentMethod { get; private set; }
         #endregion
 
         /// <summary>

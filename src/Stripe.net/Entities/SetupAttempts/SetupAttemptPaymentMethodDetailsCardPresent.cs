@@ -34,7 +34,8 @@ namespace Stripe
 
         [JsonPropertyName("generated_card")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
-        internal ExpandableField<PaymentMethod> InternalGeneratedCard { get; set; }
+        [JsonInclude]
+        public ExpandableField<PaymentMethod> InternalGeneratedCard { get; private set; }
         #endregion
     }
 }

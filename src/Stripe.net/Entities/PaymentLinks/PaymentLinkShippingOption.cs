@@ -40,7 +40,8 @@ namespace Stripe
 
         [JsonPropertyName("shipping_rate")]
         [JsonConverter(typeof(ExpandableFieldConverter<ShippingRate>))]
-        internal ExpandableField<ShippingRate> InternalShippingRate { get; set; }
+        [JsonInclude]
+        public ExpandableField<ShippingRate> InternalShippingRate { get; private set; }
         #endregion
     }
 }

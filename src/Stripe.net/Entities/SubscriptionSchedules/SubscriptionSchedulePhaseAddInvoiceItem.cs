@@ -35,7 +35,8 @@ namespace Stripe
 
         [JsonPropertyName("price")]
         [JsonConverter(typeof(ExpandableFieldConverter<Price>))]
-        internal ExpandableField<Price> InternalPrice { get; set; }
+        [JsonInclude]
+        public ExpandableField<Price> InternalPrice { get; private set; }
         #endregion
 
         /// <summary>

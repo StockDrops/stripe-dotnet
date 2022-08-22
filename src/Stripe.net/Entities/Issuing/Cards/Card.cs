@@ -151,7 +151,8 @@ namespace Stripe.Issuing
 
         [JsonPropertyName("replaced_by")]
         [JsonConverter(typeof(ExpandableFieldConverter<Card>))]
-        internal ExpandableField<Card> InternalReplacedBy { get; set; }
+        [JsonInclude]
+        public ExpandableField<Card> InternalReplacedBy { get; private set; }
         #endregion
 
         #region Expandable ReplacementFor
@@ -182,7 +183,8 @@ namespace Stripe.Issuing
 
         [JsonPropertyName("replacement_for")]
         [JsonConverter(typeof(ExpandableFieldConverter<Card>))]
-        internal ExpandableField<Card> InternalReplacementFor { get; set; }
+        [JsonInclude]
+        public ExpandableField<Card> InternalReplacementFor { get; private set; }
         #endregion
 
         /// <summary>

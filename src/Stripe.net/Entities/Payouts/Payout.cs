@@ -83,7 +83,8 @@ namespace Stripe
 
         [JsonPropertyName("balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
-        internal ExpandableField<BalanceTransaction> InternalBalanceTransaction { get; set; }
+        [JsonInclude]
+        public ExpandableField<BalanceTransaction> InternalBalanceTransaction { get; private set; }
         #endregion
 
         /// <summary>
@@ -135,7 +136,8 @@ namespace Stripe
 
         [JsonPropertyName("destination")]
         [JsonConverter(typeof(ExpandableFieldConverter<IExternalAccount>))]
-        internal ExpandableField<IExternalAccount> InternalDestination { get; set; }
+        [JsonInclude]
+        public ExpandableField<IExternalAccount> InternalDestination { get; private set; }
         #endregion
 
         #region Expandable FailureBalanceTransaction
@@ -170,7 +172,8 @@ namespace Stripe
 
         [JsonPropertyName("failure_balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
-        internal ExpandableField<BalanceTransaction> InternalFailureBalanceTransaction { get; set; }
+        [JsonInclude]
+        public ExpandableField<BalanceTransaction> InternalFailureBalanceTransaction { get; private set; }
         #endregion
 
         /// <summary>
@@ -239,7 +242,8 @@ namespace Stripe
 
         [JsonPropertyName("original_payout")]
         [JsonConverter(typeof(ExpandableFieldConverter<Payout>))]
-        internal ExpandableField<Payout> InternalOriginalPayout { get; set; }
+        [JsonInclude]
+        public ExpandableField<Payout> InternalOriginalPayout { get; private set; }
         #endregion
 
         #region Expandable ReversedBy
@@ -270,7 +274,8 @@ namespace Stripe
 
         [JsonPropertyName("reversed_by")]
         [JsonConverter(typeof(ExpandableFieldConverter<Payout>))]
-        internal ExpandableField<Payout> InternalReversedBy { get; set; }
+        [JsonInclude]
+        public ExpandableField<Payout> InternalReversedBy { get; private set; }
         #endregion
 
         /// <summary>

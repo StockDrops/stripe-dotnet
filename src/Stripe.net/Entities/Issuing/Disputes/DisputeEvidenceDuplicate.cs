@@ -36,7 +36,8 @@ namespace Stripe.Issuing
 
         [JsonPropertyName("additional_documentation")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
-        internal ExpandableField<File> InternalAdditionalDocumentation { get; set; }
+        [JsonInclude]
+        public ExpandableField<File> InternalAdditionalDocumentation { get; private set; }
         #endregion
 
         #region Expandable CardStatement
@@ -69,7 +70,8 @@ namespace Stripe.Issuing
 
         [JsonPropertyName("card_statement")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
-        internal ExpandableField<File> InternalCardStatement { get; set; }
+        [JsonInclude]
+        public ExpandableField<File> InternalCardStatement { get; private set; }
         #endregion
 
         #region Expandable CashReceipt
@@ -102,7 +104,8 @@ namespace Stripe.Issuing
 
         [JsonPropertyName("cash_receipt")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
-        internal ExpandableField<File> InternalCashReceipt { get; set; }
+        [JsonInclude]
+        public ExpandableField<File> InternalCashReceipt { get; private set; }
         #endregion
 
         #region Expandable CheckImage
@@ -135,7 +138,8 @@ namespace Stripe.Issuing
 
         [JsonPropertyName("check_image")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
-        internal ExpandableField<File> InternalCheckImage { get; set; }
+        [JsonInclude]
+        public ExpandableField<File> InternalCheckImage { get; private set; }
         #endregion
 
         /// <summary>

@@ -101,7 +101,8 @@ namespace Stripe.Terminal
 
         [JsonPropertyName("location")]
         [JsonConverter(typeof(ExpandableFieldConverter<Location>))]
-        internal ExpandableField<Location> InternalLocation { get; set; }
+        [JsonInclude]
+        public ExpandableField<Location> InternalLocation { get; private set; }
         #endregion
 
         /// <summary>

@@ -102,7 +102,8 @@ namespace Stripe
 
         [JsonPropertyName("default_source")]
         [JsonConverter(typeof(ExpandableFieldConverter<IPaymentSource>))]
-        internal ExpandableField<IPaymentSource> InternalDefaultSource { get; set; }
+        [JsonInclude]
+        public ExpandableField<IPaymentSource> InternalDefaultSource { get; private set; }
         #endregion
 
         /// <summary>
@@ -268,7 +269,8 @@ namespace Stripe
 
         [JsonPropertyName("test_clock")]
         [JsonConverter(typeof(ExpandableFieldConverter<TestHelpers.TestClock>))]
-        internal ExpandableField<TestHelpers.TestClock> InternalTestClock { get; set; }
+        [JsonInclude]
+        public ExpandableField<TestHelpers.TestClock> InternalTestClock { get; private set; }
         #endregion
     }
 }

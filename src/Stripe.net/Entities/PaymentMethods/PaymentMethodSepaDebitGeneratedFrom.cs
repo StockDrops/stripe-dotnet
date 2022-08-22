@@ -34,7 +34,8 @@ namespace Stripe
 
         [JsonPropertyName("charge")]
         [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
-        internal ExpandableField<Charge> InternalCharge { get; set; }
+        [JsonInclude]
+        public ExpandableField<Charge> InternalCharge { get; private set; }
         #endregion
 
         #region Expandable SetupAttempt
@@ -65,7 +66,8 @@ namespace Stripe
 
         [JsonPropertyName("setup_attempt")]
         [JsonConverter(typeof(ExpandableFieldConverter<SetupAttempt>))]
-        internal ExpandableField<SetupAttempt> InternalSetupAttempt { get; set; }
+        [JsonInclude]
+        public ExpandableField<SetupAttempt> InternalSetupAttempt { get; private set; }
         #endregion
     }
 }

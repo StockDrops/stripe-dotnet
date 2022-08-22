@@ -72,7 +72,8 @@ namespace Stripe.Issuing
 
         [JsonPropertyName("authorization")]
         [JsonConverter(typeof(ExpandableFieldConverter<Authorization>))]
-        internal ExpandableField<Authorization> InternalAuthorization { get; set; }
+        [JsonInclude]
+        public ExpandableField<Authorization> InternalAuthorization { get; private set; }
         #endregion
 
         #region Expandable BalanceTransaction
@@ -105,7 +106,8 @@ namespace Stripe.Issuing
 
         [JsonPropertyName("balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
-        internal ExpandableField<BalanceTransaction> InternalBalanceTransaction { get; set; }
+        [JsonInclude]
+        public ExpandableField<BalanceTransaction> InternalBalanceTransaction { get; private set; }
         #endregion
 
         #region Expandable Card
@@ -136,7 +138,8 @@ namespace Stripe.Issuing
 
         [JsonPropertyName("card")]
         [JsonConverter(typeof(ExpandableFieldConverter<Card>))]
-        internal ExpandableField<Card> InternalCard { get; set; }
+        [JsonInclude]
+        public ExpandableField<Card> InternalCard { get; private set; }
         #endregion
 
         #region Expandable Cardholder
@@ -167,7 +170,8 @@ namespace Stripe.Issuing
 
         [JsonPropertyName("cardholder")]
         [JsonConverter(typeof(ExpandableFieldConverter<Cardholder>))]
-        internal ExpandableField<Cardholder> InternalCardholder { get; set; }
+        [JsonInclude]
+        public ExpandableField<Cardholder> InternalCardholder { get; private set; }
         #endregion
 
         /// <summary>
@@ -213,7 +217,8 @@ namespace Stripe.Issuing
 
         [JsonPropertyName("dispute")]
         [JsonConverter(typeof(ExpandableFieldConverter<Dispute>))]
-        internal ExpandableField<Dispute> InternalDispute { get; set; }
+        [JsonInclude]
+        public ExpandableField<Dispute> InternalDispute { get; private set; }
         #endregion
 
         /// <summary>

@@ -19,7 +19,7 @@ namespace Stripe
         /// values (sent along only with *.updated events).
         /// </summary>
         [JsonPropertyName("previous_attributes")]
-        public dynamic PreviousAttributes { get; set; }
+        public object PreviousAttributes { get; set; }
 
         /// <summary>
         /// This contains the same data as <see cref="EventData.Object"/>, but untyped. This is

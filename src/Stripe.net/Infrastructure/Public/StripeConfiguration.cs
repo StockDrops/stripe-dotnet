@@ -208,9 +208,12 @@ namespace Stripe
             options.Converters.Add(new StripeListInterfaceConverterFactory());
             options.Converters.Add(new StringDecimalConverter());
 
-            // options.Converters.Add(new EventConverter());
+            options.Converters.Add(new EventConverter());
+
             // options.Converters.Add(new StripeEntityConverterFactory());
             // options.Converters.Add(new ExpandableFieldConverterFactory());
+
+            options.Converters.Add(new JsonStringEnumConverter());
 
             // no DateParseHandling equivalent.
             options.MaxDepth = 128;

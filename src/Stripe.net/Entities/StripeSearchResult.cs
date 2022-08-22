@@ -5,6 +5,7 @@ namespace Stripe
     using System.Text.Json.Serialization;
     using Stripe.Infrastructure;
 
+    [JsonConverter(typeof(StripeSearchResultConverterFactory))]
     public class StripeSearchResult<T> : StripeEntity<StripeSearchResult<T>>, IHasObject, IEnumerable<T>
     {
         /// <summary>
